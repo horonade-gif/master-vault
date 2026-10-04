@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MASTER VAULT: OMNI-ENTITY ROSTER ∞ [v7.0 MODULAR TRANSCENDENT]</title>
+<title>MASTER VAULT: OMNI-ENTITY ROSTER ∞ [v7.1 FIXED]</title>
 <style>
 :root {
 --bg-deep: #010204;
@@ -57,7 +57,7 @@ animation: pulseCore 2s infinite ease-in-out;
 .brand-title { font-size: 12px; font-weight: 800; letter-spacing: 0.05em; color: #fff; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .brand-subtitle { font-size: 8px; font-family: var(--font-mono); color: var(--accent-dynamic); letter-spacing: 0.1em; font-weight: 600; }
 
-.header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; z-index: 55; }
 .btn-icon {
 background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-muted);
 width: 32px; height: 32px; border-radius: var(--radius-sm); display: flex; align-items: center;
@@ -74,7 +74,7 @@ padding: 2px 4px; border-radius: 4px; transition: all 0.3s; white-space: nowrap;
 .sys-badge.active { border-color: var(--accent-dynamic); color: var(--accent-dynamic); box-shadow: 0 0 6px var(--accent-glow); }
 
 nav.tabs {
-position: relative; z-index: 10; display: flex; background: rgba(6, 9, 15, 0.95);
+position: relative; z-index: 45; display: flex; background: rgba(6, 9, 15, 0.95);
 backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle);
 padding: 8px 10px; gap: 6px; overflow-x: auto; scrollbar-width: none;
 -webkit-overflow-scrolling: touch;
@@ -169,7 +169,7 @@ box-shadow: 0 0 20px var(--accent-glow);
 <div class="brand-core"></div>
 <div class="brand-meta">
 <div class="brand-title">MASTER VAULT</div>
-<div class="brand-subtitle">OMNI-ENTITY ROSTER [v7.0 MODULAR]</div>
+<div class="brand-subtitle">OMNI-ENTITY ROSTER [v7.1 FIXED]</div>
 </div>
 </div>
 <div class="header-actions">
@@ -275,7 +275,7 @@ box-shadow: 0 0 20px var(--accent-glow);
 <div class="card">
 <div class="card-header">
 <div class="card-title"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> 相手陣営（マルチターゲット・ロスター）</div>
-<button class="chip" id="btn-add-target" style="padding:4px 10px; font-size:10px;"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> ➕ 相手を追加</button>
+<button class="chip" id="btn-add-target" style="padding:4px 10px; font-size:10px;"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none;"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> ➕ 相手を追加</button>
 </div>
 <p style="font-size:11px; color:var(--text-muted); margin-bottom:12px;">
 何体でも相手キャラクターを追加し、個別のプロフィールや禁忌地雷を設定できます。
@@ -517,7 +517,7 @@ card.innerHTML = `
 <div class="card-header" style="margin-bottom:8px;">
 <span style="font-size:11px; font-weight:700; color:var(--text-main);">👤 [${idx+1}] ${t.role || '陣営未定'}</span>
 <div style="display:flex; gap:6px;">
-<button class="chip" style="font-size:9px; padding:2px 6px; border-color:rgba(239,68,68,0.4); color:#ef4444;" onclick="removeTarget('${t.id}')">削除</button>
+<button type="button" class="chip" style="font-size:9px; padding:2px 6px; border-color:rgba(239,68,68,0.4); color:#ef4444;" onclick="removeTarget('${t.id}')">削除</button>
 </div>
 </div>
 <div class="input-group">
@@ -558,12 +558,13 @@ repGroup.innerHTML = `
 directContainer.appendChild(repGroup);
 });
 
+// 入力時のイベントを確実に再バインド（イベント競合防止）
 document.querySelectorAll('input, textarea, select').forEach(el => {
-el.addEventListener('input', () => {
+el.oninput = () => {
 syncDOMToState();
 saveVaultState();
 updateCharLength();
-});
+};
 });
 }
 
@@ -579,7 +580,7 @@ market.innerHTML = `
 <div style="font-size:11px; font-weight:700; color:var(--text-main);">📊 存在感・重要度ウェイトモジュール</div>
 <div style="font-size:9px; color:var(--text-muted);">複数相手の焦点（干渉度）をスライダーで個別制御</div>
 </div>
-<button class="chip ${vaultState.modules.weight ? 'active' : ''}" onclick="toggleModule('weight')">${vaultState.modules.weight ? '解除中' : '＋ 解放する'}</button>
+<button type="button" class="chip ${vaultState.modules.weight ? 'active' : ''}" onclick="toggleModule('weight')">${vaultState.modules.weight ? '解除中' : '＋ 解放する'}</button>
 </div>
 
 <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(3,5,8,0.85); border:1px solid ${vaultState.modules.ng ? 'var(--accent-dynamic)' : 'var(--border-subtle)'}; padding:10px; border-radius:var(--radius-sm);">
@@ -587,7 +588,7 @@ market.innerHTML = `
 <div style="font-size:11px; font-weight:700; color:var(--text-main);">⚡ クイックNGワード・パッチ</div>
 <div style="font-size:9px; color:var(--text-muted);">AI特有のマンネリ表現や定型句をワンタップで抑制</div>
 </div>
-<button class="chip ${vaultState.modules.ng ? 'active' : ''}" onclick="toggleModule('ng')">${vaultState.modules.ng ? '解除中' : '＋ 解放する'}</button>
+<button type="button" class="chip ${vaultState.modules.ng ? 'active' : ''}" onclick="toggleModule('ng')">${vaultState.modules.ng ? '解除中' : '＋ 解放する'}</button>
 </div>
 
 <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(3,5,8,0.85); border:1px solid ${vaultState.modules.snapshot ? 'var(--accent-dynamic)' : 'var(--border-subtle)'}; padding:10px; border-radius:var(--radius-sm);">
@@ -595,7 +596,7 @@ market.innerHTML = `
 <div style="font-size:11px; font-weight:700; color:var(--text-main);">📸 タイムライン・スナップショット</div>
 <div style="font-size:9px; color:var(--text-muted);">セッションの状態を一時保存・ワンクリックで復元</div>
 </div>
-<button class="chip ${vaultState.modules.snapshot ? 'active' : ''}" onclick="toggleModule('snapshot')">${vaultState.modules.snapshot ? '解除中' : '＋ 解放する'}</button>
+<button type="button" class="chip ${vaultState.modules.snapshot ? 'active' : ''}" onclick="toggleModule('snapshot')">${vaultState.modules.snapshot ? '解除中' : '＋ 解放する'}</button>
 </div>
 `;
 
@@ -622,8 +623,8 @@ vaultState.snapshots.forEach((s, idx) => {
 snapListHtml += `<div style="display:flex; justify-content:space-between; align-items:center; font-size:10px; background:rgba(3,5,8,0.8); padding:6px 10px; border-radius:4px; margin-bottom:4px;">
 <span>スナップショット #${idx+1} (${new Date(s.time).toLocaleTimeString()})</span>
 <div style="display:flex; gap:4px;">
-<button class="chip" style="font-size:8px; padding:2px 6px;" onclick="restoreSnapshot(${idx})">復元</button>
-<button class="chip" style="font-size:8px; padding:2px 6px; border-color:rgba(239,68,68,0.4); color:#ef4444;" onclick="removeSnapshot(${idx})">削除</button>
+<button type="button" class="chip" style="font-size:8px; padding:2px 6px;" onclick="restoreSnapshot(${idx})">復元</button>
+<button type="button" class="chip" style="font-size:8px; padding:2px 6px; border-color:rgba(239,68,68,0.4); color:#ef4444;" onclick="removeSnapshot(${idx})">削除</button>
 </div>
 </div>`;
 });
@@ -632,7 +633,7 @@ snapContainer.innerHTML = `
 <div style="background:rgba(6,9,15,0.85); padding:10px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle); margin-top:10px;">
 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
 <div style="font-size:11px; font-weight:700; color:var(--text-main);">📸 現在の状態をスナップショット保存</div>
-<button class="chip" style="font-size:9px; padding:4px 10px;" onclick="takeSnapshot()">＋ 今の状態を保存</button>
+<button type="button" class="chip" style="font-size:9px; padding:4px 10px;" onclick="takeSnapshot()">＋ 今の状態を保存</button>
 </div>
 <div style="max-height:120px; overflow-y:auto;">
 ${vaultState.snapshots.length > 0 ? snapListHtml : '<div style="font-size:10px; color:var(--text-dim); text-align:center; padding:6px;">保存された履歴はありません</div>'}
@@ -713,7 +714,8 @@ vaultState.targets.forEach(t => {
 const el = document.getElementById(`t_rep_${t.id}`);
 if (el) totalLen += el.value.length;
 });
-document.getElementById("lbl-b-len").textContent = totalLen + " chars";
+const lenEl = document.getElementById("lbl-b-len");
+if (lenEl) lenEl.textContent = totalLen + " chars";
 }
 
 function setThemeHue(hue) {
@@ -722,6 +724,7 @@ document.documentElement.style.setProperty('--glow-hue', hue);
 
 function showToast(msg) {
 const t = document.getElementById("toast-notify");
+if (!t) return;
 document.getElementById("toast-msg").textContent = msg;
 t.style.opacity = "1";
 t.style.transform = "translateX(-50%) translateY(0)";
@@ -731,42 +734,44 @@ t.style.transform = "translateX(-50%) translateY(20px)";
 }, 2200);
 }
 
+// タブ切り替えの確実なバインド
 document.querySelectorAll(".tab-btn").forEach(btn => {
-btn.addEventListener("click", () => {
+btn.onclick = () => {
 document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
 document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
 btn.classList.add("active");
-document.getElementById(btn.getAttribute("data-tab")).classList.add("active");
-});
+const targetTab = document.getElementById(btn.getAttribute("data-tab"));
+if (targetTab) targetTab.classList.add("active");
+};
 });
 
 document.querySelectorAll("#group-focus .chip").forEach(chip => {
-chip.addEventListener("click", () => {
+chip.onclick = () => {
 document.querySelectorAll("#group-focus .chip").forEach(c => c.classList.remove("active"));
 chip.classList.add("active");
-});
+};
 });
 
 document.querySelectorAll("#group-tone .chip").forEach(chip => {
-chip.addEventListener("click", () => {
+chip.onclick = () => {
 document.querySelectorAll("#group-tone .chip").forEach(c => c.classList.remove("active"));
 chip.classList.add("active");
-});
+};
 });
 
 document.querySelectorAll("#group-phase .chip").forEach(chip => {
-chip.addEventListener("click", () => {
+chip.onclick = () => {
 document.querySelectorAll("#group-phase .chip").forEach(c => c.classList.remove("active"));
 chip.classList.add("active");
 vaultState.phase = chip.getAttribute("data-val");
 vaultState.phaseHue = parseInt(chip.getAttribute("data-hue"));
 setThemeHue(vaultState.phaseHue);
 saveVaultState();
-});
+};
 });
 
 document.querySelectorAll(".patch-btn").forEach(btn => {
-btn.addEventListener("click", () => {
+btn.onclick = () => {
 const targetId = btn.getAttribute("data-target");
 const patchText = btn.getAttribute("data-patch");
 const el = document.getElementById(targetId);
@@ -776,24 +781,31 @@ syncDOMToState();
 saveVaultState();
 showToast("パッチを適用しました");
 }
-});
+};
 });
 
-document.getElementById("range-psyche").addEventListener("input", (e) => {
+const rangePsyche = document.getElementById("range-psyche");
+if (rangePsyche) {
+rangePsyche.oninput = (e) => {
 document.getElementById("val-psyche").textContent = e.target.value + "%";
 vaultState.psyche = e.target.value;
 saveVaultState();
-});
+};
+}
 
-document.getElementById("range-madness").addEventListener("input", (e) => {
+const rangeMadness = document.getElementById("range-madness");
+if (rangeMadness) {
+rangeMadness.oninput = (e) => {
 document.getElementById("val-madness").textContent = e.target.value + "%";
 vaultState.madness = e.target.value;
 saveVaultState();
-});
+};
+}
 
-document.getElementById("btn-add-target").addEventListener("click", addTarget);
+const btnAddTarget = document.getElementById("btn-add-target");
+if (btnAddTarget) btnAddTarget.onclick = addTarget;
 
-document.getElementById("btn-overdrive").addEventListener("click", () => {
+document.getElementById("btn-overdrive").onclick = () => {
 syncDOMToState();
 const focusVal = document.querySelector("#group-focus .chip.active")?.getAttribute("data-val") || "";
 const toneVal = document.querySelector("#group-tone .chip.active")?.getAttribute("data-val") || "";
@@ -808,7 +820,7 @@ if (vaultState.modules.ng && vaultState.ngWords.length > 0) {
 ngYaml = `\n=== NEGATIVE CONSTRAINTS (NG PATCHES) ===\n以下の表現・傾向の出力を厳禁とする:\n` + vaultState.ngWords.map(w => `- ${w}`).join("\n") + "\n";
 }
 
-const promptText = `[MASTER VAULT: OMNI-ENTITY ROSTER DIRECTIVE v7.0]
+const promptText = `[MASTER VAULT: OMNI-ENTITY ROSTER DIRECTIVE v7.1]
 Phase Mode: ${vaultState.phase}
 Psyche Gravity: ${vaultState.psyche}% | Madness Entropy: ${vaultState.madness}%
 
@@ -835,18 +847,18 @@ ${ngYaml}
 navigator.clipboard.writeText(promptText).then(() => {
 showToast("MASTER OVERDRIVE: プロンプトをクリップボードに格納");
 });
-});
+};
 
-document.getElementById("btn-export").addEventListener("click", () => {
+document.getElementById("btn-export").onclick = () => {
 syncDOMToState();
 const jsonStr = JSON.stringify(vaultState);
 const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
 document.getElementById("txt-vault-code").value = encoded;
 navigator.clipboard.writeText(encoded);
 showToast("遺伝子コードを書き出し・コピー完了");
-});
+};
 
-document.getElementById("btn-import").addEventListener("click", () => {
+document.getElementById("btn-import").onclick = () => {
 const encoded = document.getElementById("txt-vault-code").value.trim();
 if (!encoded) {
 showToast("インコードが空です");
@@ -861,20 +873,20 @@ showToast("遺伝子コードの読込・展開成功");
 } catch (err) {
 showToast("エラー: 無効な遺伝子コードです");
 }
-});
+};
 
-document.getElementById("btn-factory-reset").addEventListener("click", () => {
+document.getElementById("btn-factory-reset").onclick = () => {
 if (confirm("要塞の全データを初期化します。よろしいですか？")) {
 indexedDB.deleteDatabase(DB_NAME);
 location.reload();
 }
-});
+};
 
-window.addEventListener("DOMContentLoaded", async () => {
+window.onload = async () => {
 await initDB();
 await loadVaultState();
 renderStateToDOM();
-});
+};
 </script>
 </body>
 </html>
