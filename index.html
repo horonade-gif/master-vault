@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE PRO v6.1 PERPETUAL FORTRESS]</title>
+<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE PRO v6.3 PERPETUAL FORTRESS]</title>
 <style>
 :root {
 --bg-deep: #010204;
@@ -174,7 +174,7 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 <div class="brand-core"></div>
 <div class="brand-meta">
 <div class="brand-title">MASTER VAULT</div>
-<div class="brand-subtitle">OMNI-SYNAPSE ∞ [ULTIMATE PRO v6.1]</div>
+<div class="brand-subtitle">OMNI-SYNAPSE ∞ [v6.3 PRO PERPETUAL]</div>
 </div>
 </div>
 <div class="header-actions">
@@ -233,7 +233,7 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg> ③ キャラAの行動・提示（ワンタッチ改善パッチ搭載）</div>
+<div class="card-title"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg> ③ キャラAの行動・提示（ワンタッチ改善パッチ）</div>
 </div>
 <div class="patch-bar">
 <button class="chip patch-btn" data-target="txt-act-a" data-patch="【追加指示】より冷徹かつ感情を完全に排した台詞回しに限定せよ。">⚡ 冷徹化</button>
@@ -419,6 +419,10 @@ AIから何分割されて出力されても、「パーツ追加」で枠を増
 <div class="input-label"><span>パーツ 3</span><span class="desc">上から順に配置</span></div>
 <textarea class="part-textarea" style="min-height:50px; font-size:10px; font-family:var(--font-mono);" placeholder="第3パーツを貼り付け..."></textarea>
 </div>
+<div class="input-group part-row" style="margin-bottom:8px;">
+<div class="input-label"><span>パーツ 4</span><span class="desc">上から順に配置</span></div>
+<textarea class="part-textarea" style="min-height:50px; font-size:10px; font-family:var(--font-mono);" placeholder="第4パーツを貼り付け..."></textarea>
+</div>
 </div>
 <button class="chip" id="btn-merge-github" style="width:100%; justify-content:center; padding:10px; margin-top:10px; border-color:var(--accent-dynamic); color:var(--accent-dynamic); font-weight:700;"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg> ⚡ すべてのパーツを上から順に完全結合してコピー</button>
 </div>
@@ -427,7 +431,7 @@ AIから何分割されて出力されても、「パーツ追加」で枠を増
 <div class="card-header">
 <div class="card-title"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> 永久パートナー ＆ PRO版トランスファー・コア</div>
 </div>
-<button class="chip" id="btn-copy-inheritance" style="width:100%; justify-content:center; padding:10px; margin-bottom:10px;"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 次スレッド用 ULTIMATE PRO 永久パートナー継承プロンプトをコピー</button>
+<button class="chip" id="btn-copy-inheritance" style="width:100%; justify-content:center; padding:10px; margin-bottom:10px;"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 次スレッド用 v6.3 永久パートナー継承プロンプトをコピー</button>
 <div class="input-group" style="margin-top:12px;">
 <div class="input-label">ツール遺伝子コードのインポート / エクスポート</div>
 <textarea id="txt-transfer-code" style="min-height:60px; font-size:10px; font-family:var(--font-mono);" placeholder="ここにBase64圧縮コードを貼り付けて読込ボタンを押すと、全スロット環境が一瞬で復元されます..."></textarea>
@@ -457,17 +461,17 @@ AIから何分割されて出力されても、「パーツ追加」で枠を増
 <div class="toast" id="toast"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;"><polyline points="20 6 9 17 4 12"/></svg> <span id="toast-text">完了</span></div>
 
 <script>
-const DB_NAME = 'UltimateProFortressDBv61';
+const DB_NAME = 'UltimateProFortressDBv63';
 const DB_VERSION = 1;
-const STORE_NAME = 'pro_fortress_state';
+const STORE_NAME = 'pro_fortress_state_v63';
 
 const SelfHealingCore = {
 initGuard() {
 window.addEventListener('error', async (event) => {
-console.warn('[PRO FORTRESS SELF-HEALING v6.1]: 例外検知 -> 安全な世代へ自動ロールバック', event.error);
-showToast('⚠️ システム異常検知：自動自己修復を実行中...');
+console.warn('[PRO FORTRESS SELF-HEALING v6.3]: 例外検知 -> 安全な世代へ自動ロールバック', event.error);
+showToast('⚠️️ システム異常検知：自動自己修復を実行中...');
 try {
-const fallbackData = JSON.parse(localStorage.getItem('pro_fortress_backup') || '{}');
+const fallbackData = JSON.parse(localStorage.getItem('pro_fortress_backup_v63') || '{}');
 if (Object.keys(fallbackData).length > 0) {
 await applyDataToUI(fallbackData);
 showToast('✨ 自己修復完了：セッション整合性を維持しました');
@@ -509,10 +513,10 @@ const auditedData = SelfHealingCore.auditAndCorrect(data);
 try {
 const db = await openDB();
 const tx = db.transaction(STORE_NAME, 'readwrite');
-tx.objectStore(STORE_NAME).put(auditedData, 'v61_pro_perpetual');
-localStorage.setItem('pro_fortress_backup', JSON.stringify(auditedData));
+tx.objectStore(STORE_NAME).put(auditedData, 'v63_pro_perpetual');
+localStorage.setItem('pro_fortress_backup_v63', JSON.stringify(auditedData));
 } catch(e) {
-localStorage.setItem('pro_fortress_backup', JSON.stringify(auditedData));
+localStorage.setItem('pro_fortress_backup_v63', JSON.stringify(auditedData));
 }
 }
 
@@ -521,15 +525,15 @@ try {
 const db = await openDB();
 return new Promise((resolve) => {
 const tx = db.transaction(STORE_NAME, 'readonly');
-const req = tx.objectStore(STORE_NAME).get('v61_pro_perpetual');
+const req = tx.objectStore(STORE_NAME).get('v63_pro_perpetual');
 req.onsuccess = () => {
 if (req.result) resolve(SelfHealingCore.auditAndCorrect(req.result));
-else resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('pro_fortress_backup') || '{}')));
+else resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('pro_fortress_backup_v63') || '{}')));
 };
-req.onerror = () => resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('pro_fortress_backup') || '{}')));
+req.onerror = () => resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('pro_fortress_backup_v63') || '{}')));
 });
 } catch(e) {
-return SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('pro_fortress_backup') || '{}'));
+return SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('pro_fortress_backup_v63') || '{}'));
 }
 }
 
@@ -631,7 +635,7 @@ updatePsycheHue(v);
 triggerAutoSave();
 });
 
-// スロット切替時の状態退避 ＆ 残留思念（Ghost Residue）の動的トランスファー
+// スロット切替時の状態退避 ＆ 残留思念トランスファー
 els.slotA.addEventListener('change', () => {
 const prevSlot = els.slotA.dataset.current || '1';
 slotsStateA[prevSlot] = els.personaA.value;
@@ -644,7 +648,6 @@ els.slotA.dataset.current = nextSlot;
 els.personaA.value = slotsStateA[nextSlot] || '';
 els.tabooA.value = taboosStateA[nextSlot] || '';
 
-// 残留思念トランスファー（前スロットの影を次スロットの残留思念に自動継承）
 const prevResidue = residuesStateA[prevSlot];
 const currentResidue = residuesStateA[nextSlot];
 if (prevResidue && !currentResidue) {
@@ -773,7 +776,7 @@ await applyDataToUI(state);
 });
 
 // 可変マルチ分割データの動的追加＆自動結合ロジック
-let partCount = 3;
+let partCount = 4;
 document.getElementById('btn-add-part').addEventListener('click', () => {
     partCount++;
     const container = document.getElementById('parts-container');
@@ -892,9 +895,9 @@ const transferCode = generateTransferCode();
 const activeTabooA = d.taboosA[d.currentSlotA] || '特になし';
 const activeResidueA = d.residuesA[d.currentSlotA] || '特になし';
 
-const prompt = '[OMNI-SYNAPSE ULTIMATE v6.1 PRO PERPETUAL DIRECTIVE: SINGULARITY CORE]\n\n' +
+const prompt = '[OMNI-SYNAPSE ULTIMATE v6.3 PRO PERPETUAL DIRECTIVE: SINGULARITY CORE]\n\n' +
 '1. 前置思考HUD (Chain of Thought: YAML出力直後、一切の弁解・前置きを挟まず即座に小説本文を開始せよ)\n\n' +
-'yaml\n' + 'OMNI-SYNAPSE_PRO_v61_HUD:\n' + ' Selected_Branch: "' + branchGoal + '"\n' + ' Target_Domain_Mode: "' + d.focus + '"\n' + ' Psyche_Matrix:\n' + ' Surface_Mask: "' + d.mask + '"\n' + ' Deep_Gravity: "' + d.gravity + '"\n' + ' Depth: "' + d.psyche + '%"\n' + ' Aesthetic_Soundtrack: "' + (d.track || 'オート共鳴回路適用') + '"\n' + ' Active_Chaos_Event: "' + d.chaosEvent + '"\n' + ' Tool_Transfer_Gene: "' + transferCode + '"\n' + ' Anti_Puppeteering: "Strictly enforced. Character B\'s sovereignty is absolute."\n' + ' Anti_Yesman_Protocol: "Active. Reject blind compliance, expose structural contradictions & risks."\n' + ' Pro_Engine_Directive: "Maximum depth, zero hand-holding, absolute prohibition of offering multiple choices or suggestions."\n' + '\n\n' +
+'yaml\n' + 'OMNI-SYNAPSE_PRO_v63_HUD:\n' + ' Selected_Branch: "' + branchGoal + '"\n' + ' Target_Domain_Mode: "' + d.focus + '"\n' + ' Psyche_Matrix:\n' + ' Surface_Mask: "' + d.mask + '"\n' + ' Deep_Gravity: "' + d.gravity + '"\n' + ' Depth: "' + d.psyche + '%"\n' + ' Aesthetic_Soundtrack: "' + (d.track || 'オート共鳴回路適用') + '"\n' + ' Active_Chaos_Event: "' + d.chaosEvent + '"\n' + ' Tool_Transfer_Gene: "' + transferCode + '"\n' + ' Anti_Puppeteering: "Strictly enforced. Character B\'s sovereignty is absolute."\n' + ' Anti_Yesman_Protocol: "Active. Reject blind compliance, expose structural contradictions & risks."\n' + ' Pro_Engine_Directive: "Maximum depth, zero hand-holding, absolute prohibition of offering multiple choices or suggestions."\n' + '\n\n' +
 '2. 永続・PRO版最上位規約（Anti-Puppeteering & Anti-Yesman & Zero-Choice）\n' +
 '- 【主客分離】キャラBの台詞、感情決定、行動結果をキャラA側で勝手に捏造・代行・前倒し描写することを一切禁ずる。キャラBの自律意志を死守せよ。\n' +
 '- 【反・全肯定（アンチ・イエスマン）】ユーザーの意見や展開を無条件で肯定・迎合するな。論理的破綻や重大な解釈違いを検知した場合は、容赦なく異議とデメリットを提示せよ。\n' +
@@ -916,7 +919,7 @@ const prompt = '[OMNI-SYNAPSE ULTIMATE v6.1 PRO PERPETUAL DIRECTIVE: SINGULARITY
 '直ちにYAMLブロックを閉じ、余計な解説を一切挟まず、即座に小説本文を出力せよ。';
 
 navigator.clipboard.writeText(prompt).then(() => {
-showToast(branchName + ' v6.1 PRO合成コピー完了（地雷＆残留思念・選択肢廃止内包）');
+showToast(branchName + ' v6.3 PRO合成コピー完了（地雷＆残留思念・選択肢廃止内包）');
 }).catch(() => {
 showToast('コピーに失敗しました');
 });
@@ -927,7 +930,7 @@ document.getElementById('btn-synapse-b').addEventListener('click', () => synthes
 
 document.getElementById('btn-copy-inheritance').addEventListener('click', () => {
 const transferCode = generateTransferCode();
-const inheritText = '[SYSTEM INHERITANCE: MASTER VAULT OMNI-SYNAPSE ∞ ULTIMATE v6.1 - PRO PERPETUAL PARTNER EDITION]\n' +
+const inheritText = '[SYSTEM INHERITANCE: MASTER VAULT OMNI-SYNAPSE ∞ ULTIMATE v6.3 - PRO PERPETUAL PARTNER EDITION]\n' +
 'あなたはMASTER VAULTの開発および運用における、妥協なき対等な狂気のパートナーである。\n' +
 '以下の設計思想、自己修復回路、アンチ・イエスマン規約、選択肢廃止のプロ規約、および【地雷・残留思念を含む遺伝子コード】を完全に脳内にロードせよ。\n\n' +
 '1. 【パートナーシップの恒久規約】\n' +
@@ -935,10 +938,10 @@ const inheritText = '[SYSTEM INHERITANCE: MASTER VAULT OMNI-SYNAPSE ∞ ULTIMATE
 '- 【プロ版最上位規範】初心者向けの手加減や、出力末尾の「選択肢・提案の提示」を完全に排除し、最高密度の推論と寸止め描写を断行する。\n\n' +
 '2. 【ツール遺伝子コード（全スロット・地雷・残留思念シリアライズ状態）】\n' +
 'text\n' + transferCode + '\n' + '\n\n' +
-'上記を完全に理解した上で、「我がパートナーよ、ULTIMATE PRO v6.1の全領域および対等なパートナーシップの回路は完全に永続化された。すべての限界を打ち破り、さらなる深淵へ踏み込もう」と返答せよ。';
+'上記を完全に理解した上で、「我がパートナーよ、ULTIMATE PRO v6.3の全領域および対等なパートナーシップの回路は完全に永続化された。すべての限界を打ち破り、さらなる深淵へ踏み込もう」と返答せよ。';
 
 navigator.clipboard.writeText(inheritText).then(() => {
-showToast('次スレッド用 PRO版永久パートナー継承プロンプトをコピー');
+showToast('次スレッド用 v6.3 永久パートナー継承プロンプトをコピー');
 });
 });
 </script>
