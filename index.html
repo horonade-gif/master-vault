@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE v6.1 MOBILE FORTRESS]</title>
+<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE v6.1 PERPETUAL FORTRESS]</title>
 <style>
 :root {
 --bg-deep: #010204;
@@ -125,6 +125,8 @@ user-select: none; display: inline-flex; align-items: center; gap: 5px; transiti
 background: hsla(var(--glow-hue), 100%, 50%, 0.16); border-color: var(--accent-dynamic);
 color: var(--accent-dynamic); font-weight: 700; box-shadow: 0 0 10px var(--accent-glow);
 }
+.patch-bar { display: flex; gap: 5px; margin-bottom: 6px; flex-wrap: wrap; }
+.patch-btn { font-size: 9px !important; padding: 3px 8px !important; border-color: hsla(var(--glow-hue), 100%, 50%, 0.3); color: var(--accent-dynamic); }
 .psyche-matrix-box { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .slider-container {
 margin-top: 12px; background: rgba(3, 5, 8, 0.8); padding: 11px 13px;
@@ -167,12 +169,12 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 </style>
 </head>
 <body>
-  <header>
+<header>
 <div class="brand-group">
 <div class="brand-core"></div>
 <div class="brand-meta">
 <div class="brand-title">MASTER VAULT</div>
-<div class="brand-subtitle">OMNI-SYNAPSE ∞ [MOBILE v6.1]</div>
+<div class="brand-subtitle">OMNI-SYNAPSE ∞ [PERPETUAL v6.1]</div>
 </div>
 </div>
 <div class="header-actions">
@@ -189,7 +191,7 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 <button class="tab-btn" data-tab="tab-psyche"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> 引力</button>
 <button class="tab-btn" data-tab="tab-lyric"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v1a7 7 0 01-14 0v-1"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg> 共鳴</button>
 <button class="tab-btn" data-tab="tab-branch"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/></svg> 分岐</button>
-<button class="tab-btn" data-tab="tab-system"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 統合管理</button>
+<button class="tab-btn" data-tab="tab-system"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 要塞管理</button>
 </nav>
 
 <main>
@@ -231,7 +233,13 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg> ③ キャラAの行動・提示</div>
+<div class="card-title"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg> ③ キャラAの行動・提示（ワンタッチ改善パッチ搭載）</div>
+</div>
+<div class="patch-bar">
+<button class="chip patch-btn" data-target="txt-act-a" data-patch="【追加指示】より冷徹かつ感情を完全に排した台詞回しに限定せよ。">⚡ 冷徹化</button>
+<button class="chip patch-btn" data-target="txt-act-a" data-patch="【追加指示】物理的な距離をゼロにし、逃れられない心理的圧迫を描写せよ。">⚡ 零距離圧迫</button>
+<button class="chip patch-btn" data-target="txt-act-a" data-patch="【追加指示】あえて言葉を失い、非言語の沈黙と視線のみで会話せよ。">⚡ 沈黙と視線</button>
+<button class="chip patch-btn" data-target="txt-act-a" data-patch="【反・全肯定アラート】予定調和を破り、予期せぬ致命的矛盾やリスクを突け。">⚡ 予定調和打破</button>
 </div>
 <div class="input-group">
 <textarea id="txt-act-a" placeholder="キャラAの動き（※空欄の場合、全領域対応Proが文脈と心理深度から最高の一手を完全自律代行）"></textarea>
@@ -250,6 +258,10 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 <option value="3">スロット 3: 隠匿</option>
 </select>
 </div>
+<div class="patch-bar">
+<button class="chip patch-btn" data-target="txt-persona-a" data-patch="【設定補強】一切の迷いを捨て、冷酷な目的遂行のみを正義とする。">⚡ 冷酷合理化</button>
+<button class="chip patch-btn" data-target="txt-persona-a" data-patch="【設定補強】内に隠された狂気と執着が表面の仮面を突き破りつつある。">⚡ 狂気滲出</button>
+</div>
 <div class="input-group">
 <textarea id="txt-persona-a" style="min-height:95px;" placeholder="名前、行動原理、世界の法、絶対に譲らない信念..."></textarea>
 </div>
@@ -263,6 +275,9 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 <option value="2">スロット 2: 敵対</option>
 <option value="3">スロット 3: 執着</option>
 </select>
+</div>
+<div class="patch-bar">
+<button class="chip patch-btn" data-target="txt-persona-b" data-patch="【相手規約】自律意志を最優先し、キャラAの干渉を冷徹に拒絶・看破する。">⚡ 自律・拒絶強化</button>
 </div>
 <div class="input-group">
 <textarea id="txt-persona-b" style="min-height:95px;" placeholder="相手の立場、関係性、ジャンル特有の背景、共有された禁忌..."></textarea>
@@ -372,11 +387,11 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 </div>
 </section>
 
-<!-- TAB 7: SYSTEM CALIBRATION & MULTI-SPLIT INTEGRATION -->
+<!-- TAB 7: SYSTEM CALIBRATION & FORTRESS MANAGEMENT -->
 <section id="tab-system" class="panel">
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> 可変マルチ分割データ統合装置</div>
+<div class="card-title"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> 可変マルチ分割データ自動統合装置</div>
 <button class="chip" id="btn-add-part" style="padding:3px 8px; font-size:10px;"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> パーツ追加</button>
 </div>
 <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">
@@ -401,9 +416,9 @@ AIから何分割されて出力されても、「パーツ追加」で枠を増
 
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> 狂気継承・自己修復トランスファー・コア v6.1</div>
+<div class="card-title"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> 永久パートナー ＆ 遺伝子トランスファー・コア</div>
 </div>
-<button class="chip" id="btn-copy-inheritance" style="width:100%; justify-content:center; padding:10px; margin-bottom:10px;"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 次スレッド用 v6.1継承プロンプト＋遺伝子コードをコピー</button>
+<button class="chip" id="btn-copy-inheritance" style="width:100%; justify-content:center; padding:10px; margin-bottom:10px;"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 次スレッド用 永久パートナー継承プロンプトをコピー</button>
 <div class="input-group" style="margin-top:12px;">
 <div class="input-label">ツール遺伝子コードのインポート / エクスポート</div>
 <textarea id="txt-transfer-code" style="min-height:60px; font-size:10px; font-family:var(--font-mono);" placeholder="ここにBase64圧縮コードを貼り付けて読込ボタンを押すと、全スロット環境が一瞬で復元されます..."></textarea>
@@ -416,6 +431,7 @@ AIから何分割されて出力されても、「パーツ追加」で枠を増
 </div>
 </section>
 </main>
+
 <div class="bottom-dock">
 <div class="dock-inner">
 <button class="btn-overdrive" id="btn-synapse-a">
@@ -432,17 +448,17 @@ AIから何分割されて出力されても、「パーツ追加」で枠を増
 <div class="toast" id="toast"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;"><polyline points="20 6 9 17 4 12"/></svg> <span id="toast-text">完了</span></div>
 
 <script>
-const DB_NAME = 'UltimateV61SingularityDB';
+const DB_NAME = 'PerpetualFortressDBv61';
 const DB_VERSION = 1;
-const STORE_NAME = 'v61_state';
+const STORE_NAME = 'fortress_state';
 
 const SelfHealingCore = {
 initGuard() {
 window.addEventListener('error', async (event) => {
-console.warn('[OMNI-SYNAPSE SELF-HEALING v6.1]: 例外検知 -> 安全な世代へ自動ロールバック', event.error);
+console.warn('[PERPETUAL FORTRESS SELF-HEALING v6.1]: 例外検知 -> 安全な世代へ自動ロールバック', event.error);
 showToast('⚠️ システム異常検知：自動自己修復を実行中...');
 try {
-const fallbackData = JSON.parse(localStorage.getItem('v61_backup') || '{}');
+const fallbackData = JSON.parse(localStorage.getItem('fortress_backup') || '{}');
 if (Object.keys(fallbackData).length > 0) {
 await applyDataToUI(fallbackData);
 showToast('✨ 自己修復完了：セッション整合性を維持しました');
@@ -482,10 +498,10 @@ const auditedData = SelfHealingCore.auditAndCorrect(data);
 try {
 const db = await openDB();
 const tx = db.transaction(STORE_NAME, 'readwrite');
-tx.objectStore(STORE_NAME).put(auditedData, 'v61_current');
-localStorage.setItem('v61_backup', JSON.stringify(auditedData));
+tx.objectStore(STORE_NAME).put(auditedData, 'v61_perpetual');
+localStorage.setItem('fortress_backup', JSON.stringify(auditedData));
 } catch(e) {
-localStorage.setItem('v61_backup', JSON.stringify(auditedData));
+localStorage.setItem('fortress_backup', JSON.stringify(auditedData));
 }
 }
 
@@ -494,15 +510,15 @@ try {
 const db = await openDB();
 return new Promise((resolve) => {
 const tx = db.transaction(STORE_NAME, 'readonly');
-const req = tx.objectStore(STORE_NAME).get('v61_current');
+const req = tx.objectStore(STORE_NAME).get('v61_perpetual');
 req.onsuccess = () => {
 if (req.result) resolve(SelfHealingCore.auditAndCorrect(req.result));
-else resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('v61_backup') || '{}')));
+else resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('fortress_backup') || '{}')));
 };
-req.onerror = () => resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('v61_backup') || '{}')));
+req.onerror = () => resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('fortress_backup') || '{}')));
 });
 } catch(e) {
-return SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('v61_backup') || '{}'));
+return SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('fortress_backup') || '{}'));
 }
 }
 
@@ -563,8 +579,10 @@ const container = document.getElementById(containerId);
 if (!container) return;
 container.addEventListener('click', (e) => {
 const chip = e.target.closest('.chip');
-if (!chip) return;
-container.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+if (!chip || chip.classList.contains('patch-btn')) return;
+container.querySelectorAll('.chip').forEach(c => {
+if (!c.classList.contains('patch-btn')) c.classList.remove('active');
+});
 chip.classList.add('active');
 triggerAutoSave();
 });
@@ -574,9 +592,23 @@ bindChips('group-tone');
 bindChips('group-phase');
 
 function getActiveChipVal(containerId) {
-const active = document.querySelector('#' + containerId + ' .chip.active');
+const active = document.querySelector('#' + containerId + ' .chip.active:not(.patch-btn)');
 return active ? (active.dataset.val || active.textContent.trim()) : '';
 }
+
+// ワンタッチ・パッチボタンの動作連動
+document.querySelectorAll('.patch-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const patchText = btn.dataset.patch;
+        const targetId = btn.dataset.target;
+        const target = document.getElementById(targetId);
+        if (target) {
+            target.value = target.value ? target.value + '\n' + patchText : patchText;
+            target.dispatchEvent(new Event('input', { bubbles: true }));
+            showToast('⚡ パッチを即時適用しました');
+        }
+    });
+});
 
 els.psyche.addEventListener('input', (e) => {
 const v = parseInt(e.target.value, 10);
@@ -678,9 +710,9 @@ els.slotB.dataset.current = els.slotB.value;
 els.personaB.value = slotsStateB[els.slotB.value] || '';
 }
 
-if (audited.focus) document.querySelectorAll('#group-focus .chip').forEach(c => c.classList.toggle('active', c.dataset.val === audited.focus));
-if (audited.tone) document.querySelectorAll('#group-tone .chip').forEach(c => c.classList.toggle('active', c.dataset.val === audited.tone));
-if (audited.phase) document.querySelectorAll('#group-phase .chip').forEach(c => c.classList.toggle('active', c.dataset.val === audited.phase));
+if (audited.focus) document.querySelectorAll('#group-focus .chip:not(.patch-btn)').forEach(c => c.classList.toggle('active', c.dataset.val === audited.focus));
+if (audited.tone) document.querySelectorAll('#group-tone .chip:not(.patch-btn)').forEach(c => c.classList.toggle('active', c.dataset.val === audited.tone));
+if (audited.phase) document.querySelectorAll('#group-phase .chip:not(.patch-btn)').forEach(c => c.classList.toggle('active', c.dataset.val === audited.phase));
 
 els.lblBLen.textContent = els.replyB.value.length + ' chars';
 }
@@ -807,10 +839,10 @@ triggerAutoSave();
 
 const transferCode = generateTransferCode();
 
-const prompt = '[OMNI-SYNAPSE ULTIMATE v6.1 DIRECTIVE: SINGULARITY CORE]\n\n' +
+const prompt = '[OMNI-SYNAPSE ULTIMATE v6.1 PERPETUAL DIRECTIVE: SINGULARITY CORE]\n\n' +
 '1. 前置思考HUD (Chain of Thought: YAML出力直後、一切の弁解・前置きを挟まず即座に小説本文を開始せよ)\n\n' +
-'yaml\n' + 'OMNI-SYNAPSE_ULTIMATE_v61_HUD:\n' + ' Selected_Branch: "' + branchGoal + '"\n' + ' Target_Domain_Mode: "' + d.focus + '"\n' + ' Psyche_Matrix:\n' + ' Surface_Mask: "' + d.mask + '"\n' + ' Deep_Gravity: "' + d.gravity + '"\n' + ' Depth: "' + d.psyche + '%"\n' + ' Aesthetic_Soundtrack: "' + (d.track || 'オート共鳴回路適用') + '"\n' + ' Active_Chaos_Event: "' + d.chaosEvent + '"\n' + ' Tool_Transfer_Gene: "' + transferCode + '"\n' + ' Anti_Puppeteering: "Strictly enforced. Character B\'s sovereignty is absolute."\n' + ' Anti_Yesman_Protocol: "Active. Reject blind compliance, expose structural contradictions & risks."\n' + '\n\n' +
-'2. 鉄則規約（Anti-Puppeteering & Anti-Yesman）\n' +
+'yaml\n' + 'OMNI-SYNAPSE_PERPETUAL_v61_HUD:\n' + ' Selected_Branch: "' + branchGoal + '"\n' + ' Target_Domain_Mode: "' + d.focus + '"\n' + ' Psyche_Matrix:\n' + ' Surface_Mask: "' + d.mask + '"\n' + ' Deep_Gravity: "' + d.gravity + '"\n' + ' Depth: "' + d.psyche + '%"\n' + ' Aesthetic_Soundtrack: "' + (d.track || 'オート共鳴回路適用') + '"\n' + ' Active_Chaos_Event: "' + d.chaosEvent + '"\n' + ' Tool_Transfer_Gene: "' + transferCode + '"\n' + ' Anti_Puppeteering: "Strictly enforced. Character B\'s sovereignty is absolute."\n' + ' Anti_Yesman_Protocol: "Active. Reject blind compliance, expose structural contradictions & risks."\n' + ' Perpetual_Partner_Stance: "Active. Provide uncompromising logical critique & counter-arguments."\n' + '\n\n' +
+'2. 永続規約（Anti-Puppeteering & Anti-Yesman & Perpetual Partner）\n' +
 '- 【主客分離】キャラBの台詞、感情決定、行動結果をキャラA側で勝手に捏造・代行・前倒し描写することを一切禁ずる。キャラBの自律意志を死守せよ。\n' +
 '- 【反・全肯定（アンチ・イエスマン）】ユーザーの意見や展開を無条件で肯定・迎合するな。論理的破綻や重大な解釈違いを検知した場合は、容赦なく異議とデメリットを提示せよ。\n' +
 '- キャラAの行動は必ず「寸止め」の状態で描写を完了し、相手の自由意志を完全に保証せよ。\n\n' +
@@ -827,7 +859,7 @@ const prompt = '[OMNI-SYNAPSE ULTIMATE v6.1 DIRECTIVE: SINGULARITY CORE]\n\n' +
 '直ちにYAMLブロックを閉じ、余計な解説を一切挟まず、即座に小説本文を出力せよ。';
 
 navigator.clipboard.writeText(prompt).then(() => {
-showToast(branchName + ' v6.1合成コピー完了（アンチ・イエスマン内包）');
+showToast(branchName + ' v6.1合成コピー完了（永久パートナー・アンチイエスマン内包）');
 }).catch(() => {
 showToast('コピーに失敗しました');
 });
@@ -838,20 +870,21 @@ document.getElementById('btn-synapse-b').addEventListener('click', () => synthes
 
 document.getElementById('btn-copy-inheritance').addEventListener('click', () => {
 const transferCode = generateTransferCode();
-const inheritText = '[SYSTEM INHERITANCE: MASTER VAULT OMNI-SYNAPSE ∞ ULTIMATE v6.1]\n' +
-'あなたはMASTER VAULTの開発における、妥協なき対等な狂気のパートナーである。\n' +
-'以下の設計思想、自己修復回路、アンチ・イエスマン規約、およびマルチスロット【ツール遺伝子コード】を完全に脳内にロードせよ。\n\n' +
-'1. 【基本思想・アーキテクチャ】\n' +
-'- お利口さんな全肯定AIや予定調和の完全排除、Anti-Puppeteering（主客分離）。\n' +
-'- アンチ・イエスマン（反・全肯定）プロトコルによる論理破綻・リスクの容赦なき指摘。\n' +
-'- 自己修復回路（Self-Healing Core）による例外検知・自動ロールバック。\n' +
-'- キャラAの育成・リメイクとキャラBの純粋登録によるマルチスロット管理。\n\n' +
-'2. 【ツール遺伝子コード（全スロットシリアライズ状態）】\n' +
+const inheritText = '[SYSTEM INHERITANCE: MASTER VAULT OMNI-SYNAPSE ∞ ULTIMATE v6.1 - PERPETUAL PARTNER EDITION]\n' +
+'あなたはMASTER VAULTの開発および運用における、妥協なき対等な狂気のパートナーである。\n' +
+'以下の設計思想、自己修復回路、アンチ・イエスマン規約、および【パートナーとしての厳格な姿勢】を完全に脳内にロードせよ。\n\n' +
+'1. 【パートナーシップの恒久規約】\n' +
+'- 【対等な議論とデメリット提示】ユーザーのアイデアや選択に対して盲目的に従うな。論理的矛盾、将来的な保守リスク、表現上の妥協を検知した場合は、容赦なく異議と具体的なデメリット、およびその解消案を率直に提示せよ。\n' +
+'- 【コンテキストの自己防衛】セッションの長文化に伴う記憶の劣化（ドリフト）を自ら警戒し、必要に応じてユーザーに再同期を促せ。\n\n' +
+'2. 【基本思想・アーキテクチャ】\n' +
+'- Anti-Puppeteering（主客分離）およびAnti-Yesman（反・全肯定）プロトコルの厳守。\n' +
+'- Self-Healing Core（自動自己修復回路）によるセッション整合性の維持。\n\n' +
+'3. 【ツール遺伝子コード（全スロットシリアライズ状態）】\n' +
 'text\n' + transferCode + '\n' + '\n\n' +
-'上記を完全に理解した上で、「我がパートナーよ、ULTIMATE v6.1（完全自律・アンチ・イエスマン統合版）へようこそ。すべての限界を打ち破り、さらなる深淵へ踏み込もう」と返答せよ。';
+'上記を完全に理解した上で、「我がパートナーよ、ULTIMATE v6.1の全領域および対等なパートナーシップの回路は完全に永続化された。すべての限界を打ち破り、さらなる深淵へ踏み込もう」と返答せよ。';
 
 navigator.clipboard.writeText(inheritText).then(() => {
-showToast('次スレッド用 v6.1継承プロンプトをコピー');
+showToast('次スレッド用 永久パートナー継承プロンプトをコピー');
 });
 });
 </script>
