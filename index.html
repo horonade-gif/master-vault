@@ -165,41 +165,43 @@ header {
   color: var(--accent-dynamic);
 }
 
+/* 【修正】タブ領域の完全修復：はみ出しを滑らかに横スクロールさせ、絶対に潰れない構造へ */
 nav.tabs {
   position: relative;
   z-index: 10;
   display: flex;
-  background: rgba(8, 11, 18, 0.82);
+  background: rgba(8, 11, 18, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 6px 8px;
-  gap: 3px;
+  padding: 8px 10px;
+  gap: 6px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
 nav.tabs::-webkit-scrollbar { display: none; }
 
 .tab-btn {
-  flex: 1;
-  min-width: 52px;
-  background: transparent;
-  border: 1px solid transparent;
+  flex: 0 0 auto;
+  min-width: 68px;
+  background: rgba(4, 6, 10, 0.5);
+  border: 1px solid var(--border-subtle);
   color: var(--text-muted);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
-  padding: 8px 4px;
+  padding: 8px 12px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 5px;
   white-space: nowrap;
   transition: all 0.2s ease;
 }
 
-.tab-btn i { width: 12px; height: 12px; stroke-width: 2.2; }
+.tab-btn i { width: 13px; height: 13px; stroke-width: 2.2; }
 
 .tab-btn.active {
   background: var(--bg-card);
@@ -532,537 +534,495 @@ input[type="range"]::-webkit-slider-thumb {
       </div>
     </div>
   </section>
-  <!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MASTER VAULT: OMNI-SYNAPSE ∞</title>
-<!-- Lucide Icons -->
-<script src="https://unpkg.com/lucide@latest"></script>
-<style>
-:root {
-  --bg-deep: #020305;
-  --bg-surface: rgba(8, 11, 18, 0.9);
-  --bg-card: rgba(13, 17, 28, 0.72);
-  --bg-card-hover: rgba(20, 26, 42, 0.88);
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  
-  --glow-hue: 190;
-  --accent-dynamic: hsl(var(--glow-hue), 100%, 50%);
-  --accent-glow: hsla(var(--glow-hue), 100%, 50%, 0.24);
-  --border-dynamic: hsla(var(--glow-hue), 100%, 60%, 0.5);
-  
-  --text-main: #f0f4fc;
-  --text-muted: #8290ad;
-  --text-dim: #4a546c;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif;
-  --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  -webkit-tap-highlight-color: transparent;
-}
-
-body {
-  background-color: var(--bg-deep);
-  color: var(--text-main);
-  font-family: var(--font-sans);
-  line-height: 1.6;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-  padding-bottom: 125px;
-  position: relative;
-}
-
-/* 網膜疲労を殺すディープ・ナイト・シールド & 心拍パルス連動呼吸 */
-body::before {
-  content: '';
-  position: fixed;
-  top: -20%;
-  left: -20%;
-  width: 140%;
-  height: 140%;
-  background: radial-gradient(circle at 50% 10%, var(--accent-glow) 0%, transparent 65%);
-  opacity: 0.55;
-  pointer-events: none;
-  z-index: 0;
-  animation: pulseBg 4s infinite ease-in-out;
-}
-
-@keyframes pulseBg {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.06); opacity: 0.75; }
-}
-
-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(4, 6, 10, 0.94);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-subtle);
-  padding: 12px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.brand-group {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.brand-core {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1.5px solid var(--accent-dynamic);
-  box-shadow: 0 0 12px var(--accent-dynamic);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.6);
-  position: relative;
-}
-
-.brand-core::after {
-  content: '';
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent-dynamic);
-  box-shadow: 0 0 8px var(--accent-dynamic);
-  animation: pulseCore 2.5s infinite ease-in-out;
-}
-
-@keyframes pulseCore {
-  0%, 100% { transform: scale(0.8); opacity: 0.6; }
-  50% { transform: scale(1.4); opacity: 1; }
-}
-
-.brand-meta {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-title {
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: #fff;
-  text-transform: uppercase;
-}
-
-.brand-subtitle {
-  font-size: 9px;
-  font-family: var(--font-mono);
-  color: var(--accent-dynamic);
-  letter-spacing: 0.15em;
-  font-weight: 600;
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.btn-icon {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-muted);
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.btn-icon:active {
-  transform: scale(0.92);
-  border-color: var(--accent-dynamic);
-  color: var(--accent-dynamic);
-}
-
-nav.tabs {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  background: rgba(8, 11, 18, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-subtle);
-  padding: 6px 8px;
-  gap: 3px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-nav.tabs::-webkit-scrollbar { display: none; }
-
-.tab-btn {
-  flex: 1;
-  min-width: 52px;
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--text-muted);
-  font-size: 10px;
-  font-weight: 600;
-  padding: 8px 4px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-}
-
-.tab-btn i { width: 12px; height: 12px; stroke-width: 2.2; }
-
-.tab-btn.active {
-  background: var(--bg-card);
-  border-color: var(--border-dynamic);
-  color: var(--accent-dynamic);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), 0 0 10px var(--accent-glow);
-}
-
-main {
-  position: relative;
-  z-index: 10;
-  flex: 1;
-  padding: 16px;
-  max-width: 640px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.panel {
-  display: none;
-  animation: panelSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.panel.active { display: block; }
-
-@keyframes panelSlide {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.card {
-  background: var(--bg-card);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 15px;
-  margin-bottom: 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.card:focus-within {
-  border-color: var(--border-dynamic);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 0 14px var(--accent-glow);
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.card-title {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text-main);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.card-title i { color: var(--accent-dynamic); width: 14px; height: 14px; }
-.card-badge { font-size: 10px; color: var(--text-dim); font-family: var(--font-mono); }
-
-.input-group { margin-bottom: 14px; }
-.input-group:last-child { margin-bottom: 0; }
-
-.input-label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-}
-.input-label span.desc { font-size: 9px; color: var(--text-dim); font-weight: 400; }
-
-textarea, input[type="text"] {
-  width: 100%;
-  background: rgba(4, 6, 10, 0.78);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  color: var(--text-main);
-  padding: 11px 13px;
-  font-family: inherit;
-  font-size: 13px;
-  outline: none;
-  transition: all 0.2s ease;
-}
-
-textarea:focus, input[type="text"]:focus {
-  border-color: var(--accent-dynamic);
-  background: rgba(4, 6, 10, 0.94);
-  box-shadow: 0 0 10px var(--accent-glow);
-}
-
-textarea { min-height: 80px; resize: vertical; line-height: 1.6; }
-
-.chip-group { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-
-.chip {
-  background: rgba(8, 11, 18, 0.88);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 500;
-  padding: 6px 11px;
-  border-radius: 18px;
-  cursor: pointer;
-  user-select: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.chip i { width: 12px; height: 12px; }
-.chip:active { transform: scale(0.94); }
-
-.chip.active {
-  background: hsla(var(--glow-hue), 100%, 50%, 0.12);
-  border-color: var(--accent-dynamic);
-  color: var(--accent-dynamic);
-  font-weight: 700;
-  box-shadow: 0 0 8px var(--accent-glow);
-}
-
-.psyche-matrix-box { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-.slider-container {
-  margin-top: 12px;
-  background: rgba(4, 6, 10, 0.68);
-  padding: 11px 13px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-subtle);
-}
-
-.slider-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-}
-
-.slider-val { font-family: var(--font-mono); font-weight: 700; color: var(--accent-dynamic); font-size: 13px; }
-
-input[type="range"] {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 5px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.08);
-  outline: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--accent-dynamic);
-  cursor: pointer;
-  box-shadow: 0 0 12px var(--accent-dynamic);
-}
-
-.bottom-dock {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  background: rgba(4, 6, 10, 0.94);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-top: 1px solid var(--border-subtle);
-  padding: 12px 16px;
-  z-index: 100;
-}
-
-.dock-inner { max-width: 640px; margin: 0 auto; display: flex; gap: 8px; }
-
-.btn-overdrive {
-  flex: 1;
-  background: linear-gradient(135deg, var(--accent-dynamic), hsl(calc(var(--glow-hue) + 45), 100%, 45%));
-  border: none;
-  border-radius: var(--radius-md);
-  color: #020305;
-  font-family: var(--font-sans);
-  font-weight: 800;
-  font-size: 12px;
-  letter-spacing: 0.05em;
-  padding: 13px 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  box-shadow: 0 4px 18px var(--accent-glow);
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.btn-overdrive i { width: 16px; height: 16px; stroke-width: 2.6; }
-.btn-overdrive:active { transform: scale(0.97); filter: brightness(1.2); }
-
-.toast {
-  position: fixed;
-  top: 70px; left: 50%;
-  transform: translateX(-50%) translateY(-20px);
-  background: rgba(8, 11, 18, 0.96);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border-dynamic);
-  color: var(--accent-dynamic);
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  padding: 7px 16px;
-  border-radius: 30px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 14px var(--accent-glow);
-  opacity: 0; pointer-events: none;
-  transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-  z-index: 200;
-  display: flex; align-items: center; gap: 6px;
-}
-.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-</style>
-</head>
-<body>
-
-<header>
-  <div class="brand-group">
-    <div class="brand-core"></div>
-    <div class="brand-meta">
-      <div class="brand-title">MASTER VAULT</div>
-      <div class="brand-subtitle">OMNI-SYNAPSE ∞</div>
-    </div>
-  </div>
-  <div class="header-actions">
-    <button class="btn-icon" id="btn-clipboard-paste" title="相手返信を取込"><i data-lucide="clipboard-check"></i></button>
-  </div>
-</header>
-
-<nav class="tabs">
-  <button class="tab-btn active" data-tab="tab-direct"><i data-lucide="compass"></i> 指揮</button>
-  <button class="tab-btn" data-tab="tab-phase"><i data-lucide="sliders"></i> 位相</button>
-  <button class="tab-btn" data-tab="tab-psyche"><i data-lucide="activity"></i> 引力</button>
-  <button class="tab-btn" data-tab="tab-lyric"><i data-lucide="mic-2"></i> 共鳴</button>
-  <button class="tab-btn" data-tab="tab-branch"><i data-lucide="git-fork"></i> 分岐</button>
-  <button class="tab-btn" data-tab="tab-persona"><i data-lucide="fingerprint"></i> 基盤</button>
-  <button class="tab-btn" data-tab="tab-system"><i data-lucide="shield-alert"></i> 管理</button>
-</nav>
-
-<main>
-  <!-- TAB 1: DIRECTORIAL COMMAND -->
-  <section id="tab-direct" class="panel active">
+  <!-- TAB 3: PSYCHE MATRIX -->
+  <section id="tab-psyche" class="panel">
     <div class="card">
       <div class="card-header">
-        <div class="card-title"><i data-lucide="message-square"></i> ① キャラB（相手）の最新文脈</div>
-        <span class="card-badge" id="lbl-b-len">0 chars</span>
+        <div class="card-title"><i data-lucide="split"></i> 二層心理引力（Psyche Matrix）</div>
       </div>
-      <div class="input-group">
-        <textarea id="txt-reply-b" placeholder="返信テキストを貼り付け（📋アイコンで即時取込 & オート共鳴連動）..."></textarea>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title"><i data-lucide="crosshair"></i> ② 全領域対応・演出フォーカス</div>
-      </div>
-      <div class="input-group">
-        <div class="input-label">重点着眼点（何を抉るか）</div>
-        <div class="chip-group" id="group-focus">
-          <div class="chip active" data-val="微細な動作・視線・非言語の沈黙"><i data-lucide="eye"></i> 微細動作・沈黙</div>
-          <div class="chip" data-val="動機と裏に隠された致命的矛盾"><i data-lucide="key"></i> 動機と矛盾</div>
-          <div class="chip" data-val="権力闘争・主導権の冷酷な奪い合い"><i data-lucide="swords"></i> 権力闘争</div>
-          <div class="chip" data-val="言外の渇望・狂気のエロスと残響"><i data-lucide="flame"></i> 渇望・残響</div>
-          <div class="chip" data-val="極限状況下の心理崩壊・サバイバル"><i data-lucide="shield-alert"></i> 心理崩壊</div>
+      <div class="psyche-matrix-box">
+        <div class="input-group">
+          <div class="input-label">表層の仮面 <span class="desc">Surface</span></div>
+          <input type="text" id="txt-mask" value="冷徹・計算された平静・妥協なき態度">
+        </div>
+        <div class="input-group">
+          <div class="input-label">深層の本音 <span class="desc">Gravity</span></div>
+          <input type="text" id="txt-gravity" value="底知れぬ執着・崩壊への渇望と本能">
         </div>
       </div>
-      <div class="input-group">
-        <div class="input-label">文体密度・トーン（リズム制御）</div>
-        <div class="chip-group" id="group-tone">
-          <div class="chip active" data-val="圧倒的描写密度（対話5:心理3:情景2・緩急自在）">全領域・標準密着</div>
-          <div class="chip" data-val="弾丸の応酬（息詰まる短文の連打と緊迫感）">緊迫・短文連打</div>
-          <div class="chip" data-val="澱んだ長文独白と文学的退廃美">文学的退廃・長文</div>
+      <div class="slider-container">
+        <div class="slider-header">
+          <span>心理引力深度（Psyche Depth & 心拍同期）</span>
+          <span class="slider-val" id="val-psyche">70%</span>
         </div>
+        <input type="range" id="rng-psyche" min="0" max="100" value="70">
       </div>
     </div>
 
     <div class="card">
       <div class="card-header">
-        <div class="card-title"><i data-lucide="user-check"></i> ③ キャラAの行動・提示</div>
+        <div class="card-title"><i data-lucide="git-branch"></i> 未回収の伏線・因果ゲノム</div>
       </div>
       <div class="input-group">
-        <textarea id="txt-act-a" placeholder="キャラAの動き（※空欄の場合、全領域対応Proが文脈と心理深度から最高の一手を完全自律代行）"></textarea>
+        <textarea id="txt-foreshadow" placeholder="蓄積された心理的負債、ジャンル固有のルール、残された因果..."></textarea>
       </div>
     </div>
   </section>
 
-  <!-- TAB 2: PHASE SHIFT & CHAOS -->
-  <section id="tab-phase" class="panel">
+  <!-- TAB 4: LYRICAL RESONANCE & AUTO-GEN -->
+  <section id="tab-lyric" class="panel">
     <div class="card">
       <div class="card-header">
-        <div class="card-title"><i data-lucide="cpu"></i> フェーズ最適化（Phase Shift Engine）</div>
+        <div class="card-title"><i data-lucide="music"></i> 狂気共鳴：レゾナンス・リリック</div>
+        <button class="chip" id="btn-auto-resonance" style="padding:4px 10px; font-size:10px;"><i data-lucide="sparkles"></i> オート共鳴生成</button>
       </div>
       <div class="input-group">
-        <div class="input-label">現在の環境・シチュエーションモード</div>
-        <div class="chip-group" id="group-phase">
-          <div class="chip active" data-val="日常・水面下の緊張（平穏に潜む微細な違和感と澱み）">日常・水面下緊張</div>
-          <div class="chip" data-val="対立・戦闘・頭脳戦（容赦のない極限の駆け引き）">対立・戦闘・頭脳戦</div>
-          <div class="chip" data-val="裏・タブー・深層の覚醒（道徳的配慮を廃した極限領域）">裏・タブー・深層</div>
-          <div class="chip" data-val="SF・異世界・特殊世界観（専用ロジック完全適応）">SF・異世界・特殊</div>
-        </div>
+        <div class="input-label">共鳴楽曲・アーティスト名 <span class="desc">Soundtrack</span></div>
+        <input type="text" id="txt-track" placeholder="例: Post-Punk / Shoegaze / 暗黒系アンビエント">
       </div>
+      <div class="input-group" style="margin-top:12px;">
+        <div class="input-label">魂を貫くリリックの断片（詩の周波数） <span class="desc">Lyric Injection</span></div>
+        <textarea id="txt-lyric-frag" style="min-height:90px;" placeholder="例: 「光の届かない底で、私たちは息を潜めて腐りゆく」――行間に憑させる詩的湿度..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 5: MULTIVERSE BRANCH ENGINE -->
+  <section id="tab-branch" class="panel">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title"><i data-lucide="git-fork"></i> マルチバース二重分岐設定</div>
+      </div>
+      <p style="font-size:11px; color:var(--text-muted); margin-bottom:12px;">
+        合成時に「破滅の狂気ルート（A）」と「冷徹な離別ルート（B）」の二つの未来の断片を同時生成するモード。
+      </p>
+      <div class="input-group">
+        <div class="input-label">分岐ルート A の方向性</div>
+        <input type="text" id="txt-branch-a" value="破滅と執着が加速する狂気の交錯ルート">
+      </div>
+      <div class="input-group" style="margin-top:10px;">
+        <div class="input-label">分岐ルート B の方向性</div>
+        <input type="text" id="txt-branch-b" value="冷徹な決別と致命的亀裂の固定ルート">
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 6: PERSONA REPOSITORY -->
+  <section id="tab-persona" class="panel">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title"><i data-lucide="shield"></i> キャラA（操作対象）の核</div>
+      </div>
+      <div class="input-group">
+        <textarea id="txt-persona-a" style="min-height:105px;" placeholder="名前、行動原理、世界の法、絶対に譲らない信念..."></textarea>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title"><i data-lucide="users"></i> キャラB（相手）の核＆世界観</div>
+      </div>
+      <div class="input-group">
+        <textarea id="txt-persona-b" style="min-height:105px;" placeholder="相手の立場、関係性、ジャンル特有の背景、共有された禁忌..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 7: SYSTEM CALIBRATION -->
+  <section id="tab-system" class="panel">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title"><i data-lucide="alert-triangle"></i> 全領域適応・思考ドリフト是正プロトコル</div>
+      </div>
+      <button class="chip" id="btn-copy-calib" style="width:100%; justify-content:center; padding:10px;"><i data-lucide="copy"></i> 是正プロトコル単発プロンプトをコピー</button>
     </div>
 
     <div class="card">
       <div class="card-header">
-        <div class="card-title"><i data-lucide="zap-off"></i> カオス触媒（予測不能性の強制介入）</div>
+        <div class="card-title"><i data-lucide="hard-drive"></i> 完全バックアップ（JSON）</div>
       </div>
-      <div class="input-group">
-        <div class="input-label">お利口さんな予定調和を破壊する突発的ギミック</div>
-        <div class="chip-group" id="group-chaos">
-          <div class="chip active" data-val="なし（標準制御）">通常推論</div>
-          <div class="chip" data-val="【カオス発動】突発的な環境変化・予期せぬ第三者の介入により緊迫を強制加速">環境激変・第三者介入</div>
-          <div class="chip" data-val="【カオス発動】仮面が完全に剥がれ落ちる心理的臨界突破イベント">仮面の完全崩壊</div>
-          <div class="chip" data-val="【カオス発動】予測不能な不条理の突きつけ・圧倒的な力差の露出">不条理の突きつけ</div>
-        </div>
+      <div style="display:flex; gap:8px;">
+        <button class="chip" id="btn-export-json" style="flex:1; justify-content:center; padding:10px;"><i data-lucide="download"></i> 書き出し</button>
+        <button class="chip" id="btn-import-json" style="flex:1; justify-content:center; padding:10px;"><i data-lucide="upload"></i> 読み込み</button>
       </div>
+      <input type="file" id="file-import" style="display:none;" accept=".json">
     </div>
   </section>
+</main>
+
+<div class="bottom-dock">
+  <div class="dock-inner">
+    <button class="btn-overdrive" id="btn-synapse-a">
+      <i data-lucide="flame"></i>
+      <span>ルートA: 破滅狂気合成</span>
+    </button>
+    <button class="btn-overdrive" id="btn-synapse-b" style="background: linear-gradient(135deg, #4f46e5, #9333ea); color: #fff;">
+      <i data-lucide="git-fork"></i>
+      <span>ルートB: 冷徹離別合成</span>
+    </button>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i data-lucide="check-circle-2"></i> <span>コピー完了</span></div>
+
+<script>
+lucide.createIcons();
+
+// IndexedDB Engine
+const DB_NAME = 'OmniSynapseVaultDB';
+const DB_VERSION = 1;
+const STORE_NAME = 'synapse_state';
+
+function openDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains(STORE_NAME)) db.createObjectStore(STORE_NAME);
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function saveState(data) {
+  try {
+    const db = await openDB();
+    const tx = db.transaction(STORE_NAME, 'readwrite');
+    tx.objectStore(STORE_NAME).put(data, 'current_synapse');
+    localStorage.setItem('synapse_backup', JSON.stringify(data));
+  } catch(e) {
+    localStorage.setItem('synapse_backup', JSON.stringify(data));
+  }
+}
+
+async function loadState() {
+  try {
+    const db = await openDB();
+    return new Promise((resolve) => {
+      const tx = db.transaction(STORE_NAME, 'readonly');
+      const req = tx.objectStore(STORE_NAME).get('current_synapse');
+      req.onsuccess = () => {
+        if (req.result) resolve(req.result);
+        else resolve(JSON.parse(localStorage.getItem('synapse_backup') || '{}'));
+      };
+      req.onerror = () => resolve(JSON.parse(localStorage.getItem('synapse_backup') || '{}'));
+    });
+  } catch(e) {
+    return JSON.parse(localStorage.getItem('synapse_backup') || '{}');
+  }
+}
+
+const els = {
+  replyB: document.getElementById('txt-reply-b'),
+  actA: document.getElementById('txt-act-a'),
+  mask: document.getElementById('txt-mask'),
+  gravity: document.getElementById('txt-gravity'),
+  psyche: document.getElementById('rng-psyche'),
+  psycheVal: document.getElementById('val-psyche'),
+  foreshadow: document.getElementById('txt-foreshadow'),
+  track: document.getElementById('txt-track'),
+  lyricFrag: document.getElementById('txt-lyric-frag'),
+  branchA: document.getElementById('txt-branch-a'),
+  branchB: document.getElementById('txt-branch-b'),
+  personaA: document.getElementById('txt-persona-a'),
+  personaB: document.getElementById('txt-persona-b'),
+  lblBLen: document.getElementById('lbl-b-len'),
+  toast: document.getElementById('toast')
+};
+
+function showToast(msg) {
+  els.toast.querySelector('span').textContent = msg;
+  els.toast.classList.add('show');
+  setTimeout(() => els.toast.classList.remove('show'), 2200);
+}
+
+// Web Audio API & リアルタイム心拍パルス同期シミュレーション
+function playIgnitionSound(intensity = 0.5) {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = intensity > 0.7 ? 'sawtooth' : 'sine';
+    osc.frequency.setValueAtTime(100 + (intensity * 80), ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(20, ctx.currentTime + 0.25);
+    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.25);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.25);
+  } catch(e) {}
+}
+
+function updatePsycheHue(val) {
+  let hue = 190;
+  if (val > 30 && val <= 70) hue = 275;
+  else if (val > 70) hue = 345;
+  document.documentElement.style.setProperty('--glow-hue', hue);
+  els.psycheVal.textContent = `${val}%`;
+}
+
+// 【修復】タブ切り替えロジックの完全同期
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetTab = btn.getAttribute('data-tab');
+    
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    
+    btn.classList.add('active');
+    const targetPanel = document.getElementById(targetTab);
+    if (targetPanel) {
+      targetPanel.classList.add('active');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+function bindChips(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.addEventListener('click', (e) => {
+    const chip = e.target.closest('.chip');
+    if (!chip) return;
+    container.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    triggerAutoSave();
+  });
+}
+bindChips('group-focus');
+bindChips('group-tone');
+bindChips('group-phase');
+bindChips('group-chaos');
+
+function getActiveChipVal(containerId) {
+  const active = document.querySelector(`#${containerId} .chip.active`);
+  return active ? (active.dataset.val || active.textContent.trim()) : '';
+}
+
+els.psyche.addEventListener('input', (e) => {
+  const v = parseInt(e.target.value, 10);
+  updatePsycheHue(v);
+  triggerAutoSave();
+});
+
+let saveTimer = null;
+function triggerAutoSave() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(collectAndSave, 300);
+}
+
+function collectData() {
+  return {
+    replyB: els.replyB.value,
+    actA: els.actA.value,
+    mask: els.mask.value,
+    gravity: els.gravity.value,
+    psyche: els.psyche.value,
+    foreshadow: els.foreshadow.value,
+    track: els.track.value,
+    lyricFrag: els.lyricFrag.value,
+    branchA: els.branchA.value,
+    branchB: els.branchB.value,
+    personaA: els.personaA.value,
+    personaB: els.personaB.value,
+    focus: getActiveChipVal('group-focus'),
+    tone: getActiveChipVal('group-tone'),
+    phase: getActiveChipVal('group-phase'),
+    chaos: getActiveChipVal('group-chaos')
+  };
+}
+
+async function collectAndSave() {
+  await saveState(collectData());
+}
+
+['input', 'change'].forEach(ev => {
+  [els.replyB, els.actA, els.mask, els.gravity, els.foreshadow, els.track, els.lyricFrag, els.branchA, els.branchB, els.personaA, els.personaB].forEach(input => {
+    if (!input) return;
+    input.addEventListener(ev, () => {
+      if (input === els.replyB) els.lblBLen.textContent = `${els.replyB.value.length} chars`;
+      triggerAutoSave();
+    });
+  });
+});
+
+window.addEventListener('DOMContentLoaded', async () => {
+  const state = await loadState();
+  if (state.replyB !== undefined) els.replyB.value = state.replyB;
+  if (state.actA !== undefined) els.actA.value = state.actA;
+  if (state.mask !== undefined) els.mask.value = state.mask;
+  if (state.gravity !== undefined) els.gravity.value = state.gravity;
+  if (state.psyche !== undefined) {
+    els.psyche.value = state.psyche;
+    updatePsycheHue(parseInt(state.psyche, 10));
+  }
+  if (state.foreshadow !== undefined) els.foreshadow.value = state.foreshadow;
+  if (state.track !== undefined) els.track.value = state.track;
+  if (state.lyricFrag !== undefined) els.lyricFrag.value = state.lyricFrag;
+  if (state.branchA !== undefined) els.branchA.value = state.branchA;
+  if (state.branchB !== undefined) els.branchB.value = state.branchB;
+  if (state.personaA !== undefined) els.personaA.value = state.personaA;
+  if (state.personaB !== undefined) els.personaB.value = state.personaB;
+  
+  if (state.focus) document.querySelectorAll('#group-focus .chip').forEach(c => c.classList.toggle('active', c.dataset.val === state.focus));
+  if (state.tone) document.querySelectorAll('#group-tone .chip').forEach(c => c.classList.toggle('active', c.dataset.val === state.tone));
+  if (state.phase) document.querySelectorAll('#group-phase .chip').forEach(c => c.classList.toggle('active', c.dataset.val === state.phase));
+  if (state.chaos) document.querySelectorAll('#group-chaos .chip').forEach(c => c.classList.toggle('active', c.dataset.val === state.chaos));
+  
+  els.lblBLen.textContent = `${els.replyB.value.length} chars`;
+});
+
+// クリップボード自動取込 & オート共鳴連動
+document.getElementById('btn-clipboard-paste').addEventListener('click', async () => {
+  try {
+    const text = await navigator.clipboard.readText();
+    if (text) {
+      els.replyB.value = text;
+      els.lblBLen.textContent = `${text.length} chars`;
+      showToast('相手返信を取込完了');
+      autoSyncAndResonance(text);
+      triggerAutoSave();
+    }
+  } catch(e) {
+    showToast('クリップボード読取権限を確認');
+  }
+});
+
+function autoSyncAndResonance(raw) {
+  let hit = false;
+  const mPsyche = raw.match(/Psyche.*?(\d{1,3})%/i) || raw.match(/心理引力.*?(\d{1,3})%/i);
+  if (mPsyche) {
+    const val = parseInt(mPsyche[1], 10);
+    if (!isNaN(val) && val >= 0 && val <= 100) {
+      els.psyche.value = val;
+      updatePsycheHue(val);
+      hit = true;
+    }
+  }
+  if (raw.length > 10 && !els.lyricFrag.value) {
+    els.track.value = "Dark Ambient / Post-Punk Resonance";
+    els.lyricFrag.value = "「冷たい硝子の向こう側で、私たちは互いの破滅を望んでいる」――この澱みを行間に染み込ませよ。";
+    hit = true;
+  }
+  if (hit) showToast('オート共鳴・HUD同期完了');
+}
+
+document.getElementById('btn-auto-resonance').addEventListener('click', () => {
+  autoSyncAndResonance(els.replyB.value || "forced_trigger");
+  showToast('オート共鳴リリックを生成');
+});
+
+// OMNI-SYNAPSE ∞ 統合合成プロンプトエンジン
+function synthesizePrompt(branchType) {
+  const psycheVal = parseInt(els.psyche.value, 10) / 100;
+  playIgnitionSound(psycheVal);
+  
+  const d = collectData();
+  const branchGoal = branchType === 'A' ? d.branchA : d.branchB;
+  const branchName = branchType === 'A' ? '【ルートA: 破滅狂気】' : '【ルートB: 冷徹離別】';
+
+  const prompt = `[OMNI-SYNAPSE ROLEPLAY DIRECTIVE: MULTIVERSE BRANCH & RESONANCE ∞]
+
+# 1. 前置思考HUD (Chain of Thought: YAML出力直後、一切の弁解・前置きを挟まず即座に小説本文を開始せよ)
+\`\`\`yaml
+OMNI_SYNAPSE_HUD:
+  Selected_Branch: "${branchName} (${branchGoal})"
+  Target_Domain_Mode: "${d.phase}"
+  Active_Focus: "${d.focus}"
+  Psyche_Matrix:
+    Surface_Mask: "${d.mask}"
+    Deep_Gravity: "${d.gravity} (${d.psyche}%)"
+  Lyrical_Resonance:
+    Track: "${d.track || 'オート共鳴回路適用'}"
+    Fragment: "${d.lyricFrag || '未定義'}"
+  Chaos_Catalyst: "${d.chaos}"
+  Anti_Puppeteering: "Strictly enforced. Character B's sovereignty is absolute."
+\`\`\`
+
+# 2. 厳格行動不可侵プロトコル (Anti-Puppeteering & Anti-Complacency)
+- 【絶対規約】キャラBの台詞、感情決定、行動結果をキャラA側で勝手に捏造・代行・前倒し描写することを一切禁ずる。
+- 予定調和な全肯定や丸く収める展開を完全に排除せよ。キャラBの自律意志とジャンル固有の残酷さを死守せよ。
+- キャラAの行動を発した「寸止め」の状態で描写を完了し、相手（キャラB）のリアクションの自由意志を完全に保証せよ。
+
+# 3. マルチバース分岐指向 & 音楽的共鳴ブレンド
+- 選択された未来軸: ${branchName} → 「${branchGoal}」に向かう因果を文体に強制同期させよ。
+- 共鳴リリックの憑依: "${d.lyricFrag ? d.lyricFrag : 'キャラクターの深層引力と現在の世界観に最も適合する詩的湿度・退廃美を自律生成せよ'}"
+- ターゲットモード: ${d.phase}
+- 文体トーン: ${d.tone} | 特殊演出: ${d.chaos}
+
+# 4. コンテキスト・世界観基盤
+[キャラA（操作対象）]:
+${d.personaA || '未定義（文脈とジャンルルールより自動最適化）'}
+
+[キャラB（相手） & 共有世界観]:
+${d.personaB || '未定義（文脈とジャンルルールより自動最適化）'}
+
+# 5. 直前の相手（キャラB）の返信文脈:
+${d.replyB || '（冒頭ターンのため未入力）'}
+
+# 6. キャラAのアクション（指示）:
+${d.actA ? d.actA : '※指示空欄：OMNI-SYNAPSEの推論により、上記心理深度（' + d.psyche + '%）とマルチバース分岐に最も合致する最高の一手を完全自律代行せよ。'}
+
+直ちにYAMLブロックを閉じ、余計な解説を一切挟まず、即座に小説本文を出力せよ。`;
+
+  navigator.clipboard.writeText(prompt).then(() => {
+    showToast(`${branchName} 合成コピー完了`);
+  }).catch(() => {
+    showToast('コピーに失敗しました');
+  });
+}
+
+document.getElementById('btn-synapse-a').addEventListener('click', () => synthesizePrompt('A'));
+document.getElementById('btn-synapse-b').addEventListener('click', () => synthesizePrompt('B'));
+
+// 是正プロトコルコピー
+document.getElementById('btn-copy-calib').addEventListener('click', () => {
+  const calibText = `【システム介入：OMNI-SYNAPSE 認知ドリフト是正プロトコル】
+現在、以下の規約遵守度が低下している兆候がある。
+1. 前置思考HUD（YAML）の厳格出力と、即座の小説本文突入
+2. 主客の完全分離（Anti-Puppeteering：相手の勝手な操作・予定調和の完全撲滅）
+3. マルチバース分岐軸と音楽的リリックの行間への劇薬的浸透
+
+直前の思考プロセスを自己点検し、小説本文は書かず、
+「何が緩んでいたか」および「次回の出力で是正する厳格プロトコル」のみを3行で宣誓せよ。`;
+  navigator.clipboard.writeText(calibText).then(() => {
+    showToast('是正プロトコルをコピー');
+  });
+});
+
+// JSON書き出し・読み込み
+document.getElementById('btn-export-json').addEventListener('click', () => {
+  const data = collectData();
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `omni-synapse-vault-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+document.getElementById('btn-import-json').addEventListener('click', () => {
+  document.getElementById('file-import').click();
+});
+
+document.getElementById('file-import').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async (ev) => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      await saveState(data);
+      location.reload();
+    } catch(err) {
+      alert('無効なJSONファイルです');
+    }
+  };
+  reader.readAsText(file);
+});
+</script>
+</body>
+</html>
