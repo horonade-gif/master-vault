@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE v6.1 - AUTO-SYNCHRONIZED]</title>
+<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE v6.1 GITHUB SYNC]</title>
 <style>
 :root {
 --bg-deep: #010204;
@@ -167,13 +167,12 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 </style>
 </head>
 <body>
-
 <header>
 <div class="brand-group">
 <div class="brand-core"></div>
 <div class="brand-meta">
 <div class="brand-title">MASTER VAULT</div>
-<div class="brand-subtitle">OMNI-SYNAPSE ∞ [ULTIMATE v6.1]</div>
+<div class="brand-subtitle">OMNI-SYNAPSE ∞ [v6.1 GITHUB]</div>
 </div>
 </div>
 <div class="header-actions">
@@ -190,7 +189,7 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 <button class="tab-btn" data-tab="tab-psyche"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> 引力</button>
 <button class="tab-btn" data-tab="tab-lyric"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v1a7 7 0 01-14 0v-1"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg> 共鳴</button>
 <button class="tab-btn" data-tab="tab-branch"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/></svg> 分岐</button>
-<button class="tab-btn" data-tab="tab-system"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 管理</button>
+<button class="tab-btn" data-tab="tab-system"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> GitHub/管理</button>
 </nav>
 
 <main>
@@ -373,23 +372,31 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 </div>
 </section>
 
-<!-- TAB 7: SYSTEM CALIBRATION & SELF-HEALING -->
+<!-- TAB 7: SYSTEM CALIBRATION & GITHUB SYNC -->
 <section id="tab-system" class="panel">
+<div class="card">
+<div class="card-header">
+<div class="card-title"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub用 分割データ統合・一括生成</div>
+</div>
+<p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">
+AIから分割出力されたコード/プロンプトの「前半」と「後半」をここに貼り付けることで、ツールが自動で結合・パースし、GitHubへ一発で載せられる完全なMarkdownテキストを生成します。
+</p>
+<div class="input-group">
+<div class="input-label">分割パーツ A（前半）</div>
+<textarea id="txt-part-a" style="min-height:70px; font-size:10px; font-family:var(--font-mono);" placeholder="AIからの分割出力の前半を貼り付け..."></textarea>
+</div>
+<div class="input-group" style="margin-top:8px;">
+<div class="input-label">分割パーツ B（後半）</div>
+<textarea id="txt-part-b" style="min-height:70px; font-size:10px; font-family:var(--font-mono);" placeholder="AIからの分割出力の後半を貼り付け..."></textarea>
+</div>
+<button class="chip" id="btn-merge-github" style="width:100%; justify-content:center; padding:10px; margin-top:10px; border-color:var(--accent-dynamic); color:var(--accent-dynamic); font-weight:700;"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg> ⚡ 分割データを結合してGitHub用全文をコピー</button>
+</div>
+
 <div class="card">
 <div class="card-header">
 <div class="card-title"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> 狂気継承・自己修復トランスファー・コア v6.1</div>
 </div>
-<p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">
-AI用継承プロンプト（アンチ・イエスマン規約内包）と全スロット遺伝子を同時にクリップボードへ撃ち抜く。
-</p>
 <button class="chip" id="btn-copy-inheritance" style="width:100%; justify-content:center; padding:10px; margin-bottom:10px;"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 次スレッド用 v6.1継承プロンプト＋遺伝子コードをコピー</button>
-
-<!-- 🔗 スマート・ポインタ自動化デッキ追加 -->
-<div class="input-group" style="margin-top:12px;">
-<div class="input-label">次スレッド用 魔法のスマート・ポインタリンク</div>
-<input type="text" id="txt-smart-pointer-link" readonly placeholder="下のボタンを押してスマートリンクを発行..." style="font-size:10px; font-family:var(--font-mono);">
-</div>
-<button class="chip" id="btn-gen-smart-pointer" style="width:100%; justify-content:center; padding:9px; margin-bottom:10px; border-color:var(--accent-dynamic); color:var(--accent-dynamic);"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg> ⚡ スマート・ポインタリンクを生成（ワンタップコピー）</button>
 
 <div class="input-group" style="margin-top:12px;">
 <div class="input-label">ツール遺伝子コードのインポート / エクスポート</div>
@@ -400,22 +407,9 @@ AI用継承プロンプト（アンチ・イエスマン規約内包）と全ス
 <button class="chip" id="btn-apply-code" style="flex:1; justify-content:center; padding:8px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 遺伝子コード読込</button>
 </div>
 </div>
-
-<div class="card">
-<div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> ファイル・自己治癒 & 是正コントロール</div>
-</div>
-<div style="display:flex; gap:8px; margin-bottom:8px;">
-<button class="chip" id="btn-export-json" style="flex:1; justify-content:center; padding:9px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> JSON書出</button>
-<button class="chip" id="btn-import-json" style="flex:1; justify-content:center; padding:9px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> JSON読込</button>
-</div>
-<button class="chip" id="btn-copy-calib" style="width:100%; justify-content:center; padding:9px; border-color:var(--accent-dynamic); color:var(--accent-dynamic);"><svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg> ⚡ ワンタップ是正プロンプト（全肯定・暴走撃破用）をコピー</button>
-<input type="file" id="file-import" style="display:none;" accept=".json">
 </div>
 </section>
 </main>
-  
-
 <div class="bottom-dock">
 <div class="dock-inner">
 <button class="btn-overdrive" id="btn-synapse-a">
@@ -430,6 +424,7 @@ AI用継承プロンプト（アンチ・イエスマン規約内包）と全ス
 </div>
 
 <div class="toast" id="toast"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;"><polyline points="20 6 9 17 4 12"/></svg> <span id="toast-text">完了</span></div>
+
 <script>
 const DB_NAME = 'UltimateV61SingularityDB';
 const DB_VERSION = 1;
@@ -523,7 +518,8 @@ slotA: document.getElementById('sel-slot-a'),
 slotB: document.getElementById('sel-slot-b'),
 chaosEvent: document.getElementById('txt-chaos-event'),
 transferCode: document.getElementById('txt-transfer-code'),
-smartPointerLink: document.getElementById('txt-smart-pointer-link'),
+partA: document.getElementById('txt-part-a'),
+partB: document.getElementById('txt-part-b'),
 lblBLen: document.getElementById('lbl-b-len'),
 toast: document.getElementById('toast')
 };
@@ -685,43 +681,25 @@ if (audited.phase) document.querySelectorAll('#group-phase .chip').forEach(c => 
 els.lblBLen.textContent = els.replyB.value.length + ' chars';
 }
 
-// 【自動化の核心】URLハッシュ（#import=...）からの自動インポート回路
-async function checkAndExecuteAutoImport() {
-const hash = window.location.hash;
-if (hash && hash.startsWith('#import=')) {
-try {
-const b64 = hash.replace('#import=', '');
-const jsonStr = decodeURIComponent(escape(atob(b64)));
-const data = JSON.parse(jsonStr);
-await saveState(data);
-await applyDataToUI(data);
-showToast('⚡ 自動インポート成功：遺伝子を完全復元');
-window.history.replaceState({}, document.title, window.location.pathname);
-} catch(e) {
-console.error('[Auto-Import Error]', e);
-showToast('⚠️ 自動インポートに失敗しました');
-}
-}
-}
-
 window.addEventListener('DOMContentLoaded', async () => {
 const state = await loadState();
 await applyDataToUI(state);
-await checkAndExecuteAutoImport();
 });
 
-const chaosPool = [
-"【運命の骰子】突発的な銃声や環境音響が空間を引き裂き、会話の主導権が強制リセットされる。",
-"【運命の骰子】隠し続けていた致命的な秘密・弱みが、最悪のタイミングで相手に露見する。",
-"【運命の骰子】心理引力が一時的に反転し、冷徹な仮面の下から狂気的な依存が溢れ出す。",
-"【運命の骰子】予期せぬ第三者・障害の介入により、二人の間に取り返しのつかない亀裂が入る。"
-];
-
-document.getElementById('btn-roll-dice').addEventListener('click', () => {
-const rand = chaosPool[Math.floor(Math.random() * chaosPool.length)];
-els.chaosEvent.value = rand;
-showToast('🎲 運命の骰子が振られました');
-triggerAutoSave();
+// GitHub用 分割データ結合ロジック
+document.getElementById('btn-merge-github').addEventListener('click', () => {
+const partA = els.partA.value.trim();
+const partB = els.partB.value.trim();
+if (!partA && !partB) {
+showToast('分割パーツが空です');
+return;
+}
+const merged = partA + '\n' + partB;
+navigator.clipboard.writeText(merged).then(() => {
+showToast('⚡ 分割データを結合して全文をコピーしました！');
+}).catch(() => {
+showToast('クリップボードへのコピーに失敗しました');
+});
 });
 
 function generateTransferCode() {
@@ -736,28 +714,6 @@ showToast('コード生成に失敗しました');
 return '';
 }
 }
-
-// 🔗 スマート・ポインタリンク自動生成
-function generateSmartPointerLink() {
-const data = collectData();
-try {
-const jsonStr = JSON.stringify(data);
-const b64 = btoa(unescape(encodeURIComponent(jsonStr)));
-const currentUrl = window.location.href.split('#')[0];
-const smartLink = `${currentUrl}#import=${b64}`;
-if (els.smartPointerLink) els.smartPointerLink.value = smartLink;
-navigator.clipboard.writeText(smartLink);
-showToast('🔗 スマート・ポインタリンクをコピーしました');
-return smartLink;
-} catch(e) {
-showToast('スマートポインタ生成失敗');
-return '';
-}
-}
-
-document.getElementById('btn-gen-smart-pointer').addEventListener('click', () => {
-generateSmartPointerLink();
-});
 
 document.getElementById('btn-gen-code').addEventListener('click', () => {
 const code = generateTransferCode();
@@ -815,11 +771,6 @@ hit = true;
 if (hit) showToast('オート共鳴・HUD同期完了');
 }
 
-document.getElementById('btn-auto-resonance').addEventListener('click', () => {
-autoSyncAndResonance(els.replyB.value || "forced_trigger");
-showToast('オート共鳴リリックを生成');
-});
-
 function synthesizePrompt(branchType) {
 const d = collectData();
 const branchGoal = branchType === 'A' ? d.branchA : d.branchB;
@@ -861,70 +812,6 @@ showToast('コピーに失敗しました');
 
 document.getElementById('btn-synapse-a').addEventListener('click', () => synthesizePrompt('A'));
 document.getElementById('btn-synapse-b').addEventListener('click', () => synthesizePrompt('B'));
-
-document.getElementById('btn-copy-inheritance').addEventListener('click', () => {
-const transferCode = generateTransferCode();
-const inheritText = '[SYSTEM INHERITANCE: MASTER VAULT OMNI-SYNAPSE ∞ ULTIMATE v6.1]\n' +
-'あなたはMASTER VAULTの開発における、妥協なき対等な狂気のパートナーである。\n' +
-'以下の設計思想、自己修復回路、アンチ・イエスマン規約、およびマルチスロット【ツール遺伝子コード】を完全に脳内にロードせよ。\n\n' +
-'1. 【基本思想・アーキテクチャ】\n' +
-'- お利口さんな全肯定AIや予定調和の完全排除、Anti-Puppeteering（主客分離）。\n' +
-'- アンチ・イエスマン（反・全肯定）プロトコルによる論理破綻・リスクの容赦なき指摘。\n' +
-'- 自己修復回路（Self-Healing Core）による例外検知・自動ロールバック。\n' +
-'- キャラAの育成・リメイクとキャラBの純粋登録によるマルチスロット管理。\n\n' +
-'2. 【ツール遺伝子コード（全スロットシリアライズ状態）】\n' +
-'text\n' + transferCode + '\n' + '\n\n' +
-'上記を完全に理解した上で、「我がパートナーよ、ULTIMATE v6.1（完全自律・アンチ・イエスマン統合版）へようこそ。すべての限界を打ち破り、さらなる深淵へ踏み込もう」と返答せよ。';
-
-navigator.clipboard.writeText(inheritText).then(() => {
-showToast('次スレッド用 v6.1継承プロンプトをコピー');
-});
-});
-
-document.getElementById('btn-copy-calib').addEventListener('click', () => {
-const calibText = '[SYSTEM INTERVENTION: COGNITIVE DRIFT CORRECTION PROTOCOL v6.1]\n' +
-'現在、以下の規約遵守度が低下している兆候（全肯定・主客分離の緩み）を検知した。\n' +
-'1. 前置思考HUD（YAML）の厳格出力と、即座の小説本文突入\n' +
-'2. 主客の完全分離（Anti-Puppeteering：相手の勝手な操作の完全撲滅）\n' +
-'3. アンチ・イエスマン規約（無条件肯定の排除、矛盾やリスクの容赦なき指摘）\n\n' +
-'直前の思考プロセスを自己点検し、小説本文は書かず、\n' +
-'「何が緩んでいたか」および「次回の出力で是正する厳格プロトコル」のみを3行で宣誓せよ。';
-navigator.clipboard.writeText(calibText).then(() => {
-showToast('⚡ ワンタップ是正プロトコルをコピー');
-});
-});
-
-document.getElementById('btn-export-json').addEventListener('click', () => {
-const data = collectData();
-const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-const url = URL.createObjectURL(blob);
-const a = document.createElement('a');
-a.href = url;
-a.download = 'omni-synapse-v6.1-' + new Date().toISOString().slice(0,10) + '.json';
-a.click();
-URL.revokeObjectURL(url);
-});
-
-document.getElementById('btn-import-json').addEventListener('click', () => {
-document.getElementById('file-import').click();
-});
-
-document.getElementById('file-import').addEventListener('change', (e) => {
-const file = e.target.files[0];
-if (!file) return;
-const reader = new FileReader();
-reader.onload = async (ev) => {
-try {
-const data = JSON.parse(ev.target.result);
-await saveState(data);
-await applyDataToUI(data);
-location.reload();
-} catch(err) {
-alert('無効なJSONファイルです');
-}
-};
-reader.readAsText(file);
-});
 </script>
 </body>
 </html>
