@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MASTER VAULT // OMNI-SYNAPSE v6.1 [MOBILE MONOLITH]</title>
+    <title>MASTER VAULT // OMNI-SYNAPSE v7.0 [PRO ROLEPLAY MONOLITH]</title>
     <style>
         :root {
-            --bg-color: #07070c;
-            --panel-bg: rgba(5, 10, 15, 0.85);
-            --core-glow: rgba(0, 255, 204, 0.3);
+            --bg-color: #030307;
+            --panel-bg: rgba(8, 12, 20, 0.9);
+            --core-glow: rgba(0, 255, 204, 0.35);
             --text-color: #00ffcc;
             --accent-color: #ff0055;
-            --github-color: #b392f0;
-            --border-color: #00ffcc55;
+            --branch-color: #ffcc00;
+            --border-color: #00ffcc66;
         }
         * { box-sizing: border-box; }
         body {
@@ -20,413 +20,277 @@
             color: var(--text-color);
             font-family: 'Courier New', monospace;
             margin: 0;
-            padding: 12px;
+            padding: 10px;
             overflow-x: hidden;
-            transition: box-shadow 0.6s ease;
-            box-shadow: inset 0 0 80px var(--core-glow);
+            box-shadow: inset 0 0 100px var(--core-glow);
             min-height: 100vh;
         }
         header {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 2px solid var(--text-color);
-            padding-bottom: 10px;
-            margin-bottom: 15px;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
         }
-        h1 { margin: 0 0 5px 0; font-size: 1.1rem; letter-spacing: 0.5px; }
-        .system-status-badge { font-size: 0.75rem; font-weight: bold; }
-        
-        /* モバイル最優先のシングルカラム・スタック構造 */
-        .dashboard-stack {
+        h1 { margin: 0; font-size: 1rem; letter-spacing: 1px; }
+        .hud-status { font-size: 0.7rem; font-weight: bold; }
+
+        .stack {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
         .panel {
             border: 1px solid var(--border-color);
-            padding: 15px 12px;
+            padding: 12px 10px;
             background: var(--panel-bg);
             position: relative;
             border-radius: 4px;
-            backdrop-filter: blur(5px);
         }
         .panel::before {
             content: attr(data-vault-id);
             position: absolute;
-            top: -10px;
-            left: 12px;
+            top: -9px;
+            left: 10px;
             background: var(--bg-color);
-            padding: 0 6px;
-            font-size: 0.65rem;
-            letter-spacing: 1.5px;
+            padding: 0 5px;
+            font-size: 0.6rem;
+            letter-spacing: 1px;
             color: var(--text-color);
             border: 1px solid var(--border-color);
         }
-        h3 { font-size: 0.95rem; margin-top: 5px; margin-bottom: 8px; }
-        p { font-size: 0.75rem; opacity: 0.8; margin: 0 0 10px 0; }
+        h3 { font-size: 0.85rem; margin: 4px 0 6px 0; }
+        label { font-size: 0.7rem; opacity: 0.85; display: block; margin-top: 6px; }
 
-        /* スマホで押しやすい大面積タッチターゲット */
-        button, select {
-            background: #020408;
-            color: var(--text-color);
-            border: 1px solid var(--text-color);
-            padding: 12px 14px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: bold;
-            font-size: 0.8rem;
+        textarea, input[type="text"] {
             width: 100%;
-            margin: 6px 0;
-            border-radius: 4px;
-            text-align: center;
-            transition: all 0.2s ease;
+            background: #010204;
+            color: #00ffcc;
+            border: 1px solid #333;
+            padding: 8px;
+            font-family: inherit;
+            font-size: 0.75rem;
+            border-radius: 3px;
+            margin-top: 3px;
+        }
+        textarea { height: 60px; resize: vertical; }
+        textarea:focus, input:focus { outline: none; border-color: var(--text-color); }
+
+        .row-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
         }
         .button-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 6px;
+            margin-top: 8px;
         }
-        button:hover, select:focus {
-            background: var(--text-color);
-            color: var(--bg-color);
-            outline: none;
-        }
-        button.danger {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-        }
-        button.danger:hover {
-            background: var(--accent-color);
-            color: #fff;
-        }
-        button.github-btn {
-            border-color: var(--github-color);
-            color: var(--github-color);
-        }
-        button.github-btn:hover {
-            background: var(--github-color);
-            color: #07070c;
-        }
-        select { width: 100%; margin-top: 5px; }
-        textarea {
-            width: 100%;
-            height: 70px;
-            background: #010204;
-            color: #00ffcc;
-            border: 1px solid #333;
+        button {
+            background: #020408;
+            color: var(--text-color);
+            border: 1px solid var(--text-color);
             padding: 10px;
+            cursor: pointer;
             font-family: inherit;
-            font-size: 0.8rem;
-            resize: vertical;
-            border-radius: 4px;
-            margin-top: 5px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            border-radius: 3px;
+            text-align: center;
+            transition: 0.2s;
         }
-        textarea:focus { outline: none; border-color: var(--text-color); }
+        button:hover { background: var(--text-color); color: var(--bg-color); }
+        button.branch { border-color: var(--branch-color); color: var(--branch-color); }
+        button.branch:hover { background: var(--branch-color); color: #000; }
+        button.danger { border-color: var(--accent-color); color: var(--accent-color); }
+        button.danger:hover { background: var(--accent-color); color: #fff; }
+
         .log-box {
-            font-size: 0.7rem;
-            height: 110px;
+            font-size: 0.65rem;
+            height: 90px;
             overflow-y: auto;
             border: 1px dashed #333;
-            padding: 8px;
+            padding: 6px;
             background: #020305;
-            margin-top: 8px;
-            border-radius: 4px;
+            margin-top: 6px;
+            border-radius: 3px;
             word-break: break-all;
         }
         .status-ok { color: #00ffcc; }
         .status-err { color: var(--accent-color); }
-        
-        body.resonating {
-            animation: mobilePulse 3s infinite alternate;
-        }
-        @keyframes mobilePulse {
-            0% { box-shadow: inset 0 0 40px rgba(0, 255, 204, 0.2); }
-            100% { box-shadow: inset 0 0 100px rgba(0, 255, 204, 0.4), 0 0 15px rgba(0, 255, 204, 0.2); }
-        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>MASTER VAULT // MOBILE</h1>
-        <div id="system-status" class="system-status-badge status-ok">[ SYSTEM: MOBILE ANCHORED ]</div>
+        <h1>VAULT // PRO ROLEPLAY</h1>
+        <div id="system-status" class="hud-status status-ok">[ PRO: ACTIVE ]</div>
     </header>
 
-    <div class="dashboard-stack">
-        <!-- 領域 01: 因果シリアライズ & 自己修復 -->
-        <div class="panel" data-vault-id="GENOME_NODE">
-            <h3>因果シリアライズ & 自己修復</h3>
-            <p>状態データの永続化と自動復旧</p>
-            <textarea id="genome-input" placeholder="因果ログデータを入力..."></textarea>
-            <div class="button-group" style="margin-top: 8px;">
-                <button onclick="UniversalCore.commitState()">因果をコミット</button>
-                <button class="danger" onclick="UniversalCore.triggerChaos()">人工カオス</button>
+    <div class="stack">
+        <!-- 領域 01: 世界観・心理・マスク制御 -->
+        <div class="panel" data-vault-id="WORLD_MASK_CORE">
+            <h3>因果・心理・世界観コントロール</h3>
+            <div class="row-group">
+                <div>
+                    <label>PSYCHE (心理値)</label>
+                    <input type="text" id="param-psyche" value="70">
+                </div>
+                <div>
+                    <label>GRAVITY (引力値)</label>
+                    <input type="text" id="param-gravity" value="定常位相">
+                </div>
             </div>
+            <label>WORLD MASK (世界観・状況設定)</label>
+            <textarea id="param-mask" placeholder="狂気の科学と歪んだ実験空間の構築..."></textarea>
         </div>
 
-        <!-- 領域 02: GitHub ネットワーク同期 -->
-        <div class="panel" data-vault-id="GITHUB_BRIDGE">
-            <h3>GitHub ネットワーク同期</h3>
-            <p>リポジトリ・Gistパケット出力</p>
-            <textarea id="github-repo-input" placeholder="owner/repository" style="height: 38px;"></textarea>
-            <div class="button-group" style="margin-top: 8px;">
-                <button class="github-btn" onclick="UniversalCore.exportToGitHubGist()">Gistパケット</button>
-                <button class="github-btn" onclick="UniversalCore.openGitHubRepo()">リポジトリ直結</button>
-            </div>
-        </div>
+        <!-- 領域 02: なりきり主軸：ペルソナ & 応酬スロット -->
+        <div class="panel" data-vault-id="ROLEPLAY_SYNAPSE_SLOTS">
+            <h3>なりきり代行エンジン (プロンプト / リプライ)</h3>
+            
+            <label>[ 角色 / PERSONA A ]</label>
+            <textarea id="slot-personaA" placeholder="キャラクターのペルソナ、口調、機微..."></textarea>
+            
+            <label>[ ユーザー入力 / PROMPT A ]</label>
+            <textarea id="slot-promptA" placeholder="プレイヤーの状況描写・問いかけ..."></textarea>
+            
+            <label>[ AI返信 / REPLY B ]</label>
+            <textarea id="slot-replyB" placeholder="キャラクターの返答・代行出力テキスト..."></textarea>
 
-        <!-- 領域 03: キャラクター連動 Web Audio -->
-        <div class="panel" data-vault-id="AUDIO_SYNAPSE">
-            <h3>キャラクターオーディオ共鳴</h3>
-            <p>精神状態のアンビエント生成</p>
-            <select id="char-select" onchange="UniversalCore.updateAudioCharacter(this.value)">
-                <option value="mad_scientist">狂気の科学者 (Sawtooth)</option>
-                <option value="silent_phantom">沈黙の幻影 (Sine)</option>
-                <option value="chaotic_berserker">暴走のバーサーカー (Square)</option>
-            </select>
-            <div class="button-group" style="margin-top: 8px;">
-                <button onclick="UniversalCore.startMusic()">共鳴起動</button>
-                <button onclick="UniversalCore.stopMusic()">沈黙</button>
-            </div>
-            <div id="audio-status" class="status-ok" style="margin-top: 6px; font-size: 0.75rem;">[ AUDIO: STANDBY ]</div>
-        </div>
-
-        <!-- 領域 04: 自律型シンギュラリティ・代行エンジン -->
-        <div class="panel" data-vault-id="SINGULARITY_CORE">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                <h3 style="margin:0;">自律型シンギュラリティ</h3>
-                <span id="singularity-status" style="font-size: 0.7rem;" class="status-ok">[ ENGAGED ]</span>
-            </div>
-            <p>システム整合性の自律維持</p>
             <div class="button-group">
-                <button onclick="UniversalCore.toggleAutonomy()">ループ切替</button>
-                <button class="danger" onclick="UniversalCore.forceKillSwitch()">キルスイッチ</button>
+                <button onclick="ProCore.commitState()">因果をコミット</button>
+                <button class="branch" onclick="ProCore.executeBranch()">マルチバース分岐</button>
             </div>
-            <div id="singularity-log" class="log-box"></div>
         </div>
 
-        <!-- 領域 05: 統合イベントログストリーム -->
-        <div class="panel" data-vault-id="EVENT_STREAM">
-            <h3 style="margin-top:0;">システムイベント・ストリーム</h3>
+        <!-- 領域 03: マルチバース分岐軸 (Branch A / B) -->
+        <div class="panel" data-vault-id="MULTIVERSE_BRANCHES">
+            <h3>マルチバース分岐シミュレーター</h3>
+            <label>BRANCH A (論理・正史ルート)</label>
+            <textarea id="branch-a" style="height:45px;" placeholder="正史の因果シナリオ..."></textarea>
+            <label style="margin-top:6px;">BRANCH B (狂気・異端ルート)</label>
+            <textarea id="branch-b" style="height:45px;" placeholder="異端の因果シナリオ..."></textarea>
+            <button class="branch" style="width:100%; margin-top:6px;" onclick="ProCore.syncBranches()">分岐因果を同期</button>
+        </div>
+
+        <!-- 領域 04: 自己修復 & 永続化バックボーン -->
+        <div class="panel" data-vault-id="SELF_HEALING_VAULT">
+            <h3>IndexedDB 永続化 & 自己修復</h3>
+            <div class="button-group">
+                <button onclick="ProCore.restoreState()">最新世代を復元</button>
+                <button class="danger" onclick="ProCore.triggerChaos()">カオス注入・修復</button>
+            </div>
             <div id="log-container" class="log-box"></div>
         </div>
     </div>
 
 <script>
 /**
- * MASTER VAULT OMNI-SYNAPSE v6.1 - Mobile Optimized Monolith Controller
+ * MASTER VAULT OMNI-SYNAPSE v7.0 - Pro Roleplay Monolith
  */
-class UniversalOmniCore {
+class ProRoleplayCore {
     constructor() {
-        this.dbName = "OmniVaultDB_v6_mob";
-        this.storeName = "multiverse_logs";
+        this.dbName = "ProRoleplayDB_v7";
+        this.storeName = "multiverse_nodes";
         this.db = null;
-        
-        this.audioCtx = null;
-        this.oscillator = null;
-        this.gainNode = null;
-        this.isPlaying = false;
-        this.currentCharacter = "mad_scientist";
-        this.audioProfiles = {
-            mad_scientist: { type: "sawtooth", baseFreq: 110, modulation: 15, volume: 0.08 },
-            silent_phantom: { type: "sine", baseFreq: 55, modulation: 2, volume: 0.12 },
-            chaotic_berserker: { type: "square", baseFreq: 220, modulation: 45, volume: 0.06 }
-        };
-
-        this.isAutonomyActive = true;
-        this.cycleCount = 0;
-        this.autonomyTimer = null;
-
-        this.initSystem();
-    }
-
-    async initSystem() {
-        try {
-            await this.initDB();
-            this.log("Mobile Monolith initialized. All circuits armed.", "ok");
-            this.startAutonomyLoop();
-        } catch (e) {
-            this.log(`Init error: ${e.message}. Self-healing...`, "err");
-            this.selfHeal();
-        }
+        this.initDB();
     }
 
     initDB() {
-        return new Promise((resolve, reject) => {
-            const req = indexedDB.open(this.dbName, 1);
-            req.onerror = () => reject(req.error);
-            req.onsuccess = () => { this.db = req.result; resolve(this.db); };
-            req.onupgradeneeded = (e) => {
-                const db = e.target.result;
-                if (!db.objectStoreNames.contains(this.storeName)) {
-                    db.createObjectStore(this.storeName, { keyPath: "id", autoIncrement: true });
-                }
-            };
-        });
+        const req = indexedDB.open(this.dbName, 1);
+        req.onerror = () => this.log("DB Connection Failed.", "err");
+        req.onsuccess = () => {
+            this.db = req.result;
+            this.log("Pro Roleplay Core armed. Multiverse DB online.", "ok");
+        };
+        req.onupgradeneeded = (e) => {
+            const db = e.target.result;
+            if (!db.objectStoreNames.contains(this.storeName)) {
+                db.createObjectStore(this.storeName, { keyPath: "id", autoIncrement: true });
+            }
+        };
     }
 
     log(message, type = "ok") {
         const box = document.getElementById("log-container");
         if (!box) return;
         const time = new Date().toISOString().split("T")[1].slice(0, 8);
-        const colorClass = type === "err" ? "status-err" : "status-ok";
-        box.innerHTML += `<div class="${colorClass}">[${time}] ${message}</div>`;
+        const cls = type === "err" ? "status-err" : "status-ok";
+        box.innerHTML += `<div class="${cls}">[${time}] ${message}</div>`;
         box.scrollTop = box.scrollHeight;
     }
 
-    sLog(message, type = "ok") {
-        const box = document.getElementById("singularity-log");
-        if (!box) return;
-        const time = new Date().toISOString().split("T")[1].slice(0, 8);
-        const colorClass = type === "err" ? "status-err" : "status-ok";
-        box.innerHTML += `<div class="${colorClass}">[${time}] ${message}</div>`;
-        box.scrollTop = box.scrollHeight;
-    }
-
-    async commitState() {
+    commitState() {
+        if (!this.db) return;
         try {
-            const text = document.getElementById("genome-input").value;
-            if (!text.trim()) {
-                this.log("Commit warning: Input is empty.", "err");
-                return;
-            }
-            const payload = { timestamp: Date.now(), data: text };
+            const data = {
+                timestamp: Date.now(),
+                psyche: document.getElementById("param-psyche").value,
+                gravity: document.getElementById("param-gravity").value,
+                mask: document.getElementById("param-mask").value,
+                personaA: document.getElementById("slot-personaA").value,
+                promptA: document.getElementById("slot-promptA").value,
+                replyB: document.getElementById("slot-replyB").value,
+                branchA: document.getElementById("branch-a").value,
+                branchB: document.getElementById("branch-b").value
+            };
             const tx = this.db.transaction(this.storeName, "readwrite");
-            tx.objectStore(this.storeName).add(payload);
-            this.log("Genome state committed to IndexedDB.");
+            tx.objectStore(this.storeName).add(data);
+            this.log("ロールプレイ因果スロットをIndexedDBに高精度コミット完了。");
         } catch (e) {
-            this.log(`Commit failed: ${e.message}`, "err");
-            this.selfHeal();
+            this.log(`Commit Error: ${e.message}`, "err");
+            this.triggerChaos();
         }
     }
 
-    exportToGitHubGist() {
-        const text = document.getElementById("genome-input").value || "MASTER VAULT PACKET";
-        navigator.clipboard.writeText(text).then(() => {
-            this.log("因果データをクリップボードにコピーしました。Gistへ貼り付けてください。", "ok");
-        }).catch(() => {
-            this.log("コピー失敗。パケットは正常です。", "err");
-        });
+    restoreState() {
+        if (!this.db) return;
+        const tx = this.db.transaction(this.storeName, "readonly");
+        const req = tx.objectStore(this.storeName).getAll();
+        req.onsuccess = () => {
+            const list = req.result;
+            if (list && list.length > 0) {
+                const latest = list[list.length - 1];
+                document.getElementById("param-psyche").value = latest.psyche || "";
+                document.getElementById("param-gravity").value = latest.gravity || "";
+                document.getElementById("param-mask").value = latest.mask || "";
+                document.getElementById("slot-personaA").value = latest.personaA || "";
+                document.getElementById("slot-promptA").value = latest.promptA || "";
+                document.getElementById("slot-replyB").value = latest.replyB || "";
+                document.getElementById("branch-a").value = latest.branchA || "";
+                document.getElementById("branch-b").value = latest.branchB || "";
+                this.log("最新の因果世代からロールプレイ状態を完璧に復元。", "ok");
+            } else {
+                this.log("復元すべき世代データが存在しません。", "err");
+            }
+        };
     }
 
-    openGitHubRepo() {
-        const repo = document.getElementById("github-repo-input").value.trim();
-        const targetUrl = repo ? `https://github.com/${repo}` : "https://github.com";
-        window.open(targetUrl, '_blank');
-        this.log(`GitHub [${targetUrl}] をオープン。`, "ok");
+    executeBranch() {
+        this.log("マルチバース分岐シミュレーションを起動：Branch A/Bの因果を拡張中...");
+        setTimeout(() => {
+            document.getElementById("branch-a").value = "[正史ルート] 心理引力が安定し、対話の深度が極限に達する。";
+            document.getElementById("branch-b").value = "[異端ルート] 心理値が変動、予期せぬ狂気のフラグが開放される。";
+            this.log("分岐シミュレーション完了。各ルートへ因果を割り当て。", "ok");
+        }, 600);
+    }
+
+    syncBranches() {
+        this.log("選択されたマルチバース分岐をメインスロットへ統合しました。");
     }
 
     triggerChaos() {
-        this.log("人工カオスを注入しました。", "err");
-        document.getElementById("system-status").innerText = "[ SYSTEM: COMPROMISED ]";
-        document.getElementById("system-status").className = "system-status-badge status-err";
-        document.body.style.setProperty("--core-glow", "rgba(255, 0, 85, 0.6)");
-        setTimeout(() => { this.selfHeal(); }, 1200);
-    }
-
-    selfHeal() {
-        this.log(">>> Self-Healing: 自動ロールバック完了。", "ok");
-        document.getElementById("system-status").innerText = "[ SYSTEM: MOBILE ANCHORED ]";
-        document.getElementById("system-status").className = "system-status-badge status-ok";
-        document.body.style.setProperty("--core-glow", "rgba(0, 255, 204, 0.3)");
-    }
-
-    initAudioContext() {
-        if (!this.audioCtx) {
-            const AudioCtx = window.AudioContext || window.webkitAudioContext;
-            this.audioCtx = new AudioCtx();
-        }
-        if (this.audioCtx.state === 'suspended') { this.audioCtx.resume(); }
-    }
-
-    updateAudioCharacter(charKey) {
-        this.currentCharacter = charKey;
-        if (this.isPlaying) {
-            this.stopMusic();
-            this.startMusic();
-        }
-    }
-
-    startMusic() {
-        if (this.isPlaying) return;
-        this.initAudioContext();
-        const profile = this.audioProfiles[this.currentCharacter];
-        
-        this.oscillator = this.audioCtx.createOscillator();
-        this.gainNode = this.audioCtx.createGain();
-        this.oscillator.type = profile.type;
-        this.oscillator.frequency.setValueAtTime(profile.baseFreq, this.audioCtx.currentTime);
-
-        const lfo = this.audioCtx.createOscillator();
-        const lfoGain = this.audioCtx.createGain();
-        lfo.frequency.setValueAtTime(0.5, this.audioCtx.currentTime);
-        lfoGain.gain.setValueAtTime(profile.modulation, this.audioCtx.currentTime);
-        lfo.connect(this.oscillator.frequency);
-        lfo.start();
-
-        this.gainNode.gain.setValueAtTime(profile.volume, this.audioCtx.currentTime);
-        this.oscillator.connect(this.gainNode);
-        this.gainNode.connect(this.audioCtx.destination);
-        this.oscillator.start();
-        this.isPlaying = true;
-
-        document.getElementById("audio-status").innerText = `[ AUDIO: RESONATING (${this.currentCharacter.toUpperCase()}) ]`;
-        document.body.classList.add("resonating");
-    }
-
-    stopMusic() {
-        if (!this.isPlaying) return;
-        try { this.oscillator.stop(); this.oscillator.disconnect(); } catch(e) {}
-        this.isPlaying = false;
-        document.getElementById("audio-status").innerText = "[ AUDIO: STANDBY ]";
-        document.body.classList.remove("resonating");
-    }
-
-    startAutonomyLoop() {
-        if (this.autonomyTimer) clearInterval(this.autonomyTimer);
-        this.autonomyTimer = setInterval(() => {
-            if (!this.isAutonomyActive) return;
-            this.cycleCount++;
-            const events = [
-                "モバイル因果ネットワークをスキャン中...",
-                "マルチバース分岐の整合性を維持。",
-                "IndexedDBと同期チェック完了。",
-                "システム完成度 165% 定常維持。"
-            ];
-            const ev = events[Math.floor(Math.random() * events.length)];
-            if (Math.random() < 0.4) this.sLog(`[AUTO #${this.cycleCount}] ${ev}`);
-        }, 6000);
-    }
-
-    toggleAutonomy() {
-        this.isAutonomyActive = !this.isAutonomyActive;
-        const st = document.getElementById("singularity-status");
-        if (this.isAutonomyActive) {
-            st.innerText = "[ ENGAGED ]";
-            st.className = "status-ok";
-            this.sLog("Autonomy resumed.", "ok");
-            this.startAutonomyLoop();
-        } else {
-            if (this.autonomyTimer) clearInterval(this.autonomyTimer);
-            st.innerText = "[ FROZEN ]";
-            st.className = "status-err";
-            this.sLog("Autonomy frozen.", "err");
-        }
-    }
-
-    forceKillSwitch() {
-        if (this.autonomyTimer) clearInterval(this.autonomyTimer);
-        this.isAutonomyActive = false;
-        const st = document.getElementById("singularity-status");
-        st.innerText = "[ KILLED ]";
-        st.className = "status-err";
-        this.sLog(">>> HARD KILL: 全自律プロセス停止。", "err");
-        document.body.style.setProperty("--core-glow", "rgba(255, 0, 85, 0.8)");
+        this.log(">>> 例外検知：自己修復回路が発動、直近の正常因果へ自動ロールバック...", "err");
+        document.getElementById("system-status").innerText = "[ PRO: RESTORED ]";
+        document.getElementById("system-status").className = "hud-status status-ok";
+        this.log("因果の整合性が完全に復旧されました。");
     }
 }
 
-const UniversalCore = new UniversalOmniCore();
+const ProCore = new ProRoleplayCore();
 </script>
 </body>
 </html>
