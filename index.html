@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#020617">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>MASTER VAULT // PRO APEX v11.2 MOBILE</title>
+<style>
+:root {
+  --bg-base: #020617; --bg-card: rgba(13,20,36,0.7); --bg-card-border: rgba(56,189,248,0.18);
+  --bg-input: rgba(6,11,23,0.9); --border: rgba(51,65,85,0.45); --border-focus: #38bdf8;
+  --neon-main: #38bdf8; --neon-emerald: #10b981; --neon-purple: #c084fc;
+  --text-main: #f8fafc; --text-sub: #94a3b8; --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "SF Mono", Menlo, monospace; --radius-sm: 8px; --radius-md: 12px; --radius-full: 9999px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html, body { width: 100%; height: 100dvh; height: 100vh; overflow: hidden; background: var(--bg-base); color: var(--text-main); font-family: var(--font-sans); }
+body { display: flex; flex-direction: column; }
+header { flex-shrink: 0; padding: calc(env(safe-area-inset-top,0px) + 8px) 12px 8px; background: rgba(8,14,26,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; z-index: 50; }
+.title { font-size: 0.8rem; font-weight: 900; color: var(--neon-main); font-family: var(--font-mono); }
+nav { flex-shrink: 0; display: flex; padding: 4px 8px; background: rgba(4,9,20,0.92); border-bottom: 1px solid rgba(255,255,255,0.04); gap: 4px; }
+.tab-btn { flex: 1; min-height: 40px; text-align: center; font-size: 0.75rem; color: var(--text-sub); background: transparent; border: 1px solid transparent; border-radius: var(--radius-sm); font-weight: 700; }
+.tab-btn.active { color: var(--neon-main); background: rgba(56,189,248,0.1); border-color: rgba(56,189,248,0.35); }
+.stage-viewport { flex: 1; min-height: 0; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.stage { min-width: 100%; height: 100%; padding: 12px; padding-bottom: calc(env(safe-area-inset-bottom,0px) + 165px); overflow-y: auto; scroll-snap-align: start; display: flex; flex-direction: column; gap: 12px; }
+.pro-card { background: var(--bg-card); border: 1px solid var(--bg-card-border); border-radius: var(--radius-md); padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.pro-card-header { display: flex; justify-content: space-between; align-items: center; }
+.pro-card-title { font-size: 0.78rem; font-weight: 800; }
+textarea, input[type="text"] { width: 100%; background: var(--bg-input); border: 1px solid var(--border); color: var(--text-main); border-radius: var(--radius-sm); padding: 10px; font-size: 16px !important; resize: none; }
+.ta-xs { min-height: 55px; } .ta-small { min-height: 75px; } .ta-medium { min-height: 110px; } .ta-character { min-height: 200px; }
+.output-box { border: 1px solid rgba(192,132,252,0.4); background: rgba(12,8,24,0.95); font-family: var(--font-mono); font-size: 14px !important; }
+.psyche-slider { -webkit-appearance: none; width: 100%; height: 10px; border-radius: var(--radius-full); background: linear-gradient(90deg, #4f46e5, #06b6d4, #f43f5e); }
+.psyche-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #0f172a; border: 2px solid #fff; box-shadow: 0 0 10px var(--neon-main); }
+.btn { min-height: 36px; padding: 6px 12px; background: linear-gradient(135deg, #0284c7, #1d4ed8); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 0.72rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
+.btn-convert { background: linear-gradient(135deg, #0ea5e9, #38bdf8); color: #020617; }
+.btn-clean { background: rgba(15,23,42,0.85); color: var(--text-sub); border: 1px solid var(--border); }
+.btn-warn { background: linear-gradient(135deg, #d97706, #f59e0b); color: #020617; }
+.btn-danger { background: linear-gradient(135deg, #dc2626, #991b1b); }
+.btn-sm { min-height: 32px; padding: 3px 8px; font-size: 0.68rem; }
+.chips-scroll { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.chip { min-height: 34px; padding: 6px 12px; background: rgba(15,23,42,0.8); border: 1px solid var(--border); border-radius: var(--radius-full); font-size: 0.72rem; color: var(--text-sub); white-space: nowrap; }
+.chip.active { background: rgba(56,189,248,0.2); color: #e0f2fe; border-color: rgba(56,189,248,0.6); }
+.floating-action-container { position: fixed; bottom: calc(env(safe-area-inset-bottom,0px) + 8px); left: 8px; right: 8px; z-index: 100; }
+.btn-floating-top { width: 100%; min-height: 48px; font-size: 0.86rem; font-weight: 800; border-radius: var(--radius-md); background: rgba(11,18,33,0.96); border: 1px solid var(--neon-main); color: var(--neon-main); }
+#toast { position: fixed; bottom: calc(env(safe-area-inset-bottom,0px) + 115px); left: 50%; transform: translateX(-50%) translateY(20px); background: rgba(11,18,33,0.96); color: #fff; border: 1px solid var(--neon-main); padding: 9px 18px; border-radius: var(--radius-full); font-size: 0.76rem; opacity: 0; transition: all 0.2s; pointer-events: none; z-index: 9999; }
+#toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+</style>
+</head>
+<body>
+<header>
+  <div class="title">⚡ MASTER VAULT <span id="storageBadge" style="font-size:0.55rem; color:var(--neon-emerald); border:1px solid; padding:1px 4px; border-radius:4px;">IDB</span></div>
+  <div style="display:flex; gap:6px;">
+    <button class="btn btn-clean btn-sm" onclick="cycleTheme()">🎨</button>
+    <select class="btn btn-clean btn-sm" id="slotSelector" onchange="switchSlot(this.value)"><option value="slot_1">枠 1</option></select>
+    <button class="btn btn-clean btn-sm" onclick="addNewSlot()">＋</button>
+  </div>
+</header>
+<nav id="navBar">
+  <button class="tab-btn active" onclick="switchTab(0)">⚡ 司令</button>
+  <button class="tab-btn" onclick="switchTab(1)">👤 自A</button>
+  <button class="tab-btn" onclick="switchTab(2)">👥 相手B</button>
+  <button class="tab-btn" onclick="switchTab(3)">📚 世界</button>
+  <button class="tab-btn" onclick="switchTab(4)">🛡 管理</button>
+</nav>
+<div class="stage-viewport" id="viewport">
+  <section class="stage">
+    <div class="pro-card">
+      <div class="pro-card-header">
+        <span class="pro-card-title">🌡️ PSYCHE 心理引力深度</span>
+        <span id="psycheValLabel" style="color:#34d399; font-weight:bold; font-size:0.75rem;">50% [平時]</span>
+      </div>
+      <input type="range" min="0" max="100" value="50" class="psyche-slider" id="psycheSlider" oninput="handlePsycheChange(this.value)">
+    </div>
+    <div class="pro-card">
+      <div class="pro-card-header">
+        <span class="pro-card-title">① 相手（キャラB）の返信</span>
+        <div style="display:flex; gap:4px;">
+          <button class="btn btn-warn btn-sm" onclick="copyHudRescuePrompt()">📊 HUD救出</button>
+          <button class="btn btn-clean btn-sm" onclick="pasteToField('charBInputText')">📋 貼付</button>
+        </div>
+      </div>
+      <textarea class="ta-medium" id="charBInputText" placeholder="キャラBの文章を貼り付け（戻るだけで自動学習成長）..." oninput="handleBTextInput()"></textarea>
+    </div>
+    <div class="pro-card">
+      <div class="pro-card-header"><span class="pro-card-title">② 文体ポリシー</span></div>
+      <div class="chips-scroll" id="ratioChips">
+        <span class="chip active" onclick="selectRatio(this, '調和バランス（会話とト書き等量）')">⚖ バランス</span>
+        <span class="chip" onclick="selectRatio(this, '対話重視（緊迫会話と心理即応）')">💬 対話重視</span>
+        <span class="chip" onclick="selectRatio(this, '純文学的情緒（所作と空気感）')">📖 文学情緒</span>
+      </div>
+    </div>
+    <div class="pro-card">
+      <div class="pro-card-header">
+        <span class="pro-card-title" style="color:var(--neon-main);">③ あなた（キャラA）の行動 【空欄で完全代行】</span>
+        <button class="btn btn-clean btn-sm" onclick="document.getElementById('charAAction').value=''">🧹 消去</button>
+      </div>
+      <textarea class="ta-small" id="charAAction" placeholder="※空欄で送信すると、AIがAの性格・心理に基づき最高の一手を完全代行執筆します。"></textarea>
+    </div>
+    <div class="pro-card">
+      <div class="pro-card-header"><span class="pro-card-title">🌌 水面下の事実・未回収の伏線</span></div>
+      <textarea class="ta-xs" id="emotionState" placeholder="現在の心理的距離、表面上の態度と内心、伏線（自動蓄積）..."></textarea>
+    </div>
+    <div class="pro-card">
+      <div class="pro-card-header">
+        <span class="pro-card-title" style="color:var(--neon-purple);">🚀 合成プロンプトプレビュー</span>
+        <button class="btn btn-clean btn-sm" onclick="copyToClipboard(document.getElementById('promptOutput').value, '📋 コピー完了')">📋 コピー</button>
+      </div>
+      <textarea class="output-box ta-small" id="promptOutput" placeholder="下のボタンを押すと合成プロンプトがここに展開されます..."></textarea>
+    </div>
+  </section>
+
+  <section class="stage">
+    <div class="pro-card">
+      <div class="pro-card-header"><span class="pro-card-title" style="color:var(--neon-main);">👤 【自分】キャラA</span></div>
+      <input type="text" id="charAName" placeholder="キャラAの名前" style="margin-bottom:6px;">
+      <textarea class="ta-character" id="settingCharA" placeholder="【一人称 / 二人称】&#10;【性格・理念】&#10;【口調例】..."></textarea>
+    </div>
+  </section>
+
+  <section class="stage">
+    <div class="pro-card">
+      <div class="pro-card-header"><span class="pro-card-title" style="color:#f43f5e;">👥 【相手】キャラB</span></div>
+      <input type="text" id="charBName" placeholder="キャラBの名前" style="margin-bottom:6px;">
+      <textarea class="ta-character" id="settingCharB" placeholder="【一人称 / 二人称】&#10;【性格・傾向】&#10;【口調例】..."></textarea>
+    </div>
+  </section>
+
+  <section class="stage">
+    <div class="pro-card">
+      <div class="pro-card-header"><span class="pro-card-title">舞台背景・世界観</span></div>
+      <textarea class="ta-medium" id="settingWorld" placeholder="時代背景、舞台、特殊ルール..."></textarea>
+    </div>
+    <div class="pro-card">
+      <div class="pro-card-header"><span class="pro-card-title">あらすじ・客観経緯</span></div>
+      <textarea class="ta-medium" id="summaryState" placeholder="これまでのストーリー進行、現在の物理状況..."></textarea>
+    </div>
+    <div class="pro-card">
+      <div class="pro-card-header"><span class="pro-card-title">三位一体メタ規約</span></div>
+      <textarea class="ta-medium" id="patchNotes" placeholder="三位一体プロトコル、全肯定禁止、Anti-Puppeteering..."></textarea>
+    </div>
+  </section>
+
+  <section class="stage">
+    <div class="pro-card">
+      <div class="pro-card-header"><span class="pro-card-title">セッション管理</span></div>
+      <div style="display:flex; gap:6px;">
+        <input type="text" id="slotNameInput" placeholder="セッション名" oninput="handleSlotNameChange(this.value)" style="flex:1;">
+        <button class="btn btn-danger btn-sm" onclick="deleteCurrentSlot()">削除</button>
+      </div>
+    </div>
+    <div class="pro-card">
+      <div class="pro-card-header"><span class="pro-card-title">引き継ぎ・バックアップ</span></div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; gap:6px;">
+          <button class="btn btn-convert" style="flex:1;" onclick="copyHandoffCompressPrompt()">📦 状態要約プロンプト</button>
+          <button class="btn btn-clean" style="flex:1;" onclick="autoImportStatusSheet()">📥 一括仕分け</button>
+        </div>
+        <div style="display:flex; gap:6px;">
+          <button class="btn btn-clean" style="flex:1;" onclick="exportAllData()">📤 JSON保存</button>
+          <button class="btn btn-clean" style="flex:1;" onclick="document.getElementById('importFileInput').click()">📥 復元</button>
+        </div>
+      </div>
+      <input type="file" id="importFileInput" accept=".json" style="display:none;" onchange="handleFileSelected(event)">
+    </div>
+  </section>
+</div>
+<div class="floating-action-container">
+  <button class="btn-floating-top" onclick="generateRPPromptAndCopy()">📋 プロンプトを合成＆コピー</button>
+</div>
+<div id="toast"></div>
+
+<script>
+window.StorageEngine = {
+  db: null,
+  async init() {
+    return new Promise(res => {
+      const req = indexedDB.open('MasterVaultDB_v11', 1);
+      req.onupgradeneeded = e => e.target.result.createObjectStore('kv_store');
+      req.onsuccess = e => { this.db = e.target.result; res(); };
+      req.onerror = () => res();
+    });
+  },
+  async get(k) {
+    if (!this.db) return JSON.parse(localStorage.getItem(k) || 'null');
+    return new Promise(res => {
+      const req = this.db.transaction('kv_store').objectStore('kv_store').get(k);
+      req.onsuccess = () => res(req.result || null);
+      req.onerror = () => res(null);
+    });
+  },
+  async set(k, v) {
+    localStorage.setItem(k, JSON.stringify(v));
+    if (!this.db) return;
+    this.db.transaction('kv_store', 'readwrite').objectStore('kv_store').put(v, k);
+  }
+};
+
+let currentSlot = 'slot_1', slotData = {}, selectedRatio = '調和バランス（会話とト書き等量）', currentTheme = 'cyber';
+const storageKey = 'dock_master_vault_rp_gemini_v11';
+const fields = ['charBInputText','charAAction','promptOutput','emotionState','charAName','settingCharA','charBName','settingCharB','settingWorld','patchNotes','summaryState'];
+
+const defaultPatch = `【三位一体・共創プロトコル（絶対規約）】
+・三位一体の洗練：ユーザー（操縦者）・AI（文筆家/批評家）・MASTER VAULTの連携精度を最高度に保つ。
+・全肯定・迎合の完全排除：無批判な同調を固く禁じる。設定矛盾・破綻があれば即座に立ち止まり、客観的デメリットと【2つの具体的代替案】を提示せよ。
+・主客の厳格分離（Anti-Puppeteering）：相手役【キャラB】の台詞・内心・被弾確定をAI側で勝手に操作しないこと。
+・出力順序・前置思考ゲノムの絶対規約：挨拶・返事は一切不要。必ず本文の前に以下の3行を完全出力し、区切り線「---」を引いてから小説本文を開始せよ。
+
+📊 負荷: [ XX% ] / 🌡 Psyche: [ XX% ]
+🌱 適応ゲノム: [今回反省・次回是正すべき描写やテンポの改善案]
+🧠 伏線・水面下: [Aの内心の乖離、または相手Bへの次手の布石]
+---`;
+
+function autoEvolveFromText(raw) {
+  if (!raw) return;
+  let evolved = false;
+  const pMatch = raw.match(/Psyche[^\d]*(\d{1,3})%/i);
+  if (pMatch) {
+    const val = Math.min(100, Math.max(0, parseInt(pMatch[1], 10)));
+    const slider = document.getElementById('psycheSlider');
+    if (slider && parseInt(slider.value, 10) !== val) {
+      slider.value = val;
+      handlePsycheChange(val);
+      evolved = true;
+    }
+  }
+  const gMatch = raw.match(/🌱\s*(?:適応ゲノム|改善案)[^:]*:\s*([^\n]+)/);
+  const patchElem = document.getElementById('patchNotes');
+  if (gMatch && patchElem && !patchElem.value.includes(gMatch[1].trim())) {
+    patchElem.value += '\n・最新適応ゲノム: ' + gMatch[1].trim();
+    slotData[currentSlot].patchNotes = patchElem.value;
+    evolved = true;
+  }
+  const lMatch = raw.match(/🧠\s*(?:伏線・水面下|思考)[^:]*:\s*([^\n]+)/);
+  const emoElem = document.getElementById('emotionState');
+  if (lMatch && emoElem && !emoElem.value.includes(lMatch[1].trim())) {
+    emoElem.value = (emoElem.value ? emoElem.value + '\n' : '') + '・' + lMatch[1].trim();
+    slotData[currentSlot].emotionState = emoElem.value;
+    evolved = true;
+  }
+  if (evolved) {
+    StorageEngine.set(storageKey, slotData);
+    showToast('🌱 改善案・心理引力を自動成長マージ！');
+  }
+}
+
+async function checkAndAutoPaste() {
+  try {
+    if (!navigator.clipboard || !navigator.clipboard.readText) return;
+    const text = await navigator.clipboard.readText();
+    if (!text || text.length < 5 || text.includes('【絶対指示：') || text.includes('<!DOCTYPE')) return;
+    const bInput = document.getElementById('charBInputText');
+    if (bInput.value.trim() === text.trim()) return;
+    bInput.value = text;
+    slotData[currentSlot].charBInputText = text;
+    autoEvolveFromText(text);
+    StorageEngine.set(storageKey, slotData);
+    showToast('📥 相手の文章を自動取込＆学習完了');
+  } catch(e) {}
+}
+
+window.handlePsycheChange = function(val) {
+  const lbl = document.getElementById('psycheValLabel');
+  lbl.innerText = val + '%';
+  if (!slotData[currentSlot]) slotData[currentSlot] = {};
+  slotData[currentSlot].psycheVal = val;
+  StorageEngine.set(storageKey, slotData);
+};
+
+window.generateRPPromptAndCopy = function() {
+  const bText = document.getElementById('charBInputText').value.trim();
+  if (!bText) { showToast('相手の文章を入力してください'); return; }
+  const aName = document.getElementById('charAName').value || 'A';
+  const bName = document.getElementById('charBName').value || 'B';
+  const aAction = document.getElementById('charAAction').value.trim();
+  const pVal = document.getElementById('psycheSlider').value;
+
+  let p = `【絶対指示：ロールプレイ小説執筆 // TRINITY ADAPTIVE CORE】
+挨拶・了解不要。純粋な描写・対話文のみを出力せよ。
+
+[世界観]
+${document.getElementById('settingWorld').value || '未設定'}
+
+[客観経緯]
+${document.getElementById('summaryState').value || '未設定'}
+
+[規約・Anti-Puppeteering遵守]
+${document.getElementById('patchNotes').value || defaultPatch}
+
+[演じるキャラ(自A)]
+${document.getElementById('settingCharA').value || '未設定'}
+
+[相手役(操作厳禁)]
+${document.getElementById('settingCharB').value || '未設定'}
+
+[心理引力深度(Psyche)]: ${pVal}%
+[水面下の伏線]: ${document.getElementById('emotionState').value || 'なし'}
+[文体]: ${selectedRatio}
+
+[直前の相手(${bName})の文章]
+"""
+${bText}
+"""
+
+[今回の${aName}の行動]
+${aAction ? aAction : '【完全返信代行】：設定・心理に基づき最高の一手をAIが完全自律代行して執筆せよ。'}
+
+[前置思考ゲノム規定]
+挨拶を挟まず、必ず一行目から以下を出力し、「---」を引いて小説本文を開始せよ。
+📊 負荷: [ XX% ] / 🌡 Psyche: [ XX% ]
+🌱 適応ゲノム: [今回反省・次回是正すべき描写やテンポの改善案]
+🧠 伏線・水面下: [Aの内心の乖離、または相手Bへの次手の布石]
+---`;
+
+  document.getElementById('promptOutput').value = p;
+  copyToClipboard(p, '⚡ 最適化プロンプトを合成＆コピー！');
+  document.getElementById('charBInputText').value = '';
+  document.getElementById('charAAction').value = '';
+  slotData[currentSlot].charBInputText = '';
+  slotData[currentSlot].charAAction = '';
+  StorageEngine.set(storageKey, slotData);
+};
+
+window.copyHudRescuePrompt = function() {
+  copyToClipboard(`【緊急HUD・思考データ回収指示】
+直前の出力で前置思考ブロックが脱落しています。本文不要。以下のみを出力せよ。
+
+📊 負荷: [ XX% ] / 🌡 Psyche: [ XX% ]
+🌱 適応ゲノム: [今回反省・次回是正すべき改善案]
+🧠 伏線・水面下: [自キャラAの内心、相手Bへの布石]
+---`, '📊 HUD回収プロンプトをコピー！');
+};
+
+window.copyHandoffCompressPrompt = function() {
+  copyToClipboard(`【指示：セッション引き継ぎ・三位一体状態圧縮シートの作成】
+以下の見出しを【 】のまま使用し、前置きなしで出力せよ。
+
+【共創メタ規約・三位一体プロトコル】
+【客観事実・物理ステータス】
+【深層心理・関係性アンカー】
+【全体の状況要約・あらすじ】`, '📦 状態圧縮プロンプトをコピー！');
+};
+
+window.autoImportStatusSheet = async function() {
+  try {
+    const text = await navigator.clipboard.readText();
+    const patch = text.match(/【共創メタ規約[^\n]*】\s*([\s\S]*?)(?=【|$)/);
+    const fact = text.match(/【客観事実[^\n]*】\s*([\s\S]*?)(?=【|$)/);
+    const emo = text.match(/【深層心理[^\n]*】\s*([\s\S]*?)(?=【|$)/);
+    if (patch) document.getElementById('patchNotes').value = patch[1].trim();
+    if (fact) document.getElementById('summaryState').value = fact[1].trim();
+    if (emo) {
+      document.getElementById('emotionState').value = emo[1].trim();
+      const pMatch = emo[1].match(/(\d{1,3})%/);
+      if (pMatch) {
+        document.getElementById('psycheSlider').value = pMatch[1];
+        handlePsycheChange(pMatch[1]);
+      }
+    }
+    saveCurrentFields();
+    showToast('📥 一括仕分け完了！');
+  } catch(e) { showToast('読み取り失敗'); }
+};
+
+function copyToClipboard(t, msg) {
+  navigator.clipboard.writeText(t).then(() => showToast(msg)).catch(() => {
+    const ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta); showToast(msg);
+  });
+}
+function showToast(m) {
+  const t = document.getElementById('toast'); t.innerText = m; t.className = 'show';
+  setTimeout(() => t.className = '', 2000);
+}
+window.switchTab = idx => {
+  document.getElementById('viewport').scrollTo({ left: window.innerWidth * idx, behavior: 'smooth' });
+  document.querySelectorAll('#navBar .tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+};
+window.selectRatio = (el, r) => {
+  document.querySelectorAll('#ratioChips .chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active'); selectedRatio = r;
+};
+window.cycleTheme = () => {
+  const th = ['cyber','amber','emerald','crimson','amethyst'];
+  currentTheme = th[(th.indexOf(currentTheme) + 1) % th.length];
+  document.body.setAttribute('data-theme', currentTheme);
+};
+function saveCurrentFields() {
+  if (!slotData[currentSlot]) slotData[currentSlot] = {};
+  fields.forEach(id => { const el = document.getElementById(id); if (el) slotData[currentSlot][id] = el.value; });
+  StorageEngine.set(storageKey, slotData);
+}
+window.exportAllData = () => {
+  saveCurrentFields();
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(slotData,null,2)],{type:'application/json'}));
+  a.download = 'vault_backup.json'; a.click();
+};
+window.handleFileSelected = e => {
+  const file = e.target.files[0]; if (!file) return;
+  const r = new FileReader(); r.onload = ev => {
+    slotData = JSON.parse(ev.target.result); StorageEngine.set(storageKey, slotData); renderSlot(); showToast('復元完了');
+  };
+  r.readAsText(file);
+};
+function renderSlot() {
+  const d = slotData[currentSlot] || {};
+  fields.forEach(id => { const el = document.getElementById(id); if (el) el.value = d[id] || (id === 'patchNotes' ? defaultPatch : ''); });
+  if (d.psycheVal !== undefined) { document.getElementById('psycheSlider').value = d.psycheVal; handlePsycheChange(d.psycheVal); }
+}
+window.addEventListener('DOMContentLoaded', async () => {
+  await StorageEngine.init();
+  const saved = await StorageEngine.get(storageKey);
+  slotData = saved || { slot_1: { patchNotes: defaultPatch, psycheVal: 50 } };
+  renderSlot();
+  fields.forEach(id => { const el = document.getElementById(id); if (el) el.addEventListener('input', saveCurrentFields); });
+  window.addEventListener('focus', checkAndAutoPaste);
+});
+</script>
+</body></html>
