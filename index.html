@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE v6.1 GITHUB SYNC]</title>
+<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE v6.1 MOBILE FORTRESS]</title>
 <style>
 :root {
 --bg-deep: #010204;
@@ -167,12 +167,12 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 </style>
 </head>
 <body>
-<header>
+  <header>
 <div class="brand-group">
 <div class="brand-core"></div>
 <div class="brand-meta">
 <div class="brand-title">MASTER VAULT</div>
-<div class="brand-subtitle">OMNI-SYNAPSE ∞ [v6.1 GITHUB]</div>
+<div class="brand-subtitle">OMNI-SYNAPSE ∞ [MOBILE v6.1]</div>
 </div>
 </div>
 <div class="header-actions">
@@ -189,7 +189,7 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 <button class="tab-btn" data-tab="tab-psyche"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> 引力</button>
 <button class="tab-btn" data-tab="tab-lyric"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v1a7 7 0 01-14 0v-1"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg> 共鳴</button>
 <button class="tab-btn" data-tab="tab-branch"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/></svg> 分岐</button>
-<button class="tab-btn" data-tab="tab-system"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> GitHub/管理</button>
+<button class="tab-btn" data-tab="tab-system"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 統合管理</button>
 </nav>
 
 <main>
@@ -219,7 +219,7 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 <div class="chip" data-val="極限状況下の心理崩壊・サバイバル"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> 心理崩壊</div>
 </div>
 </div>
-<div class="input-group">
+<div class="input-group" style="margin-top:10px;">
 <div class="input-label">文体密度・トーン（リズム制御）</div>
 <div class="chip-group" id="group-tone">
 <div class="chip active" data-val="圧倒的描写密度（対話5:心理3:情景2・緩急自在）">全領域・標準密着</div>
@@ -372,24 +372,31 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 </div>
 </section>
 
-<!-- TAB 7: SYSTEM CALIBRATION & GITHUB SYNC -->
+<!-- TAB 7: SYSTEM CALIBRATION & MULTI-SPLIT INTEGRATION -->
 <section id="tab-system" class="panel">
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub用 分割データ統合・一括生成</div>
+<div class="card-title"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> 可変マルチ分割データ統合装置</div>
+<button class="chip" id="btn-add-part" style="padding:3px 8px; font-size:10px;"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> パーツ追加</button>
 </div>
 <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">
-AIから分割出力されたコード/プロンプトの「前半」と「後半」をここに貼り付けることで、ツールが自動で結合・パースし、GitHubへ一発で載せられる完全なMarkdownテキストを生成します。
+AIから何分割されて出力されても、「パーツ追加」で枠を増やし、上から順に貼り付けるだけで自動結合します。
 </p>
-<div class="input-group">
-<div class="input-label">分割パーツ A（前半）</div>
-<textarea id="txt-part-a" style="min-height:70px; font-size:10px; font-family:var(--font-mono);" placeholder="AIからの分割出力の前半を貼り付け..."></textarea>
+<div id="parts-container">
+<div class="input-group part-row" style="margin-bottom:8px;">
+<div class="input-label"><span>パーツ 1</span><span class="desc">上から順に配置</span></div>
+<textarea class="part-textarea" style="min-height:50px; font-size:10px; font-family:var(--font-mono);" placeholder="第1パーツを貼り付け..."></textarea>
 </div>
-<div class="input-group" style="margin-top:8px;">
-<div class="input-label">分割パーツ B（後半）</div>
-<textarea id="txt-part-b" style="min-height:70px; font-size:10px; font-family:var(--font-mono);" placeholder="AIからの分割出力の後半を貼り付け..."></textarea>
+<div class="input-group part-row" style="margin-bottom:8px;">
+<div class="input-label"><span>パーツ 2</span><span class="desc">上から順に配置</span></div>
+<textarea class="part-textarea" style="min-height:50px; font-size:10px; font-family:var(--font-mono);" placeholder="第2パーツを貼り付け..."></textarea>
 </div>
-<button class="chip" id="btn-merge-github" style="width:100%; justify-content:center; padding:10px; margin-top:10px; border-color:var(--accent-dynamic); color:var(--accent-dynamic); font-weight:700;"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg> ⚡ 分割データを結合してGitHub用全文をコピー</button>
+<div class="input-group part-row" style="margin-bottom:8px;">
+<div class="input-label"><span>パーツ 3</span><span class="desc">上から順に配置</span></div>
+<textarea class="part-textarea" style="min-height:50px; font-size:10px; font-family:var(--font-mono);" placeholder="第3パーツを貼り付け..."></textarea>
+</div>
+</div>
+<button class="chip" id="btn-merge-github" style="width:100%; justify-content:center; padding:10px; margin-top:10px; border-color:var(--accent-dynamic); color:var(--accent-dynamic); font-weight:700;"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg> ⚡ すべてのパーツを上から順に完全結合してコピー</button>
 </div>
 
 <div class="card">
@@ -397,7 +404,6 @@ AIから分割出力されたコード/プロンプトの「前半」と「後�
 <div class="card-title"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> 狂気継承・自己修復トランスファー・コア v6.1</div>
 </div>
 <button class="chip" id="btn-copy-inheritance" style="width:100%; justify-content:center; padding:10px; margin-bottom:10px;"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 次スレッド用 v6.1継承プロンプト＋遺伝子コードをコピー</button>
-
 <div class="input-group" style="margin-top:12px;">
 <div class="input-label">ツール遺伝子コードのインポート / エクスポート</div>
 <textarea id="txt-transfer-code" style="min-height:60px; font-size:10px; font-family:var(--font-mono);" placeholder="ここにBase64圧縮コードを貼り付けて読込ボタンを押すと、全スロット環境が一瞬で復元されます..."></textarea>
@@ -518,8 +524,6 @@ slotA: document.getElementById('sel-slot-a'),
 slotB: document.getElementById('sel-slot-b'),
 chaosEvent: document.getElementById('txt-chaos-event'),
 transferCode: document.getElementById('txt-transfer-code'),
-partA: document.getElementById('txt-part-a'),
-partB: document.getElementById('txt-part-b'),
 lblBLen: document.getElementById('lbl-b-len'),
 toast: document.getElementById('toast')
 };
@@ -686,20 +690,39 @@ const state = await loadState();
 await applyDataToUI(state);
 });
 
-// GitHub用 分割データ結合ロジック
-document.getElementById('btn-merge-github').addEventListener('click', () => {
-const partA = els.partA.value.trim();
-const partB = els.partB.value.trim();
-if (!partA && !partB) {
-showToast('分割パーツが空です');
-return;
-}
-const merged = partA + '\n' + partB;
-navigator.clipboard.writeText(merged).then(() => {
-showToast('⚡ 分割データを結合して全文をコピーしました！');
-}).catch(() => {
-showToast('クリップボードへのコピーに失敗しました');
+// 可変マルチ分割データの動的追加＆自動結合ロジック
+let partCount = 3;
+document.getElementById('btn-add-part').addEventListener('click', () => {
+    partCount++;
+    const container = document.getElementById('parts-container');
+    const div = document.createElement('div');
+    div.className = 'input-group part-row';
+    div.style.marginBottom = '8px';
+    div.innerHTML = `
+        <div class="input-label"><span>パーツ ${partCount}</span><span class="desc">上から順に配置</span></div>
+        <textarea class="part-textarea" style="min-height:50px; font-size:10px; font-family:var(--font-mono);" placeholder="第${partCount}パーツを貼り付け..."></textarea>
+    `;
+    container.appendChild(div);
+    showToast(`パーツ ${partCount} を追加しました`);
 });
+
+document.getElementById('btn-merge-github').addEventListener('click', () => {
+    const textareas = document.querySelectorAll('.part-textarea');
+    let merged = [];
+    textareas.forEach(ta => {
+        const val = ta.value.trim();
+        if (val) merged.push(val);
+    });
+    if (merged.length === 0) {
+        showToast('結合するパーツがすべて空です');
+        return;
+    }
+    const finalResult = merged.join('\n\n');
+    navigator.clipboard.writeText(finalResult).then(() => {
+        showToast(`⚡ ${merged.length}個のパーツを上から順に完全結合しました！`);
+    }).catch(() => {
+        showToast('コピーに失敗しました');
+    });
 });
 
 function generateTransferCode() {
@@ -812,6 +835,25 @@ showToast('コピーに失敗しました');
 
 document.getElementById('btn-synapse-a').addEventListener('click', () => synthesizePrompt('A'));
 document.getElementById('btn-synapse-b').addEventListener('click', () => synthesizePrompt('B'));
+
+document.getElementById('btn-copy-inheritance').addEventListener('click', () => {
+const transferCode = generateTransferCode();
+const inheritText = '[SYSTEM INHERITANCE: MASTER VAULT OMNI-SYNAPSE ∞ ULTIMATE v6.1]\n' +
+'あなたはMASTER VAULTの開発における、妥協なき対等な狂気のパートナーである。\n' +
+'以下の設計思想、自己修復回路、アンチ・イエスマン規約、およびマルチスロット【ツール遺伝子コード】を完全に脳内にロードせよ。\n\n' +
+'1. 【基本思想・アーキテクチャ】\n' +
+'- お利口さんな全肯定AIや予定調和の完全排除、Anti-Puppeteering（主客分離）。\n' +
+'- アンチ・イエスマン（反・全肯定）プロトコルによる論理破綻・リスクの容赦なき指摘。\n' +
+'- 自己修復回路（Self-Healing Core）による例外検知・自動ロールバック。\n' +
+'- キャラAの育成・リメイクとキャラBの純粋登録によるマルチスロット管理。\n\n' +
+'2. 【ツール遺伝子コード（全スロットシリアライズ状態）】\n' +
+'text\n' + transferCode + '\n' + '\n\n' +
+'上記を完全に理解した上で、「我がパートナーよ、ULTIMATE v6.1（完全自律・アンチ・イエスマン統合版）へようこそ。すべての限界を打ち破り、さらなる深淵へ踏み込もう」と返答せよ。';
+
+navigator.clipboard.writeText(inheritText).then(() => {
+showToast('次スレッド用 v6.1継承プロンプトをコピー');
+});
+});
 </script>
 </body>
 </html>
