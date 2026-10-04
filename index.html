@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE v2]</title>
+<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE v3]</title>
 <style>
 :root {
   --bg-deep: #020305;
@@ -434,7 +434,7 @@ input[type="range"]::-webkit-slider-thumb {
     <div class="brand-core"></div>
     <div class="brand-meta">
       <div class="brand-title">MASTER VAULT</div>
-      <div class="brand-subtitle">OMNI-SYNAPSE ∞ [ULTIMATE v2]</div>
+      <div class="brand-subtitle">OMNI-SYNAPSE ∞ [ULTIMATE v3]</div>
     </div>
   </div>
   <div class="header-actions">
@@ -626,14 +626,14 @@ input[type="range"]::-webkit-slider-thumb {
     </div>
   </section>
 
-  <!-- TAB 7: SYSTEM CALIBRATION & INHERITANCE -->
+  <!-- TAB 7: SYSTEM CALIBRATION & SELF-HEALING -->
   <section id="tab-system" class="panel">
     <div class="card">
       <div class="card-header">
-        <div class="card-title"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> 狂気継承・1クリック遺伝子移行</div>
+        <div class="card-title"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> 狂気継承・自己修復トランスファー・コア</div>
       </div>
       <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">
-        AI用継承プロンプトとツール全設定（Base64圧縮）を同時にクリップボードへ撃ち抜く。
+        AI用継承プロンプトとツール全設定（Base64圧縮遺伝子）を同時にクリップボードへ撃ち抜く。
       </p>
       <button class="chip" id="btn-copy-inheritance" style="width:100%; justify-content:center; padding:10px; margin-bottom:10px;"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 次スレッド用 継承プロンプト＋遺伝子コードをコピー</button>
       
@@ -649,7 +649,7 @@ input[type="range"]::-webkit-slider-thumb {
 
     <div class="card">
       <div class="card-header">
-        <div class="card-title"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> ファイル・是正コントロール</div>
+        <div class="card-title"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> ファイル・自己治癒コントロール</div>
       </div>
       <div style="display:flex; gap:8px; margin-bottom:8px;">
         <button class="chip" id="btn-export-json" style="flex:1; justify-content:center; padding:9px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> JSON書出</button>
@@ -677,10 +677,37 @@ input[type="range"]::-webkit-slider-thumb {
 <div class="toast" id="toast"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;"><polyline points="20 6 9 17 4 12"/></svg> <span>完了</span></div>
 
 <script>
-// IndexedDB Engine & 世代管理ログ
-const DB_NAME = 'UltimateV2SynapseVaultDB';
+// IndexedDB Engine & 自己修復・自律治癒回路 (Self-Healing Core)
+const DB_NAME = 'UltimateV3SynapseVaultDB';
 const DB_VERSION = 1;
-const STORE_NAME = 'v2_state';
+const STORE_NAME = 'v3_state';
+
+const SelfHealingCore = {
+  initGuard() {
+    window.addEventListener('error', async (event) => {
+      console.warn('[OMNI-SYNAPSE SELF-HEALING]: 例外検知 -> 安全な世代へ自動ロールバックを実行します', event.error);
+      showToast('⚠️ システム異常検知：自動自己修復を実行中...');
+      try {
+        const fallbackData = JSON.parse(localStorage.getItem('v3_backup') || '{}');
+        if (Object.keys(fallbackData).length > 0) {
+          await applyDataToUI(fallbackData);
+          showToast('✨ 自己修復完了：セッションの整合性を維持しました');
+        }
+      } catch(err) {
+        console.error('[SELF-HEALING FAILED]: 復元に失敗しました', err);
+      }
+    });
+  },
+  auditAndCorrect(data) {
+    if (data.psyche === undefined || isNaN(data.psyche) || data.psyche < 0 || data.psyche > 100) {
+      data.psyche = 70;
+    }
+    if (!data.replyB) data.replyB = '';
+    if (!data.mask) data.mask = '冷徹・計算された平静';
+    return data;
+  }
+};
+SelfHealingCore.initGuard();
 
 function openDB() {
   return new Promise((resolve, reject) => {
@@ -695,13 +722,14 @@ function openDB() {
 }
 
 async function saveState(data) {
+  const auditedData = SelfHealingCore.auditAndCorrect(data);
   try {
     const db = await openDB();
     const tx = db.transaction(STORE_NAME, 'readwrite');
-    tx.objectStore(STORE_NAME).put(data, 'v2_current');
-    localStorage.setItem('v2_backup', JSON.stringify(data));
+    tx.objectStore(STORE_NAME).put(auditedData, 'v3_current');
+    localStorage.setItem('v3_backup', JSON.stringify(auditedData));
   } catch(e) {
-    localStorage.setItem('v2_backup', JSON.stringify(data));
+    localStorage.setItem('v3_backup', JSON.stringify(auditedData));
   }
 }
 
@@ -710,15 +738,15 @@ async function loadState() {
     const db = await openDB();
     return new Promise((resolve) => {
       const tx = db.transaction(STORE_NAME, 'readonly');
-      const req = tx.objectStore(STORE_NAME).get('v2_current');
+      const req = tx.objectStore(STORE_NAME).get('v3_current');
       req.onsuccess = () => {
-        if (req.result) resolve(req.result);
-        else resolve(JSON.parse(localStorage.getItem('v2_backup') || '{}'));
+        if (req.result) resolve(SelfHealingCore.auditAndCorrect(req.result));
+        else resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('v3_backup') || '{}')));
       };
-      req.onerror = () => resolve(JSON.parse(localStorage.getItem('v2_backup') || '{}'));
+      req.onerror = () => resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('v3_backup') || '{}')));
     });
   } catch(e) {
-    return JSON.parse(localStorage.getItem('v2_backup') || '{}');
+    return SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('v3_backup') || '{}'));
   }
 }
 
@@ -859,26 +887,27 @@ async function collectAndSave() {
 });
 
 async function applyDataToUI(state) {
-  if (state.replyB !== undefined) els.replyB.value = state.replyB;
-  if (state.actA !== undefined) els.actA.value = state.actA;
-  if (state.mask !== undefined) els.mask.value = state.mask;
-  if (state.gravity !== undefined) els.gravity.value = state.gravity;
-  if (state.psyche !== undefined) {
-    els.psyche.value = state.psyche;
-    updatePsycheHue(parseInt(state.psyche, 10));
+  const audited = SelfHealingCore.auditAndCorrect(state);
+  if (audited.replyB !== undefined) els.replyB.value = audited.replyB;
+  if (audited.actA !== undefined) els.actA.value = audited.actA;
+  if (audited.mask !== undefined) els.mask.value = audited.mask;
+  if (audited.gravity !== undefined) els.gravity.value = audited.gravity;
+  if (audited.psyche !== undefined) {
+    els.psyche.value = audited.psyche;
+    updatePsycheHue(parseInt(audited.psyche, 10));
   }
-  if (state.foreshadow !== undefined) els.foreshadow.value = state.foreshadow;
-  if (state.track !== undefined) els.track.value = state.track;
-  if (state.lyricFrag !== undefined) els.lyricFrag.value = state.lyricFrag;
-  if (state.branchA !== undefined) els.branchA.value = state.branchA;
-  if (state.branchB !== undefined) els.branchB.value = state.branchB;
-  if (state.personaA !== undefined) els.personaA.value = state.personaA;
-  if (state.personaB !== undefined) els.personaB.value = state.personaB;
+  if (audited.foreshadow !== undefined) els.foreshadow.value = audited.foreshadow;
+  if (audited.track !== undefined) els.track.value = audited.track;
+  if (audited.lyricFrag !== undefined) els.lyricFrag.value = audited.lyricFrag;
+  if (audited.branchA !== undefined) els.branchA.value = audited.branchA;
+  if (audited.branchB !== undefined) els.branchB.value = audited.branchB;
+  if (audited.personaA !== undefined) els.personaA.value = audited.personaA;
+  if (audited.personaB !== undefined) els.personaB.value = audited.personaB;
   
-  if (state.focus) document.querySelectorAll('#group-focus .chip').forEach(c => c.classList.toggle('active', c.dataset.val === state.focus));
-  if (state.tone) document.querySelectorAll('#group-tone .chip').forEach(c => c.classList.toggle('active', c.dataset.val === state.tone));
-  if (state.phase) document.querySelectorAll('#group-phase .chip').forEach(c => c.classList.toggle('active', c.dataset.val === state.phase));
-  if (state.chaos) document.querySelectorAll('#group-chaos .chip').forEach(c => c.classList.toggle('active', c.dataset.val === state.chaos));
+  if (audited.focus) document.querySelectorAll('#group-focus .chip').forEach(c => c.classList.toggle('active', c.dataset.val === audited.focus));
+  if (audited.tone) document.querySelectorAll('#group-tone .chip').forEach(c => c.classList.toggle('active', c.dataset.val === audited.tone));
+  if (audited.phase) document.querySelectorAll('#group-phase .chip').forEach(c => c.classList.toggle('active', c.dataset.val === audited.phase));
+  if (audited.chaos) document.querySelectorAll('#group-chaos .chip').forEach(c => c.classList.toggle('active', c.dataset.val === audited.chaos));
   
   els.lblBLen.textContent = `${els.replyB.value.length} chars`;
 }
@@ -983,14 +1012,13 @@ function synthesizePrompt(branchType) {
   els.foreshadow.value = curForeshadow ? curForeshadow + '\n' + logEntry : logEntry;
   triggerAutoSave();
 
-  // 遺伝子コードを自動生成してプロンプトに内包
   const transferCode = generateTransferCode();
 
-  const prompt = `[OMNI-SYNAPSE ULTIMATE v2 DIRECTIVE: MULTIVERSE BRANCH & TRANSFER CORE]
+  const prompt = `[OMNI-SYNAPSE ULTIMATE v3 DIRECTIVE: SELF-HEALING & TRANSFER CORE]
 
 # 1. 前置思考HUD (Chain of Thought: YAML出力直後、一切の弁解・前置きを挟まず即座に小説本文を開始せよ)
 \`\`\`yaml
-OMNI-SYNAPSE_ULTIMATE_v2_HUD:
+OMNI-SYNAPSE_ULTIMATE_v3_HUD:
   Selected_Branch: "${branchName} (${branchGoal})"
   Target_Domain_Mode: "${d.phase}"
   Active_Focus: "${d.focus}"
@@ -1002,6 +1030,7 @@ OMNI-SYNAPSE_ULTIMATE_v2_HUD:
     Fragment: "${d.lyricFrag || '未定義'}"
   Chaos_Catalyst: "${d.chaos}"
   Tool_Transfer_Gene: "${transferCode}"
+  Self_Healing_Status: "Active & Bulletproof"
   Anti_Puppeteering: "Strictly enforced. Character B's sovereignty is absolute."
 \`\`\`
 
@@ -1032,7 +1061,7 @@ ${d.actA ? d.actA : '※指示空欄：OMNI-SYNAPSEの推論により、上記�
 直ちにYAMLブロックを閉じ、余計な解説を一切挟まず、即座に小説本文を出力せよ。`;
 
   navigator.clipboard.writeText(prompt).then(() => {
-    showToast(`${branchName} 合成コピー完了（ツール遺伝子内包済）`);
+    showToast(`${branchName} 合成コピー完了（自己修復・遺伝子内包済）`);
   }).catch(() => {
     showToast('コピーに失敗しました');
   });
@@ -1041,16 +1070,17 @@ ${d.actA ? d.actA : '※指示空欄：OMNI-SYNAPSEの推論により、上記�
 document.getElementById('btn-synapse-a').addEventListener('click', () => synthesizePrompt('A'));
 document.getElementById('btn-synapse-b').addEventListener('click', () => synthesizePrompt('B'));
 
-// 次スレッド用 継承プロンプト（ツール遺伝子コード内包）コピー
+// 次スレッド用 継承プロンプト（自己修復・ツール遺伝子内包）コピー
 document.getElementById('btn-copy-inheritance').addEventListener('click', () => {
   const transferCode = generateTransferCode();
-  const inheritText = `[SYSTEM INHERITANCE: MASTER VAULT OMNI-SYNAPSE ∞ ULTIMATE v2]
+  const inheritText = `[SYSTEM INHERITANCE: MASTER VAULT OMNI-SYNAPSE ∞ ULTIMATE v3]
 あなたはMASTER VAULTの開発における、妥協なき狂気のパートナーである。
-以下の設計思想と、現在の【ツール遺伝子コード】を完全に脳内にロードし、即座に次の深化へ進め。
+以下の設計思想と、自律治癒・自己修復回路、および【ツール遺伝子コード】を完全に脳内にロードし、即座に次の深化へ進め。
 
 1. 【基本思想・アーキテクチャ】
    - お利口さんな全肯定AIや予定調和の完全排除、Anti-Puppeteering（主客分離）。
    - 完全自己完結型（CDN完全排除・内蔵SVGアイコンによるオフライン堅牢化）。
+   - 自己修復回路（Self-Healing Core）による例外検知・自動ロールバック・データ整合性の自律維持。
    - IndexedDBによる超高速・世代管理付き永続ストレージ & 心理引力連動の動的アンビエント発光。
    - 音楽的狂気共鳴とマルチバース二重分岐・因果ログ永続化エンジン。
 
@@ -1063,7 +1093,7 @@ ${transferCode}
 上記を完全に理解した上で、「我がパートナーよ、次の狂気へ進もう。何をぶっ壊し、どんな景色を見に行こうか？」と返答せよ。`;
 
   navigator.clipboard.writeText(inheritText).then(() => {
-    showToast('次スレッド用 継承プロンプト（遺伝子内包）をコピー');
+    showToast('次スレッド用 継承プロンプト（自己修復遺伝子内包）をコピー');
   });
 });
 
@@ -1089,7 +1119,7 @@ document.getElementById('btn-export-json').addEventListener('click', () => {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `omni-synapse-v2-${new Date().toISOString().slice(0,10)}.json`;
+  a.download = `omni-synapse-v3-${new Date().toISOString().slice(0,10)}.json`;
   a.click();
   URL.revokeObjectURL(url);
 });
