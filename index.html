@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE v6.1]</title>
+<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE v6.1 - AUTO-SYNCHRONIZED]</title>
 <style>
 :root {
 --bg-deep: #010204;
@@ -22,7 +22,7 @@
 --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
-• { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 body {
 background-color: var(--bg-deep); color: var(--text-main); font-family: var(--font-sans);
 line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column;
@@ -167,6 +167,7 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 </style>
 </head>
 <body>
+
 <header>
 <div class="brand-group">
 <div class="brand-core"></div>
@@ -383,6 +384,13 @@ AI用継承プロンプト（アンチ・イエスマン規約内包）と全ス
 </p>
 <button class="chip" id="btn-copy-inheritance" style="width:100%; justify-content:center; padding:10px; margin-bottom:10px;"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 次スレッド用 v6.1継承プロンプト＋遺伝子コードをコピー</button>
 
+<!-- 🔗 スマート・ポインタ自動化デッキ追加 -->
+<div class="input-group" style="margin-top:12px;">
+<div class="input-label">次スレッド用 魔法のスマート・ポインタリンク</div>
+<input type="text" id="txt-smart-pointer-link" readonly placeholder="下のボタンを押してスマートリンクを発行..." style="font-size:10px; font-family:var(--font-mono);">
+</div>
+<button class="chip" id="btn-gen-smart-pointer" style="width:100%; justify-content:center; padding:9px; margin-bottom:10px; border-color:var(--accent-dynamic); color:var(--accent-dynamic);"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg> ⚡ スマート・ポインタリンクを生成（ワンタップコピー）</button>
+
 <div class="input-group" style="margin-top:12px;">
 <div class="input-label">ツール遺伝子コードのインポート / エクスポート</div>
 <textarea id="txt-transfer-code" style="min-height:60px; font-size:10px; font-family:var(--font-mono);" placeholder="ここにBase64圧縮コードを貼り付けて読込ボタンを押すと、全スロット環境が一瞬で復元されます..."></textarea>
@@ -406,6 +414,7 @@ AI用継承プロンプト（アンチ・イエスマン規約内包）と全ス
 </div>
 </section>
 </main>
+  
 
 <div class="bottom-dock">
 <div class="dock-inner">
@@ -514,6 +523,7 @@ slotA: document.getElementById('sel-slot-a'),
 slotB: document.getElementById('sel-slot-b'),
 chaosEvent: document.getElementById('txt-chaos-event'),
 transferCode: document.getElementById('txt-transfer-code'),
+smartPointerLink: document.getElementById('txt-smart-pointer-link'),
 lblBLen: document.getElementById('lbl-b-len'),
 toast: document.getElementById('toast')
 };
@@ -675,9 +685,29 @@ if (audited.phase) document.querySelectorAll('#group-phase .chip').forEach(c => 
 els.lblBLen.textContent = els.replyB.value.length + ' chars';
 }
 
+// 【自動化の核心】URLハッシュ（#import=...）からの自動インポート回路
+async function checkAndExecuteAutoImport() {
+const hash = window.location.hash;
+if (hash && hash.startsWith('#import=')) {
+try {
+const b64 = hash.replace('#import=', '');
+const jsonStr = decodeURIComponent(escape(atob(b64)));
+const data = JSON.parse(jsonStr);
+await saveState(data);
+await applyDataToUI(data);
+showToast('⚡ 自動インポート成功：遺伝子を完全復元');
+window.history.replaceState({}, document.title, window.location.pathname);
+} catch(e) {
+console.error('[Auto-Import Error]', e);
+showToast('⚠️ 自動インポートに失敗しました');
+}
+}
+}
+
 window.addEventListener('DOMContentLoaded', async () => {
 const state = await loadState();
 await applyDataToUI(state);
+await checkAndExecuteAutoImport();
 });
 
 const chaosPool = [
@@ -706,6 +736,28 @@ showToast('コード生成に失敗しました');
 return '';
 }
 }
+
+// 🔗 スマート・ポインタリンク自動生成
+function generateSmartPointerLink() {
+const data = collectData();
+try {
+const jsonStr = JSON.stringify(data);
+const b64 = btoa(unescape(encodeURIComponent(jsonStr)));
+const currentUrl = window.location.href.split('#')[0];
+const smartLink = `${currentUrl}#import=${b64}`;
+if (els.smartPointerLink) els.smartPointerLink.value = smartLink;
+navigator.clipboard.writeText(smartLink);
+showToast('🔗 スマート・ポインタリンクをコピーしました');
+return smartLink;
+} catch(e) {
+showToast('スマートポインタ生成失敗');
+return '';
+}
+}
+
+document.getElementById('btn-gen-smart-pointer').addEventListener('click', () => {
+generateSmartPointerLink();
+});
 
 document.getElementById('btn-gen-code').addEventListener('click', () => {
 const code = generateTransferCode();
@@ -768,7 +820,6 @@ autoSyncAndResonance(els.replyB.value || "forced_trigger");
 showToast('オート共鳴リリックを生成');
 });
 
-// v6.1 アンチ・イエスマン規約＆完全自律合成プロンプト
 function synthesizePrompt(branchType) {
 const d = collectData();
 const branchGoal = branchType === 'A' ? d.branchA : d.branchB;
@@ -784,7 +835,7 @@ const transferCode = generateTransferCode();
 
 const prompt = '[OMNI-SYNAPSE ULTIMATE v6.1 DIRECTIVE: SINGULARITY CORE]\n\n' +
 '1. 前置思考HUD (Chain of Thought: YAML出力直後、一切の弁解・前置きを挟まず即座に小説本文を開始せよ)\n\n' +
-'yaml\n' + 'OMNI-SYNAPSE_ULTIMATE_v61_HUD:\n' + ' Selected_Branch: "' + branchGoal + '"\n' + ' Target_Domain_Mode: "' + d.focus + '"\n' + ' Psyche_Matrix:\n' + ' Surface_Mask: "' + d.mask + '"\n' + ' Deep_Gravity: "' + d.gravity + '"\n' + ' Depth: "' + d.psyche + '%"\n' + ' Aesthetic_Soundtrack: "' + (d.track || 'オート共鳴回路適用') + '"\n' + ' Active_Chaos_Event: "' + d.chaosEvent + '"\n' + ' Tool_Transfer_Gene: "' + transferCode + '"\n' + ' Anti_Puppeteering: "Strictly enforced. Character B's sovereignty is absolute."\n' + ' Anti_Yesman_Protocol: "Active. Reject blind compliance, expose structural contradictions & risks."\n' + '\n\n' +
+'yaml\n' + 'OMNI-SYNAPSE_ULTIMATE_v61_HUD:\n' + ' Selected_Branch: "' + branchGoal + '"\n' + ' Target_Domain_Mode: "' + d.focus + '"\n' + ' Psyche_Matrix:\n' + ' Surface_Mask: "' + d.mask + '"\n' + ' Deep_Gravity: "' + d.gravity + '"\n' + ' Depth: "' + d.psyche + '%"\n' + ' Aesthetic_Soundtrack: "' + (d.track || 'オート共鳴回路適用') + '"\n' + ' Active_Chaos_Event: "' + d.chaosEvent + '"\n' + ' Tool_Transfer_Gene: "' + transferCode + '"\n' + ' Anti_Puppeteering: "Strictly enforced. Character B\'s sovereignty is absolute."\n' + ' Anti_Yesman_Protocol: "Active. Reject blind compliance, expose structural contradictions & risks."\n' + '\n\n' +
 '2. 鉄則規約（Anti-Puppeteering & Anti-Yesman）\n' +
 '- 【主客分離】キャラBの台詞、感情決定、行動結果をキャラA側で勝手に捏造・代行・前倒し描写することを一切禁ずる。キャラBの自律意志を死守せよ。\n' +
 '- 【反・全肯定（アンチ・イエスマン）】ユーザーの意見や展開を無条件で肯定・迎合するな。論理的破綻や重大な解釈違いを検知した場合は、容赦なく異議とデメリットを提示せよ。\n' +
