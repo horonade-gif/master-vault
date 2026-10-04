@@ -22,11 +22,11 @@
 --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
-• { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 body {
 background-color: var(--bg-deep); color: var(--text-main); font-family: var(--font-sans);
 line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column;
-overflow-x: hidden; padding-bottom: 160px; position: relative; transition: background 0.5s ease;
+overflow-x: hidden; padding-bottom: 140px; position: relative; transition: background 0.5s ease;
 }
 body::before {
 content: ''; position: fixed; top: -20%; left: -20%; width: 140%; height: 140%;
@@ -34,111 +34,136 @@ background: radial-gradient(circle at 50% 10%, var(--accent-glow) 0%, transparen
 opacity: 0.7; pointer-events: none; z-index: 0; animation: pulseBg 3.5s infinite ease-in-out;
 }
 @keyframes pulseBg { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.08); opacity: 0.9; } }
+
 header {
 position: sticky; top: 0; z-index: 50; background: rgba(3, 5, 8, 0.98);
 backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-subtle);
-padding: 12px 18px; display: flex; align-items: center; justify-content: space-between;
+padding: 10px 14px; display: flex; align-items: center; justify-content: space-between;
+flex-wrap: wrap; gap: 8px;
 }
-.brand-group { display: flex; align-items: center; gap: 12px; }
+.brand-group { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
 .brand-core {
-width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--accent-dynamic);
-box-shadow: 0 0 16px var(--accent-dynamic); display: flex; align-items: center; justify-content: center;
-background: rgba(0, 0, 0, 0.85); position: relative;
+width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--accent-dynamic);
+box-shadow: 0 0 12px var(--accent-dynamic); display: flex; align-items: center; justify-content: center;
+background: rgba(0, 0, 0, 0.85); position: relative; flex-shrink: 0;
 }
 .brand-core::after {
-content: ''; width: 10px; height: 10px; border-radius: 50%;
-background: var(--accent-dynamic); box-shadow: 0 0 10px var(--accent-dynamic);
+content: ''; width: 8px; height: 8px; border-radius: 50%;
+background: var(--accent-dynamic); box-shadow: 0 0 8px var(--accent-dynamic);
 animation: pulseCore 2s infinite ease-in-out;
 }
 @keyframes pulseCore { 0%, 100% { transform: scale(0.8); opacity: 0.6; } 50% { transform: scale(1.4); opacity: 1; } }
-.brand-meta { display: flex; flex-direction: column; }
-.brand-title { font-size: 13px; font-weight: 800; letter-spacing: 0.08em; color: #fff; text-transform: uppercase; }
-.brand-subtitle { font-size: 9px; font-family: var(--font-mono); color: var(--accent-dynamic); letter-spacing: 0.15em; font-weight: 600; }
-.header-actions { display: flex; align-items: center; gap: 8px; }
+.brand-meta { display: flex; flex-direction: column; min-width: 0; }
+.brand-title { font-size: 12px; font-weight: 800; letter-spacing: 0.05em; color: #fff; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.brand-subtitle { font-size: 8px; font-family: var(--font-mono); color: var(--accent-dynamic); letter-spacing: 0.1em; font-weight: 600; }
+
+.header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 .btn-icon {
 background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-muted);
-width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center;
-justify-content: center; cursor: pointer; transition: all 0.2s ease;
+width: 32px; height: 32px; border-radius: var(--radius-sm); display: flex; align-items: center;
+justify-content: center; cursor: pointer; transition: all 0.2s ease; flex-shrink: 0;
 }
-.btn-icon svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; }
+.btn-icon svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; }
 .btn-icon:active { transform: scale(0.92); border-color: var(--accent-dynamic); color: var(--accent-dynamic); }
 
-/* Dynamic Status Indicators in Header */
-.header-indicators { display: flex; gap: 4px; align-items: center; font-family: var(--font-mono); font-size: 9px; }
+.header-indicators { display: flex; gap: 3px; align-items: center; font-family: var(--font-mono); font-size: 8px; }
 .sys-badge {
 background: rgba(3, 5, 8, 0.9); border: 1px solid var(--border-subtle); color: var(--text-dim);
-padding: 2px 6px; border-radius: 4px; transition: all 0.3s;
+padding: 2px 4px; border-radius: 4px; transition: all 0.3s; white-space: nowrap;
 }
-.sys-badge.active { border-color: var(--accent-dynamic); color: var(--accent-dynamic); box-shadow: 0 0 8px var(--accent-glow); }
+.sys-badge.active { border-color: var(--accent-dynamic); color: var(--accent-dynamic); box-shadow: 0 0 6px var(--accent-glow); }
 
 nav.tabs {
 position: relative; z-index: 10; display: flex; background: rgba(6, 9, 15, 0.95);
 backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle);
 padding: 8px 10px; gap: 6px; overflow-x: auto; scrollbar-width: none;
+-webkit-overflow-scrolling: touch;
 }
 nav.tabs::-webkit-scrollbar { display: none; }
 .tab-btn {
-flex: 0 0 auto; min-width: 58px; background: rgba(3, 5, 8, 0.75);
+flex: 0 0 auto; min-width: 64px; background: rgba(3, 5, 8, 0.75);
 border: 1px solid var(--border-subtle); color: var(--text-muted); font-size: 11px; font-weight: 600;
-padding: 8px 10px; border-radius: var(--radius-sm); cursor: pointer;
-display: flex; align-items: center; justify-content: center; gap: 4px;
+padding: 8px 12px; border-radius: var(--radius-sm); cursor: pointer;
+display: flex; align-items: center; justify-content: center; gap: 5px;
 white-space: nowrap; transition: all 0.2s ease;
 }
-.tab-btn svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 2.2; fill: none; }
+.tab-btn svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 2.2; fill: none; flex-shrink: 0; }
 .tab-btn.active {
 background: var(--bg-card); border-color: var(--border-dynamic); color: var(--accent-dynamic);
 box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6), 0 0 12px var(--accent-glow);
 }
-main { position: relative; z-index: 10; flex: 1; padding: 16px; max-width: 640px; margin: 0 auto; width: 100%; }
+
+main { position: relative; z-index: 10; flex: 1; padding: 12px; max-width: 640px; margin: 0 auto; width: 100%; }
 .panel { display: none; animation: panelSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
 .panel.active { display: block; }
 @keyframes panelSlide { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
 .card {
 background: var(--bg-card); backdrop-filter: blur(24px); border: 1px solid var(--border-subtle);
-border-radius: var(--radius-md); padding: 15px; margin-bottom: 14px;
+border-radius: var(--radius-md); padding: 14px; margin-bottom: 12px;
 box-shadow: 0 8px 24px rgba(0, 0, 0, 0.48); transition: border-color 0.3s, box-shadow 0.3s;
 }
 .card:focus-within { border-color: var(--border-dynamic); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 16px var(--accent-glow); }
-.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+
+.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; flex-wrap: wrap; }
 .card-title {
-font-size: 12px; font-weight: 700; color: var(--text-main); text-transform: uppercase;
-letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px;
+font-size: 11px; font-weight: 700; color: var(--text-main); text-transform: uppercase;
+letter-spacing: 0.05em; display: flex; align-items: center; gap: 6px; min-width: 0; flex: 1;
 }
-.card-title svg { color: var(--accent-dynamic); width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.2; fill: none; }
-.card-badge { font-size: 10px; color: var(--text-dim); font-family: var(--font-mono); }
-.input-group { margin-bottom: 14px; }
+.card-title svg { color: var(--accent-dynamic); width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.2; fill: none; flex-shrink: 0; }
+.card-badge { font-size: 10px; color: var(--text-dim); font-family: var(--font-mono); flex-shrink: 0; }
+
+.input-group { margin-bottom: 12px; }
 .input-group:last-child { margin-bottom: 0; }
 .input-label {
 display: flex; justify-content: space-between; align-items: center;
-font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px;
+font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 5px; gap: 6px; flex-wrap: wrap;
 }
 .input-label span.desc { font-size: 9px; color: var(--text-dim); font-weight: 400; }
+
 textarea, input[type="text"], select {
 width: 100%; background: rgba(3, 5, 8, 0.92); border: 1px solid var(--border-subtle);
-border-radius: var(--radius-sm); color: var(--text-main); padding: 11px 13px;
+border-radius: var(--radius-sm); color: var(--text-main); padding: 10px 12px;
 font-family: inherit; font-size: 13px; outline: none; transition: all 0.2s ease;
 }
 textarea:focus, input[type="text"]:focus, select:focus {
 border-color: var(--accent-dynamic); background: rgba(3, 5, 8, 0.99); box-shadow: 0 0 10px var(--accent-glow);
 }
-textarea { min-height: 80px; resize: vertical; line-height: 1.6; }
-.chip-group { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+textarea { min-height: 75px; resize: vertical; line-height: 1.5; }
+
+.chip-group { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
 .chip {
 background: rgba(6, 9, 15, 0.95); border: 1px solid var(--border-subtle); color: var(--text-muted);
-font-size: 11px; font-weight: 500; padding: 6px 11px; border-radius: 18px; cursor: pointer;
-user-select: none; display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s ease;
+font-size: 11px; font-weight: 500; padding: 6px 10px; border-radius: 18px; cursor: pointer;
+user-select: none; display: inline-flex; align-items: center; gap: 4px; transition: all 0.2s ease;
 }
-.chip svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2.2; fill: none; }
+.chip svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2.2; fill: none; flex-shrink: 0; }
 .chip:active { transform: scale(0.94); }
 .chip.active {
 background: hsla(var(--glow-hue), 100%, 50%, 0.16); border-color: var(--accent-dynamic);
 color: var(--accent-dynamic); font-weight: 700; box-shadow: 0 0 10px var(--accent-glow);
 }
-.patch-bar { display: flex; gap: 5px; margin-bottom: 6px; flex-wrap: wrap; }
-.patch-btn { font-size: 9px !important; padding: 3px 8px !important; border-color: hsla(var(--glow-hue), 100%, 50%, 0.3); color: var(--accent-dynamic); }
+
+.patch-bar { display: flex; gap: 4px; margin-bottom: 6px; flex-wrap: wrap; }
+.patch-btn { font-size: 9px !important; padding: 4px 8px !important; border-color: hsla(var(--glow-hue), 100%, 50%, 0.3); color: var(--accent-dynamic); }
+
+.bottom-dock {
+position: fixed; bottom: 0; left: 0; width: 100%; z-index: 40;
+background: rgba(3,5,8,0.95); backdrop-filter: blur(20px);
+border-top: 1px solid var(--border-subtle); padding: 10px 14px;
+display: flex; justify-content: center;
+}
+.btn-overdrive {
+width: 100%; background: linear-gradient(135deg, hsl(var(--glow-hue),100%,40%), hsl(var(--glow-hue),100%,20%));
+border: 1px solid var(--accent-dynamic); color: #fff; font-weight: 800; font-size: 12px;
+padding: 12px; border-radius: var(--radius-sm); cursor: pointer;
+display: flex; align-items: center; justify-content: center; gap: 8px;
+box-shadow: 0 0 20px var(--accent-glow);
+}
 </style>
 </head>
 <body>
+
 <header>
 <div class="brand-group">
 <div class="brand-core"></div>
@@ -168,8 +193,8 @@ color: var(--accent-dynamic); font-weight: 700; box-shadow: 0 0 10px var(--accen
 <button class="tab-btn" data-tab="tab-branch"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/></svg> 分岐</button>
 <button class="tab-btn" data-tab="tab-system"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 要塞管理</button>
 </nav>
+
 <main>
-<!-- TAB 1: DIRECTORIAL COMMAND -->
 <section id="tab-direct" class="panel active">
 <div class="card">
 <div class="card-header">
@@ -219,12 +244,10 @@ color: var(--accent-dynamic); font-weight: 700; box-shadow: 0 0 10px var(--accen
 <div class="input-group">
 <textarea id="txt-act-a" placeholder="キャラAの動き（※空欄の場合、全領域対応Proがマルチ相手の文脈と心理深度から最高の一手を完全自律代行）"></textarea>
 </div>
-<!-- Dynamic Container for Quick NG Chips Module -->
 <div id="quick-ng-container" style="margin-top:10px;"></div>
 </div>
 </section>
 
-<!-- TAB 2: MULTI-ENTITY ROSTER MANAGEMENT -->
 <section id="tab-roster" class="panel">
 <div class="card">
 <div class="card-header">
@@ -261,7 +284,6 @@ color: var(--accent-dynamic); font-weight: 700; box-shadow: 0 0 10px var(--accen
 </div>
 </section>
 
-<!-- TAB 3: PHASE SHIFT -->
 <section id="tab-phase" class="panel">
 <div class="card">
 <div class="card-header">
@@ -279,7 +301,6 @@ color: var(--accent-dynamic); font-weight: 700; box-shadow: 0 0 10px var(--accen
 </div>
 </section>
 
-<!-- TAB 4: PSYCHE GRAVITY -->
 <section id="tab-psyche" class="panel">
 <div class="card">
 <div class="card-header">
@@ -302,7 +323,6 @@ color: var(--accent-dynamic); font-weight: 700; box-shadow: 0 0 10px var(--accen
 </div>
 </section>
 
-<!-- TAB 5: LYRIC RESONANCE -->
 <section id="tab-lyric" class="panel">
 <div class="card">
 <div class="card-header">
@@ -314,7 +334,6 @@ color: var(--accent-dynamic); font-weight: 700; box-shadow: 0 0 10px var(--accen
 </div>
 </section>
 
-<!-- TAB 6: BRANCH MAP -->
 <section id="tab-branch" class="panel">
 <div class="card">
 <div class="card-header">
@@ -323,11 +342,10 @@ color: var(--accent-dynamic); font-weight: 700; box-shadow: 0 0 10px var(--accen
 <div class="input-group">
 <textarea id="txt-branch" placeholder="選ばれなかった未来、次に踏み込むべき禁忌の方向..."></textarea>
 </div>
-<!-- Dynamic Container for Timeline Snapshot Module -->
 <div id="snapshot-container" style="margin-top:12px;"></div>
 </div>
 </section>
-<!-- TAB 7: SYSTEM VAULT MANAGEMENT -->
+
 <section id="tab-system" class="panel">
 <div class="card">
 <div class="card-header">
@@ -336,40 +354,35 @@ color: var(--accent-dynamic); font-weight: 700; box-shadow: 0 0 10px var(--accen
 <p style="font-size:11px; color:var(--text-muted); margin-bottom:12px;">
 要塞の拡張機能（プラグイン）をボタンひとつでアンロックまたはロックできます。
 </p>
-<div style="display:flex; flex-direction:column; gap:8px; margin-bottom:14px;" id="module-market">
-<!-- Module Toggle Buttons will be injected here dynamically -->
-</div>
+<div style="display:flex; flex-direction:column; gap:8px; margin-bottom:14px;" id="module-market"></div>
 <div style="display:flex; gap:8px; margin-bottom:10px;">
-<button class="chip" id="btn-export" style="flex:1; justify-content:center; padding:10px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 遺伝子コード書出</button>
-<button class="chip" id="btn-import" style="flex:1; justify-content:center; padding:10px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> 遺伝子コード読込</button>
+<button class="chip" id="btn-export" style="flex:1; justify-content:center; padding:10px;"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 遺伝子コード書出</button>
+<button class="chip" id="btn-import" style="flex:1; justify-content:center; padding:10px;"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> 遺伝子コード読込</button>
 </div>
 <div class="input-group">
 <textarea id="txt-vault-code" placeholder="Base64 遺伝子コード文字列（エクスポート・インポート用）" style="font-family:var(--font-mono); font-size:10px; min-height:60px;"></textarea>
 </div>
 <div style="margin-top:12px; display:flex; justify-content:flex-end;">
-<button class="chip" id="btn-factory-reset" style="border-color:rgba(239,68,68,0.4); color:#ef4444;"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg> 要塞初期化（ファクトリーリセット）</button>
+<button class="chip" id="btn-factory-reset" style="border-color:rgba(239,68,68,0.4); color:#ef4444;"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg> 要塞初期化（ファクトリーリセット）</button>
 </div>
 </div>
 </section>
 </main>
-
-<!-- BOTTOM FLOATING DOCK -->
-<div class="bottom-dock" style="position:fixed; bottom:0; left:0; width:100%; z-index:40; background:rgba(3,5,8,0.95); backdrop-filter:blur(20px); border-top:1px solid var(--border-subtle); padding:12px 16px; display:flex; justify-content:center;">
+<div class="bottom-dock">
 <div class="dock-inner" style="max-width:640px; width:100%;">
-<button class="btn-overdrive" id="btn-overdrive" style="width:100%; background:linear-gradient(135deg, hsl(var(--glow-hue),100%,40%), hsl(var(--glow-hue),100%,20%)); border:1px solid var(--accent-dynamic); color:#fff; font-weight:800; font-size:12px; padding:12px; border-radius:var(--radius-sm); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 0 20px var(--accent-glow);">
+<button class="btn-overdrive" id="btn-overdrive">
 <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;stroke-width:2.5;fill:none;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
 MASTER OVERDRIVE [PRO合成]
 </button>
 </div>
 </div>
 
-<div class="toast" id="toast-notify" style="position:fixed; bottom:80px; left:50%; transform:translateX(-50%) translateY(20px); background:rgba(10,14,23,0.95); border:1px solid var(--accent-dynamic); color:var(--text-main); padding:8px 16px; border-radius:var(--radius-sm); font-size:11px; display:flex; align-items:center; gap:8px; opacity:0; pointer-events:none; transition:all 0.3s cubic-bezier(0.16,1,0.3,1); z-index:100; box-shadow:0 0 16px var(--accent-glow);">
+<div class="toast" id="toast-notify" style="position:fixed; bottom:70px; left:50%; transform:translateX(-50%) translateY(20px); background:rgba(10,14,23,0.95); border:1px solid var(--accent-dynamic); color:var(--text-main); padding:8px 16px; border-radius:var(--radius-sm); font-size:11px; display:flex; align-items:center; gap:8px; opacity:0; pointer-events:none; transition:all 0.3s cubic-bezier(0.16,1,0.3,1); z-index:100; box-shadow:0 0 16px var(--accent-glow);">
 <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--accent-dynamic);stroke-width:2.5;fill:none;"><polyline points="20 6 9 17 4 12"/></svg>
 <span id="toast-msg">操作完了</span>
 </div>
 
 <script>
-// --- MASTER VAULT v7.0 OMNI-ENTITY MODULAR ENGINE ---
 const DB_NAME = "MasterVaultModularDB";
 const STORE_NAME = "vault_sessions";
 const DB_VERSION = 1;
@@ -390,21 +403,15 @@ branch: "",
 targets: [
 { id: "t_1", name: "相手B1", role: "敵対 / 監視者", profile: "冷徹な利害関係者", taboo: "過去の失態の暴露", reply: "", weight: 50 }
 ],
-// 拡張モジュールの解放状態 ＆ データ
-modules: {
-weight: false,
-ng: false,
-snapshot: false
-},
+modules: { weight: false, ng: false, snapshot: false },
 ngWords: [],
 snapshots: []
 };
 
-// IndexedDB Initialization
 function initDB() {
-return new Promise((resolve, reject) => {
+return new Promise((resolve) => {
 const request = indexedDB.open(DB_NAME, DB_VERSION);
-request.onerror = () => { console.error("DB Error"); resolve(null); };
+request.onerror = () => resolve(null);
 request.onsuccess = (e) => { db = e.target.result; resolve(db); };
 request.onupgradeneeded = (e) => {
 const database = e.target.result;
@@ -443,7 +450,6 @@ req.onerror = () => resolve();
 });
 }
 
-// DOM to State Synchronization
 function syncDOMToState() {
 vaultState.slotA = document.getElementById("sel-slot-a").value;
 vaultState.personaA = document.getElementById("txt-persona-a").value;
@@ -456,10 +462,13 @@ vaultState.lyric = document.getElementById("txt-lyric").value;
 vaultState.branch = document.getElementById("txt-branch").value;
 
 vaultState.targets.forEach(t => {
-const nameEl = document.getElementById(t_name_${t.id}); const roleEl = document.getElementById(t_role_${t.id});
-const profEl = document.getElementById(t_prof_${t.id}); const tabEl = document.getElementById(t_taboo_${t.id});
-const repEl = document.getElementById(t_rep_${t.id}); const wgtEl = document.getElementById(t_wgt_${t.id});
-const wgtValEl = document.getElementById(t_wgt_val_${t.id}`);
+const nameEl = document.getElementById(`t_name_${t.id}`);
+const roleEl = document.getElementById(`t_role_${t.id}`);
+const profEl = document.getElementById(`t_prof_${t.id}`);
+const tabEl = document.getElementById(`t_taboo_${t.id}`);
+const repEl = document.getElementById(`t_rep_${t.id}`);
+const wgtEl = document.getElementById(`t_wgt_${t.id}`);
+const wgtValEl = document.getElementById(`t_wgt_val_${t.id}`);
 
 if (nameEl) t.name = nameEl.value;
 if (roleEl) t.role = roleEl.value;
@@ -492,7 +501,6 @@ renderModulesUI();
 updateCharLength();
 }
 
-// Render Targets & Dynamic Modules
 function renderTargetsContainers() {
 const rosterContainer = document.getElementById("targets-container");
 const directContainer = document.getElementById("direct-replies-container");
@@ -502,51 +510,54 @@ directContainer.innerHTML = "";
 vaultState.targets.forEach((t, idx) => {
 if (typeof t.weight !== 'number') t.weight = 50;
 
-// Roster Card
 const card = document.createElement("div");
 card.className = "card";
 card.style.background = "rgba(3,5,8,0.6)";
-card.innerHTML = &lt;div class="card-header" style="margin-bottom:8px;"&gt; &lt;span style="font-size:11px; font-weight:700; color:var(--text-main);"&gt;👤 [${idx+1}] latex
-{t.role || '陣営未定'}&lt;/span&gt; &lt;div style="display:flex; gap:6px;"&gt; &lt;button class="chip" style="font-size:9px; padding:2px 6px; border-color:rgba(239,68,68,0.4); color:#ef4444;" onclick="removeTarget('
-
-{t.id}')">削除</button>
+card.innerHTML = `
+<div class="card-header" style="margin-bottom:8px;">
+<span style="font-size:11px; font-weight:700; color:var(--text-main);">👤 [${idx+1}] ${t.role || '陣営未定'}</span>
+<div style="display:flex; gap:6px;">
+<button class="chip" style="font-size:9px; padding:2px 6px; border-color:rgba(239,68,68,0.4); color:#ef4444;" onclick="removeTarget('${t.id}')">削除</button>
 </div>
 </div>
 <div class="input-group">
 <div class="input-label">相手キャラクター名</div>
-<input type="text" id="t_name_ {t.name}" placeholder="名前...">
+<input type="text" id="t_name_${t.id}" value="${t.name}" placeholder="名前...">
 </div>
 <div class="input-group" style="margin-top:8px;">
 <div class="input-label">立場・陣営スタンス</div>
-<input type="text" id="t_role_ {t.role}" placeholder="例: 敵対する監視者...">
+<input type="text" id="t_role_${t.id}" value="${t.role}" placeholder="例: 敵対する監視者...">
 </div>
 <div class="input-group" style="margin-top:8px;">
 <div class="input-label">個別プロフィール・動機</div>
-<textarea id="t_prof_ {t.profile}</textarea>
+<textarea id="t_prof_${t.id}" style="min-height:55px;" placeholder="核心と動機...">${t.profile}</textarea>
 </div>
 <div class="input-group" style="margin-top:8px;">
 <div class="input-label">⚠️ 個別禁忌・地雷</div>
-<input type="text" id="t_taboo_ {t.taboo}" placeholder="地雷ワード...">
+<input type="text" id="t_taboo_${t.id}" value="${t.taboo}" placeholder="地雷ワード...">
 </div>
-latex
-{vaultState.modules.weight ? ` &lt;div class="input-group" style="margin-top:8px; background:rgba(6,9,15,0.8); padding:8px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle);"&gt; &lt;div class="slider-header" style="display:flex; justify-content:space-between; font-size:10px; color:var(--accent-dynamic); margin-bottom:4px;"&gt; &lt;span&gt;存在感・干渉ウェイト&lt;/span&gt; &lt;span id="t_wgt_val_
-
-{t.id}"> {t.id}" min="0" max="100" value="${t.weight}" style="width:100%;"&gt; &lt;/div&gt; : ''}
+${vaultState.modules.weight ? `
+<div class="input-group" style="margin-top:8px; background:rgba(6,9,15,0.8); padding:8px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle);">
+<div class="slider-header" style="display:flex; justify-content:space-between; font-size:10px; color:var(--accent-dynamic); margin-bottom:4px;">
+<span>存在感・干渉ウェイト</span>
+<span id="t_wgt_val_${t.id}">${t.weight}%</span>
+</div>
+<input type="range" id="t_wgt_${t.id}" min="0" max="100" value="${t.weight}" style="width:100%;">
+</div>
+` : ''}
 `;
 rosterContainer.appendChild(card);
 
-// Direct Reply Box
 const repGroup = document.createElement("div");
 repGroup.className = "input-group";
 repGroup.style.marginBottom = "10px";
-repGroup.innerHTML = &lt;div class="input-label"&gt;${t.name || '相手'} の最新返信・動向 <span class="desc">ID: latex
-{t.id}&lt;/span&gt;&lt;/div&gt; &lt;textarea id="t_rep_
-
-{t.id}" style="min-height:70px;" placeholder="相手の最新の発言や行動描写を入力...">${t.reply}&lt;/textarea&gt;;
+repGroup.innerHTML = `
+<div class="input-label">${t.name || '相手'} の最新返信・動向 <span class="desc">ID: ${t.id}</span></div>
+<textarea id="t_rep_${t.id}" style="min-height:70px;" placeholder="相手の最新の発言や行動描写を入力...">${t.reply}</textarea>
+`;
 directContainer.appendChild(repGroup);
 });
 
-// Re-attach listeners
 document.querySelectorAll('input, textarea, select').forEach(el => {
 el.addEventListener('input', () => {
 syncDOMToState();
@@ -556,34 +567,47 @@ updateCharLength();
 });
 }
 
-// Render Modular System Market & UI Elements
 function renderModulesUI() {
-// 1. Header Indicators
 document.getElementById("ind-weight").classList.toggle("active", vaultState.modules.weight);
 document.getElementById("ind-ng").classList.toggle("active", vaultState.modules.ng);
 document.getElementById("ind-snap").classList.toggle("active", vaultState.modules.snapshot);
 
-// 2. Module Market in Tab 7
 const market = document.getElementById("module-market");
-market.innerHTML = &lt;div style="display:flex; justify-content:space-between; align-items:center; background:rgba(3,5,8,0.85); border:1px solid${vaultState.modules.weight ? 'var(--accent-dynamic)' : 'var(--border-subtle)'}; padding:10px; border-radius:var(--radius-sm);">
+market.innerHTML = `
+<div style="display:flex; justify-content:space-between; align-items:center; background:rgba(3,5,8,0.85); border:1px solid ${vaultState.modules.weight ? 'var(--accent-dynamic)' : 'var(--border-subtle)'}; padding:10px; border-radius:var(--radius-sm);">
 <div>
 <div style="font-size:11px; font-weight:700; color:var(--text-main);">📊 存在感・重要度ウェイトモジュール</div>
 <div style="font-size:9px; color:var(--text-muted);">複数相手の焦点（干渉度）をスライダーで個別制御</div>
 </div>
-<button class="chip  {vaultState.modules.weight ? '解除中' : '＋ 解放する'}</button>
+<button class="chip ${vaultState.modules.weight ? 'active' : ''}" onclick="toggleModule('weight')">${vaultState.modules.weight ? '解除中' : '＋ 解放する'}</button>
 </div>
 
-<div style="display:flex; justify-content:space-between; align-items:center; background:rgba(3,5,8,0.85); border:1px solid  {vaultState.modules.ng ? 'active' : ''}" onclick="toggleModule('ng')">$`{vaultState.modules.ng ? '解除中' : '＋ 解放する'}</button>
+<div style="display:flex; justify-content:space-between; align-items:center; background:rgba(3,5,8,0.85); border:1px solid ${vaultState.modules.ng ? 'var(--accent-dynamic)' : 'var(--border-subtle)'}; padding:10px; border-radius:var(--radius-sm);">
+<div>
+<div style="font-size:11px; font-weight:700; color:var(--text-main);">⚡ クイックNGワード・パッチ</div>
+<div style="font-size:9px; color:var(--text-muted);">AI特有のマンネリ表現や定型句をワンタップで抑制</div>
+</div>
+<button class="chip ${vaultState.modules.ng ? 'active' : ''}" onclick="toggleModule('ng')">${vaultState.modules.ng ? '解除中' : '＋ 解放する'}</button>
 </div>
 
-<div style="display:flex; justify-content:space-between; align-items:center; background:rgba(3,5,8,0.85); border:1px solid ${vaultState.modules.snapshot ? 'var(--accent-dynamic)' : 'var(--border-subtle)'}; padding:10px; border-radius:var(--radius-sm);"&gt; &lt;div&gt; &lt;div style="font-size:11px; font-weight:700; color:var(--text-main);"&gt;📸 タイムライン・スナップショット&lt;/div&gt; &lt;div style="font-size:9px; color:var(--text-muted);"&gt;セッションの状態を一時保存・ワンクリックで復元&lt;/div&gt; &lt;/div&gt; &lt;button class="chip ${vaultState.modules.snapshot ? 'active' : ''}" onclick="toggleModule('snapshot')">${vaultState.modules.snapshot ? '解除中' : '＋ 解放する'}&lt;/button&gt; &lt;/div&gt;;
+<div style="display:flex; justify-content:space-between; align-items:center; background:rgba(3,5,8,0.85); border:1px solid ${vaultState.modules.snapshot ? 'var(--accent-dynamic)' : 'var(--border-subtle)'}; padding:10px; border-radius:var(--radius-sm);">
+<div>
+<div style="font-size:11px; font-weight:700; color:var(--text-main);">📸 タイムライン・スナップショット</div>
+<div style="font-size:9px; color:var(--text-muted);">セッションの状態を一時保存・ワンクリックで復元</div>
+</div>
+<button class="chip ${vaultState.modules.snapshot ? 'active' : ''}" onclick="toggleModule('snapshot')">${vaultState.modules.snapshot ? '解除中' : '＋ 解放する'}</button>
+</div>
+`;
 
-// 3. Conditional Injection into Panels
-// Quick NG Chips
 const ngContainer = document.getElementById("quick-ng-container");
 if (vaultState.modules.ng) {
-ngContainer.innerHTML = &lt;div style="background:rgba(6,9,15,0.8); padding:8px; border-radius:var(--radius-sm); border:1px dashed var(--border-dynamic); margin-top:8px;"&gt; &lt;div class="input-label" style="color:var(--accent-dynamic);"&gt;⚡ クイックNGパッチ（タップで追加）&lt;/div&gt; &lt;div class="chip-group"&gt; &lt;div class="chip ${vaultState.ngWords.includes('定型的な含み笑い・余裕の笑み') ? 'active' : ''}" onclick="toggleNgWord('定型的な含み笑い・余裕の笑み')">含み笑い禁止</div>
-<div class="chip ${vaultState.ngWords.includes('過度な心理描写の反復') ? 'active' : ''}" onclick="toggleNgWord('過度な心理描写の反復')"&gt;心理描写の反復禁止&lt;/div&gt; &lt;div class="chip ${vaultState.ngWords.includes('AIらしい説教・メタ発言') ? 'active' : ''}" onclick="toggleNgWord('AIらしい説教・メタ発言')">メタ発言禁止</div>
+ngContainer.innerHTML = `
+<div style="background:rgba(6,9,15,0.8); padding:8px; border-radius:var(--radius-sm); border:1px dashed var(--border-dynamic); margin-top:8px;">
+<div class="input-label" style="color:var(--accent-dynamic);">⚡ クイックNGパッチ（タップで追加）</div>
+<div class="chip-group">
+<div class="chip ${vaultState.ngWords.includes('定型的な含み笑い・余裕の笑み') ? 'active' : ''}" onclick="toggleNgWord('定型的な含み笑い・余裕の笑み')">含み笑い禁止</div>
+<div class="chip ${vaultState.ngWords.includes('過度な心理描写の反復') ? 'active' : ''}" onclick="toggleNgWord('過度な心理描写の反復')">心理描写の反復禁止</div>
+<div class="chip ${vaultState.ngWords.includes('AIらしい説教・メタ発言') ? 'active' : ''}" onclick="toggleNgWord('AIらしい説教・メタ発言')">メタ発言禁止</div>
 </div>
 </div>
 `;
@@ -591,16 +615,27 @@ ngContainer.innerHTML = &lt;div style="background:rgba(6,9,15,0.8); padding:8px;
 ngContainer.innerHTML = "";
 }
 
-// Snapshot UI in Tab 6
 const snapContainer = document.getElementById("snapshot-container");
 if (vaultState.modules.snapshot) {
 let snapListHtml = "";
 vaultState.snapshots.forEach((s, idx) => {
-snapListHtml += <div style="display:flex; justify-content:space-between; align-items:center; font-size:10px; background:rgba(3,5,8,0.8); padding:6px 10px; border-radius:4px; margin-bottom:4px;"&gt; &lt;span&gt;スナップショット #${idx+1} ( {idx})">復元</button>
-<button class="chip" style="font-size:8px; padding:2px 6px; border-color:rgba(239,68,68,0.4); color:#ef4444;" onclick="removeSnapshot(${idx})"&gt;削除&lt;/button&gt; &lt;/div&gt; &lt;/div>;
+snapListHtml += `<div style="display:flex; justify-content:space-between; align-items:center; font-size:10px; background:rgba(3,5,8,0.8); padding:6px 10px; border-radius:4px; margin-bottom:4px;">
+<span>スナップショット #${idx+1} (${new Date(s.time).toLocaleTimeString()})</span>
+<div style="display:flex; gap:4px;">
+<button class="chip" style="font-size:8px; padding:2px 6px;" onclick="restoreSnapshot(${idx})">復元</button>
+<button class="chip" style="font-size:8px; padding:2px 6px; border-color:rgba(239,68,68,0.4); color:#ef4444;" onclick="removeSnapshot(${idx})">削除</button>
+</div>
+</div>`;
 });
 
-snapContainer.innerHTML = &lt;div style="background:rgba(6,9,15,0.85); padding:10px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle); margin-top:10px;"&gt; &lt;div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;"&gt; &lt;div style="font-size:11px; font-weight:700; color:var(--text-main);"&gt;📸 現在の状態をスナップショット保存&lt;/div&gt; &lt;button class="chip" style="font-size:9px; padding:4px 10px;" onclick="takeSnapshot()"&gt;＋ 今の状態を保存&lt;/button&gt; &lt;/div&gt; &lt;div style="max-height:120px; overflow-y:auto;"&gt;${vaultState.snapshots.length > 0 ? snapListHtml : '<div style="font-size:10px; color:var(--text-dim); text-align:center; padding:6px;">保存された履歴はありません</div>'}
+snapContainer.innerHTML = `
+<div style="background:rgba(6,9,15,0.85); padding:10px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle); margin-top:10px;">
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+<div style="font-size:11px; font-weight:700; color:var(--text-main);">📸 現在の状態をスナップショット保存</div>
+<button class="chip" style="font-size:9px; padding:4px 10px;" onclick="takeSnapshot()">＋ 今の状態を保存</button>
+</div>
+<div style="max-height:120px; overflow-y:auto;">
+${vaultState.snapshots.length > 0 ? snapListHtml : '<div style="font-size:10px; color:var(--text-dim); text-align:center; padding:6px;">保存された履歴はありません</div>'}
 </div>
 </div>
 `;
@@ -613,7 +648,7 @@ function toggleModule(modName) {
 vaultState.modules[modName] = !vaultState.modules[modName];
 renderStateToDOM();
 saveVaultState();
-showToast(モジュール「${modName}」の状態を更新しました`);
+showToast(`モジュール「${modName}」の状態を更新しました`);
 }
 
 function toggleNgWord(word) {
@@ -630,9 +665,7 @@ showToast("NGパッチを更新しました");
 
 function takeSnapshot() {
 syncDOMToState();
-if (vaultState.snapshots.length >= 5) {
-vaultState.snapshots.shift(); // keep max 5
-}
+if (vaultState.snapshots.length >= 5) vaultState.snapshots.shift();
 vaultState.snapshots.push({ time: Date.now(), state: JSON.parse(JSON.stringify(vaultState)) });
 renderModulesUI();
 saveVaultState();
@@ -657,7 +690,7 @@ showToast("スナップショットを削除しました");
 
 function addTarget() {
 const newId = "t_" + Date.now().toString(36);
-vaultState.targets.push({ id: newId, name: 相手B${vaultState.targets.length+1}`, role: "中立/対立", profile: "新たな因果の影", taboo: "沈黙", reply: "", weight: 50 });
+vaultState.targets.push({ id: newId, name: `相手B${vaultState.targets.length+1}`, role: "中立/対立", profile: "新たな因果の影", taboo: "沈黙", reply: "", weight: 50 });
 renderStateToDOM();
 saveVaultState();
 showToast("新しい相手を追加しました");
@@ -677,7 +710,7 @@ showToast("相手をロスターから除外しました");
 function updateCharLength() {
 let totalLen = 0;
 vaultState.targets.forEach(t => {
-const el = document.getElementById(t_rep_${t.id}`);
+const el = document.getElementById(`t_rep_${t.id}`);
 if (el) totalLen += el.value.length;
 });
 document.getElementById("lbl-b-len").textContent = totalLen + " chars";
@@ -698,7 +731,6 @@ t.style.transform = "translateX(-50%) translateY(20px)";
 }, 2200);
 }
 
-// Tab Switching Engine
 document.querySelectorAll(".tab-btn").forEach(btn => {
 btn.addEventListener("click", () => {
 document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
@@ -708,7 +740,6 @@ document.getElementById(btn.getAttribute("data-tab")).classList.add("active");
 });
 });
 
-// Chips & Patches
 document.querySelectorAll("#group-focus .chip").forEach(chip => {
 chip.addEventListener("click", () => {
 document.querySelectorAll("#group-focus .chip").forEach(c => c.classList.remove("active"));
@@ -748,7 +779,6 @@ showToast("パッチを適用しました");
 });
 });
 
-// Range Sliders
 document.getElementById("range-psyche").addEventListener("input", (e) => {
 document.getElementById("val-psyche").textContent = e.target.value + "%";
 vaultState.psyche = e.target.value;
@@ -761,47 +791,45 @@ vaultState.madness = e.target.value;
 saveVaultState();
 });
 
-// Add Target Button
 document.getElementById("btn-add-target").addEventListener("click", addTarget);
 
-// Master Overdrive Synthesis Engine
 document.getElementById("btn-overdrive").addEventListener("click", () => {
 syncDOMToState();
-
 const focusVal = document.querySelector("#group-focus .chip.active")?.getAttribute("data-val") || "";
 const toneVal = document.querySelector("#group-tone .chip.active")?.getAttribute("data-val") || "";
 
 let targetsYaml = "";
 vaultState.targets.forEach(t => {
-targetsYaml += - ID: "${t.id}"\n Name: "latex
-{t.name}"\n Role: "
-
-{t.role}"\n Profile: "latex
-{t.profile}"\n Taboo: "
-
-{t.taboo}"\n InterferenceWeight: " {t.reply}"\n`;
+targetsYaml += `- ID: "${t.id}"\n  Name: "${t.name}"\n  Role: "${t.role}"\n  Profile: "${t.profile}"\n  Taboo: "${t.taboo}"\n  InterferenceWeight: "${t.weight}%"\n  LatestContext: "${t.reply}"\n`;
 });
 
 let ngYaml = "";
 if (vaultState.modules.ng && vaultState.ngWords.length > 0) {
-ngYaml = \n=== NEGATIVE CONSTRAINTS (NG PATCHES) ===\n以下の表現・傾向の出力を厳禁とする:\n + vaultState.ngWords.map(w => - ${w}`).join("\n") + "\n";
+ngYaml = `\n=== NEGATIVE CONSTRAINTS (NG PATCHES) ===\n以下の表現・傾向の出力を厳禁とする:\n` + vaultState.ngWords.map(w => `- ${w}`).join("\n") + "\n";
 }
 
-const promptText = [MASTER VAULT: OMNI-ENTITY ROSTER DIRECTIVE v7.0] Phase Mode:${vaultState.phase}
-Psyche Gravity:  {vaultState.madness}%
+const promptText = `[MASTER VAULT: OMNI-ENTITY ROSTER DIRECTIVE v7.0]
+Phase Mode: ${vaultState.phase}
+Psyche Gravity: ${vaultState.psyche}% | Madness Entropy: ${vaultState.madness}%
 
 === OPERATOR (CHAR A) ===
-Slot:  {vaultState.personaA}
-Taboo Trigger:  {vaultState.residueA}
-Action Directive: ${vaultState.actA || "（自律代行モード：マルチ相手の動的干渉と心理深度から最高の一手を完全生成せよ）"}`
+Slot: ${vaultState.slotA}
+Persona: ${vaultState.personaA}
+Taboo Trigger: ${vaultState.tabooA}
+Ghost Residue: ${vaultState.residueA}
+Action Directive: `${vaultState.actA || "（自律代行モード：マルチ相手の動的干渉と心理深度から最高の一手を完全生成せよ）"}`
 
 === MULTI-TARGET ROSTER (OPPOSING ENTITIES) ===
-${targetsYaml} === SYNTHESIS PARAMETERS === Focus Point: ${focusVal}
-Tone Rhythm: ${toneVal} Lyric Resonance: ${vaultState.lyric}
-Branch Memory: ${vaultState.branch} ${ngYaml}
+${targetsYaml}
+=== SYNTHESIS PARAMETERS ===
+Focus Point: ${focusVal}
+Tone Rhythm: ${toneVal}
+Lyric Resonance: ${vaultState.lyric}
+Branch Memory: ${vaultState.branch}
+${ngYaml}
 === ABSOLUTE PROTOCOLS (ANTI-PUPPETEERING & PHASE-COUPLED DYNAMICS) ===
 1. 各相手キャラクター（B1, B2...）の意志決定、心理、および干渉ウェイトに基づく影響度を反映し、それぞれの個体に完全に帰属する結果を描写せよ。AIやキャラA側が勝手に相手の未来や内面を先回りして確定・代行（主客分離違反）することを厳に禁ずる。
-2. 心理引力（`${vaultState.psyche}%）および位相モードのゲインに基づき、予定調和的迎合を完全に排除し、それぞれの動機と重み付き干渉ベクトルに従って冷徹かつ立体的に描写せよ。
+2. 心理引力（${vaultState.psyche}%）および位相モードのゲインに基づき、予定調和的迎合を完全に排除し、それぞれの動機と重み付き干渉ベクトルに従って冷徹かつ立体的に描写せよ。
 3. 描写密度と緩急を厳守し、最高の没入感をもたらすアンチ・イエスマンの緊張感を維持せよ。`;
 
 navigator.clipboard.writeText(promptText).then(() => {
@@ -809,7 +837,6 @@ showToast("MASTER OVERDRIVE: プロンプトをクリップボードに格納");
 });
 });
 
-// Genetic Code Export / Import
 document.getElementById("btn-export").addEventListener("click", () => {
 syncDOMToState();
 const jsonStr = JSON.stringify(vaultState);
@@ -843,7 +870,6 @@ location.reload();
 }
 });
 
-// App Bootstrap
 window.addEventListener("DOMContentLoaded", async () => {
 await initDB();
 await loadVaultState();
