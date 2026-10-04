@@ -3,38 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MASTER VAULT Pro</title>
+<title>MASTER VAULT Pro: OVERDRIVE</title>
+<!-- Lucide Icons (世界標準の高精細ベクターシンボルエンジン) -->
+<script src="https://unpkg.com/lucide@latest"></script>
 <style>
 :root {
-  --bg-core: #090a0f;
-  --bg-surface: #10121a;
-  --bg-card: #161924;
-  --bg-elevated: #1f2333;
-  --border-subtle: #24293d;
-  --border-focus: #4f5b82;
-  --accent-cyan: #00f2fe;
-  --accent-blue: #4facfe;
-  --accent-purple: #9d4edd;
-  --accent-crimson: #ff3366;
-  --accent-amber: #ffb703;
-  --text-main: #f0f3fc;
-  --text-muted: #8b95b5;
-  --text-dim: #515975;
+  --bg-deep: #06070a;
+  --bg-surface: rgba(13, 16, 26, 0.75);
+  --bg-card: rgba(21, 26, 42, 0.6);
+  --bg-card-hover: rgba(29, 36, 58, 0.75);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  
+  /* 動的アンビエント発光色（JSでリアルタイム遷移） */
+  --glow-hue: 185; /* 初期値: 氷冷のシアン */
+  --accent-dynamic: hsl(var(--glow-hue), 100%, 50%);
+  --accent-glow: hsla(var(--glow-hue), 100%, 50%, 0.25);
+  --border-dynamic: hsla(var(--glow-hue), 100%, 60%, 0.4);
+  
+  --text-main: #f4f6fc;
+  --text-muted: #8e9bb5;
+  --text-dim: #545e75;
   --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --shadow-glow: 0 0 20px rgba(0, 242, 254, 0.15);
+  --radius-md: 14px;
+  --radius-lg: 20px;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif;
-  --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent;
 }
+
 body {
-  background-color: var(--bg-core);
+  background-color: var(--bg-deep);
   color: var(--text-main);
   font-family: var(--font-sans);
   line-height: 1.6;
@@ -44,332 +48,452 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   padding-bottom: 120px;
+  position: relative;
+  transition: background 0.5s ease;
 }
+
+/* 背景の有機的オーロラ（GPU支援・超軽量） */
+body::before {
+  content: '';
+  position: fixed;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle at 50% 20%, var(--accent-glow) 0%, transparent 60%);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.4s ease;
+}
+
 header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(16, 18, 26, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(8, 10, 16, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 12px 16px;
+  padding: 12px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .brand-group {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
-.brand-logo {
-  width: 28px;
-  height: 28px;
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-  border-radius: 6px;
+
+.brand-core {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent-dynamic);
+  box-shadow: 0 0 14px var(--accent-dynamic);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 14px;
-  color: #fff;
-  box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+  background: rgba(0, 0, 0, 0.4);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.brand-core::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-dynamic);
+  box-shadow: 0 0 8px var(--accent-dynamic);
+  animation: pulseCore 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseCore {
+  0%, 100% { transform: scale(0.85); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; filter: drop-shadow(0 0 4px var(--accent-dynamic)); }
+}
+
+.brand-meta {
+  display: flex;
+  flex-direction: column;
+}
+
 .brand-title {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  background: linear-gradient(90deg, #fff, var(--text-muted));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #fff;
+  text-transform: uppercase;
 }
-.badge-pro {
-  font-size: 10px;
+
+.brand-subtitle {
+  font-size: 9px;
   font-family: var(--font-mono);
+  color: var(--accent-dynamic);
+  letter-spacing: 0.15em;
   font-weight: 600;
-  background: rgba(157, 78, 221, 0.2);
-  color: #c77dff;
-  border: 1px solid rgba(157, 78, 221, 0.4);
-  padding: 2px 6px;
-  border-radius: 4px;
+  transition: color 0.3s;
 }
+
 .header-actions {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .btn-icon {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   color: var(--text-muted);
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s;
+  backdrop-filter: blur(10px);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+
 .btn-icon:active {
-  transform: scale(0.95);
-  background: var(--bg-elevated);
-  color: var(--text-main);
+  transform: scale(0.92);
+  border-color: var(--accent-dynamic);
+  color: var(--accent-dynamic);
 }
+
 nav.tabs {
+  position: relative;
+  z-index: 10;
   display: flex;
-  background: var(--bg-surface);
+  background: rgba(13, 16, 26, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 4px 8px;
-  gap: 4px;
+  padding: 6px 12px;
+  gap: 6px;
   overflow-x: auto;
   scrollbar-width: none;
 }
-nav.tabs::-webkit-scrollbar {
-  display: none;
-}
+nav.tabs::-webkit-scrollbar { display: none; }
+
 .tab-btn {
   flex: 1;
-  min-width: 72px;
+  min-width: 78px;
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
   color: var(--text-muted);
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
   padding: 8px 10px;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all 0.2s;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
 }
+
+.tab-btn i {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.2;
+}
+
 .tab-btn.active {
   background: var(--bg-card);
-  color: var(--accent-cyan);
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  border: 1px solid var(--border-subtle);
+  border-color: var(--border-dynamic);
+  color: var(--accent-dynamic);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), 0 0 12px var(--accent-glow);
 }
+
 main {
+  position: relative;
+  z-index: 10;
   flex: 1;
-  padding: 16px;
-  max-width: 680px;
+  padding: 18px 16px;
+  max-width: 640px;
   margin: 0 auto;
   width: 100%;
 }
+
 .panel {
   display: none;
-  animation: fadeIn 0.2s ease-in-out;
+  animation: panelSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.panel.active {
-  display: block;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
+.panel.active { display: block; }
+
+@keyframes panelSlide {
+  from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
 .card {
   background: var(--bg-card);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  margin-bottom: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
+
+.card:focus-within {
+  border-color: var(--border-dynamic);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 0 16px var(--accent-glow);
+}
+
 .card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
 }
+
 .card-title {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-main);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
+
+.card-title i {
+  color: var(--accent-dynamic);
+  width: 15px;
+  height: 15px;
+}
+
 .card-badge {
   font-size: 11px;
   color: var(--text-dim);
   font-family: var(--font-mono);
 }
+
 .input-group {
   margin-bottom: 14px;
 }
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
 .input-label {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-muted);
   margin-bottom: 6px;
 }
+
 .input-label span.desc {
   font-size: 10px;
   color: var(--text-dim);
+  font-weight: 400;
 }
+
 textarea, input[type="text"] {
   width: 100%;
-  background: var(--bg-surface);
+  background: rgba(8, 10, 16, 0.6);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   color: var(--text-main);
-  padding: 10px 12px;
+  padding: 12px 14px;
   font-family: inherit;
   font-size: 14px;
   outline: none;
-  transition: border-color 0.2s;
+  transition: all 0.25s ease;
 }
+
 textarea:focus, input[type="text"]:focus {
-  border-color: var(--accent-cyan);
+  border-color: var(--accent-dynamic);
+  background: rgba(8, 10, 16, 0.85);
+  box-shadow: 0 0 12px var(--accent-glow);
 }
+
 textarea {
-  min-height: 80px;
+  min-height: 84px;
   resize: vertical;
-  line-height: 1.5;
+  line-height: 1.6;
 }
+
 .chip-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
   margin-top: 6px;
 }
+
 .chip {
-  background: var(--bg-surface);
+  background: rgba(13, 16, 26, 0.7);
   border: 1px solid var(--border-subtle);
   color: var(--text-muted);
   font-size: 12px;
-  padding: 6px 12px;
+  font-weight: 500;
+  padding: 7px 13px;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s;
   user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+
+.chip i { width: 12px; height: 12px; }
+
+.chip:active {
+  transform: scale(0.94);
+}
+
 .chip.active {
-  background: rgba(0, 242, 254, 0.12);
-  border-color: var(--accent-cyan);
-  color: var(--accent-cyan);
-  font-weight: 600;
+  background: hsla(var(--glow-hue), 100%, 50%, 0.12);
+  border-color: var(--accent-dynamic);
+  color: var(--accent-dynamic);
+  font-weight: 700;
+  box-shadow: 0 0 10px var(--accent-glow);
 }
-.chip.crimson.active {
-  background: rgba(255, 51, 102, 0.12);
-  border-color: var(--accent-crimson);
-  color: var(--accent-crimson);
-}
-.chip.amber.active {
-  background: rgba(255, 183, 3, 0.12);
-  border-color: var(--accent-amber);
-  color: var(--accent-amber);
-}
+
 .psyche-matrix-box {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 12px;
 }
+
 .slider-container {
-  margin-top: 10px;
+  margin-top: 14px;
+  background: rgba(8, 10, 16, 0.5);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
 }
+
 .slider-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 12px;
   color: var(--text-muted);
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
+
 .slider-val {
   font-family: var(--font-mono);
-  font-weight: 600;
-  color: var(--accent-cyan);
+  font-weight: 700;
+  color: var(--accent-dynamic);
+  font-size: 14px;
 }
+
 input[type="range"] {
   -webkit-appearance: none;
   width: 100%;
   height: 6px;
   border-radius: 3px;
-  background: var(--bg-surface);
+  background: rgba(255, 255, 255, 0.08);
   outline: none;
 }
+
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  background: var(--accent-cyan);
+  background: var(--accent-dynamic);
   cursor: pointer;
-  box-shadow: 0 0 10px var(--accent-cyan);
+  box-shadow: 0 0 14px var(--accent-dynamic);
+  transition: transform 0.1s;
 }
+
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.2);
+}
+
 .bottom-dock {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(16, 18, 26, 0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(8, 10, 16, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-top: 1px solid var(--border-subtle);
-  padding: 10px 16px;
+  padding: 12px 18px;
   z-index: 100;
 }
+
 .dock-inner {
-  max-width: 680px;
+  max-width: 640px;
   margin: 0 auto;
-  display: flex;
-  gap: 10px;
 }
-.btn-primary {
-  flex: 1;
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+
+.btn-overdrive {
+  width: 100%;
+  background: linear-gradient(135deg, var(--accent-dynamic), hsl(calc(var(--glow-hue) + 40), 100%, 45%));
   border: none;
   border-radius: var(--radius-md);
-  color: #050811;
+  color: #04060a;
   font-family: var(--font-sans);
-  font-weight: 700;
+  font-weight: 800;
   font-size: 14px;
-  padding: 14px;
+  letter-spacing: 0.05em;
+  padding: 15px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  box-shadow: var(--shadow-glow);
-  transition: all 0.2s;
+  gap: 10px;
+  box-shadow: 0 4px 20px var(--accent-glow);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
 }
-.btn-primary:active {
-  transform: scale(0.98);
+
+.btn-overdrive i {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.6;
 }
-.btn-secondary {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-main);
-  border-radius: var(--radius-md);
-  padding: 0 14px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
+
+.btn-overdrive:active {
+  transform: scale(0.97);
+  filter: brightness(1.2);
 }
+
 .toast {
   position: fixed;
   top: 70px;
   left: 50%;
   transform: translateX(-50%) translateY(-20px);
-  background: rgba(0, 242, 254, 0.92);
-  color: #050811;
+  background: rgba(13, 16, 26, 0.94);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-dynamic);
+  color: var(--accent-dynamic);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
   padding: 8px 18px;
   border-radius: 30px;
-  box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 16px var(--accent-glow);
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
   z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
+
 .toast.show {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
@@ -380,21 +504,23 @@ input[type="range"]::-webkit-slider-thumb {
 
 <header>
   <div class="brand-group">
-    <div class="brand-logo">V</div>
-    <div class="brand-title">MASTER VAULT</div>
-    <div class="badge-pro">PRO v12.0</div>
+    <div class="brand-core"></div>
+    <div class="brand-meta">
+      <div class="brand-title">MASTER VAULT</div>
+      <div class="brand-subtitle">PRO : OVERDRIVE</div>
+    </div>
   </div>
   <div class="header-actions">
-    <button class="btn-icon" id="btn-save-slot" title="保存">💾</button>
-    <button class="btn-icon" id="btn-clipboard-paste" title="相手返信を即座に取込">📋</button>
+    <button class="btn-icon" id="btn-save-slot" title="保存"><i data-lucide="save"></i></button>
+    <button class="btn-icon" id="btn-clipboard-paste" title="相手返信を取込"><i data-lucide="clipboard-check"></i></button>
   </div>
 </header>
 
 <nav class="tabs">
-  <button class="tab-btn active" data-tab="tab-direct">🎬 演出指揮</button>
-  <button class="tab-btn" data-tab="tab-psyche">🧠 心理構造</button>
-  <button class="tab-btn" data-tab="tab-persona">🎭 キャラ基盤</button>
-  <button class="tab-btn" data-tab="tab-system">⚙️ 規約是正</button>
+  <button class="tab-btn active" data-tab="tab-direct"><i data-lucide="clapperboard"></i> 演出指揮</button>
+  <button class="tab-btn" data-tab="tab-psyche"><i data-lucide="activity"></i> 心理引力</button>
+  <button class="tab-btn" data-tab="tab-persona"><i data-lucide="fingerprint"></i> キャラ基盤</button>
+  <button class="tab-btn" data-tab="tab-system"><i data-lucide="shield-alert"></i> 是正・管理</button>
 </nav>
 
 <main>
@@ -402,36 +528,36 @@ input[type="range"]::-webkit-slider-thumb {
   <section id="tab-direct" class="panel active">
     <div class="card">
       <div class="card-header">
-        <div class="card-title">① 相手（キャラB）の最新文脈</div>
+        <div class="card-title"><i data-lucide="message-square"></i> ① キャラB（相手）の最新文脈</div>
         <span class="card-badge" id="lbl-b-len">0 chars</span>
       </div>
       <div class="input-group">
-        <textarea id="txt-reply-b" placeholder="相手（キャラB）の返信テキストを貼り付け（または上部📋アイコンで即時取込）..."></textarea>
+        <textarea id="txt-reply-b" placeholder="相手の返信テキストを貼り付け（または上部📋アイコンで即時取込）..."></textarea>
       </div>
       <div class="chip-group">
-        <div class="chip" id="btn-hud-extract">⚡ HUD思考・伏線の自動同期</div>
+        <div class="chip" id="btn-hud-extract"><i data-lucide="zap"></i> HUD思考・伏線の自動同期</div>
       </div>
     </div>
 
     <div class="card">
       <div class="card-header">
-        <div class="card-title">② 演出フォーカス（Proディレクション）</div>
+        <div class="card-title"><i data-lucide="crosshair"></i> ② 演出フォーカス（Proディレクション）</div>
       </div>
       <div class="input-group">
         <div class="input-label">重点着眼点（何を抉るか）</div>
         <div class="chip-group" id="group-focus">
-          <div class="chip active" data-val="視線・無意識の微細動作">視線・微細動作</div>
-          <div class="chip" data-val="言葉の言い淀みと裏の動機">言葉の言い淀み・裏の動機</div>
-          <div class="chip crimson" data-val="支配権の奪い合い・沈黙の攻防">支配権の奪い合い</div>
-          <div class="chip amber" data-val="言外の渇望・張り詰めた緊張感">言外の渇望と緊張</div>
-          <div class="chip" data-val="叙情・心理独白の徹底深化">叙情・心理独白深化</div>
+          <div class="chip active" data-val="視線・無意識の微細動作"><i data-lucide="eye"></i> 視線・微細動作</div>
+          <div class="chip" data-val="言葉の言い淀みと裏の動機"><i data-lucide="key"></i> 言い淀み・動機</div>
+          <div class="chip" data-val="支配権の奪い合い・沈黙の攻防"><i data-lucide="swords"></i> 支配権の攻防</div>
+          <div class="chip" data-val="言外の渇望・張り詰めた緊張感"><i data-lucide="flame"></i> 言外の渇望</div>
+          <div class="chip" data-val="叙情・心理独白の徹底深化"><i data-lucide="feather"></i> 心理独白深化</div>
         </div>
       </div>
       <div class="input-group">
         <div class="input-label">文体密度・トーン</div>
         <div class="chip-group" id="group-tone">
-          <div class="chip active" data-val="三位一体・文学的濃密描写（対話6:心理2:情景2）">標準（文学的濃密描写）</div>
-          <div class="chip" data-val="息詰まる心理戦（対話7:内心3）">緊迫（心理戦・対話重視）</div>
+          <div class="chip active" data-val="三位一体・文学的濃密描写（対話6:心理2:情景2）">標準（文学的濃密）</div>
+          <div class="chip" data-val="息詰まる心理戦（対話7:内心3）">緊迫（心理戦重視）</div>
           <div class="chip" data-val="純文学的・官能的残響重視">純文学・情景余韻</div>
         </div>
       </div>
@@ -439,10 +565,10 @@ input[type="range"]::-webkit-slider-thumb {
 
     <div class="card">
       <div class="card-header">
-        <div class="card-title">③ あなた（キャラA）の行動・提示</div>
+        <div class="card-title"><i data-lucide="user-check"></i> ③ あなた（キャラA）の行動・提示</div>
       </div>
       <div class="input-group">
-        <textarea id="txt-act-a" placeholder="キャラAの台詞、意図、または手動アクション（※空欄の場合はProが文脈と心理深度から最高の一手を完全代行）"></textarea>
+        <textarea id="txt-act-a" placeholder="キャラAの台詞・意図（※空欄の場合、Proが心理深度と文脈から最高の一手を完全自律代行）"></textarea>
       </div>
     </div>
   </section>
@@ -451,16 +577,16 @@ input[type="range"]::-webkit-slider-thumb {
   <section id="tab-psyche" class="panel">
     <div class="card">
       <div class="card-header">
-        <div class="card-title">二層心理引力（Psyche Matrix）</div>
+        <div class="card-title"><i data-lucide="split"></i> 二層心理引力（Psyche Matrix）</div>
       </div>
       <div class="psyche-matrix-box">
         <div class="input-group">
-          <div class="input-label">表層の仮面 <span class="desc">Surface Mask</span></div>
+          <div class="input-label">表層の仮面 <span class="desc">Surface</span></div>
           <input type="text" id="txt-mask" value="冷静・丁寧・一線を引いた態度">
         </div>
         <div class="input-group">
-          <div class="input-label">深層の本音 <span class="desc">Deep Gravity</span></div>
-          <input type="text" id="txt-gravity" value="底知れぬ独占欲・暴かれることへの微かな期待">
+          <div class="input-label">深層の本音 <span class="desc">Gravity</span></div>
+          <input type="text" id="txt-gravity" value="底知れぬ独占欲・暴かれることへの渇望">
         </div>
       </div>
       <div class="slider-container">
@@ -474,7 +600,7 @@ input[type="range"]::-webkit-slider-thumb {
 
     <div class="card">
       <div class="card-header">
-        <div class="card-title">未回収の伏線・相互ゲノム</div>
+        <div class="card-title"><i data-lucide="git-branch"></i> 未回収の伏線・相互ゲノム</div>
       </div>
       <div class="input-group">
         <textarea id="txt-foreshadow" placeholder="抽出された伏線、相手の地雷、蓄積された心理的負債..."></textarea>
@@ -486,15 +612,15 @@ input[type="range"]::-webkit-slider-thumb {
   <section id="tab-persona" class="panel">
     <div class="card">
       <div class="card-header">
-        <div class="card-title">キャラA（操作対象）の核</div>
+        <div class="card-title"><i data-lucide="shield"></i> キャラA（操作対象）の核</div>
       </div>
       <div class="input-group">
-        <textarea id="txt-persona-a" style="min-height:110px;" placeholder="名前、性格、口調、身体的特徴、絶対に崩さない行動原理..."></textarea>
+        <textarea id="txt-persona-a" style="min-height:110px;" placeholder="名前、口調、身体的特徴、絶対に崩さない行動原理..."></textarea>
       </div>
     </div>
     <div class="card">
       <div class="card-header">
-        <div class="card-title">キャラB（相手）の核＆世界観</div>
+        <div class="card-title"><i data-lucide="users"></i> キャラB（相手）の核＆世界観</div>
       </div>
       <div class="input-group">
         <textarea id="txt-persona-b" style="min-height:110px;" placeholder="相手の名前、関係性、舞台設定、共有された過去、暗黙のルール..."></textarea>
@@ -506,21 +632,21 @@ input[type="range"]::-webkit-slider-thumb {
   <section id="tab-system" class="panel">
     <div class="card">
       <div class="card-header">
-        <div class="card-title">Pro思考ドリフト是正プロトコル</div>
+        <div class="card-title"><i data-lucide="alert-triangle"></i> Pro思考ドリフト是正プロトコル</div>
       </div>
       <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
-        長大セッションでAIの描写が粗暴化・迎合・主客侵害（勝手な操作）を起こした際に発動する外科的リセットプロンプト。
+        AIの描写が粗暴化・迎合・主客侵害（勝手な操作）を起こした際に発動する外科的リセットプロンプト。
       </p>
-      <button class="btn-secondary" id="btn-copy-calib" style="width:100%; padding:10px;">📋 是正プロトコル単発プロンプトをコピー</button>
+      <button class="chip" id="btn-copy-calib" style="width:100%; justify-content:center; padding:10px;"><i data-lucide="copy"></i> 是正プロトコル単発プロンプトをコピー</button>
     </div>
 
     <div class="card">
       <div class="card-header">
-        <div class="card-title">完全バックアップ（JSON）</div>
+        <div class="card-title"><i data-lucide="hard-drive"></i> 完全バックアップ（JSON）</div>
       </div>
       <div style="display:flex; gap:8px;">
-        <button class="btn-secondary" id="btn-export-json" style="flex:1; padding:10px;">書き出し</button>
-        <button class="btn-secondary" id="btn-import-json" style="flex:1; padding:10px;">読み込み</button>
+        <button class="chip" id="btn-export-json" style="flex:1; justify-content:center; padding:10px;"><i data-lucide="download"></i> 書き出し</button>
+        <button class="chip" id="btn-import-json" style="flex:1; justify-content:center; padding:10px;"><i data-lucide="upload"></i> 読み込み</button>
       </div>
       <input type="file" id="file-import" style="display:none;" accept=".json">
     </div>
@@ -529,16 +655,20 @@ input[type="range"]::-webkit-slider-thumb {
 
 <div class="bottom-dock">
   <div class="dock-inner">
-    <button class="btn-primary" id="btn-synthesize">
-      <span>🚀</span>
-      <span>Proプロンプト合成 & コピー</span>
+    <button class="btn-overdrive" id="btn-synthesize">
+      <i data-lucide="flame"></i>
+      <span>PRO: OVERDRIVE 合成コピー</span>
     </button>
   </div>
 </div>
 
-<div class="toast" id="toast">コピーしました</div>
+<div class="toast" id="toast"><i data-lucide="check-circle-2"></i> <span>コピーしました</span></div>
 <script>
-const DB_NAME = 'MasterVaultProDB';
+// Lucide Icons 初期化
+lucide.createIcons();
+
+// IndexedDB Engine (堅牢な永続化)
+const DB_NAME = 'MasterVaultOverdriveDB';
 const DB_VERSION = 1;
 const STORE_NAME = 'vault_state';
 
@@ -561,9 +691,9 @@ async function saveState(data) {
     const db = await openDB();
     const tx = db.transaction(STORE_NAME, 'readwrite');
     tx.objectStore(STORE_NAME).put(data, 'current_vault');
-    localStorage.setItem('mv_pro_backup', JSON.stringify(data));
+    localStorage.setItem('mv_overdrive_backup', JSON.stringify(data));
   } catch(e) {
-    localStorage.setItem('mv_pro_backup', JSON.stringify(data));
+    localStorage.setItem('mv_overdrive_backup', JSON.stringify(data));
   }
 }
 
@@ -575,15 +705,16 @@ async function loadState() {
       const req = tx.objectStore(STORE_NAME).get('current_vault');
       req.onsuccess = () => {
         if (req.result) resolve(req.result);
-        else resolve(JSON.parse(localStorage.getItem('mv_pro_backup') || '{}'));
+        else resolve(JSON.parse(localStorage.getItem('mv_overdrive_backup') || '{}'));
       };
-      req.onerror = () => resolve(JSON.parse(localStorage.getItem('mv_pro_backup') || '{}'));
+      req.onerror = () => resolve(JSON.parse(localStorage.getItem('mv_overdrive_backup') || '{}'));
     });
   } catch(e) {
-    return JSON.parse(localStorage.getItem('mv_pro_backup') || '{}');
+    return JSON.parse(localStorage.getItem('mv_overdrive_backup') || '{}');
   }
 }
 
+// UI要素の参照マップ
 const els = {
   replyB: document.getElementById('txt-reply-b'),
   actA: document.getElementById('txt-act-a'),
@@ -599,11 +730,64 @@ const els = {
 };
 
 function showToast(msg) {
-  els.toast.textContent = msg;
+  els.toast.querySelector('span').textContent = msg;
   els.toast.classList.add('show');
-  setTimeout(() => els.toast.classList.remove('show'), 2200);
+  setTimeout(() => els.toast.classList.remove('show'), 2400);
 }
 
+// Web Audio API: 近未来起動音＆重低音フィードバック（ファイル不要）
+function playIgnitionSound() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    // サブベース（重低音ショック）
+    const osc1 = ctx.createOscillator();
+    const gain1 = ctx.createGain();
+    osc1.type = 'sine';
+    osc1.frequency.setValueAtTime(120, ctx.currentTime);
+    osc1.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + 0.25);
+    
+    gain1.gain.setValueAtTime(0.3, ctx.currentTime);
+    gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.25);
+    
+    osc1.connect(gain1);
+    gain1.connect(ctx.destination);
+    
+    // ハイテク・チャージ音（高周波シュイン）
+    const osc2 = ctx.createOscillator();
+    const gain2 = ctx.createGain();
+    osc2.type = 'triangle';
+    osc2.frequency.setValueAtTime(400, ctx.currentTime);
+    osc2.frequency.exponentialRampToValueAtTime(2400, ctx.currentTime + 0.2);
+    
+    gain2.gain.setValueAtTime(0.15, ctx.currentTime);
+    gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+    
+    osc2.connect(gain2);
+    gain2.connect(ctx.destination);
+    
+    osc1.start();
+    osc2.start();
+    osc1.stop(ctx.currentTime + 0.25);
+    osc2.stop(ctx.currentTime + 0.2);
+  } catch(e) {
+    // AudioContext未許可環境へのフォールバック
+  }
+}
+
+// 心理引力スライダー連動：動的アンビエント発光色システム
+function updatePsycheHue(val) {
+  let hue = 185; // 0%: 氷冷のシアン
+  if (val > 30 && val <= 70) {
+    hue = 280;   // 31~70%: 妖気のネオンパープル
+  } else if (val > 70) {
+    hue = 345;   // 71~100%: 激情のブラッドクリムゾン
+  }
+  document.documentElement.style.setProperty('--glow-hue', hue);
+  els.psycheVal.textContent = `${val}%`;
+}
+
+// タブ切り替え制御
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -614,6 +798,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
+// 単一選択チップ制御
 function bindChips(containerId) {
   const container = document.getElementById(containerId);
   container.addEventListener('click', (e) => {
@@ -632,15 +817,18 @@ function getActiveChipVal(containerId) {
   return active ? (active.dataset.val || active.textContent.trim()) : '';
 }
 
+// スライダー入力イベント
 els.psyche.addEventListener('input', (e) => {
-  els.psycheVal.textContent = `${e.target.value}%`;
+  const v = parseInt(e.target.value, 10);
+  updatePsycheHue(v);
   triggerAutoSave();
 });
 
+// 自動保存（デバウンス処理）
 let saveTimer = null;
 function triggerAutoSave() {
   clearTimeout(saveTimer);
-  saveTimer = setTimeout(collectAndSave, 400);
+  saveTimer = setTimeout(collectAndSave, 350);
 }
 
 function collectData() {
@@ -663,6 +851,7 @@ async function collectAndSave() {
   await saveState(data);
 }
 
+// 入力変更の監視
 ['input', 'change'].forEach(ev => {
   [els.replyB, els.actA, els.mask, els.gravity, els.foreshadow, els.personaA, els.personaB].forEach(input => {
     input.addEventListener(ev, () => {
@@ -672,6 +861,7 @@ async function collectAndSave() {
   });
 });
 
+// 起動時の状態復元
 window.addEventListener('DOMContentLoaded', async () => {
   const state = await loadState();
   if (state.replyB !== undefined) els.replyB.value = state.replyB;
@@ -680,7 +870,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   if (state.gravity !== undefined) els.gravity.value = state.gravity;
   if (state.psyche !== undefined) {
     els.psyche.value = state.psyche;
-    els.psycheVal.textContent = `${state.psyche}%`;
+    updatePsycheHue(parseInt(state.psyche, 10));
   }
   if (state.foreshadow !== undefined) els.foreshadow.value = state.foreshadow;
   if (state.personaA !== undefined) els.personaA.value = state.personaA;
@@ -698,6 +888,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   els.lblBLen.textContent = `${els.replyB.value.length} chars`;
 });
 
+// クリップボード即時取込＆HUD自動同期
 document.getElementById('btn-clipboard-paste').addEventListener('click', async () => {
   try {
     const text = await navigator.clipboard.readText();
@@ -709,7 +900,7 @@ document.getElementById('btn-clipboard-paste').addEventListener('click', async (
       triggerAutoSave();
     }
   } catch(e) {
-    showToast('貼付権限を確認してください');
+    showToast('読取権限を確認してください');
   }
 });
 
@@ -720,7 +911,7 @@ function autoExtractHUD(raw) {
     const val = parseInt(mPsyche[1], 10);
     if (!isNaN(val) && val >= 0 && val <= 100) {
       els.psyche.value = val;
-      els.psycheVal.textContent = `${val}%`;
+      updatePsycheHue(val);
       hit = true;
     }
   }
@@ -739,7 +930,10 @@ document.getElementById('btn-hud-extract').addEventListener('click', () => {
   autoExtractHUD(els.replyB.value);
 });
 
+// 【OVERDRIVE】超高密度プロンプト合成エンジン
 document.getElementById('btn-synthesize').addEventListener('click', () => {
+  playIgnitionSound();
+  
   const d = collectData();
   const prompt = `[ROLEPLAY DIRECTIVE: DEEP REASONING & ANTI-PUPPETEERING ENFORCED]
 
@@ -779,12 +973,13 @@ ${d.actA ? d.actA : '※指示空欄：Proの推論により、上記心理深�
 小説本文を出力せよ。`;
 
   navigator.clipboard.writeText(prompt).then(() => {
-    showToast('Proプロンプトを合成コピー完了');
+    showToast('OVERDRIVE 合成コピー完了');
   }).catch(() => {
     showToast('コピーに失敗しました');
   });
 });
 
+// 是正プロトコルコピー
 document.getElementById('btn-copy-calib').addEventListener('click', () => {
   const calibText = `【システム介入：認知ドリフト是正プロトコル】
 現在、以下の規約遵守度が低下している兆候がある。
@@ -795,17 +990,18 @@ document.getElementById('btn-copy-calib').addEventListener('click', () => {
 直前の思考プロセスを自己点検し、小説本文は書かず、
 「何が緩んでいたか」および「次回の出力で是正する厳格プロトコル」のみを3行で宣誓せよ。`;
   navigator.clipboard.writeText(calibText).then(() => {
-    showToast('是正プロトコルをコピーしました');
+    showToast('是正プロトコルをコピー');
   });
 });
 
+// JSON書き出し・読み込み
 document.getElementById('btn-export-json').addEventListener('click', () => {
   const data = collectData();
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `master-vault-pro-${new Date().toISOString().slice(0,10)}.json`;
+  a.download = `master-vault-overdrive-${new Date().toISOString().slice(0,10)}.json`;
   a.click();
   URL.revokeObjectURL(url);
 });
