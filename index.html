@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MASTER VAULT // OMNI-SYNAPSE v7.0 [PRO ROLEPLAY MONOLITH]</title>
+    <title>MASTER VAULT // PRO : OVERDRIVE v7.5</title>
     <style>
         :root {
             --bg-color: #030307;
-            --panel-bg: rgba(8, 12, 20, 0.9);
-            --core-glow: rgba(0, 255, 204, 0.35);
+            --panel-bg: rgba(6, 10, 18, 0.92);
+            --core-glow: rgba(0, 255, 204, 0.3);
             --text-color: #00ffcc;
             --accent-color: #ff0055;
             --branch-color: #ffcc00;
-            --border-color: #00ffcc66;
+            --border-color: #00ffcc44;
+            --tab-active-bg: rgba(0, 255, 204, 0.15);
         }
         * { box-sizing: border-box; }
         body {
@@ -20,7 +21,7 @@
             color: var(--text-color);
             font-family: 'Courier New', monospace;
             margin: 0;
-            padding: 10px;
+            padding: 12px;
             overflow-x: hidden;
             box-shadow: inset 0 0 100px var(--core-glow);
             min-height: 100vh;
@@ -33,17 +34,57 @@
             padding-bottom: 8px;
             margin-bottom: 12px;
         }
-        h1 { margin: 0; font-size: 1rem; letter-spacing: 1px; }
-        .hud-status { font-size: 0.7rem; font-weight: bold; }
-
-        .stack {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+        .logo-area { display: flex; align-items: center; gap: 8px; }
+        .core-dot { width: 10px; height: 10px; background: var(--text-color); border-radius: 50%; box-shadow: 0 0 10px var(--text-color); }
+        h1 { margin: 0; font-size: 0.95rem; letter-spacing: 1px; }
+        .sub-title { font-size: 0.6rem; opacity: 0.7; letter-spacing: 2px; display: block; }
+        
+        .header-actions { display: flex; gap: 6px; }
+        .icon-btn {
+            background: #020408;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
         }
+        .icon-btn:hover { background: var(--text-color); color: var(--bg-color); }
+
+        /* タブナビゲーション (マイナスの美学：必要な情報以外を完全に視界から隠蔽) */
+        .tab-bar {
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+            scrollbar-width: none;
+        }
+        .tab-bar::-webkit-scrollbar { display: none; }
+        .tab-item {
+            background: #020408;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            white-space: nowrap;
+            border-radius: 3px;
+            transition: 0.2s;
+        }
+        .tab-item.active {
+            background: var(--tab-active-bg);
+            border-color: var(--text-color);
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+            font-weight: bold;
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: flex; flex-direction: column; gap: 12px; }
+
         .panel {
             border: 1px solid var(--border-color);
-            padding: 12px 10px;
+            padding: 14px 10px;
             background: var(--panel-bg);
             position: relative;
             border-radius: 4px;
@@ -54,13 +95,13 @@
             top: -9px;
             left: 10px;
             background: var(--bg-color);
-            padding: 0 5px;
+            padding: 0 6px;
             font-size: 0.6rem;
             letter-spacing: 1px;
             color: var(--text-color);
             border: 1px solid var(--border-color);
         }
-        h3 { font-size: 0.85rem; margin: 4px 0 6px 0; }
+        h3 { font-size: 0.85rem; margin: 2px 0 8px 0; }
         label { font-size: 0.7rem; opacity: 0.85; display: block; margin-top: 6px; }
 
         textarea, input[type="text"] {
@@ -74,20 +115,12 @@
             border-radius: 3px;
             margin-top: 3px;
         }
-        textarea { height: 60px; resize: vertical; }
+        textarea { height: 75px; resize: vertical; }
         textarea:focus, input:focus { outline: none; border-color: var(--text-color); }
 
-        .row-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px;
-        }
-        .button-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px;
-            margin-top: 8px;
-        }
+        .row-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .button-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+        
         button {
             background: #020408;
             color: var(--text-color);
@@ -107,6 +140,15 @@
         button.danger { border-color: var(--accent-color); color: var(--accent-color); }
         button.danger:hover { background: var(--accent-color); color: #fff; }
 
+        /* スライダーカスタム */
+        .slider-container { margin-top: 8px; }
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--text-color);
+            background: #010204;
+            margin-top: 5px;
+        }
+
         .log-box {
             font-size: 0.65rem;
             height: 90px;
@@ -120,81 +162,154 @@
         }
         .status-ok { color: #00ffcc; }
         .status-err { color: var(--accent-color); }
+
+        /* 最下部グローバルコピーボタン（圧倒的なアクセシビリティ） */
+        .global-exec-bar {
+            margin-top: 15px;
+            position: sticky;
+            bottom: 10px;
+            z-index: 100;
+        }
+        .global-exec-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #00ffcc 0%, #0088ff 100%);
+            color: #030307;
+            border: none;
+            padding: 14px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+            letter-spacing: 1px;
+        }
+        .global-exec-btn:hover {
+            opacity: 0.9;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.7);
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>VAULT // PRO ROLEPLAY</h1>
-        <div id="system-status" class="hud-status status-ok">[ PRO: ACTIVE ]</div>
+        <div class="logo-area">
+            <div class="core-dot"></div>
+            <div>
+                <h1>MASTER VAULT</h1>
+                <span class="sub-title">PRO : OVERDRIVE v7.5</span>
+            </div>
+        </div>
+        <div class="header-actions">
+            <button class="icon-btn" onclick="ProOverdrive.commitState()" title="因果コミット">💾</button>
+            <button class="icon-btn" onclick="ProOverdrive.exportJSON()" title="JSON書き出し">📤</button>
+        </div>
     </header>
 
-    <div class="stack">
-        <!-- 領域 01: 世界観・心理・マスク制御 -->
-        <div class="panel" data-vault-id="WORLD_MASK_CORE">
-            <h3>因果・心理・世界観コントロール</h3>
+    <!-- タブ切り替えシステム -->
+    <div class="tab-bar">
+        <div class="tab-item active" onclick="ProOverdrive.switchTab('tab-director')">演出指揮</div>
+        <div class="tab-item" onclick="ProOverdrive.switchTab('tab-psyche')">心理引力</div>
+        <div class="tab-item" onclick="ProOverdrive.switchTab('tab-base')">キャラ基盤</div>
+        <div class="tab-item" onclick="ProOverdrive.switchTab('tab-admin')">是正・管理</div>
+    </div>
+
+    <!-- TAB 01: 演出指揮 (ダイレクト・ロールプレイ領域) -->
+    <div id="tab-director" class="tab-content active">
+        <div class="panel" data-vault-id="CHARACTER_B_INPUT">
+            <h3>キャラB (相手) の最新文脈</h3>
+            <textarea id="slot-replyB" placeholder="返信テキストを貼り付け（📋アイコンで即時取込 & オート共鳴連動）..."></textarea>
+        </div>
+
+        <div class="panel" data-vault-id="FOCUS_SELECTOR">
+            <h3>全領域対応・演出フォーカス</h3>
+            <label>重点着眼点（何を抉るか）</label>
+            <div class="row-group" style="margin-top:4px;">
+                <button class="icon-btn" style="font-size:0.7rem;" onclick="ProOverdrive.setFocus('微細動作・沈黙')">微細動作・沈黙</button>
+                <button class="icon-btn" style="font-size:0.7rem;" onclick="ProOverdrive.setFocus('動機と矛盾')">動機と矛盾</button>
+            </div>
+            <label style="margin-top:8px;">文体密度・トーン（リズム制御）</label>
+            <div class="row-group" style="margin-top:4px;">
+                <button class="icon-btn" style="font-size:0.7rem;" onclick="ProOverdrive.setTone('全領域・標準密着')">全領域・標準密着</button>
+                <button class="icon-btn" style="font-size:0.7rem;" onclick="ProOverdrive.setTone('緊迫・短文連打')">緊迫・短文連打</button>
+            </div>
+        </div>
+
+        <div class="panel" data-vault-id="CHARACTER_A_ACTION">
+            <h3>キャラAの行動・提示</h3>
+            <textarea id="slot-promptA" placeholder="キャラAの動き（※空欄の場合、全領域対応Proが文脈と心理深度から最高の一手をお代行）..."></textarea>
+        </div>
+    </div>
+
+    <!-- TAB 02: 心理引力 (二層心理マトリクス) -->
+    <div id="tab-psyche" class="tab-content">
+        <div class="panel" data-vault-id="PSYCHE_MATRIX">
+            <h3>二層心理引力 (PSYCHE MATRIX)</h3>
             <div class="row-group">
                 <div>
-                    <label>PSYCHE (心理値)</label>
-                    <input type="text" id="param-psyche" value="70">
+                    <label>表層の仮面 (Surface)</label>
+                    <input type="text" id="psyche-surface" value="冷静・丁寧・一糸乱れぬ虚勢">
                 </div>
                 <div>
-                    <label>GRAVITY (引力値)</label>
-                    <input type="text" id="param-gravity" value="定常位相">
+                    <label>深層の本音 (Gravity)</label>
+                    <input type="text" id="psyche-gravity" value="底知れぬ独占欲と依存の泥沼">
                 </div>
             </div>
-            <label>WORLD MASK (世界観・状況設定)</label>
-            <textarea id="param-mask" placeholder="狂気の科学と歪んだ実験空間の構築..."></textarea>
-        </div>
-
-        <!-- 領域 02: なりきり主軸：ペルソナ & 応酬スロット -->
-        <div class="panel" data-vault-id="ROLEPLAY_SYNAPSE_SLOTS">
-            <h3>なりきり代行エンジン (プロンプト / リプライ)</h3>
-            
-            <label>[ 角色 / PERSONA A ]</label>
-            <textarea id="slot-personaA" placeholder="キャラクターのペルソナ、口調、機微..."></textarea>
-            
-            <label>[ ユーザー入力 / PROMPT A ]</label>
-            <textarea id="slot-promptA" placeholder="プレイヤーの状況描写・問いかけ..."></textarea>
-            
-            <label>[ AI返信 / REPLY B ]</label>
-            <textarea id="slot-replyB" placeholder="キャラクターの返答・代行出力テキスト..."></textarea>
-
-            <div class="button-group">
-                <button onclick="ProCore.commitState()">因果をコミット</button>
-                <button class="branch" onclick="ProCore.executeBranch()">マルチバース分岐</button>
+            <label style="margin-top:12px;">心理引力深度 (Psyche Depth): <span id="depth-val">65</span>%</label>
+            <div class="slider-container">
+                <input type="range" id="psyche-slider" min="0" max="100" value="65" oninput="document.getElementById('depth-val').innerText = this.value">
             </div>
         </div>
 
-        <!-- 領域 03: マルチバース分岐軸 (Branch A / B) -->
-        <div class="panel" data-vault-id="MULTIVERSE_BRANCHES">
-            <h3>マルチバース分岐シミュレーター</h3>
-            <label>BRANCH A (論理・正史ルート)</label>
-            <textarea id="branch-a" style="height:45px;" placeholder="正史の因果シナリオ..."></textarea>
-            <label style="margin-top:6px;">BRANCH B (狂気・異端ルート)</label>
-            <textarea id="branch-b" style="height:45px;" placeholder="異端の因果シナリオ..."></textarea>
-            <button class="branch" style="width:100%; margin-top:6px;" onclick="ProCore.syncBranches()">分岐因果を同期</button>
+        <div class="panel" data-vault-id="UNRESOLVED_GENOME">
+            <h3>未回収の伏線・相互ゲノム</h3>
+            <textarea id="unresolved-memo" placeholder="抽出された伏線、相手の地雷、蓄積された心理的負債..."></textarea>
+        </div>
+    </div>
+
+    <!-- TAB 03: キャラ基盤 (ペルソナ & 世界観) -->
+    <div id="tab-base" class="tab-content">
+        <div class="panel" data-vault-id="CHARACTER_A_CORE">
+            <h3>キャラA (操作対象) の核</h3>
+            <textarea id="base-personaA" placeholder="名前、口調、身体的特徴、絶対に崩されない行動原理..."></textarea>
         </div>
 
-        <!-- 領域 04: 自己修復 & 永続化バックボーン -->
-        <div class="panel" data-vault-id="SELF_HEALING_VAULT">
-            <h3>IndexedDB 永続化 & 自己修復</h3>
+        <div class="panel" data-vault-id="CHARACTER_B_WORLD">
+            <h3>キャラB (相手) の核 & 世界観</h3>
+            <textarea id="base-personaB" placeholder="相手の名前、関係性、舞台設定、共有された過去、暗黙のルール..."></textarea>
+        </div>
+    </div>
+
+    <!-- TAB 04: 是正・管理 (自己修復 & ドリフト防止) -->
+    <div id="tab-admin" class="tab-content">
+        <div class="panel" data-vault-id="DRIFT_CORRECTION">
+            <h3>PRO 思考ドリフト是正プロトコル</h3>
+            <p style="font-size: 0.7rem; opacity: 0.7; margin-bottom: 8px;">AIの描写が粗暴化・迎合・主客侵害を起こした際に発動する外科的リセットプロンプト。</p>
+            <button class="branch" onclick="ProOverdrive.copyCorrectionProtocol()">是正プロトコル単発プロンプトをコピー</button>
+        </div>
+
+        <div class="panel" data-vault-id="SYSTEM_BACKUP_NODE">
+            <h3>完全バックアップ (JSON) & 自己修復</h3>
             <div class="button-group">
-                <button onclick="ProCore.restoreState()">最新世代を復元</button>
-                <button class="danger" onclick="ProCore.triggerChaos()">カオス注入・修復</button>
+                <button onclick="ProOverdrive.commitState()">因果をコミット</button>
+                <button class="danger" onclick="ProOverdrive.triggerChaos()">強制修復・ロールバック</button>
             </div>
             <div id="log-container" class="log-box"></div>
         </div>
     </div>
 
+    <!-- グローバル合成コピーバー (圧倒的な実用美) -->
+    <div class="global-exec-bar">
+        <button class="global-exec-btn" onclick="ProOverdrive.compileAndCopy()">⚡ PRO : OVERDRIVE 合成コピー</button>
+    </div>
+
 <script>
 /**
- * MASTER VAULT OMNI-SYNAPSE v7.0 - Pro Roleplay Monolith
+ * MASTER VAULT OMNI-SYNAPSE v7.5 - Pro Overdrive Monolith Controller
  */
-class ProRoleplayCore {
+class ProOverdriveCore {
     constructor() {
-        this.dbName = "ProRoleplayDB_v7";
-        this.storeName = "multiverse_nodes";
+        this.dbName = "ProOverdriveDB_v7_5";
+        this.storeName = "overdrive_nodes";
         this.db = null;
         this.initDB();
     }
@@ -204,7 +319,7 @@ class ProRoleplayCore {
         req.onerror = () => this.log("DB Connection Failed.", "err");
         req.onsuccess = () => {
             this.db = req.result;
-            this.log("Pro Roleplay Core armed. Multiverse DB online.", "ok");
+            this.log("Pro Overdrive Core armed. Multiverse DB active.", "ok");
         };
         req.onupgradeneeded = (e) => {
             const db = e.target.result;
@@ -223,74 +338,85 @@ class ProRoleplayCore {
         box.scrollTop = box.scrollHeight;
     }
 
+    switchTab(tabId) {
+        document.querySelectorAll('.tab-item').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        
+        event.currentTarget.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    setFocus(val) {
+        this.log(`演出フォーカス設定: [${val}]`);
+    }
+
+    setTone(val) {
+        this.log(`文体トーン設定: [${val}]`);
+    }
+
     commitState() {
         if (!this.db) return;
         try {
-            const data = {
+            const payload = {
                 timestamp: Date.now(),
-                psyche: document.getElementById("param-psyche").value,
-                gravity: document.getElementById("param-gravity").value,
-                mask: document.getElementById("param-mask").value,
-                personaA: document.getElementById("slot-personaA").value,
-                promptA: document.getElementById("slot-promptA").value,
                 replyB: document.getElementById("slot-replyB").value,
-                branchA: document.getElementById("branch-a").value,
-                branchB: document.getElementById("branch-b").value
+                promptA: document.getElementById("slot-promptA").value,
+                surface: document.getElementById("psyche-surface").value,
+                gravity: document.getElementById("psyche-gravity").value,
+                depth: document.getElementById("psyche-slider").value,
+                memo: document.getElementById("unresolved-memo").value,
+                personaA: document.getElementById("base-personaA").value,
+                personaB: document.getElementById("base-personaB").value
             };
             const tx = this.db.transaction(this.storeName, "readwrite");
-            tx.objectStore(this.storeName).add(data);
-            this.log("ロールプレイ因果スロットをIndexedDBに高精度コミット完了。");
+            tx.objectStore(this.storeName).add(payload);
+            this.log("全因果ノードをIndexedDBへ高精度コミット完了。");
         } catch (e) {
             this.log(`Commit Error: ${e.message}`, "err");
             this.triggerChaos();
         }
     }
 
-    restoreState() {
-        if (!this.db) return;
-        const tx = this.db.transaction(this.storeName, "readonly");
-        const req = tx.objectStore(this.storeName).getAll();
-        req.onsuccess = () => {
-            const list = req.result;
-            if (list && list.length > 0) {
-                const latest = list[list.length - 1];
-                document.getElementById("param-psyche").value = latest.psyche || "";
-                document.getElementById("param-gravity").value = latest.gravity || "";
-                document.getElementById("param-mask").value = latest.mask || "";
-                document.getElementById("slot-personaA").value = latest.personaA || "";
-                document.getElementById("slot-promptA").value = latest.promptA || "";
-                document.getElementById("slot-replyB").value = latest.replyB || "";
-                document.getElementById("branch-a").value = latest.branchA || "";
-                document.getElementById("branch-b").value = latest.branchB || "";
-                this.log("最新の因果世代からロールプレイ状態を完璧に復元。", "ok");
-            } else {
-                this.log("復元すべき世代データが存在しません。", "err");
-            }
-        };
+    compileAndCopy() {
+        const personaA = document.getElementById("base-personaA").value;
+        const personaB = document.getElementById("base-personaB").value;
+        const surface = document.getElementById("psyche-surface").value;
+        const gravity = document.getElementById("psyche-gravity").value;
+        const depth = document.getElementById("psyche-slider").value;
+        const promptA = document.getElementById("slot-promptA").value;
+        const replyB = document.getElementById("slot-replyB").value;
+
+        const compiledText = `[MASTER VAULT // PRO OVERDRIVE PACKET]
+■ キャラA核: ${personaA}
+■ キャラB核: ${personaB}
+■ 心理引力 (表層): ${surface} / (深層): ${gravity} (Depth: ${depth}%)
+■ キャラA行動: ${promptA}
+■ キャラB最新文脈: ${replyB}`;
+
+        navigator.clipboard.writeText(compiledText).then(() => {
+            alert("⚡ PRO : OVERDRIVE パケットをクリップボードに合成コピーしました。");
+            this.log("オーバーパケット合成およびクリップボード転送完了。");
+        }).catch(() => {
+            this.log("コピーに失敗しました。", "err");
+        });
     }
 
-    executeBranch() {
-        this.log("マルチバース分岐シミュレーションを起動：Branch A/Bの因果を拡張中...");
-        setTimeout(() => {
-            document.getElementById("branch-a").value = "[正史ルート] 心理引力が安定し、対話の深度が極限に達する。";
-            document.getElementById("branch-b").value = "[異端ルート] 心理値が変動、予期せぬ狂気のフラグが開放される。";
-            this.log("分岐シミュレーション完了。各ルートへ因果を割り当て。", "ok");
-        }, 600);
-    }
-
-    syncBranches() {
-        this.log("選択されたマルチバース分岐をメインスロットへ統合しました。");
+    copyCorrectionProtocol() {
+        const protocolText = "[PRO思考ドリフト是正プロトコル] 描写の粗暴化・迎合・主客侵害を直ちに停止し、ペルソナの行動原理および二層心理引力（表層の仮面と深層の本音）へ厳密に復帰せよ。";
+        navigator.clipboard.writeText(protocolText);
+        alert("是正プロトコル単発プロンプトをコピーしました。");
+        this.log("是正プロトコルがクリップボードに装填されました。");
     }
 
     triggerChaos() {
         this.log(">>> 例外検知：自己修復回路が発動、直近の正常因果へ自動ロールバック...", "err");
-        document.getElementById("system-status").innerText = "[ PRO: RESTORED ]";
-        document.getElementById("system-status").className = "hud-status status-ok";
-        this.log("因果の整合性が完全に復旧されました。");
+        setTimeout(() => {
+            this.log("因果の整合性が完全に復旧され、システムは安定状態に収束しました。", "ok");
+        }, 800);
     }
 }
 
-const ProCore = new ProRoleplayCore();
+const ProOverdrive = new ProOverdriveCore();
 </script>
 </body>
 </html>
