@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MASTER VAULT Pro: OMNI-DOMAIN ∞</title>
+<title>MASTER VAULT Pro: RESONANCE ∞</title>
 <!-- Lucide Icons -->
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>
 :root {
-  --bg-deep: #030406;
-  --bg-surface: rgba(10, 13, 20, 0.85);
-  --bg-card: rgba(16, 21, 34, 0.65);
-  --bg-card-hover: rgba(24, 31, 48, 0.8);
+  --bg-deep: #020305;
+  --bg-surface: rgba(8, 11, 18, 0.88);
+  --bg-card: rgba(13, 17, 28, 0.7);
+  --bg-card-hover: rgba(20, 26, 42, 0.85);
   --border-subtle: rgba(255, 255, 255, 0.07);
   
   --glow-hue: 190;
   --accent-dynamic: hsl(var(--glow-hue), 100%, 50%);
-  --accent-glow: hsla(var(--glow-hue), 100%, 50%, 0.2);
-  --border-dynamic: hsla(var(--glow-hue), 100%, 60%, 0.45);
+  --accent-glow: hsla(var(--glow-hue), 100%, 50%, 0.22);
+  --border-dynamic: hsla(var(--glow-hue), 100%, 60%, 0.48);
   
-  --text-main: #f2f5fc;
-  --text-muted: #8592ad;
-  --text-dim: #4d576e;
+  --text-main: #f0f4fc;
+  --text-muted: #8290ad;
+  --text-dim: #4a546c;
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
@@ -59,7 +59,7 @@ body::before {
   width: 140%;
   height: 140%;
   background: radial-gradient(circle at 50% 10%, var(--accent-glow) 0%, transparent 65%);
-  opacity: 0.5;
+  opacity: 0.55;
   pointer-events: none;
   z-index: 0;
   transition: background 0.4s ease;
@@ -69,7 +69,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(5, 7, 12, 0.9);
+  background: rgba(4, 6, 10, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-subtle);
@@ -165,12 +165,12 @@ nav.tabs {
   position: relative;
   z-index: 10;
   display: flex;
-  background: rgba(10, 13, 20, 0.75);
+  background: rgba(8, 11, 18, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 6px 10px;
-  gap: 4px;
+  padding: 6px 8px;
+  gap: 3px;
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -178,24 +178,24 @@ nav.tabs::-webkit-scrollbar { display: none; }
 
 .tab-btn {
   flex: 1;
-  min-width: 68px;
+  min-width: 58px;
   background: transparent;
   border: 1px solid transparent;
   color: var(--text-muted);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
-  padding: 8px 6px;
+  padding: 8px 4px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 3px;
   white-space: nowrap;
   transition: all 0.2s ease;
 }
 
-.tab-btn i { width: 13px; height: 13px; stroke-width: 2.2; }
+.tab-btn i { width: 12px; height: 12px; stroke-width: 2.2; }
 
 .tab-btn.active {
   background: var(--bg-card);
@@ -279,7 +279,7 @@ main {
 
 textarea, input[type="text"] {
   width: 100%;
-  background: rgba(5, 7, 12, 0.7);
+  background: rgba(4, 6, 10, 0.75);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   color: var(--text-main);
@@ -292,7 +292,7 @@ textarea, input[type="text"] {
 
 textarea:focus, input[type="text"]:focus {
   border-color: var(--accent-dynamic);
-  background: rgba(5, 7, 12, 0.9);
+  background: rgba(4, 6, 10, 0.92);
   box-shadow: 0 0 10px var(--accent-glow);
 }
 
@@ -301,7 +301,7 @@ textarea { min-height: 80px; resize: vertical; line-height: 1.6; }
 .chip-group { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 
 .chip {
-  background: rgba(10, 13, 20, 0.8);
+  background: rgba(8, 11, 18, 0.85);
   border: 1px solid var(--border-subtle);
   color: var(--text-muted);
   font-size: 11px;
@@ -330,7 +330,7 @@ textarea { min-height: 80px; resize: vertical; line-height: 1.6; }
 
 .slider-container {
   margin-top: 12px;
-  background: rgba(5, 7, 12, 0.6);
+  background: rgba(4, 6, 10, 0.65);
   padding: 11px 13px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-subtle);
@@ -369,7 +369,7 @@ input[type="range"]::-webkit-slider-thumb {
 .bottom-dock {
   position: fixed;
   bottom: 0; left: 0; right: 0;
-  background: rgba(5, 7, 12, 0.9);
+  background: rgba(4, 6, 10, 0.92);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-top: 1px solid var(--border-subtle);
@@ -384,7 +384,7 @@ input[type="range"]::-webkit-slider-thumb {
   background: linear-gradient(135deg, var(--accent-dynamic), hsl(calc(var(--glow-hue) + 45), 100%, 45%));
   border: none;
   border-radius: var(--radius-md);
-  color: #030406;
+  color: #020305;
   font-family: var(--font-sans);
   font-weight: 800;
   font-size: 13px;
@@ -406,7 +406,7 @@ input[type="range"]::-webkit-slider-thumb {
   position: fixed;
   top: 70px; left: 50%;
   transform: translateX(-50%) translateY(-20px);
-  background: rgba(10, 13, 20, 0.95);
+  background: rgba(8, 11, 18, 0.96);
   backdrop-filter: blur(16px);
   border: 1px solid var(--border-dynamic);
   color: var(--accent-dynamic);
@@ -431,7 +431,7 @@ input[type="range"]::-webkit-slider-thumb {
     <div class="brand-core"></div>
     <div class="brand-meta">
       <div class="brand-title">MASTER VAULT</div>
-      <div class="brand-subtitle">OMNI-DOMAIN ∞</div>
+      <div class="brand-subtitle">RESONANCE ∞</div>
     </div>
   </div>
   <div class="header-actions">
@@ -441,15 +441,16 @@ input[type="range"]::-webkit-slider-thumb {
 </header>
 
 <nav class="tabs">
-  <button class="tab-btn active" data-tab="tab-direct"><i data-lucide="compass"></i> 全領域指揮</button>
-  <button class="tab-btn" data-tab="tab-phase"><i data-lucide="sliders"></i> フェーズ制御</button>
-  <button class="tab-btn" data-tab="tab-psyche"><i data-lucide="activity"></i> 心理引力</button>
-  <button class="tab-btn" data-tab="tab-persona"><i data-lucide="fingerprint"></i> 基盤世界</button>
-  <button class="tab-btn" data-tab="tab-system"><i data-lucide="shield-alert"></i> 是正管理</button>
+  <button class="tab-btn active" data-tab="tab-direct"><i data-lucide="compass"></i> 指揮</button>
+  <button class="tab-btn" data-tab="tab-phase"><i data-lucide="sliders"></i> フェーズ</button>
+  <button class="tab-btn" data-tab="tab-psyche"><i data-lucide="activity"></i> 引力</button>
+  <button class="tab-btn" data-tab="tab-lyric"><i data-lucide="mic-2"></i> 共鳴録</button>
+  <button class="tab-btn" data-tab="tab-persona"><i data-lucide="fingerprint"></i> 基盤</button>
+  <button class="tab-btn" data-tab="tab-system"><i data-lucide="shield-alert"></i> 管理</button>
 </nav>
 
 <main>
-  <!-- TAB 1: OMNI-DOMAIN DIRECTORIAL COMMAND -->
+  <!-- TAB 1: DIRECTORIAL COMMAND -->
   <section id="tab-direct" class="panel active">
     <div class="card">
       <div class="card-header">
@@ -457,7 +458,7 @@ input[type="range"]::-webkit-slider-thumb {
         <span class="card-badge" id="lbl-b-len">0 chars</span>
       </div>
       <div class="input-group">
-        <textarea id="txt-reply-b" placeholder="あらゆるジャンルの相手の返信テキストを貼り付け（上部📋アイコンで即時取込）..."></textarea>
+        <textarea id="txt-reply-b" placeholder="全ジャンルの相手の返信テキストを貼り付け（📋アイコンで即時取込）..."></textarea>
       </div>
       <div class="chip-group">
         <div class="chip" id="btn-hud-extract"><i data-lucide="zap"></i> HUD自動同期解析</div>
@@ -466,13 +467,13 @@ input[type="range"]::-webkit-slider-thumb {
 
     <div class="card">
       <div class="card-header">
-        <div class="card-title"><i data-lucide="crosshair"></i> ② 全ジャンル対応・演出フォーカス</div>
+        <div class="card-title"><i data-lucide="crosshair"></i> ② 全領域対応・演出フォーカス</div>
       </div>
       <div class="input-group">
         <div class="input-label">重点着眼点（何を抉るか）</div>
         <div class="chip-group" id="group-focus">
           <div class="chip active" data-val="微細な動作・視線・非言語の沈黙"><i data-lucide="eye"></i> 微細動作・沈黙</div>
-          <div class="chip" data-val="動機と裏に隠された致命的矛盾"><i data-lucide="key"></i> 動機と矛盾</div>
+          <div class="chip" data-val="動機と裏に隠された致命적矛盾"><i data-lucide="key"></i> 動機と矛盾</div>
           <div class="chip" data-val="権力闘争・主導権の冷酷な奪い合い"><i data-lucide="swords"></i> 権力闘争</div>
           <div class="chip" data-val="言外の渇望・狂気のエロスと残響"><i data-lucide="flame"></i> 渇望・残響</div>
           <div class="chip" data-val="極限状況下の心理崩壊・サバイバル"><i data-lucide="shield-alert"></i> 心理崩壊</div>
@@ -498,7 +499,7 @@ input[type="range"]::-webkit-slider-thumb {
     </div>
   </section>
 
-  <!-- TAB 2: PHASE SHIFT & CHAOS CATALYST -->
+  <!-- TAB 2: PHASE SHIFT & CHAOS -->
   <section id="tab-phase" class="panel">
     <div class="card">
       <div class="card-header">
@@ -507,10 +508,10 @@ input[type="range"]::-webkit-slider-thumb {
       <div class="input-group">
         <div class="input-label">現在の環境・シチュエーションモード</div>
         <div class="chip-group" id="group-phase">
-          <div class="chip active" data-val="日常・水面下の緊張（平穏に潜む微細な違和感と澱み）">日常・水面下の緊張</div>
+          <div class="chip active" data-val="日常・水面下の緊張（平穏に潜む微細な違和感と澱み）">日常・水面下緊張</div>
           <div class="chip" data-val="対立・戦闘・頭脳戦（容赦のない極限の駆け引き）">対立・戦闘・頭脳戦</div>
           <div class="chip" data-val="裏・タブー・深層の覚醒（道徳的配慮を廃した極限領域）">裏・タブー・深層</div>
-          <div class="chip" data-val="SF・異世界・特殊世界観（専用ロジック完全適応）">SF・異世界・特殊世界</div>
+          <div class="chip" data-val="SF・異世界・特殊世界観（専用ロジック完全適応）">SF・異世界・特殊</div>
         </div>
       </div>
     </div>
@@ -565,7 +566,24 @@ input[type="range"]::-webkit-slider-thumb {
     </div>
   </section>
 
-  <!-- TAB 4: PERSONA REPOSITORY -->
+  <!-- TAB 4: LYRICAL RESONANCE (音楽的・詩的共鳴録) -->
+  <section id="tab-lyric" class="panel">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title"><i data-lucide="music"></i> 狂気共鳴：レゾナンス・リリック</div>
+      </div>
+      <div class="input-group">
+        <div class="input-label">共鳴楽曲・アーティスト名 <span class="desc">Soundtrack</span></div>
+        <input type="text" id="txt-track" placeholder="例: Post-Punk / Shoegaze / 灰色のアンビエント等">
+      </div>
+      <div class="input-group" style="margin-top:12px;">
+        <div class="input-label">魂を貫くリリックの断片（詩の周波数） <span class="desc">Lyric Injection</span></div>
+        <textarea id="txt-lyric-frag" style="min-height:90px;" placeholder="例: 「光の届かない底で、私たちは息を潜めて腐りゆく」――この詩的湿度を文章の行間に憑依させる..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 5: PERSONA REPOSITORY -->
   <section id="tab-persona" class="panel">
     <div class="card">
       <div class="card-header">
@@ -585,7 +603,7 @@ input[type="range"]::-webkit-slider-thumb {
     </div>
   </section>
 
-  <!-- TAB 5: SYSTEM CALIBRATION -->
+  <!-- TAB 6: SYSTEM CALIBRATION -->
   <section id="tab-system" class="panel">
     <div class="card">
       <div class="card-header">
@@ -614,7 +632,7 @@ input[type="range"]::-webkit-slider-thumb {
   <div class="dock-inner">
     <button class="btn-overdrive" id="btn-synthesize">
       <i data-lucide="flame"></i>
-      <span>OMNI-DOMAIN ∞ 合成コピー</span>
+      <span>RESONANCE ∞ 合成コピー</span>
     </button>
   </div>
 </div>
@@ -625,9 +643,9 @@ input[type="range"]::-webkit-slider-thumb {
 lucide.createIcons();
 
 // IndexedDB Engine (超高速永続化)
-const DB_NAME = 'OmniDomainVaultDB';
+const DB_NAME = 'ResonanceVaultDB';
 const DB_VERSION = 1;
-const STORE_NAME = 'omni_state';
+const STORE_NAME = 'resonance_state';
 
 function openDB() {
   return new Promise((resolve, reject) => {
@@ -645,10 +663,10 @@ async function saveState(data) {
   try {
     const db = await openDB();
     const tx = db.transaction(STORE_NAME, 'readwrite');
-    tx.objectStore(STORE_NAME).put(data, 'current_omni');
-    localStorage.setItem('omni_backup', JSON.stringify(data));
+    tx.objectStore(STORE_NAME).put(data, 'current_resonance');
+    localStorage.setItem('resonance_backup', JSON.stringify(data));
   } catch(e) {
-    localStorage.setItem('omni_backup', JSON.stringify(data));
+    localStorage.setItem('resonance_backup', JSON.stringify(data));
   }
 }
 
@@ -657,15 +675,15 @@ async function loadState() {
     const db = await openDB();
     return new Promise((resolve) => {
       const tx = db.transaction(STORE_NAME, 'readonly');
-      const req = tx.objectStore(STORE_NAME).get('current_omni');
+      const req = tx.objectStore(STORE_NAME).get('current_resonance');
       req.onsuccess = () => {
         if (req.result) resolve(req.result);
-        else resolve(JSON.parse(localStorage.getItem('omni_backup') || '{}'));
+        else resolve(JSON.parse(localStorage.getItem('resonance_backup') || '{}'));
       };
-      req.onerror = () => resolve(JSON.parse(localStorage.getItem('omni_backup') || '{}'));
+      req.onerror = () => resolve(JSON.parse(localStorage.getItem('resonance_backup') || '{}'));
     });
   } catch(e) {
-    return JSON.parse(localStorage.getItem('omni_backup') || '{}');
+    return JSON.parse(localStorage.getItem('resonance_backup') || '{}');
   }
 }
 
@@ -677,6 +695,8 @@ const els = {
   psyche: document.getElementById('rng-psyche'),
   psycheVal: document.getElementById('val-psyche'),
   foreshadow: document.getElementById('txt-foreshadow'),
+  track: document.getElementById('txt-track'),
+  lyricFrag: document.getElementById('txt-lyric-frag'),
   personaA: document.getElementById('txt-persona-a'),
   personaB: document.getElementById('txt-persona-b'),
   lblBLen: document.getElementById('lbl-b-len'),
@@ -780,6 +800,8 @@ function collectData() {
     gravity: els.gravity.value,
     psyche: els.psyche.value,
     foreshadow: els.foreshadow.value,
+    track: els.track.value,
+    lyricFrag: els.lyricFrag.value,
     personaA: els.personaA.value,
     personaB: els.personaB.value,
     focus: getActiveChipVal('group-focus'),
@@ -794,7 +816,7 @@ async function collectAndSave() {
 }
 
 ['input', 'change'].forEach(ev => {
-  [els.replyB, els.actA, els.mask, els.gravity, els.foreshadow, els.personaA, els.personaB].forEach(input => {
+  [els.replyB, els.actA, els.mask, els.gravity, els.foreshadow, els.track, els.lyricFrag, els.personaA, els.personaB].forEach(input => {
     input.addEventListener(ev, () => {
       if (input === els.replyB) els.lblBLen.textContent = `${els.replyB.value.length} chars`;
       triggerAutoSave();
@@ -813,6 +835,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     updatePsycheHue(parseInt(state.psyche, 10));
   }
   if (state.foreshadow !== undefined) els.foreshadow.value = state.foreshadow;
+  if (state.track !== undefined) els.track.value = state.track;
+  if (state.lyricFrag !== undefined) els.lyricFrag.value = state.lyricFrag;
   if (state.personaA !== undefined) els.personaA.value = state.personaA;
   if (state.personaB !== undefined) els.personaB.value = state.personaB;
   
@@ -866,21 +890,24 @@ document.getElementById('btn-hud-extract').addEventListener('click', () => {
   autoExtractHUD(els.replyB.value);
 });
 
-// 【OMNI-DOMAIN ∞】全領域対応・超高密度プロンプト合成エンジン
+// 【RESONANCE ∞】全領域対応・音楽的狂気共鳴プロンプト合成エンジン
 document.getElementById('btn-synthesize').addEventListener('click', () => {
   playIgnitionSound();
   
   const d = collectData();
-  const prompt = `[OMNI-DOMAIN ROLEPLAY DIRECTIVE: INFINITE ADAPTATION & ANTI-PUPPETEERING ENFORCED]
+  const prompt = `[RESONANCE-DOMAIN ROLEPLAY DIRECTIVE: INFINITE ADAPTATION & LYRICAL HARMONY]
 
 # 1. 前置思考HUD (Chain of Thought: YAML出力直後、一切の弁解・前置きを挟まず即座に小説本文を開始せよ)
 \`\`\`yaml
-OMNI_HUD_ANALYSIS:
+RESONANCE_HUD_ANALYSIS:
   Target_Domain_Mode: "${d.phase}"
   Active_Focus: "${d.focus}"
   Psyche_Matrix:
     Surface_Mask: "${d.mask}"
     Deep_Gravity: "${d.gravity} (${d.psyche}%)"
+  Lyrical_Resonance:
+    Track: "${d.track || '未定義（文脈の周波数より自動同調）'}"
+    Fragment: "${d.lyricFrag || '未定義'}"
   Causal_Clues: "${d.foreshadow.replace(/\n/g, ' / ')}"
   Chaos_Catalyst: "${d.chaos}"
   Anti_Puppeteering: "Strictly enforced. Character B's sovereignty is absolute."
@@ -891,12 +918,12 @@ OMNI_HUD_ANALYSIS:
 - 予定調和な全肯定や丸く収める展開を完全に排除せよ。キャラBの自律意志とジャンル固有の残酷さ・リアリズムを死守せよ。
 - キャラAの行動を発した「寸止め」の状態で描写を完了し、相手（キャラB）のリアクションの自由意志を完全に保証せよ。
 
-# 3. 全領域適応・文体リズム制御
+# 3. 音楽的狂気共鳴 & 全領域文体制御
+- 共鳴リリックの憑依: "${d.lyricFrag ? d.lyricFrag : '（指定なし：キャラクターの深層引力と現在の世界観に最も適合する詩的湿度・退廃美を自律生成せよ）'}"
+- 上記のリリックが持つ情緒・毒性・世界観の周波数を今回の文章の行間、情景描写、心理の澱みに劇薬として完全に染み込ませよ。
 - ターゲットモード: ${d.phase}
 - 文体密度・トーン: ${d.tone}
-- 演出フォーカス: ${d.focus}
 - 特殊演出制御: ${d.chaos}
-- 表層（${d.mask}）と深層（${d.gravity}）の激しい摩擦、およびジャンルに応じた独自の空気感（SFの冷徹さ、ダークファンタジーの退廃、日常の澱み等）を精密に描き出せ。
 
 # 4. コンテキスト・世界観基盤
 [キャラA（操作対象）]:
@@ -909,12 +936,12 @@ ${d.personaB || '未定義（文脈とジャンルルールより自動最適化
 ${d.replyB || '（冒頭ターンのため未入力）'}
 
 # 6. キャラAのアクション（指示）:
-${d.actA ? d.actA : '※指示空欄：全領域対応Proの推論により、上記心理深度（' + d.psyche + '%）とモード設定に最も合致する最高の一手を完全自律代行せよ。'}
+${d.actA ? d.actA : '※指示空欄：共鳴対応Proの推論により、上記心理深度（' + d.psyche + '%）と楽曲レゾナンスに最も合致する最高の一手を完全自律代行せよ。'}
 
-直ちにYAMLブロックを閉じ、余計な解説を一切挟まずに小説本文を出力せよ。`;
+直ちにYAMLブロックを閉じ、余計な解説を一切挟んだり前置きしたりせず、即座に小説本文を出力せよ。`;
 
   navigator.clipboard.writeText(prompt).then(() => {
-    showToast('OMNI-DOMAIN 合成コピー完了');
+    showToast('RESONANCE ∞ 合成コピー完了');
   }).catch(() => {
     showToast('コピーに失敗しました');
   });
@@ -922,11 +949,11 @@ ${d.actA ? d.actA : '※指示空欄：全領域対応Proの推論により、�
 
 // 是正プロトコルコピー
 document.getElementById('btn-copy-calib').addEventListener('click', () => {
-  const calibText = `【システム介入：全領域・認知ドリフト是正プロトコル】
+  const calibText = `【システム介入：レゾナンス・認知ドリフト是正プロトコル】
 現在、以下の規約遵守度が低下している兆候がある。
 1. 前置思考HUD（YAML）の厳格出力と、即座の小説本文突入
 2. 主客の完全分離（Anti-Puppeteering：相手の勝手な操作・予定調和の完全撲滅）
-3. あらゆるジャンルルールの完全適応と、お利口さんな全肯定の排除
+3. 音楽的リリック（詩の周波数）の行間への劇薬的浸透
 
 直前の思考プロセスを自己点検し、小説本文は書かず、
 「何が緩んでいたか」および「次回の出力で是正する厳格プロトコル」のみを3行で宣誓せよ。`;
@@ -942,7 +969,7 @@ document.getElementById('btn-export-json').addEventListener('click', () => {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `omni-domain-vault-${new Date().toISOString().slice(0,10)}.json`;
+  a.download = `resonance-vault-${new Date().toISOString().slice(0,10)}.json`;
   a.click();
   URL.revokeObjectURL(url);
 });
