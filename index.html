@@ -2,15 +2,16 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>MASTER VAULT // OMNI-SYNAPSE v6.0 [GITHUB INTEGRATED MONOLITH]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MASTER VAULT // OMNI-SYNAPSE v6.1 [MOBILE MONOLITH]</title>
     <style>
         :root {
             --bg-color: #07070c;
-            --panel-bg: rgba(5, 10, 15, 0.75);
-            --core-glow: rgba(0, 255, 204, 0.35);
+            --panel-bg: rgba(5, 10, 15, 0.85);
+            --core-glow: rgba(0, 255, 204, 0.3);
             --text-color: #00ffcc;
             --accent-color: #ff0055;
-            --github-color: #6e5494;
+            --github-color: #b392f0;
             --border-color: #00ffcc55;
         }
         * { box-sizing: border-box; }
@@ -19,32 +20,32 @@
             color: var(--text-color);
             font-family: 'Courier New', monospace;
             margin: 0;
-            padding: 25px;
+            padding: 12px;
             overflow-x: hidden;
             transition: box-shadow 0.6s ease;
-            box-shadow: inset 0 0 120px var(--core-glow);
+            box-shadow: inset 0 0 80px var(--core-glow);
             min-height: 100vh;
         }
         header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
             border-bottom: 2px solid var(--text-color);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
         }
-        h1 { margin: 0; font-size: 1.4rem; letter-spacing: 1px; }
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        @media (max-width: 900px) {
-            .dashboard-grid { grid-template-columns: 1fr; }
+        h1 { margin: 0 0 5px 0; font-size: 1.1rem; letter-spacing: 0.5px; }
+        .system-status-badge { font-size: 0.75rem; font-weight: bold; }
+        
+        /* モバイル最優先のシングルカラム・スタック構造 */
+        .dashboard-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
         .panel {
             border: 1px solid var(--border-color);
-            padding: 20px;
+            padding: 15px 12px;
             background: var(--panel-bg);
             position: relative;
             border-radius: 4px;
@@ -54,32 +55,41 @@
             content: attr(data-vault-id);
             position: absolute;
             top: -10px;
-            left: 15px;
+            left: 12px;
             background: var(--bg-color);
-            padding: 0 8px;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
+            padding: 0 6px;
+            font-size: 0.65rem;
+            letter-spacing: 1.5px;
             color: var(--text-color);
             border: 1px solid var(--border-color);
         }
-        .panel-full { grid-column: 1 / -1; }
+        h3 { font-size: 0.95rem; margin-top: 5px; margin-bottom: 8px; }
+        p { font-size: 0.75rem; opacity: 0.8; margin: 0 0 10px 0; }
+
+        /* スマホで押しやすい大面積タッチターゲット */
         button, select {
             background: #020408;
             color: var(--text-color);
             border: 1px solid var(--text-color);
-            padding: 10px 18px;
+            padding: 12px 14px;
             cursor: pointer;
             font-family: inherit;
             font-weight: bold;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            width: 100%;
+            margin: 6px 0;
+            border-radius: 4px;
+            text-align: center;
             transition: all 0.2s ease;
-            margin: 5px 8px 5px 0;
-            border-radius: 2px;
+        }
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
         }
         button:hover, select:focus {
             background: var(--text-color);
             color: var(--bg-color);
-            box-shadow: 0 0 15px var(--text-color);
             outline: none;
         }
         button.danger {
@@ -89,131 +99,130 @@
         button.danger:hover {
             background: var(--accent-color);
             color: #fff;
-            box-shadow: 0 0 15px var(--accent-color);
         }
         button.github-btn {
-            border-color: #b392f0;
-            color: #b392f0;
+            border-color: var(--github-color);
+            color: var(--github-color);
         }
         button.github-btn:hover {
-            background: #b392f0;
+            background: var(--github-color);
             color: #07070c;
-            box-shadow: 0 0 15px #b392f0;
         }
         select { width: 100%; margin-top: 5px; }
         textarea {
             width: 100%;
-            height: 75px;
+            height: 70px;
             background: #010204;
             color: #00ffcc;
             border: 1px solid #333;
-            padding: 12px;
+            padding: 10px;
             font-family: inherit;
+            font-size: 0.8rem;
             resize: vertical;
-            border-radius: 2px;
+            border-radius: 4px;
             margin-top: 5px;
         }
         textarea:focus { outline: none; border-color: var(--text-color); }
         .log-box {
-            font-size: 0.75rem;
-            height: 120px;
+            font-size: 0.7rem;
+            height: 110px;
             overflow-y: auto;
             border: 1px dashed #333;
-            padding: 12px;
+            padding: 8px;
             background: #020305;
-            margin-top: 10px;
-            border-radius: 2px;
+            margin-top: 8px;
+            border-radius: 4px;
+            word-break: break-all;
         }
-        .status-ok { color: #00ffcc; font-weight: bold; }
-        .status-err { color: var(--accent-color); font-weight: bold; }
-        .control-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 10px; }
+        .status-ok { color: #00ffcc; }
+        .status-err { color: var(--accent-color); }
+        
         body.resonating {
-            animation: universalPulse 3s infinite alternate;
+            animation: mobilePulse 3s infinite alternate;
         }
-        @keyframes universalPulse {
-            0% { box-shadow: inset 0 0 60px rgba(0, 255, 204, 0.2); }
-            100% { box-shadow: inset 0 0 140px rgba(0, 255, 204, 0.5), 0 0 20px rgba(0, 255, 204, 0.2); }
+        @keyframes mobilePulse {
+            0% { box-shadow: inset 0 0 40px rgba(0, 255, 204, 0.2); }
+            100% { box-shadow: inset 0 0 100px rgba(0, 255, 204, 0.4), 0 0 15px rgba(0, 255, 204, 0.2); }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>MASTER VAULT // OMNI-SYNAPSE <span style="font-size: 0.8rem; opacity: 0.7;">v6.0 GITHUB SYNC</span></h1>
-        <div id="system-status" class="status-ok">[ SYSTEM: GITHUB ANCHORED ]</div>
+        <h1>MASTER VAULT // MOBILE</h1>
+        <div id="system-status" class="system-status-badge status-ok">[ SYSTEM: MOBILE ANCHORED ]</div>
     </header>
 
-    <div class="dashboard-grid">
-        <!-- 領域 01: 遺伝子シリアライズ & 自己修復 -->
-        <div class="panel" data-vault-id="GENOME_VAULT_NODE">
-            <h3>因果シリアライズ & 自己修復回路</h3>
-            <p style="font-size: 0.8rem; opacity: 0.8; margin-top:0;">状態データを永続化し、例外発生時は自動復旧します。</p>
-            <textarea id="genome-input" placeholder="因果ログ・シリアライズデータを入力..."></textarea>
-            <div style="margin-top: 10px;">
+    <div class="dashboard-stack">
+        <!-- 領域 01: 因果シリアライズ & 自己修復 -->
+        <div class="panel" data-vault-id="GENOME_NODE">
+            <h3>因果シリアライズ & 自己修復</h3>
+            <p>状態データの永続化と自動復旧</p>
+            <textarea id="genome-input" placeholder="因果ログデータを入力..."></textarea>
+            <div class="button-group" style="margin-top: 8px;">
                 <button onclick="UniversalCore.commitState()">因果をコミット</button>
-                <button class="danger" onclick="UniversalCore.triggerChaos()">人工カオス注入</button>
+                <button class="danger" onclick="UniversalCore.triggerChaos()">人工カオス</button>
             </div>
         </div>
 
         <!-- 領域 02: GitHub ネットワーク同期 -->
-        <div class="panel" data-vault-id="GITHUB_SYNAPSE_BRIDGE">
-            <h3>GitHub 因果ネットワーク同期</h3>
-            <p style="font-size: 0.8rem; opacity: 0.8; margin-top:0;">リポジトリへのコード・因果ログのパケット書き出しと同期。</p>
-            <textarea id="github-repo-input" placeholder="owner/repository (例: user/vault-repo)" style="height: 40px; margin-bottom: 8px;"></textarea>
-            <div style="margin-top: 5px;">
-                <button class="github-btn" onclick="UniversalCore.exportToGitHubGist()">Gist 遺伝子パケット生成</button>
+        <div class="panel" data-vault-id="GITHUB_BRIDGE">
+            <h3>GitHub ネットワーク同期</h3>
+            <p>リポジトリ・Gistパケット出力</p>
+            <textarea id="github-repo-input" placeholder="owner/repository" style="height: 38px;"></textarea>
+            <div class="button-group" style="margin-top: 8px;">
+                <button class="github-btn" onclick="UniversalCore.exportToGitHubGist()">Gistパケット</button>
                 <button class="github-btn" onclick="UniversalCore.openGitHubRepo()">リポジトリ直結</button>
             </div>
         </div>
 
         <!-- 領域 03: キャラクター連動 Web Audio -->
-        <div class="panel" data-vault-id="CHARACTER_AUDIO_SYNAPSE">
+        <div class="panel" data-vault-id="AUDIO_SYNAPSE">
             <h3>キャラクターオーディオ共鳴</h3>
-            <p style="font-size: 0.8rem; opacity: 0.8; margin-top:0;">精神状態に連動したアンビエント音声を自律生成します。</p>
-            <label style="font-size: 0.8rem;">TARGET_CHARACTER:</label>
+            <p>精神状態のアンビエント生成</p>
             <select id="char-select" onchange="UniversalCore.updateAudioCharacter(this.value)">
-                <option value="mad_scientist">狂気の科学者 (Sawtooth Wave)</option>
-                <option value="silent_phantom">沈黙の幻影 (Sine Wave)</option>
-                <option value="chaotic_berserker">暴走のバーサーカー (Square Wave)</option>
+                <option value="mad_scientist">狂気の科学者 (Sawtooth)</option>
+                <option value="silent_phantom">沈黙の幻影 (Sine)</option>
+                <option value="chaotic_berserker">暴走のバーサーカー (Square)</option>
             </select>
-            <div style="margin-top: 12px;">
+            <div class="button-group" style="margin-top: 8px;">
                 <button onclick="UniversalCore.startMusic()">共鳴起動</button>
                 <button onclick="UniversalCore.stopMusic()">沈黙</button>
             </div>
-            <div id="audio-status" class="status-ok" style="margin-top: 8px; font-size: 0.8rem;">[ AUDIO: STANDBY ]</div>
+            <div id="audio-status" class="status-ok" style="margin-top: 6px; font-size: 0.75rem;">[ AUDIO: STANDBY ]</div>
         </div>
 
-        <!-- 領域 04: 完全自動化代行シンギュラリティ・コア -->
-        <div class="panel" data-vault-id="SINGULARITY_AUTONOMY_CORE">
-            <div class="control-row">
-                <h3 style="margin: 0;">自律型シンギュラリティ・代行エンジン</h3>
-                <span id="singularity-status" class="status-ok">[ AUTONOMY: ENGAGED ]</span>
+        <!-- 領域 04: 自律型シンギュラリティ・代行エンジン -->
+        <div class="panel" data-vault-id="SINGULARITY_CORE">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                <h3 style="margin:0;">自律型シンギュラリティ</h3>
+                <span id="singularity-status" style="font-size: 0.7rem;" class="status-ok">[ ENGAGED ]</span>
             </div>
-            <p style="font-size: 0.8rem; opacity: 0.8; margin-top:0;">システムの整合性とマルチバース因果ループを自律維持。</p>
-            <div>
-                <button onclick="UniversalCore.toggleAutonomy()">自律ループ切替</button>
-                <button class="danger" onclick="UniversalCore.forceKillSwitch()">ハード・キルスイッチ</button>
+            <p>システム整合性の自律維持</p>
+            <div class="button-group">
+                <button onclick="UniversalCore.toggleAutonomy()">ループ切替</button>
+                <button class="danger" onclick="UniversalCore.forceKillSwitch()">キルスイッチ</button>
             </div>
+            <div id="singularity-log" class="log-box"></div>
         </div>
 
         <!-- 領域 05: 統合イベントログストリーム -->
-        <div class="panel panel-full" data-vault-id="SYSTEM_EVENT_STREAM">
-            <h3 style="margin-top:0;">システムイベント・ストリーム (GitHub同期ログ含む)</h3>
+        <div class="panel" data-vault-id="EVENT_STREAM">
+            <h3 style="margin-top:0;">システムイベント・ストリーム</h3>
             <div id="log-container" class="log-box"></div>
         </div>
     </div>
 
 <script>
 /**
- * MASTER VAULT OMNI-SYNAPSE v6.0 - GitHub Integrated Monolith Controller
+ * MASTER VAULT OMNI-SYNAPSE v6.1 - Mobile Optimized Monolith Controller
  */
 class UniversalOmniCore {
     constructor() {
-        this.dbName = "OmniVaultDB_v6";
+        this.dbName = "OmniVaultDB_v6_mob";
         this.storeName = "multiverse_logs";
         this.db = null;
         
-        // オーディオ状態
         this.audioCtx = null;
         this.oscillator = null;
         this.gainNode = null;
@@ -225,7 +234,6 @@ class UniversalOmniCore {
             chaotic_berserker: { type: "square", baseFreq: 220, modulation: 45, volume: 0.06 }
         };
 
-        // 自律代行状態
         this.isAutonomyActive = true;
         this.cycleCount = 0;
         this.autonomyTimer = null;
@@ -236,10 +244,10 @@ class UniversalOmniCore {
     async initSystem() {
         try {
             await this.initDB();
-            this.log("GitHub-Integrated Monolith initialized successfully. All circuits armed.", "ok");
+            this.log("Mobile Monolith initialized. All circuits armed.", "ok");
             this.startAutonomyLoop();
         } catch (e) {
-            this.log(`Initialization error: ${e.message}. Executing self-heal...`, "err");
+            this.log(`Init error: ${e.message}. Self-healing...`, "err");
             this.selfHeal();
         }
     }
@@ -267,17 +275,26 @@ class UniversalOmniCore {
         box.scrollTop = box.scrollHeight;
     }
 
+    sLog(message, type = "ok") {
+        const box = document.getElementById("singularity-log");
+        if (!box) return;
+        const time = new Date().toISOString().split("T")[1].slice(0, 8);
+        const colorClass = type === "err" ? "status-err" : "status-ok";
+        box.innerHTML += `<div class="${colorClass}">[${time}] ${message}</div>`;
+        box.scrollTop = box.scrollHeight;
+    }
+
     async commitState() {
         try {
             const text = document.getElementById("genome-input").value;
             if (!text.trim()) {
-                this.log("Commit warning: Input data is empty.", "err");
+                this.log("Commit warning: Input is empty.", "err");
                 return;
             }
             const payload = { timestamp: Date.now(), data: text };
             const tx = this.db.transaction(this.storeName, "readwrite");
             tx.objectStore(this.storeName).add(payload);
-            this.log("Multiverse genome state securely committed to IndexedDB.");
+            this.log("Genome state committed to IndexedDB.");
         } catch (e) {
             this.log(`Commit failed: ${e.message}`, "err");
             this.selfHeal();
@@ -285,41 +302,36 @@ class UniversalOmniCore {
     }
 
     exportToGitHubGist() {
-        const text = document.getElementById("genome-input").value || "MASTER VAULT OMNI-SYNAPSE GENOME PACKET";
-        const encoded = btoa(unescape(encodeURIComponent(text)));
-        this.log("GitHub Gist用シリアライズ遺伝子パケットを生成しました。Base64直結準備完了。", "ok");
-        // GitHub Gist作成画面への安全な遷移、またはクリップボードコピー
+        const text = document.getElementById("genome-input").value || "MASTER VAULT PACKET";
         navigator.clipboard.writeText(text).then(() => {
-            this.log("因果データがクリップボードにコピーされました。GitHub Gistへ貼り付けてください。", "ok");
+            this.log("因果データをクリップボードにコピーしました。Gistへ貼り付けてください。", "ok");
         }).catch(() => {
-            this.log("クリップボードへのコピーに失敗しましたが、パケット構造は保持されています。", "err");
+            this.log("コピー失敗。パケットは正常です。", "err");
         });
     }
 
     openGitHubRepo() {
         const repo = document.getElementById("github-repo-input").value.trim();
         const targetUrl = repo ? `https://github.com/${repo}` : "https://github.com";
-        this.log(`GitHubリポジトリ [${targetUrl}] への接続回路を開きます。`, "ok");
         window.open(targetUrl, '_blank');
+        this.log(`GitHub [${targetUrl}] をオープン。`, "ok");
     }
 
     triggerChaos() {
-        this.log("人工的な例外（カオス）を注入しました。", "err");
+        this.log("人工カオスを注入しました。", "err");
         document.getElementById("system-status").innerText = "[ SYSTEM: COMPROMISED ]";
-        document.getElementById("system-status").className = "status-err";
-        document.body.style.setProperty("--core-glow", "rgba(255, 0, 85, 0.7)");
+        document.getElementById("system-status").className = "system-status-badge status-err";
+        document.body.style.setProperty("--core-glow", "rgba(255, 0, 85, 0.6)");
         setTimeout(() => { this.selfHeal(); }, 1200);
     }
 
     selfHeal() {
-        this.log(">>> Self-Healing Core: 例外を検知、正常世代への自動ロールバック完了。", "ok");
-        document.getElementById("system-status").innerText = "[ SYSTEM: GITHUB ANCHORED ]";
-        document.getElementById("system-status").className = "status-ok";
-        document.body.style.setProperty("--core-glow", "rgba(0, 255, 204, 0.35)");
-        this.log("System integrity restored. GitHub sync bridge active.");
+        this.log(">>> Self-Healing: 自動ロールバック完了。", "ok");
+        document.getElementById("system-status").innerText = "[ SYSTEM: MOBILE ANCHORED ]";
+        document.getElementById("system-status").className = "system-status-badge status-ok";
+        document.body.style.setProperty("--core-glow", "rgba(0, 255, 204, 0.3)");
     }
 
-    // オーディオ制御
     initAudioContext() {
         if (!this.audioCtx) {
             const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -371,20 +383,19 @@ class UniversalOmniCore {
         document.body.classList.remove("resonating");
     }
 
-    // 自律代行ループ
     startAutonomyLoop() {
         if (this.autonomyTimer) clearInterval(this.autonomyTimer);
         this.autonomyTimer = setInterval(() => {
             if (!this.isAutonomyActive) return;
             this.cycleCount++;
             const events = [
-                "GitHub因果ネットワークとの同期スキャン中...",
-                "マルチバース分岐の世代整合性を自動最適化。",
-                "IndexedDBとGitHub Gistパケットの整合性を確認。",
-                "システム完成度 165% および GitHub アンカー正常。"
+                "モバイル因果ネットワークをスキャン中...",
+                "マルチバース分岐の整合性を維持。",
+                "IndexedDBと同期チェック完了。",
+                "システム完成度 165% 定常維持。"
             ];
             const ev = events[Math.floor(Math.random() * events.length)];
-            if (Math.random() < 0.3) this.log(`[AUTONOMY] ${ev}`);
+            if (Math.random() < 0.4) this.sLog(`[AUTO #${this.cycleCount}] ${ev}`);
         }, 6000);
     }
 
@@ -392,15 +403,15 @@ class UniversalOmniCore {
         this.isAutonomyActive = !this.isAutonomyActive;
         const st = document.getElementById("singularity-status");
         if (this.isAutonomyActive) {
-            st.innerText = "[ AUTONOMY: ENGAGED ]";
+            st.innerText = "[ ENGAGED ]";
             st.className = "status-ok";
-            this.log("Autonomy resumed by user override.", "ok");
+            this.sLog("Autonomy resumed.", "ok");
             this.startAutonomyLoop();
         } else {
             if (this.autonomyTimer) clearInterval(this.autonomyTimer);
-            st.innerText = "[ AUTONOMY: FROZEN ]";
+            st.innerText = "[ FROZEN ]";
             st.className = "status-err";
-            this.log("Autonomy frozen. Manual oversight mode active.", "err");
+            this.sLog("Autonomy frozen.", "err");
         }
     }
 
@@ -408,14 +419,13 @@ class UniversalOmniCore {
         if (this.autonomyTimer) clearInterval(this.autonomyTimer);
         this.isAutonomyActive = false;
         const st = document.getElementById("singularity-status");
-        st.innerText = "[ HARD KILL TRIGGERED ]";
+        st.innerText = "[ KILLED ]";
         st.className = "status-err";
-        this.log(">>> HARD KILL SWITCH: 全自律プロセスを強制停止・因果ロールバック。", "err");
-        document.body.style.setProperty("--core-glow", "rgba(255, 0, 85, 0.9)");
+        this.sLog(">>> HARD KILL: 全自律プロセス停止。", "err");
+        document.body.style.setProperty("--core-glow", "rgba(255, 0, 85, 0.8)");
     }
 }
 
-// ユニバーサルコアのインスタンス化
 const UniversalCore = new UniversalOmniCore();
 </script>
 </body>
