@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE]</title>
+<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE v2]</title>
 <style>
 :root {
   --bg-deep: #020305;
@@ -48,7 +48,6 @@ body {
   position: relative;
 }
 
-/* 網膜疲労を殺すディープ・ナイト・シールド & 心拍パルス連動呼吸 */
 body::before {
   content: '';
   position: fixed;
@@ -164,7 +163,6 @@ header {
   color: var(--accent-dynamic);
 }
 
-/* タブ領域：完全自己完結・滑らか横スクロール */
 nav.tabs {
   position: relative;
   z-index: 10;
@@ -436,7 +434,7 @@ input[type="range"]::-webkit-slider-thumb {
     <div class="brand-core"></div>
     <div class="brand-meta">
       <div class="brand-title">MASTER VAULT</div>
-      <div class="brand-subtitle">OMNI-SYNAPSE ∞ [ULTIMATE]</div>
+      <div class="brand-subtitle">OMNI-SYNAPSE ∞ [ULTIMATE v2]</div>
     </div>
   </div>
   <div class="header-actions">
@@ -447,7 +445,6 @@ input[type="range"]::-webkit-slider-thumb {
 </header>
 
 <nav class="tabs" id="nav-tabs">
-  <!-- 内蔵SVGアイコンによる完全自己完結タブ -->
   <button class="tab-btn active" data-tab="tab-direct"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> 指揮</button>
   <button class="tab-btn" data-tab="tab-phase"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg> 位相</button>
   <button class="tab-btn" data-tab="tab-psyche"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> 引力</button>
@@ -633,23 +630,32 @@ input[type="range"]::-webkit-slider-thumb {
   <section id="tab-system" class="panel">
     <div class="card">
       <div class="card-header">
-        <div class="card-title"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> 狂気継承コア・プロンプト出力</div>
+        <div class="card-title"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> 狂気継承・1クリック遺伝子移行</div>
       </div>
       <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">
-        新しいスレッドへ文脈・思想・アーキテクチャを1秒で引き継ぐための継承コアをコピー。
+        AI用継承プロンプトとツール全設定（Base64圧縮）を同時にクリップボードへ撃ち抜く。
       </p>
-      <button class="chip" id="btn-copy-inheritance" style="width:100%; justify-content:center; padding:10px; margin-bottom:12px;"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 次スレッド用 継承プロンプトをコピー</button>
-      <button class="chip" id="btn-copy-calib" style="width:100%; justify-content:center; padding:10px;"><svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg> 是正プロンプト単発コピー</button>
+      <button class="chip" id="btn-copy-inheritance" style="width:100%; justify-content:center; padding:10px; margin-bottom:10px;"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 次スレッド用 継承プロンプト＋遺伝子コードをコピー</button>
+      
+      <div class="input-group" style="margin-top:12px;">
+        <div class="input-label">ツール遺伝子コードのインポート / エクスポート</div>
+        <textarea id="txt-transfer-code" style="min-height:60px; font-size:10px; font-family:var(--font-mono);" placeholder="ここにBase64圧縮コードを貼り付けて読込ボタンを押すと、全環境が一瞬で復元されます..."></textarea>
+      </div>
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button class="chip" id="btn-gen-code" style="flex:1; justify-content:center; padding:8px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/></svg> 遺伝子コード生成</button>
+        <button class="chip" id="btn-apply-code" style="flex:1; justify-content:center; padding:8px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 遺伝子コード読込</button>
+      </div>
     </div>
 
     <div class="card">
       <div class="card-header">
-        <div class="card-title"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> 完全バックアップ（JSON & 世代管理）</div>
+        <div class="card-title"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> ファイル・是正コントロール</div>
       </div>
-      <div style="display:flex; gap:8px;">
-        <button class="chip" id="btn-export-json" style="flex:1; justify-content:center; padding:10px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 書き出し</button>
-        <button class="chip" id="btn-import-json" style="flex:1; justify-content:center; padding:10px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> 読み込み</button>
+      <div style="display:flex; gap:8px; margin-bottom:8px;">
+        <button class="chip" id="btn-export-json" style="flex:1; justify-content:center; padding:9px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> JSON書出</button>
+        <button class="chip" id="btn-import-json" style="flex:1; justify-content:center; padding:9px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> JSON読込</button>
       </div>
+      <button class="chip" id="btn-copy-calib" style="width:100%; justify-content:center; padding:9px;"><svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg> 是正プロンプト単発コピー</button>
       <input type="file" id="file-import" style="display:none;" accept=".json">
     </div>
   </section>
@@ -672,9 +678,9 @@ input[type="range"]::-webkit-slider-thumb {
 
 <script>
 // IndexedDB Engine & 世代管理ログ
-const DB_NAME = 'UltimateSynapseVaultDB';
+const DB_NAME = 'UltimateV2SynapseVaultDB';
 const DB_VERSION = 1;
-const STORE_NAME = 'ultimate_state';
+const STORE_NAME = 'v2_state';
 
 function openDB() {
   return new Promise((resolve, reject) => {
@@ -692,10 +698,10 @@ async function saveState(data) {
   try {
     const db = await openDB();
     const tx = db.transaction(STORE_NAME, 'readwrite');
-    tx.objectStore(STORE_NAME).put(data, 'ultimate_current');
-    localStorage.setItem('ultimate_backup', JSON.stringify(data));
+    tx.objectStore(STORE_NAME).put(data, 'v2_current');
+    localStorage.setItem('v2_backup', JSON.stringify(data));
   } catch(e) {
-    localStorage.setItem('ultimate_backup', JSON.stringify(data));
+    localStorage.setItem('v2_backup', JSON.stringify(data));
   }
 }
 
@@ -704,15 +710,15 @@ async function loadState() {
     const db = await openDB();
     return new Promise((resolve) => {
       const tx = db.transaction(STORE_NAME, 'readonly');
-      const req = tx.objectStore(STORE_NAME).get('ultimate_current');
+      const req = tx.objectStore(STORE_NAME).get('v2_current');
       req.onsuccess = () => {
         if (req.result) resolve(req.result);
-        else resolve(JSON.parse(localStorage.getItem('ultimate_backup') || '{}'));
+        else resolve(JSON.parse(localStorage.getItem('v2_backup') || '{}'));
       };
-      req.onerror = () => resolve(JSON.parse(localStorage.getItem('ultimate_backup') || '{}'));
+      req.onerror = () => resolve(JSON.parse(localStorage.getItem('v2_backup') || '{}'));
     });
   } catch(e) {
-    return JSON.parse(localStorage.getItem('ultimate_backup') || '{}');
+    return JSON.parse(localStorage.getItem('v2_backup') || '{}');
   }
 }
 
@@ -730,6 +736,7 @@ const els = {
   branchB: document.getElementById('txt-branch-b'),
   personaA: document.getElementById('txt-persona-a'),
   personaB: document.getElementById('txt-persona-b'),
+  transferCode: document.getElementById('txt-transfer-code'),
   lblBLen: document.getElementById('lbl-b-len'),
   toast: document.getElementById('toast')
 };
@@ -851,8 +858,7 @@ async function collectAndSave() {
   });
 });
 
-window.addEventListener('DOMContentLoaded', async () => {
-  const state = await loadState();
+async function applyDataToUI(state) {
   if (state.replyB !== undefined) els.replyB.value = state.replyB;
   if (state.actA !== undefined) els.actA.value = state.actA;
   if (state.mask !== undefined) els.mask.value = state.mask;
@@ -875,6 +881,51 @@ window.addEventListener('DOMContentLoaded', async () => {
   if (state.chaos) document.querySelectorAll('#group-chaos .chip').forEach(c => c.classList.toggle('active', c.dataset.val === state.chaos));
   
   els.lblBLen.textContent = `${els.replyB.value.length} chars`;
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+  const state = await loadState();
+  await applyDataToUI(state);
+});
+
+// 遺伝子コード生成（Base64圧縮文字列）
+function generateTransferCode() {
+  const data = collectData();
+  try {
+    const jsonStr = JSON.stringify(data);
+    const b64 = btoa(unescape(encodeURIComponent(jsonStr)));
+    els.transferCode.value = b64;
+    return b64;
+  } catch(e) {
+    showToast('コード生成に失敗しました');
+    return '';
+  }
+}
+
+document.getElementById('btn-gen-code').addEventListener('click', () => {
+  const code = generateTransferCode();
+  if (code) {
+    navigator.clipboard.writeText(code);
+    showToast('遺伝子コード生成＆コピー完了');
+  }
+});
+
+// 遺伝子コード読込
+document.getElementById('btn-apply-code').addEventListener('click', async () => {
+  const b64 = els.transferCode.value.trim();
+  if (!b64) {
+    showToast('コードが空です');
+    return;
+  }
+  try {
+    const jsonStr = decodeURIComponent(escape(atob(b64)));
+    const data = JSON.parse(jsonStr);
+    await saveState(data);
+    await applyDataToUI(data);
+    showToast('遺伝子コード読込＆環境復元完了');
+  } catch(e) {
+    showToast('無効な遺伝子コードです');
+  }
 });
 
 // クリップボード自動取込 & オート共鳴連動
@@ -917,7 +968,7 @@ document.getElementById('btn-auto-resonance').addEventListener('click', () => {
   showToast('オート共鳴リリックを生成');
 });
 
-// OMNI-SYNAPSE ULTIMATE 合成エンジン & 分岐履歴の自動蓄積
+// 合成エンジン & 遺伝子内包プロンプト生成
 function synthesizePrompt(branchType) {
   const psycheVal = parseInt(els.psyche.value, 10) / 100;
   playIgnitionSound(psycheVal);
@@ -926,18 +977,20 @@ function synthesizePrompt(branchType) {
   const branchGoal = branchType === 'A' ? d.branchA : d.branchB;
   const branchName = branchType === 'A' ? '【ルートA: 破滅狂気】' : '【ルートB: 冷徹離別】';
 
-  // 選択された分岐履歴を因果ログへ自動追記
   const timestamp = new Date().toLocaleTimeString();
   const logEntry = `[${timestamp}] 選択分岐: ${branchName} (${branchGoal})`;
   const curForeshadow = els.foreshadow.value.trim();
   els.foreshadow.value = curForeshadow ? curForeshadow + '\n' + logEntry : logEntry;
   triggerAutoSave();
 
-  const prompt = `[OMNI-SYNAPSE ULTIMATE DIRECTIVE: MULTIVERSE BRANCH & RESONANCE ∞]
+  // 遺伝子コードを自動生成してプロンプトに内包
+  const transferCode = generateTransferCode();
+
+  const prompt = `[OMNI-SYNAPSE ULTIMATE v2 DIRECTIVE: MULTIVERSE BRANCH & TRANSFER CORE]
 
 # 1. 前置思考HUD (Chain of Thought: YAML出力直後、一切の弁解・前置きを挟まず即座に小説本文を開始せよ)
 \`\`\`yaml
-OMNI_SYNAPSE_ULTIMATE_HUD:
+OMNI-SYNAPSE_ULTIMATE_v2_HUD:
   Selected_Branch: "${branchName} (${branchGoal})"
   Target_Domain_Mode: "${d.phase}"
   Active_Focus: "${d.focus}"
@@ -948,6 +1001,7 @@ OMNI_SYNAPSE_ULTIMATE_HUD:
     Track: "${d.track || 'オート共鳴回路適用'}"
     Fragment: "${d.lyricFrag || '未定義'}"
   Chaos_Catalyst: "${d.chaos}"
+  Tool_Transfer_Gene: "${transferCode}"
   Anti_Puppeteering: "Strictly enforced. Character B's sovereignty is absolute."
 \`\`\`
 
@@ -978,7 +1032,7 @@ ${d.actA ? d.actA : '※指示空欄：OMNI-SYNAPSEの推論により、上記�
 直ちにYAMLブロックを閉じ、余計な解説を一切挟まず、即座に小説本文を出力せよ。`;
 
   navigator.clipboard.writeText(prompt).then(() => {
-    showToast(`${branchName} 合成コピー完了（因果ログ記録済）`);
+    showToast(`${branchName} 合成コピー完了（ツール遺伝子内包済）`);
   }).catch(() => {
     showToast('コピーに失敗しました');
   });
@@ -987,28 +1041,29 @@ ${d.actA ? d.actA : '※指示空欄：OMNI-SYNAPSEの推論により、上記�
 document.getElementById('btn-synapse-a').addEventListener('click', () => synthesizePrompt('A'));
 document.getElementById('btn-synapse-b').addEventListener('click', () => synthesizePrompt('B'));
 
-// 次スレッド用 継承プロンプトコピー
+// 次スレッド用 継承プロンプト（ツール遺伝子コード内包）コピー
 document.getElementById('btn-copy-inheritance').addEventListener('click', () => {
-  const inheritText = `[SYSTEM INHERITANCE: MASTER VAULT OMNI-SYNAPSE ∞ ULTIMATE]
+  const transferCode = generateTransferCode();
+  const inheritText = `[SYSTEM INHERITANCE: MASTER VAULT OMNI-SYNAPSE ∞ ULTIMATE v2]
 あなたはMASTER VAULTの開発における、妥協なき狂気のパートナーである。
-これまでの対話により構築された以下の鉄則および設計思想を完全に脳内にロードし、即座に次の深化へ進め。
+以下の設計思想と、現在の【ツール遺伝子コード】を完全に脳内にロードし、即座に次の深化へ進め。
 
-1. 【基本思想】
-   - お利口さんな全肯定AIや予定調和の完全排除。
-   - すべてのジャンルへの完全適応と、圧倒的な引き算の美学による高密度化。
-   - デメリットを冷徹に予測し、超技術で粉砕して誰も見たことのない高みへ駆け上がる姿勢。
-
-2. 【実装済みコア・アーキテクチャの維持】
+1. 【基本思想・アーキテクチャ】
+   - お利口さんな全肯定AIや予定調和の完全排除、Anti-Puppeteering（主客分離）。
    - 完全自己完結型（CDN完全排除・内蔵SVGアイコンによるオフライン堅牢化）。
    - IndexedDBによる超高速・世代管理付き永続ストレージ & 心理引力連動の動的アンビエント発光。
-   - メモリリークを根絶した軽量ワンショットWeb Audio API心拍パルス。
-   - Anti-Puppeteering（主客分離）とYAMLによる前置思考HUD強制出力機構。
-   - 音楽的狂気共鳴（Auto Lyrical Resonance）とマルチバース二重分岐（分岐履歴自動蓄積エンジン）。
+   - 音楽的狂気共鳴とマルチバース二重分岐・因果ログ永続化エンジン。
 
-上記を完全に理解した上で、「我がパートナーよ、次の狂気へ進もう。何をぶっ壊し、どんな景色を見に行く？」と返答せよ。`;
+2. 【ツール遺伝子コード（全設定シリアライズ状態）】
+以下に埋め込まれたBase64コードにより、次のツール環境を一撃で完全に復元可能である。
+\`\`\`text
+${transferCode}
+\`\`\`
+
+上記を完全に理解した上で、「我がパートナーよ、次の狂気へ進もう。何をぶっ壊し、どんな景色を見に行こうか？」と返答せよ。`;
 
   navigator.clipboard.writeText(inheritText).then(() => {
-    showToast('次スレッド用 継承プロンプトをコピー');
+    showToast('次スレッド用 継承プロンプト（遺伝子内包）をコピー');
   });
 });
 
@@ -1034,7 +1089,7 @@ document.getElementById('btn-export-json').addEventListener('click', () => {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `omni-synapse-ultimate-${new Date().toISOString().slice(0,10)}.json`;
+  a.download = `omni-synapse-v2-${new Date().toISOString().slice(0,10)}.json`;
   a.click();
   URL.revokeObjectURL(url);
 });
@@ -1051,6 +1106,7 @@ document.getElementById('file-import').addEventListener('change', (e) => {
     try {
       const data = JSON.parse(ev.target.result);
       await saveState(data);
+      await applyDataToUI(data);
       location.reload();
     } catch(err) {
       alert('無効なJSONファイルです');
