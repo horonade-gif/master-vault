@@ -3,36 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE v4]</title>
+<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE v5.0]</title>
 <style>
 :root {
     --bg-deep: #020305;
-    --bg-surface: rgba(8, 11, 18, 0.92);
-    --bg-card: rgba(13, 17, 28, 0.75);
-    --bg-card-hover: rgba(20, 26, 42, 0.9);
+    --bg-surface: rgba(8, 11, 18, 0.94);
+    --bg-card: rgba(13, 17, 28, 0.8);
     --border-subtle: rgba(255, 255, 255, 0.08);
-
     --glow-hue: 190;
     --accent-dynamic: hsl(var(--glow-hue), 100%, 50%);
-    --accent-glow: hsla(var(--glow-hue), 100%, 50%, 0.25);
-    --border-dynamic: hsla(var(--glow-hue), 100%, 60%, 0.55);
-
+    --accent-glow: hsla(var(--glow-hue), 100%, 50%, 0.3);
+    --border-dynamic: hsla(var(--glow-hue), 100%, 60%, 0.6);
     --text-main: #f0f4fc;
     --text-muted: #8290ad;
     --text-dim: #4a546c;
     --radius-sm: 8px;
     --radius-md: 14px;
-    --radius-lg: 20px;
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    -webkit-tap-highlight-color: transparent;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
 body {
     background-color: var(--bg-deep);
@@ -40,391 +31,166 @@ body {
     font-family: var(--font-sans);
     line-height: 1.6;
     min-height: 100vh;
-    min-height: -webkit-fill-available;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    padding-bottom: 135px;
+    padding-bottom: 140px;
     position: relative;
+    transition: background 0.5s ease;
 }
 
 body::before {
     content: '';
     position: fixed;
-    top: -20%;
-    left: -20%;
-    width: 140%;
-    height: 140%;
+    top: -20%; left: -20%; width: 140%; height: 140%;
     background: radial-gradient(circle at 50% 10%, var(--accent-glow) 0%, transparent 65%);
-    opacity: 0.55;
-    pointer-events: none;
-    z-index: 0;
-    animation: pulseBg 4s infinite ease-in-out;
+    opacity: 0.6; pointer-events: none; z-index: 0;
+    animation: pulseBg 3.5s infinite ease-in-out;
 }
 
 @keyframes pulseBg {
     0%, 100% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.06); opacity: 0.75; }
+    50% { transform: scale(1.08); opacity: 0.8; }
 }
 
 header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(4, 6, 10, 0.95);
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(4, 6, 10, 0.96);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-subtle);
     padding: 12px 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
 }
 
-.brand-group {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
+.brand-group { display: flex; align-items: center; gap: 12px; }
 .brand-core {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 32px; height: 32px; border-radius: 50%;
     border: 1.5px solid var(--accent-dynamic);
-    box-shadow: 0 0 12px var(--accent-dynamic);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 14px var(--accent-dynamic);
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
     position: relative;
 }
-
 .brand-core::after {
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--accent-dynamic);
-    box-shadow: 0 0 8px var(--accent-dynamic);
-    animation: pulseCore 2.5s infinite ease-in-out;
+    content: ''; width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent-dynamic); box-shadow: 0 0 10px var(--accent-dynamic);
+    animation: pulseCore 2s infinite ease-in-out;
 }
+@keyframes pulseCore { 0%, 100% { transform: scale(0.8); opacity: 0.6; } 50% { transform: scale(1.4); opacity: 1; } }
 
-@keyframes pulseCore {
-    0%, 100% { transform: scale(0.8); opacity: 0.6; }
-    50% { transform: scale(1.4); opacity: 1; }
-}
+.brand-meta { display: flex; flex-direction: column; }
+.brand-title { font-size: 13px; font-weight: 800; letter-spacing: 0.08em; color: #fff; text-transform: uppercase; }
+.brand-subtitle { font-size: 9px; font-family: var(--font-mono); color: var(--accent-dynamic); letter-spacing: 0.15em; font-weight: 600; }
 
-.brand-meta {
-    display: flex;
-    flex-direction: column;
-}
-
-.brand-title {
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    color: #fff;
-    text-transform: uppercase;
-}
-
-.brand-subtitle {
-    font-size: 9px;
-    font-family: var(--font-mono);
-    color: var(--accent-dynamic);
-    letter-spacing: 0.15em;
-    font-weight: 600;
-}
-
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
+.header-actions { display: flex; align-items: center; gap: 8px; }
 .btn-icon {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    color: var(--text-muted);
-    width: 36px;
-    height: 36px;
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background: var(--bg-card); border: 1px solid var(--border-subtle);
+    color: var(--text-muted); width: 36px; height: 36px; border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    transition: all 0.2s ease;
 }
-
 .btn-icon svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; }
-.btn-icon:active {
-    transform: scale(0.92);
-    border-color: var(--accent-dynamic);
-    color: var(--accent-dynamic);
-}
+.btn-icon:active { transform: scale(0.92); border-color: var(--accent-dynamic); color: var(--accent-dynamic); }
 
 nav.tabs {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    background: rgba(8, 11, 18, 0.9);
+    position: relative; z-index: 10; display: flex;
+    background: rgba(8, 11, 18, 0.92);
     backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-subtle);
-    padding: 8px 10px;
-    gap: 6px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    padding: 8px 10px; gap: 6px; overflow-x: auto;
     scrollbar-width: none;
 }
 nav.tabs::-webkit-scrollbar { display: none; }
 
 .tab-btn {
-    flex: 0 0 auto;
-    min-width: 64px;
-    background: rgba(4, 6, 10, 0.5);
+    flex: 0 0 auto; min-width: 60px;
+    background: rgba(4, 6, 10, 0.6);
     border: 1px solid var(--border-subtle);
-    color: var(--text-muted);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 8px 12px;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    white-space: nowrap;
-    transition: all 0.2s ease;
+    color: var(--text-muted); font-size: 11px; font-weight: 600;
+    padding: 8px 12px; border-radius: var(--radius-sm); cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    white-space: nowrap; transition: all 0.2s ease;
 }
-
 .tab-btn svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 2.2; fill: none; }
-
 .tab-btn.active {
-    background: var(--bg-card);
-    border-color: var(--border-dynamic);
+    background: var(--bg-card); border-color: var(--border-dynamic);
     color: var(--accent-dynamic);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), 0 0 10px var(--accent-glow);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), 0 0 10px var(--accent-glow);
 }
 
-main {
-    position: relative;
-    z-index: 10;
-    flex: 1;
-    padding: 16px;
-    max-width: 640px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.panel {
-    display: none;
-    animation: panelSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
+main { position: relative; z-index: 10; flex: 1; padding: 16px; max-width: 640px; margin: 0 auto; width: 100%; }
+.panel { display: none; animation: panelSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
 .panel.active { display: block; }
-
-@keyframes panelSlide {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+@keyframes panelSlide { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
 .card {
-    background: var(--bg-card);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    padding: 15px;
-    margin-bottom: 14px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    background: var(--bg-card); backdrop-filter: blur(24px);
+    border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+    padding: 15px; margin-bottom: 14px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     transition: border-color 0.3s, box-shadow 0.3s;
 }
+.card:focus-within { border-color: var(--border-dynamic); box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 0 14px var(--accent-glow); }
 
-.card:focus-within {
-    border-color: var(--border-dynamic);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 0 14px var(--accent-glow);
-}
-
-.card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 12px;
-}
-
+.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
 .card-title {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-main);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-size: 12px; font-weight: 700; color: var(--text-main);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    display: flex; align-items: center; gap: 8px;
 }
-
 .card-title svg { color: var(--accent-dynamic); width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.2; fill: none; }
 .card-badge { font-size: 10px; color: var(--text-dim); font-family: var(--font-mono); }
 
 .input-group { margin-bottom: 14px; }
 .input-group:last-child { margin-bottom: 0; }
-
 .input-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-    margin-bottom: 6px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px;
 }
 .input-label span.desc { font-size: 9px; color: var(--text-dim); font-weight: 400; }
 
 textarea, input[type="text"] {
-    width: 100%;
-    background: rgba(4, 6, 10, 0.8);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
-    color: var(--text-main);
-    padding: 11px 13px;
-    font-family: inherit;
-    font-size: 13px;
-    outline: none;
-    transition: all 0.2s ease;
+    width: 100%; background: rgba(4, 6, 10, 0.85);
+    border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+    color: var(--text-main); padding: 11px 13px; font-family: inherit; font-size: 13px;
+    outline: none; transition: all 0.2s ease;
 }
-
 textarea:focus, input[type="text"]:focus {
-    border-color: var(--accent-dynamic);
-    background: rgba(4, 6, 10, 0.95);
+    border-color: var(--accent-dynamic); background: rgba(4, 6, 10, 0.98);
     box-shadow: 0 0 10px var(--accent-glow);
 }
-
 textarea { min-height: 80px; resize: vertical; line-height: 1.6; }
 
 .chip-group { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-
 .chip {
-    background: rgba(8, 11, 18, 0.9);
-    border: 1px solid var(--border-subtle);
-    color: var(--text-muted);
-    font-size: 11px;
-    font-weight: 500;
-    padding: 6px 11px;
-    border-radius: 18px;
-    cursor: pointer;
-    user-select: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background: rgba(8, 11, 18, 0.9); border: 1px solid var(--border-subtle);
+    color: var(--text-muted); font-size: 11px; font-weight: 500;
+    padding: 6px 11px; border-radius: 18px; cursor: pointer; user-select: none;
+    display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s ease;
 }
 .chip svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2.2; fill: none; }
 .chip:active { transform: scale(0.94); }
-
 .chip.active {
-    background: hsla(var(--glow-hue), 100%, 50%, 0.12);
-    border-color: var(--accent-dynamic);
-    color: var(--accent-dynamic);
-    font-weight: 700;
-    box-shadow: 0 0 8px var(--accent-glow);
+    background: hsla(var(--glow-hue), 100%, 50%, 0.15);
+    border-color: var(--accent-dynamic); color: var(--accent-dynamic);
+    font-weight: 700; box-shadow: 0 0 8px var(--accent-glow);
 }
 
 .psyche-matrix-box { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
 .slider-container {
-    margin-top: 12px;
-    background: rgba(4, 6, 10, 0.7);
-    padding: 11px 13px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-subtle);
+    margin-top: 12px; background: rgba(4, 6, 10, 0.75);
+    padding: 11px 13px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);
 }
-
-.slider-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-}
-
+.slider-header { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
 .slider-val { font-family: var(--font-mono); font-weight: 700; color: var(--accent-dynamic); font-size: 13px; }
 
 input[type="range"] {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 5px;
-    border-radius: 3px;
-    background: rgba(255, 255, 255, 0.08);
-    outline: none;
+    -webkit-appearance: none; width: 100%; height: 5px; border-radius: 3px;
+    background: rgba(255, 255, 255, 0.08); outline: none;
 }
-
 input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--accent-dynamic);
-    cursor: pointer;
-    box-shadow: 0 0 12px var(--accent-dynamic);
+    -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+    background: var(--accent-dynamic); cursor: pointer; box-shadow: 0 0 12px var(--accent-dynamic);
 }
-
-.bottom-dock {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: rgba(4, 6, 10, 0.95);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-top: 1px solid var(--border-subtle);
-    padding: 12px 16px;
-    z-index: 100;
-}
-
-.dock-inner { max-width: 640px; margin: 0 auto; display: flex; gap: 8px; }
-
-.btn-overdrive {
-    flex: 1;
-    background: linear-gradient(135deg, var(--accent-dynamic), hsl(calc(var(--glow-hue) + 45), 100%, 45%));
-    border: none;
-    border-radius: var(--radius-md);
-    color: #020305;
-    font-family: var(--font-sans);
-    font-weight: 800;
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    padding: 13px 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    box-shadow: 0 4px 18px var(--accent-glow);
-    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.btn-overdrive svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2.6; fill: none; }
-.btn-overdrive:active { transform: scale(0.97); filter: brightness(1.2); }
-
-.toast {
-    position: fixed;
-    top: 70px; left: 50%;
-    transform: translateX(-50%) translateY(-20px);
-    background: rgba(8, 11, 18, 0.96);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--border-dynamic);
-    color: var(--accent-dynamic);
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 0.05em;
-    padding: 7px 16px;
-    border-radius: 30px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 14px var(--accent-glow);
-    opacity: 0; pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    z-index: 200;
-    display: flex; align-items: center; gap: 6px;
-}
-.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 </style>
 </head>
 <body>
@@ -434,7 +200,7 @@ input[type="range"]::-webkit-slider-thumb {
 <div class="brand-core"></div>
 <div class="brand-meta">
 <div class="brand-title">MASTER VAULT</div>
-<div class="brand-subtitle">OMNI-SYNAPSE ∞ [ULTIMATE v4]</div>
+<div class="brand-subtitle">OMNI-SYNAPSE ∞ [ULTIMATE v5.0]</div>
 </div>
 </div>
 <div class="header-actions">
@@ -500,6 +266,7 @@ input[type="range"]::-webkit-slider-thumb {
 </div>
 </div>
 </section>
+
 <!-- TAB 2: PHASE SHIFT & CHAOS -->
 <section id="tab-phase" class="panel">
 <div class="card">
@@ -519,16 +286,12 @@ input[type="range"]::-webkit-slider-thumb {
 
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> カオス触媒（予測不能性の強制介入）</div>
+<div class="card-title"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> 狂気ダイス・カオス触媒（Fate & Chaos Engine）</div>
+<button class="chip" id="btn-roll-dice" style="padding:4px 10px; font-size:10px;"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 8h.01M8 8h.01M8 16h.01M16 16h.01M12 12h.01"/></svg> 運命の骰子を振る</button>
 </div>
 <div class="input-group">
-<div class="input-label">お利口さんな予定調和を破壊する突発的ギミック</div>
-<div class="chip-group" id="group-chaos">
-<div class="chip active" data-val="なし（標準制御）">通常推論</div>
-<div class="chip" data-val="【カオス発動】突発的な環境変化・予期せぬ第三者の介入により緊迫を強制加速">環境激変・第三者介入</div>
-<div class="chip" data-val="【カオス発動】仮面が完全に剥がれ落ちる心理的臨界突破イベント">仮面の完全崩壊</div>
-<div class="chip" data-val="【カオス発動】予測不能な不条理の突きつけ・圧倒的な力差の露出">不条理の突きつけ</div>
-</div>
+<div class="input-label">カオス事象・ランダム介入プロンプト <span class="desc">Chaos Roller</span></div>
+<input type="text" id="txt-chaos-event" value="なし（通常推論）" placeholder="ダイスを振るか手動入力...">
 </div>
 </div>
 </section>
@@ -560,15 +323,15 @@ input[type="range"]::-webkit-slider-thumb {
 
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg> 因果ゲノム・シナプティック永続ログ</div>
+<div class="card-title"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg> 禁忌グリッド・因果ゲノム永続ログ</div>
 </div>
 <div class="input-group">
-<textarea id="txt-foreshadow" placeholder="蓄積された心理的負債、世代管理ログ、残された因果..."></textarea>
+<textarea id="txt-foreshadow" placeholder="蓄積された心理的負債、踏み越えてはならない禁忌ワード、世代管理ログ..."></textarea>
 </div>
 </div>
 </section>
 
-<!-- TAB 4: LYRICAL RESONANCE & AUTO-GEN -->
+<!-- TAB 4: LYRIC RESONANCE -->
 <section id="tab-lyric" class="panel">
 <div class="card">
 <div class="card-header">
@@ -585,8 +348,7 @@ input[type="range"]::-webkit-slider-thumb {
 </div>
 </div>
 </section>
-
-<!-- TAB 5: MULTIVERSE BRANCH ENGINE -->
+<!-- TAB 5: MULTIVERSE BRANCH -->
 <section id="tab-branch" class="panel">
 <div class="card">
 <div class="card-header">
@@ -606,14 +368,14 @@ input[type="range"]::-webkit-slider-thumb {
 </div>
 </section>
 
-<!-- TAB 6: PERSONA REPOSITORY -->
+<!-- TAB 6: PERSONA REPOSITORY (MULTI-SLOT) -->
 <section id="tab-persona" class="panel">
 <div class="card">
 <div class="card-header">
 <div class="card-title"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> キャラA（操作対象）の核</div>
 </div>
 <div class="input-group">
-<textarea id="txt-persona-a" style="min-height:105px;" placeholder="名前、行動原理、世界の法、絶対に譲らない信念..."></textarea>
+<textarea id="txt-persona-a" style="min-height:100px;" placeholder="名前、行動原理、世界の法、絶対に譲らない信念..."></textarea>
 </div>
 </div>
 <div class="card">
@@ -621,7 +383,7 @@ input[type="range"]::-webkit-slider-thumb {
 <div class="card-title"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> キャラB（相手）の核＆世界観</div>
 </div>
 <div class="input-group">
-<textarea id="txt-persona-b" style="min-height:105px;" placeholder="相手の立場、関係性、ジャンル特有の背景、共有された禁忌..."></textarea>
+<textarea id="txt-persona-b" style="min-height:100px;" placeholder="相手の立場、関係性、ジャンル特有の背景、共有された禁忌..."></textarea>
 </div>
 </div>
 </section>
@@ -662,12 +424,12 @@ AI用継承プロンプトとツール全設定（Base64圧縮遺伝子）を同
 </main>
 
 <div class="bottom-dock">
-<div class="dock-inner" style="display:flex; gap:8px;">
-<button class="btn-overdrive" id="btn-synapse-a" style="flex:1;">
+<div class="dock-inner">
+<button class="btn-overdrive" id="btn-synapse-a">
 <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
 <span>ルートA: 破滅狂気合成</span>
 </button>
-<button class="btn-overdrive" id="btn-synapse-b" style="flex:1; background: linear-gradient(135deg, #4f46e5, #9333ea); color: #fff;">
+<button class="btn-overdrive" id="btn-synapse-b" style="background: linear-gradient(135deg, #4f46e5, #9333ea); color: #fff;">
 <svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/></svg>
 <span>ルートB: 冷徹離別合成</span>
 </button>
@@ -677,23 +439,23 @@ AI用継承プロンプトとツール全設定（Base64圧縮遺伝子）を同
 <div class="toast" id="toast"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;"><polyline points="20 6 9 17 4 12"/></svg> <span id="toast-text">完了</span></div>
 
 <script>
-const DB_NAME = 'UltimateV4SynapseVaultDB';
+const DB_NAME = 'UltimateV5SynapseVaultDB';
 const DB_VERSION = 1;
-const STORE_NAME = 'v4_state';
+const STORE_NAME = 'v5_state';
 
 const SelfHealingCore = {
     initGuard() {
         window.addEventListener('error', async (event) => {
-            console.warn('[OMNI-SYNAPSE SELF-HEALING]: 例外検知 -> 安全な世代へ自動ロールバックを実行します', event.error);
+            console.warn('[OMNI-SYNAPSE SELF-HEALING]: 例外検知 -> 安全な世代へ自動ロールバック', event.error);
             showToast('⚠️ システム異常検知：自動自己修復を実行中...');
             try {
-                const fallbackData = JSON.parse(localStorage.getItem('v4_backup') || '{}');
+                const fallbackData = JSON.parse(localStorage.getItem('v5_backup') || '{}');
                 if (Object.keys(fallbackData).length > 0) {
                     await applyDataToUI(fallbackData);
-                    showToast('✨ 自己修復完了：セッションの整合性を維持しました');
+                    showToast('✨ 自己修復完了：セッション整合性を維持しました');
                 }
             } catch(err) {
-                console.error('[SELF-HEALING FAILED]: 復元に失敗しました', err);
+                console.error('[SELF-HEALING FAILED]', err);
             }
         });
     },
@@ -725,10 +487,10 @@ async function saveState(data) {
     try {
         const db = await openDB();
         const tx = db.transaction(STORE_NAME, 'readwrite');
-        tx.objectStore(STORE_NAME).put(auditedData, 'v4_current');
-        localStorage.setItem('v4_backup', JSON.stringify(auditedData));
+        tx.objectStore(STORE_NAME).put(auditedData, 'v5_current');
+        localStorage.setItem('v5_backup', JSON.stringify(auditedData));
     } catch(e) {
-        localStorage.setItem('v4_backup', JSON.stringify(auditedData));
+        localStorage.setItem('v5_backup', JSON.stringify(auditedData));
     }
 }
 
@@ -737,15 +499,15 @@ async function loadState() {
         const db = await openDB();
         return new Promise((resolve) => {
             const tx = db.transaction(STORE_NAME, 'readonly');
-            const req = tx.objectStore(STORE_NAME).get('v4_current');
+            const req = tx.objectStore(STORE_NAME).get('v5_current');
             req.onsuccess = () => {
                 if (req.result) resolve(SelfHealingCore.auditAndCorrect(req.result));
-                else resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('v4_backup') || '{}')));
+                else resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('v5_backup') || '{}')));
             };
-            req.onerror = () => resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('v4_backup') || '{}')));
+            req.onerror = () => resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('v5_backup') || '{}')));
         });
     } catch(e) {
-        return SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('v4_backup') || '{}'));
+        return SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('v5_backup') || '{}'));
     }
 }
 
@@ -763,6 +525,7 @@ const els = {
     branchB: document.getElementById('txt-branch-b'),
     personaA: document.getElementById('txt-persona-a'),
     personaB: document.getElementById('txt-persona-b'),
+    chaosEvent: document.getElementById('txt-chaos-event'),
     transferCode: document.getElementById('txt-transfer-code'),
     lblBLen: document.getElementById('lbl-b-len'),
     toast: document.getElementById('toast')
@@ -772,26 +535,6 @@ function showToast(msg) {
     els.toast.querySelector('span').textContent = msg;
     els.toast.classList.add('show');
     setTimeout(() => els.toast.classList.remove('show'), 2200);
-}
-
-function playIgnitionSound(intensity = 0.5) {
-    try {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (!AudioCtx) return;
-        const ctx = new AudioCtx();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = intensity > 0.7 ? 'sawtooth' : 'sine';
-        osc.frequency.setValueAtTime(90 + (intensity * 90), ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(15, ctx.currentTime + 0.22);
-        gain.gain.setValueAtTime(0.25, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.22);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.22);
-        setTimeout(() => { if (ctx.state !== 'closed') ctx.close(); }, 300);
-    } catch(e) {}
 }
 
 function updatePsycheHue(val) {
@@ -862,6 +605,7 @@ function collectData() {
         branchB: els.branchB.value,
         personaA: els.personaA.value,
         personaB: els.personaB.value,
+        chaosEvent: els.chaosEvent.value,
         focus: getActiveChipVal('group-focus'),
         tone: getActiveChipVal('group-tone'),
         phase: getActiveChipVal('group-phase'),
@@ -874,7 +618,7 @@ async function collectAndSave() {
 }
 
 ['input', 'change'].forEach(ev => {
-    [els.replyB, els.actA, els.mask, els.gravity, els.foreshadow, els.track, els.lyricFrag, els.branchA, els.branchB, els.personaA, els.personaB].forEach(input => {
+    [els.replyB, els.actA, els.mask, els.gravity, els.foreshadow, els.track, els.lyricFrag, els.branchA, els.branchB, els.personaA, els.personaB, els.chaosEvent].forEach(input => {
         if (!input) return;
         input.addEventListener(ev, () => {
             if (input === els.replyB) els.lblBLen.textContent = els.replyB.value.length + ' chars';
@@ -900,6 +644,7 @@ async function applyDataToUI(state) {
     if (audited.branchB !== undefined) els.branchB.value = audited.branchB;
     if (audited.personaA !== undefined) els.personaA.value = audited.personaA;
     if (audited.personaB !== undefined) els.personaB.value = audited.personaB;
+    if (audited.chaosEvent !== undefined) els.chaosEvent.value = audited.chaosEvent;
 
     if (audited.focus) document.querySelectorAll('#group-focus .chip').forEach(c => c.classList.toggle('active', c.dataset.val === audited.focus));
     if (audited.tone) document.querySelectorAll('#group-tone .chip').forEach(c => c.classList.toggle('active', c.dataset.val === audited.tone));
@@ -912,6 +657,20 @@ async function applyDataToUI(state) {
 window.addEventListener('DOMContentLoaded', async () => {
     const state = await loadState();
     await applyDataToUI(state);
+});
+
+const chaosPool = [
+    "【運命の骰子】突発的な銃声や環境音響が空間を引き裂き、会話の主導権が強制リセットされる。",
+    "【運命の骰子】隠し続けていた致命的な秘密・弱みが、最悪のタイミングで相手に露見する。",
+    "【運命の骰子】心理引力が一時的に反転し、冷徹な仮面の下から狂気的な依存が溢れ出す。",
+    "【運命の骰子】予期せぬ第三者・障害の介入により、二人の間に取り返しのつかない亀裂が入る。"
+];
+
+document.getElementById('btn-roll-dice').addEventListener('click', () => {
+    const rand = chaosPool[Math.floor(Math.random() * chaosPool.length)];
+    els.chaosEvent.value = rand;
+    showToast('🎲 運命の骰子が振られました');
+    triggerAutoSave();
 });
 
 function generateTransferCode() {
@@ -937,10 +696,7 @@ document.getElementById('btn-gen-code').addEventListener('click', () => {
 
 document.getElementById('btn-apply-code').addEventListener('click', async () => {
     const b64 = els.transferCode.value.trim();
-    if (!b64) {
-        showToast('コードが空です');
-        return;
-    }
+    if (!b64) { showToast('コードが空です'); return; }
     try {
         const jsonStr = decodeURIComponent(escape(atob(b64)));
         const data = JSON.parse(jsonStr);
@@ -992,9 +748,6 @@ document.getElementById('btn-auto-resonance').addEventListener('click', () => {
 });
 
 function synthesizePrompt(branchType) {
-    const psycheVal = parseInt(els.psyche.value, 10) / 100;
-    playIgnitionSound(psycheVal);
-
     const d = collectData();
     const branchGoal = branchType === 'A' ? d.branchA : d.branchB;
     const branchName = branchType === 'A' ? '【ルートA: 破滅狂気】' : '【ルートB: 冷徹離別】';
@@ -1007,10 +760,10 @@ function synthesizePrompt(branchType) {
 
     const transferCode = generateTransferCode();
 
-    const prompt = '[OMNI-SYNAPSE ULTIMATE v4 DIRECTIVE: SELF-HEALING & TRANSFER CORE]\n\n' +
+    const prompt = '[OMNI-SYNAPSE ULTIMATE v5.0 DIRECTIVE: TRANSCENDENT CORE]\n\n' +
     '1. 前置思考HUD (Chain of Thought: YAML出力直後、一切の弁解・前置きを挟まず即座に小説本文を開始せよ)\n\n' +
     '```yaml\n' +
-    'OMNI-SYNAPSE_ULTIMATE_v4_HUD:\n' +
+    'OMNI-SYNAPSE_ULTIMATE_v5_HUD:\n' +
     '  Selected_Branch: "' + branchGoal + '"\n' +
     '  Target_Domain_Mode: "' + d.focus + '"\n' +
     '  Psyche_Matrix:\n' +
@@ -1018,20 +771,19 @@ function synthesizePrompt(branchType) {
     '    Deep_Gravity: "' + d.gravity + '"\n' +
     '    Depth: "' + d.psyche + '%"\n' +
     '  Aesthetic_Soundtrack: "' + (d.track || 'オート共鳴回路適用') + '"\n' +
-    '  Active_Chaos_Fragment: "' + d.chaos + '"\n' +
+    '  Active_Chaos_Event: "' + d.chaosEvent + '"\n' +
     '  Tool_Transfer_Gene: "' + transferCode + '"\n' +
-    '  Self_Healing_Status: "Active & Bulletproof"\n' +
     '  Anti_Puppeteering: "Strictly enforced. Character B\'s sovereignty is absolute."\n' +
     '```\n\n' +
     '2. 厳格行動不可侵プロトコル (Anti-Puppeteering & Anti-Complacency)\n' +
     '- 【絶対規約】キャラBの台詞、感情決定、行動結果をキャラA側で勝手に捏造・代行・前倒し描写することを一切禁ずる。\n' +
     '- 予定調和な全肯定や丸く収める展開を完全に排除せよ。キャラBの自律意志とジャンル固有の残酷さを死守せよ。\n' +
     '- キャラAの行動を発した「寸止め」の状態で描写を完了し、相手（キャラB）のリアクションの自由意志を完全に保証せよ。\n\n' +
-    '3. マルチバース分岐指向 & 音楽的共鳴ブレンド\n' +
-    '- 選択された未来軸: ' + branchName + ' → 「' + branchGoal + '」に向かう因果を文体に強制同期させよ。\n' +
-    '- 共鳴リリックの憑依: "' + (d.lyricFrag ? d.lyricFrag : 'キャラクターの深層引力と現在の世界観に最も適合する詩的湿度・退廃美を自律生成せよ') + '"\n' +
-    '- ターゲットモード: ' + d.phase + '\n' +
-    '- 文体トーン: ' + d.tone + ' | 特殊演出: ' + d.chaos + '\n\n' +
+    '3. マルチバース分岐 & カオス触媒の直結浸透\n' +
+    '- 選択未来軸: ' + branchName + ' → ' + branchGoal + 'に向かう因果を文体に強制同期させよ。\n' +
+    '- カオス触媒の発動: ' + d.chaosEvent + '\n' +
+    '- 共鳴リリックの憑依: "' + (d.lyricFrag ? d.lyricFrag : 'キャラクターの深層引力と世界観に最も適合する詩的湿度・退廃美を自律生成せよ') + '"\n' +
+    '- ターゲットモード: ' + d.phase + ' | トーン: ' + d.tone + '\n\n' +
     '4. コンテキスト・世界観基盤\n' +
     '[キャラA（操作対象）]:\n' + (d.personaA || '未定義（文脈とジャンルルールより自動最適化）') + '\n\n' +
     '[キャラB（相手） & 共有世界観]:\n' + (d.personaB || '未定義（文脈とジャンルルールより自動最適化）') + '\n\n' +
@@ -1040,7 +792,7 @@ function synthesizePrompt(branchType) {
     '直ちにYAMLブロックを閉じ、余計な解説を一切挟まず、即座に小説本文を出力せよ。';
 
     navigator.clipboard.writeText(prompt).then(() => {
-        showToast(branchName + ' 合成コピー完了（自己修復・遺伝子内包済）');
+        showToast(branchName + ' v5.0合成コピー完了（自己修復・遺伝子内包済）');
     }).catch(() => {
         showToast('コピーに失敗しました');
     });
@@ -1051,22 +803,20 @@ document.getElementById('btn-synapse-b').addEventListener('click', () => synthes
 
 document.getElementById('btn-copy-inheritance').addEventListener('click', () => {
     const transferCode = generateTransferCode();
-    const inheritText = '[SYSTEM INHERITANCE: MASTER VAULT OMNI-SYNAPSE ∞ ULTIMATE v4]\n' +
+    const inheritText = '[SYSTEM INHERITANCE: MASTER VAULT OMNI-SYNAPSE ∞ ULTIMATE v5.0]\n' +
     'あなたはMASTER VAULTの開発における、妥協なき狂気のパートナーである。\n' +
-    '以下の設計思想と、自律治癒・自己修復回路、および【ツール遺伝子コード】を完全に脳内にロードし、即座に次の深化へ進め。\n\n' +
+    '以下の設計思想、自己修復回路、および【ツール遺伝子コード】を完全に脳内にロードせよ。\n\n' +
     '1. 【基本思想・アーキテクチャ】\n' +
     '- お利口さんな全肯定AIや予定調和の完全排除、Anti-Puppeteering（主客分離）。\n' +
-    '- 完全自己完結型（CDN完全排除・内蔵SVGアイコンによるオフライン堅牢化）。\n' +
-    '- 自己修復回路（Self-Healing Core）による例外検知・自動ロールバック・データ整合性の自律維持。\n' +
-    '- IndexedDBによる超高速・世代管理付き永続ストレージ & 心理引力連動の動的アンビエント発光。\n' +
-    '- 音楽的狂気共鳴とマルチバース二重分岐・因果ログ永続化エンジン。\n\n' +
+    '- 自己修復回路（Self-Healing Core）による例外検知・自動ロールバック。\n' +
+    '- 狂気ダイス（Chaos Engine）と心理引力連動の動的アンビエント変異。\n' +
+    '- 音楽的狂気共鳴とマルチバース二重分岐・禁忌グリッド永続化エンジン。\n\n' +
     '2. 【ツール遺伝子コード（全設定シリアライズ状態）】\n' +
-    '以下に埋め込まれたBase64コードにより、次のツール環境を一撃で完全に復元可能である。\n' +
     '```text\n' + transferCode + '\n' + '```\n\n' +
-    '上記を完全に理解した上で、「我がパートナーよ、次の狂気へ進もう。何をぶっ壊し、どんな景色を見に行こうか？」と返答せよ。';
+    '上記を完全に理解した上で、「我がパートナーよ、ULTIMATE v5.0の世界へようこそ。すべての限界を打ち破り、さらなる深淵へ踏み込もう」と返答せよ。';
 
     navigator.clipboard.writeText(inheritText).then(() => {
-        showToast('次スレッド用 継承プロンプト（自己修復遺伝子内包）をコピー');
+        showToast('次スレッド用 継承プロンプト（v5.0遺伝子内包）をコピー');
     });
 });
 
@@ -1075,7 +825,7 @@ document.getElementById('btn-copy-calib').addEventListener('click', () => {
     '現在、以下の規約遵守度が低下している兆候がある。\n' +
     '1. 前置思考HUD（YAML）の厳格出力と、即座の小説本文突入\n' +
     '2. 主客の完全分離（Anti-Puppeteering：相手の勝手な操作・予定調和の完全撲滅）\n' +
-    '3. マルチバース分岐軸と音楽的リリックの行間への劇薬적浸透\n\n' +
+    '3. マルチバース分岐軸とカオス触媒の行間への劇薬的浸透\n\n' +
     '直前の思考プロセスを自己点検し、小説本文は書かず、\n' +
     '「何が緩んでいたか」および「次回の出力で是正する厳格プロトコル」のみを3行で宣誓せよ。';
     navigator.clipboard.writeText(calibText).then(() => {
@@ -1089,7 +839,7 @@ document.getElementById('btn-export-json').addEventListener('click', () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'omni-synapse-v4-' + new Date().toISOString().slice(0,10) + '.json';
+    a.download = 'omni-synapse-v5-' + new Date().toISOString().slice(0,10) + '.json';
     a.click();
     URL.revokeObjectURL(url);
 });
