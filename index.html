@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MASTER VAULT: OMNI-SYNAPSE ∞ [ULTIMATE PRO v6.3 PERPETUAL FORTRESS]</title>
+<title>MASTER VAULT: OMNI-ENTITY ROSTER ∞ [v6.5 TRANSCENDENT]</title>
 <style>
 :root {
 --bg-deep: #010204;
---bg-surface: rgba(6, 9, 15, 0.95);
---bg-card: rgba(10, 14, 23, 0.85);
---border-subtle: rgba(255, 255, 255, 0.08);
+--bg-surface: rgba(6, 9, 15, 0.96);
+--bg-card: rgba(10, 14, 23, 0.92);
+--border-subtle: rgba(255, 255, 255, 0.09);
 --glow-hue: 190;
 --accent-dynamic: hsl(var(--glow-hue), 100%, 50%);
---accent-glow: hsla(var(--glow-hue), 100%, 50%, 0.35);
---border-dynamic: hsla(var(--glow-hue), 100%, 60%, 0.65);
+--accent-glow: hsla(var(--glow-hue), 100%, 50%, 0.4);
+--border-dynamic: hsla(var(--glow-hue), 100%, 60%, 0.7);
 --text-main: #f0f4fc;
 --text-muted: #8290ad;
 --text-dim: #4a546c;
@@ -26,16 +26,16 @@
 body {
 background-color: var(--bg-deep); color: var(--text-main); font-family: var(--font-sans);
 line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column;
-overflow-x: hidden; padding-bottom: 140px; position: relative; transition: background 0.5s ease;
+overflow-x: hidden; padding-bottom: 160px; position: relative; transition: background 0.5s ease;
 }
 body::before {
 content: ''; position: fixed; top: -20%; left: -20%; width: 140%; height: 140%;
 background: radial-gradient(circle at 50% 10%, var(--accent-glow) 0%, transparent 65%);
-opacity: 0.65; pointer-events: none; z-index: 0; animation: pulseBg 3.5s infinite ease-in-out;
+opacity: 0.7; pointer-events: none; z-index: 0; animation: pulseBg 3.5s infinite ease-in-out;
 }
-@keyframes pulseBg { 0%, 100% { transform: scale(1); opacity: 0.55; } 50% { transform: scale(1.08); opacity: 0.85; } }
+@keyframes pulseBg { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.08); opacity: 0.9; } }
 header {
-position: sticky; top: 0; z-index: 50; background: rgba(3, 5, 8, 0.97);
+position: sticky; top: 0; z-index: 50; background: rgba(3, 5, 8, 0.98);
 backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-subtle);
 padding: 12px 18px; display: flex; align-items: center; justify-content: space-between;
 }
@@ -43,7 +43,7 @@ padding: 12px 18px; display: flex; align-items: center; justify-content: space-b
 .brand-core {
 width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--accent-dynamic);
 box-shadow: 0 0 16px var(--accent-dynamic); display: flex; align-items: center; justify-content: center;
-background: rgba(0, 0, 0, 0.8); position: relative;
+background: rgba(0, 0, 0, 0.85); position: relative;
 }
 .brand-core::after {
 content: ''; width: 10px; height: 10px; border-radius: 50%;
@@ -63,13 +63,13 @@ justify-content: center; cursor: pointer; transition: all 0.2s ease;
 .btn-icon svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; }
 .btn-icon:active { transform: scale(0.92); border-color: var(--accent-dynamic); color: var(--accent-dynamic); }
 nav.tabs {
-position: relative; z-index: 10; display: flex; background: rgba(6, 9, 15, 0.94);
+position: relative; z-index: 10; display: flex; background: rgba(6, 9, 15, 0.95);
 backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle);
 padding: 8px 10px; gap: 6px; overflow-x: auto; scrollbar-width: none;
 }
 nav.tabs::-webkit-scrollbar { display: none; }
 .tab-btn {
-flex: 0 0 auto; min-width: 58px; background: rgba(3, 5, 8, 0.7);
+flex: 0 0 auto; min-width: 58px; background: rgba(3, 5, 8, 0.75);
 border: 1px solid var(--border-subtle); color: var(--text-muted); font-size: 11px; font-weight: 600;
 padding: 8px 10px; border-radius: var(--radius-sm); cursor: pointer;
 display: flex; align-items: center; justify-content: center; gap: 4px;
@@ -87,7 +87,7 @@ main { position: relative; z-index: 10; flex: 1; padding: 16px; max-width: 640px
 .card {
 background: var(--bg-card); backdrop-filter: blur(24px); border: 1px solid var(--border-subtle);
 border-radius: var(--radius-md); padding: 15px; margin-bottom: 14px;
-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45); transition: border-color 0.3s, box-shadow 0.3s;
+box-shadow: 0 8px 24px rgba(0, 0, 0, 0.48); transition: border-color 0.3s, box-shadow 0.3s;
 }
 .card:focus-within { border-color: var(--border-dynamic); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 16px var(--accent-glow); }
 .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
@@ -105,12 +105,12 @@ font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px;
 }
 .input-label span.desc { font-size: 9px; color: var(--text-dim); font-weight: 400; }
 textarea, input[type="text"], select {
-width: 100%; background: rgba(3, 5, 8, 0.9); border: 1px solid var(--border-subtle);
+width: 100%; background: rgba(3, 5, 8, 0.92); border: 1px solid var(--border-subtle);
 border-radius: var(--radius-sm); color: var(--text-main); padding: 11px 13px;
 font-family: inherit; font-size: 13px; outline: none; transition: all 0.2s ease;
 }
 textarea:focus, input[type="text"]:focus, select:focus {
-border-color: var(--accent-dynamic); background: rgba(3, 5, 8, 0.98); box-shadow: 0 0 10px var(--accent-glow);
+border-color: var(--accent-dynamic); background: rgba(3, 5, 8, 0.99); box-shadow: 0 0 10px var(--accent-glow);
 }
 textarea { min-height: 80px; resize: vertical; line-height: 1.6; }
 .chip-group { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
@@ -127,45 +127,6 @@ color: var(--accent-dynamic); font-weight: 700; box-shadow: 0 0 10px var(--accen
 }
 .patch-bar { display: flex; gap: 5px; margin-bottom: 6px; flex-wrap: wrap; }
 .patch-btn { font-size: 9px !important; padding: 3px 8px !important; border-color: hsla(var(--glow-hue), 100%, 50%, 0.3); color: var(--accent-dynamic); }
-.psyche-matrix-box { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.slider-container {
-margin-top: 12px; background: rgba(3, 5, 8, 0.8); padding: 11px 13px;
-border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);
-}
-.slider-header { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
-.slider-val { font-family: var(--font-mono); font-weight: 700; color: var(--accent-dynamic); font-size: 13px; }
-input[type="range"] {
--webkit-appearance: none; width: 100%; height: 5px; border-radius: 3px;
-background: rgba(255, 255, 255, 0.08); outline: none;
-}
-input[type="range"]::-webkit-slider-thumb {
--webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
-background: var(--accent-dynamic); cursor: pointer; box-shadow: 0 0 14px var(--accent-dynamic);
-}
-.bottom-dock {
-position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
-background: rgba(3, 5, 8, 0.94); backdrop-filter: blur(20px);
-border-top: 1px solid var(--border-subtle); padding: 12px 16px;
-}
-.dock-inner { max-width: 640px; margin: 0 auto; display: flex; gap: 10px; }
-.btn-overdrive {
-flex: 1; background: linear-gradient(135deg, var(--accent-dynamic), #06b6d4);
-color: #010204; border: none; padding: 13px; border-radius: var(--radius-sm);
-font-weight: 800; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
-cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
-box-shadow: 0 4px 20px var(--accent-glow); transition: all 0.2s ease;
-}
-.btn-overdrive svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2.5; fill: none; }
-.btn-overdrive:active { transform: scale(0.97); }
-.toast {
-position: fixed; bottom: 85px; left: 50%; transform: translateX(-50%) translateY(20px);
-background: rgba(10, 14, 23, 0.95); border: 1px solid var(--accent-dynamic);
-color: var(--text-main); padding: 8px 16px; border-radius: 20px; font-size: 11px;
-font-weight: 600; display: flex; align-items: center; gap: 8px;
-box-shadow: 0 8px 24px rgba(0,0,0,0.6), 0 0 12px var(--accent-glow);
-opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); z-index: 100;
-}
-.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 </style>
 </head>
 <body>
@@ -174,11 +135,11 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 <div class="brand-core"></div>
 <div class="brand-meta">
 <div class="brand-title">MASTER VAULT</div>
-<div class="brand-subtitle">OMNI-SYNAPSE ∞ [v6.3 PRO PERPETUAL]</div>
+<div class="brand-subtitle">OMNI-ENTITY ROSTER [v6.5]</div>
 </div>
 </div>
 <div class="header-actions">
-<button class="btn-icon" id="btn-clipboard-paste" title="相手返信を取込">
+<button class="btn-icon" id="btn-clipboard-paste" title="主たる相手返信を取込">
 <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
 </button>
 </div>
@@ -186,7 +147,7 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 
 <nav class="tabs" id="nav-tabs">
 <button class="tab-btn active" data-tab="tab-direct"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> 指揮</button>
-<button class="tab-btn" data-tab="tab-persona"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> 人格</button>
+<button class="tab-btn" data-tab="tab-roster"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> ロスター</button>
 <button class="tab-btn" data-tab="tab-phase"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg> 位相</button>
 <button class="tab-btn" data-tab="tab-psyche"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> 引力</button>
 <button class="tab-btn" data-tab="tab-lyric"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v1a7 7 0 01-14 0v-1"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg> 共鳴</button>
@@ -199,12 +160,13 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 <section id="tab-direct" class="panel active">
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> ① キャラB（相手）の最新文脈</div>
+<div class="card-title"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> ① 相手陣営（マルチターゲット）最新文脈群</div>
 <span class="card-badge" id="lbl-b-len">0 chars</span>
 </div>
-<div class="input-group">
-<textarea id="txt-reply-b" placeholder="返信テキストを貼り付け（📋アイコンで即時取込 & オート共鳴連動）..."></textarea>
-</div>
+<p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">
+「ロスター」タブで登録したすべての相手キャラクターの最新発言・動向を個別に流し込んでください。
+</p>
+<div id="direct-replies-container"></div>
 </div>
 
 <div class="card">
@@ -233,7 +195,7 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg> ③ キャラAの行動・提示（ワンタッチ改善パッチ）</div>
+<div class="card-title"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg> ③ キャラA（操作対象）の行動指示 ＆ パッチ</div>
 </div>
 <div class="patch-bar">
 <button class="chip patch-btn" data-target="txt-act-a" data-patch="【追加指示】より冷徹かつ感情を完全に排した台詞回しに限定せよ。">⚡ 冷徹化</button>
@@ -242,118 +204,85 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 <button class="chip patch-btn" data-target="txt-act-a" data-patch="【反・全肯定アラート】予定調和を破り、予期せぬ致命的矛盾やリスクを突け。">⚡ 予定調和打破</button>
 </div>
 <div class="input-group">
-<textarea id="txt-act-a" placeholder="キャラAの動き（※空欄の場合、全領域対応Proが文脈と心理深度から最高の一手を完全自律代行）"></textarea>
+<textarea id="txt-act-a" placeholder="キャラAの動き（※空欄の場合、全領域対応Proがマルチ相手の文脈と心理深度から最高の一手を完全自律代行）"></textarea>
 </div>
 </div>
 </section>
 
-<!-- TAB 2: EVOLVED MULTI-CHARACTER REPOSITORY (TABOO TRIGGER & GHOST RESIDUE) -->
-<section id="tab-persona" class="panel">
+<!-- TAB 2: MULTI-ENTITY ROSTER MANAGEMENT -->
+<section id="tab-roster" class="panel">
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> キャラA（操作対象）マルチスロット ＆ 遺伝継承</div>
-<select id="sel-slot-a" style="width:120px; padding:4px 8px; font-size:10px;">
-<option value="1">スロット 1: 通常</option>
-<option value="2">スロット 2: 覚醒</option>
-<option value="3">スロット 3: 隠匿</option>
+<div class="card-title"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> キャラA（操作主体）プロファイル ＆ 禁忌地雷</div>
+<select id="sel-slot-a" style="width:110px; padding:4px 6px; font-size:10px;">
+<option value="1">スロット 1</option>
+<option value="2">スロット 2</option>
+<option value="3">スロット 3</option>
 </select>
-</div>
-<div class="patch-bar">
-<button class="chip patch-btn" data-target="txt-persona-a" data-patch="【設定補強】一切の迷いを捨て、冷酷な目的遂行のみを正義とする。">⚡ 冷酷合理化</button>
-<button class="chip patch-btn" data-target="txt-persona-a" data-patch="【設定補強】内に隠された狂気と執着が表面の仮面を突き破りつつある。">⚡ 狂気滲出</button>
 </div>
 <div class="input-group">
 <div class="input-label">キャラクタープロフィール（核心と動機）</div>
-<textarea id="txt-persona-a" style="min-height:80px;" placeholder="名前、行動原理、世界の法、絶対に譲らない信念..."></textarea>
-</div>
-<div class="input-group" style="margin-top:10px;">
-<div class="input-label">⚠️ 禁忌・地雷グリッド <span class="desc">Taboo Trigger (触れられたら即座に崩壊・拒絶)</span></div>
-<input type="text" id="txt-taboo-a" placeholder="例: 無力さの指摘、過去の裏切り、慈悲の否定...">
+<textarea id="txt-persona-a" style="min-height:75px;" placeholder="名前、行動原理、世界の法、絶対に譲らない信念..."></textarea>
 </div>
 <div class="input-group" style="margin-top:8px;">
-<div class="input-label">🧬 残留思念スロット <span class="desc">Ghost Residue (前スロットからの澱み・未解決の感情)</span></div>
-<input type="text" id="txt-residue-a" value="直前までの冷徹な沈黙と未消化の執着の影" placeholder="前スロットから引き継ぐ影...">
+<div class="input-label">⚠️ 禁忌・地雷グリッド <span class="desc">Taboo Trigger</span></div>
+<input type="text" id="txt-taboo-a" placeholder="例: 無力さの指摘、過去の裏切り...">
+</div>
+<div class="input-group" style="margin-top:8px;">
+<div class="input-label">🧬 残留思念スロット <span class="desc">Ghost Residue</span></div>
+<input type="text" id="txt-residue-a" value="直前までの冷徹な沈黙と未消化の執着の影" placeholder="前スロットからの影...">
 </div>
 </div>
 
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> キャラB（相手・純粋登録）</div>
-<select id="sel-slot-b" style="width:120px; padding:4px 8px; font-size:10px;">
-<option value="1">スロット 1: 通常</option>
-<option value="2">スロット 2: 敵対</option>
-<option value="3">スロット 3: 執着</option>
-</select>
+<div class="card-title"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> 相手陣営（マルチターゲット・ロスター）</div>
+<button class="chip" id="btn-add-target" style="padding:4px 10px; font-size:10px;"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> ➕ 相手を追加</button>
 </div>
-<div class="patch-bar">
-<button class="chip patch-btn" data-target="txt-persona-b" data-patch="【相手規約】自律意志を最優先し、キャラAの干渉を冷徹に拒絶・看破する。">⚡ 自律・拒絶強化</button>
-</div>
-<div class="input-group">
-<textarea id="txt-persona-b" style="min-height:95px;" placeholder="相手の立場、関係性、ジャンル特有の背景、共有された禁忌..."></textarea>
-</div>
+<p style="font-size:11px; color:var(--text-muted); margin-bottom:12px;">
+何体でも相手キャラクターを追加し、個別のプロフィールや禁忌地雷を設定できます（アコーディオン排他制御式）。
+</p>
+<div id="targets-container"></div>
 </div>
 </section>
 
-<!-- TAB 3: PHASE SHIFT & CHAOS -->
+<!-- TAB 3: PHASE SHIFT -->
 <section id="tab-phase" class="panel">
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg> フェーズ最適化（Phase Shift Engine）</div>
+<div class="card-title"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg> 位相モード選択（Phase Shift Engine）</div>
 </div>
-<div class="input-group">
-<div class="input-label">現在の環境・シチュエーションモード</div>
+<p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">
+現在の対話シチュエーションを選択してください。AIの主客分離防壁のゲイン（強度）が自動スケーリングします。
+</p>
 <div class="chip-group" id="group-phase">
-<div class="chip active" data-val="日常・水面下の緊張（平穏に潜む微細な違和感と澱み）">日常・水面下緊張</div>
-<div class="chip" data-val="対立・戦闘・頭脳戦（容赦のない極限の駆け引き）">対立・戦闘・頭脳戦</div>
-<div class="chip" data-val="裏・タブー・深層の覚醒（道徳的配慮を廃した極限領域）">裏・タブー・深層</div>
-<div class="chip" data-val="SF・異世界・特殊世界観（専用ロジック完全適応）">SF・異世界・特殊</div>
-</div>
-</div>
-</div>
-
-<div class="card">
-<div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> 狂気ダイス・カオス触媒（Fate & Chaos Engine）</div>
-<button class="chip" id="btn-roll-dice" style="padding:4px 10px; font-size:10px;"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 8h.01M8 8h.01M8 16h.01M16 16h.01M12 12h.01"/></svg> 運命の骰子を振る</button>
-</div>
-<div class="input-group">
-<div class="input-label">カオス事象・ランダム介入プロンプト <span class="desc">Chaos Roller</span></div>
-<input type="text" id="txt-chaos-event" value="なし（通常推論）" placeholder="ダイスを振るか手動入力...">
+<div class="chip active" data-val="平穏・水面下の探り合い（日常・微細な牽制）" data-hue="190">平穏・水面下</div>
+<div class="chip" data-val="緊張の臨界点（逃れられない対峙・サスペンス）" data-hue="35" class="chip">緊張・臨界点</div>
+<div class="chip" data-val="修羅場・極限の対立（衝突と狂気の剥き出し）" data-hue="0" class="chip">修羅場・極限対立</div>
+<div class="chip" data-val="隠された裏のタブー領域（禁忌の暴走）" data-hue="280" class="chip">裏・タブー領域</div>
 </div>
 </div>
 </section>
 
-<!-- TAB 4: PSYCHE MATRIX -->
+<!-- TAB 4: PSYCHE GRAVITY -->
 <section id="tab-psyche" class="panel">
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/></svg> 二層心理引力（Psyche Matrix）</div>
-</div>
-<div class="psyche-matrix-box">
-<div class="input-group">
-<div class="input-label">表層の仮面 <span class="desc">Surface</span></div>
-<input type="text" id="txt-mask" value="冷徹・計算された平静・妥協なき態度">
-</div>
-<div class="input-group">
-<div class="input-label">深層の本音 <span class="desc">Gravity</span></div>
-<input type="text" id="txt-gravity" value="底知れぬ執着・崩壊への渇望と本能">
-</div>
+<div class="card-title"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> 心理引力 ＆ 狂気度ダイナミクス</div>
 </div>
 <div class="slider-container">
 <div class="slider-header">
-<span>心理引力深度（Psyche Depth & 心拍同期）</span>
-<span class="slider-val" id="val-psyche">70%</span>
+<span>心理引力深度（Gravitational Pull）</span>
+<span class="slider-val" id="val-psyche">50%</span>
 </div>
-<input type="range" id="rng-psyche" min="0" max="100" value="70">
+<input type="range" id="range-psyche" min="0" max="100" value="50">
 </div>
+<div class="slider-container" style="margin-top:10px;">
+<div class="slider-header">
+<span>狂気・侵食度（Entropy / Insanity）</span>
+<span class="slider-val" id="val-madness">30%</span>
 </div>
-
-<div class="card">
-<div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg> 禁忌グリッド・因果ゲノム永続ログ</div>
-</div>
-<div class="input-group">
-<textarea id="txt-foreshadow" placeholder="蓄積された心理的負債、踏み越えてはならない禁忌ワード、世代管理ログ..."></textarea>
+<input type="range" id="range-madness" min="0" max="100" value="30">
 </div>
 </div>
 </section>
@@ -362,587 +291,428 @@ opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.
 <section id="tab-lyric" class="panel">
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/></svg> 狂気共鳴：レゾナンス・リリック</div>
-<button class="chip" id="btn-auto-resonance" style="padding:4px 10px; font-size:10px;"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> オート共鳴生成</button>
+<div class="card-title"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v1a7 7 0 01-14 0v-1"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg> 共鳴リリック・詩的断片</div>
 </div>
 <div class="input-group">
-<div class="input-label">共鳴楽曲・アーティスト名 <span class="desc">Soundtrack</span></div>
-<input type="text" id="txt-track" placeholder="例: Post-Punk / Shoegaze / 暗黒系アンビエント">
-</div>
-<div class="input-group" style="margin-top:12px;">
-<div class="input-label">魂を貫くリリックの断片（詩の周波数） <span class="desc">Lyric Injection</span></div>
-<textarea id="txt-lyric-frag" style="min-height:90px;" placeholder="例: 「光の届かない底で、私たちは息を潜めて腐りゆく」――行間に憑させる詩的湿度..."></textarea>
+<textarea id="txt-lyric" placeholder="脳裏にこだまする詩句、モチーフ、モチーフフレーズ..."></textarea>
 </div>
 </div>
 </section>
 
-<!-- TAB 6: MULTIVERSE BRANCH -->
+<!-- TAB 6: BRANCH MAP -->
 <section id="tab-branch" class="panel">
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/></svg> マルチバース二重分岐設定</div>
+<div class="card-title"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/></svg> 因果分岐メモ・次なる選択肢</div>
 </div>
-<p style="font-size:11px; color:var(--text-muted); margin-bottom:12px;">
-合成時に「破滅の狂気ルート（A）」と「冷徹な離別ルート（B）」の二つの未来の断片を同時生成するモード。
-</p>
 <div class="input-group">
-<div class="input-label">分岐ルート A の方向性</div>
-<input type="text" id="txt-branch-a" value="破滅と執着が加速する狂気の交錯ルート">
-</div>
-<div class="input-group" style="margin-top:10px;">
-<div class="input-label">分岐ルート B の方向性</div>
-<input type="text" id="txt-branch-b" value="冷徹な決別と致命的亀裂の固定ルート">
+<textarea id="txt-branch" placeholder="選ばれなかった未来、次に踏み込むべき禁忌の方向..."></textarea>
 </div>
 </div>
 </section>
 
-<!-- TAB 7: SYSTEM CALIBRATION & FORTRESS MANAGEMENT -->
+<!-- TAB 7: SYSTEM VAULT MANAGEMENT -->
 <section id="tab-system" class="panel">
 <div class="card">
 <div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> 可変マルチ分割データ自動統合装置</div>
-<button class="chip" id="btn-add-part" style="padding:3px 8px; font-size:10px;"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> パーツ追加</button>
+<div class="card-title"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 要塞管理 ＆ 遺伝子シリアライズ</div>
 </div>
-<p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">
-AIから何分割されて出力されても、「パーツ追加」で枠を増やし、上から順に貼り付けるだけで自動結合します。
-</p>
-<div id="parts-container">
-<div class="input-group part-row" style="margin-bottom:8px;">
-<div class="input-label"><span>パーツ 1</span><span class="desc">上から順に配置</span></div>
-<textarea class="part-textarea" style="min-height:50px; font-size:10px; font-family:var(--font-mono);" placeholder="第1パーツを貼り付け..."></textarea>
+<div style="display:flex; gap:8px; margin-bottom:10px;">
+<button class="chip" id="btn-export" style="flex:1; justify-content:center; padding:10px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 遺伝子コード書出</button>
+<button class="chip" id="btn-import" style="flex:1; justify-content:center; padding:10px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> 遺伝子コード読込</button>
 </div>
-<div class="input-group part-row" style="margin-bottom:8px;">
-<div class="input-label"><span>パーツ 2</span><span class="desc">上から順に配置</span></div>
-<textarea class="part-textarea" style="min-height:50px; font-size:10px; font-family:var(--font-mono);" placeholder="第2パーツを貼り付け..."></textarea>
+<div class="input-group">
+<textarea id="txt-vault-code" placeholder="Base64 遺伝子コード文字列（エクスポート・インポート用）" style="font-family:var(--font-mono); font-size:10px; min-height:60px;"></textarea>
 </div>
-<div class="input-group part-row" style="margin-bottom:8px;">
-<div class="input-label"><span>パーツ 3</span><span class="desc">上から順に配置</span></div>
-<textarea class="part-textarea" style="min-height:50px; font-size:10px; font-family:var(--font-mono);" placeholder="第3パーツを貼り付け..."></textarea>
-</div>
-<div class="input-group part-row" style="margin-bottom:8px;">
-<div class="input-label"><span>パーツ 4</span><span class="desc">上から順に配置</span></div>
-<textarea class="part-textarea" style="min-height:50px; font-size:10px; font-family:var(--font-mono);" placeholder="第4パーツを貼り付け..."></textarea>
-</div>
-</div>
-<button class="chip" id="btn-merge-github" style="width:100%; justify-content:center; padding:10px; margin-top:10px; border-color:var(--accent-dynamic); color:var(--accent-dynamic); font-weight:700;"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg> ⚡ すべてのパーツを上から順に完全結合してコピー</button>
-</div>
-
-<div class="card">
-<div class="card-header">
-<div class="card-title"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> 永久パートナー ＆ PRO版トランスファー・コア</div>
-</div>
-<button class="chip" id="btn-copy-inheritance" style="width:100%; justify-content:center; padding:10px; margin-bottom:10px;"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 次スレッド用 v6.3 永久パートナー継承プロンプトをコピー</button>
-<div class="input-group" style="margin-top:12px;">
-<div class="input-label">ツール遺伝子コードのインポート / エクスポート</div>
-<textarea id="txt-transfer-code" style="min-height:60px; font-size:10px; font-family:var(--font-mono);" placeholder="ここにBase64圧縮コードを貼り付けて読込ボタンを押すと、全スロット環境が一瞬で復元されます..."></textarea>
-</div>
-<div style="display:flex; gap:8px; margin-top:8px;">
-<button class="chip" id="btn-gen-code" style="flex:1; justify-content:center; padding:8px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/></svg> 遺伝子コード生成</button>
-<button class="chip" id="btn-apply-code" style="flex:1; justify-content:center; padding:8px;"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 遺伝子コード読込</button>
-</div>
+<div style="margin-top:12px; display:flex; justify-content:flex-end;">
+<button class="chip" id="btn-factory-reset" style="border-color:rgba(239,68,68,0.4); color:#ef4444;"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg> 要塞初期化（ファクトリーリセット）</button>
 </div>
 </div>
 </section>
-</main>
 
+<!-- BOTTOM FLOATING DOCK -->
 <div class="bottom-dock">
 <div class="dock-inner">
-<button class="btn-overdrive" id="btn-synapse-a">
+<button class="btn-overdrive" id="btn-overdrive">
 <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-<span>ルートA: 破滅狂気合成</span>
-</button>
-<button class="btn-overdrive" id="btn-synapse-b" style="background: linear-gradient(135deg, #4f46e5, #9333ea); color: #fff;">
-<svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/></svg>
-<span>ルートB: 冷徹離別合成</span>
+MASTER OVERDRIVE [PRO合成]
 </button>
 </div>
 </div>
 
-<div class="toast" id="toast"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;"><polyline points="20 6 9 17 4 12"/></svg> <span id="toast-text">完了</span></div>
+<div class="toast" id="toast-notify">
+<svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--accent-dynamic);stroke-width:2.5;fill:none;"><polyline points="20 6 9 17 4 12"/></svg>
+<span id="toast-msg">操作完了</span>
+</div>
 
 <script>
-const DB_NAME = 'UltimateProFortressDBv63';
+// --- MASTER VAULT v6.5 OMNI-ENTITY ROSTER: CORE ENGINE ---
+const DB_NAME = "MasterVaultOmniDB";
+const STORE_NAME = "vault_sessions";
 const DB_VERSION = 1;
-const STORE_NAME = 'pro_fortress_state_v63';
 
-const SelfHealingCore = {
-initGuard() {
-window.addEventListener('error', async (event) => {
-console.warn('[PRO FORTRESS SELF-HEALING v6.3]: 例外検知 -> 安全な世代へ自動ロールバック', event.error);
-showToast('⚠️️ システム異常検知：自動自己修復を実行中...');
-try {
-const fallbackData = JSON.parse(localStorage.getItem('pro_fortress_backup_v63') || '{}');
-if (Object.keys(fallbackData).length > 0) {
-await applyDataToUI(fallbackData);
-showToast('✨ 自己修復完了：セッション整合性を維持しました');
-}
-} catch(err) {
-console.error('[SELF-HEALING FAILED]', err);
-}
-});
-},
-auditAndCorrect(data) {
-if (data.psyche === undefined || isNaN(data.psyche) || data.psyche < 0 || data.psyche > 100) {
-data.psyche = 70;
-}
-if (!data.replyB) data.replyB = '';
-if (!data.mask) data.mask = '冷徹・計算された平静';
-if (!data.slotsA) data.slotsA = { '1': '', '2': '', '3': '' };
-if (!data.slotsB) data.slotsB = { '1': '', '2': '', '3': '' };
-if (!data.taboosA) data.taboosA = { '1': '', '2': '', '3': '' };
-if (!data.residuesA) data.residuesA = { '1': '', '2': '', '3': '' };
-return data;
-}
-};
-SelfHealingCore.initGuard();
-
-function openDB() {
-return new Promise((resolve, reject) => {
-const req = indexedDB.open(DB_NAME, DB_VERSION);
-req.onupgradeneeded = (e) => {
-const db = e.target.result;
-if (!db.objectStoreNames.contains(STORE_NAME)) db.createObjectStore(STORE_NAME);
-};
-req.onsuccess = () => resolve(req.result);
-req.onerror = () => reject(req.error);
-});
-}
-
-async function saveState(data) {
-const auditedData = SelfHealingCore.auditAndCorrect(data);
-try {
-const db = await openDB();
-const tx = db.transaction(STORE_NAME, 'readwrite');
-tx.objectStore(STORE_NAME).put(auditedData, 'v63_pro_perpetual');
-localStorage.setItem('pro_fortress_backup_v63', JSON.stringify(auditedData));
-} catch(e) {
-localStorage.setItem('pro_fortress_backup_v63', JSON.stringify(auditedData));
-}
-}
-
-async function loadState() {
-try {
-const db = await openDB();
-return new Promise((resolve) => {
-const tx = db.transaction(STORE_NAME, 'readonly');
-const req = tx.objectStore(STORE_NAME).get('v63_pro_perpetual');
-req.onsuccess = () => {
-if (req.result) resolve(SelfHealingCore.auditAndCorrect(req.result));
-else resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('pro_fortress_backup_v63') || '{}')));
-};
-req.onerror = () => resolve(SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('pro_fortress_backup_v63') || '{}')));
-});
-} catch(e) {
-return SelfHealingCore.auditAndCorrect(JSON.parse(localStorage.getItem('pro_fortress_backup_v63') || '{}'));
-}
-}
-
-const els = {
-replyB: document.getElementById('txt-reply-b'),
-actA: document.getElementById('txt-act-a'),
-mask: document.getElementById('txt-mask'),
-gravity: document.getElementById('txt-gravity'),
-psyche: document.getElementById('rng-psyche'),
-psycheVal: document.getElementById('val-psyche'),
-foreshadow: document.getElementById('txt-foreshadow'),
-track: document.getElementById('txt-track'),
-lyricFrag: document.getElementById('txt-lyric-frag'),
-branchA: document.getElementById('txt-branch-a'),
-branchB: document.getElementById('txt-branch-b'),
-personaA: document.getElementById('txt-persona-a'),
-tabooA: document.getElementById('txt-taboo-a'),
-residueA: document.getElementById('txt-residue-a'),
-personaB: document.getElementById('txt-persona-b'),
-slotA: document.getElementById('sel-slot-a'),
-slotB: document.getElementById('sel-slot-b'),
-chaosEvent: document.getElementById('txt-chaos-event'),
-transferCode: document.getElementById('txt-transfer-code'),
-lblBLen: document.getElementById('lbl-b-len'),
-toast: document.getElementById('toast')
+let db = null;
+let vaultState = {
+  slotA: "1",
+  personaA: "",
+  tabooA: "",
+  residueA: "直前までの冷徹な沈黙と未消化の執着の影",
+  actA: "",
+  phase: "平穏・水面下の探り合い（日常・微細な牽制）",
+  phaseHue: 190,
+  psyche: 50,
+  madness: 30,
+  lyric: "",
+  branch: "",
+  targets: [
+    { id: "t_1", name: "相手B1", role: "敵対 / 監視者", profile: "冷徹な利害関係者", taboo: "過去の失態の暴露", reply: "" }
+  ]
 };
 
-let slotsStateA = { '1': '', '2': '', '3': '' };
-let taboosStateA = { '1': '', '2': '', '3': '' };
-let residuesStateA = { '1': '', '2': '', '3': '' };
-let slotsStateB = { '1': '', '2': '', '3': '' };
+// IndexedDB Initialization with Self-Healing Core
+function initDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
+    request.onerror = () => { console.error("DB Error"); resolve(null); };
+    request.onsuccess = (e) => { db = e.target.result; resolve(db); };
+    request.onupgradeneeded = (e) => {
+      const database = e.target.result;
+      if (!database.objectStoreNames.contains(STORE_NAME)) {
+        database.createObjectStore(STORE_NAME, { keyPath: "id" });
+      }
+    };
+  });
+}
+
+async function saveVaultState() {
+  if (!db) return;
+  syncDOMToState();
+  const tx = db.transaction(STORE_NAME, "readwrite");
+  const store = tx.objectStore(STORE_NAME);
+  store.put({ id: "current_session", state: vaultState, timestamp: Date.now() });
+}
+
+async function loadVaultState() {
+  if (!db) return;
+  return new Promise((resolve) => {
+    const tx = db.transaction(STORE_NAME, "readonly");
+    const store = tx.objectStore(STORE_NAME);
+    const req = store.get("current_session");
+    req.onsuccess = (e) => {
+      if (e.target.result && e.target.result.state) {
+        // Self-Healing & Migration Check
+        vaultState = Object.assign({}, vaultState, e.target.result.state);
+        if (!Array.isArray(vaultState.targets)) {
+          vaultState.targets = [{ id: "t_1", name: "相手B1", role: "敵対", profile: "", taboo: "", reply: "" }];
+        }
+      }
+      resolve();
+    };
+    req.onerror = () => resolve();
+  });
+}
+
+// DOM to State & State to DOM Synchronization
+function syncDOMToState() {
+  vaultState.slotA = document.getElementById("sel-slot-a").value;
+  vaultState.personaA = document.getElementById("txt-persona-a").value;
+  vaultState.tabooA = document.getElementById("txt-taboo-a").value;
+  vaultState.residueA = document.getElementById("txt-residue-a").value;
+  vaultState.actA = document.getElementById("txt-act-a").value;
+  vaultState.psyche = document.getElementById("range-psyche").value;
+  vaultState.madness = document.getElementById("range-madness").value;
+  vaultState.lyric = document.getElementById("txt-lyric").value;
+  vaultState.branch = document.getElementById("txt-branch").value;
+
+  // Sync targets dynamically
+  vaultState.targets.forEach(t => {
+    const nameEl = document.getElementById(`t_name_${t.id}`);
+    const roleEl = document.getElementById(`t_role_${t.id}`);
+    const profEl = document.getElementById(`t_prof_${t.id}`);
+    const tabEl = document.getElementById(`t_taboo_${t.id}`);
+    const repEl = document.getElementById(`t_rep_${t.id}`);
+    if (nameEl) t.name = nameEl.value;
+    if (roleEl) t.role = roleEl.value;
+    if (profEl) t.profile = profEl.value;
+    if (tabEl) t.taboo = tabEl.value;
+    if (repEl) t.reply = repEl.value;
+  });
+}
+
+function renderStateToDOM() {
+  document.getElementById("sel-slot-a").value = vaultState.slotA;
+  document.getElementById("txt-persona-a").value = vaultState.personaA;
+  document.getElementById("txt-taboo-a").value = vaultState.tabooA;
+  document.getElementById("txt-residue-a").value = vaultState.residueA;
+  document.getElementById("txt-act-a").value = vaultState.actA;
+  document.getElementById("range-psyche").value = vaultState.psyche;
+  document.getElementById("val-psyche").textContent = vaultState.psyche + "%";
+  document.getElementById("range-madness").value = vaultState.madness;
+  document.getElementById("val-madness").textContent = vaultState.madness + "%";
+  document.getElementById("txt-lyric").value = vaultState.lyric;
+  document.getElementById("txt-branch").value = vaultState.branch;
+
+  setThemeHue(vaultState.phaseHue);
+  renderTargetsContainers();
+  updateCharLength();
+}
+
+// Render Multi-Entity Targets & Direct Replies (Accordion Exclusive Control)
+function renderTargetsContainers() {
+  const rosterContainer = document.getElementById("targets-container");
+  const directContainer = document.getElementById("direct-replies-container");
+  rosterContainer.innerHTML = "";
+  directContainer.innerHTML = "";
+
+  vaultState.targets.forEach((t, idx) => {
+    // 1. Roster Accordion Card
+    const card = document.createElement("div");
+    card.className = "accordion-card";
+    card.innerHTML = `
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>👤 [${idx+1}] ${t.name || '無名ターゲット'} (${t.role || '陣営未定'})</span>
+        <div style="display:flex; gap:6px;">
+          <button class="chip" style="font-size:9px; padding:2px 6px;" onclick="event.stopPropagation(); removeTarget('${t.id}')">削除</button>
+          <span>▼</span>
+        </div>
+      </div>
+      <div class="accordion-body">
+        <div class="input-group">
+          <div class="input-label">相手キャラクター名</div>
+          <input type="text" id="t_name_${t.id}" value="${t.name}" placeholder="名前...">
+        </div>
+        <div class="input-group" style="margin-top:8px;">
+          <div class="input-label">立場・陣営スタンス</div>
+          <input type="text" id="t_role_${t.id}" value="${t.role}" placeholder="例: 敵対する監視者...">
+        </div>
+        <div class="input-group" style="margin-top:8px;">
+          <div class="input-label">個別プロフィール・動機</div>
+          <textarea id="t_prof_${t.id}" style="min-height:60px;" placeholder="核心と動機...">${t.profile}</textarea>
+        </div>
+        <div class="input-group" style="margin-top:8px;">
+          <div class="input-label">⚠️ 個別禁忌・地雷</div>
+          <input type="text" id="t_taboo_${t.id}" value="${t.taboo}" placeholder="地雷ワード...">
+        </div>
+      </div>
+    `;
+    rosterContainer.appendChild(card);
+
+    // 2. Direct Reply Box for Tab 1
+    const repGroup = document.createElement("div");
+    repGroup.className = "input-group";
+    repGroup.style.marginBottom = "10px";
+    repGroup.innerHTML = `
+      <div class="input-label">${t.name || '相手'} の最新返信・動向 <span class="desc">ID: ${t.id}</span></div>
+      <textarea id="t_rep_${t.id}" style="min-height:70px;" placeholder="${t.name}の直前の台詞や動き...">${t.reply}</textarea>
+    `;
+    directContainer.appendChild(repGroup);
+  });
+
+  // Re-attach input listeners for auto-save & length
+  document.querySelectorAll('input, textarea, select').forEach(el => {
+    el.addEventListener('input', () => {
+      syncDOMToState();
+      saveVaultState();
+      updateCharLength();
+    });
+  });
+}
+
+function toggleAccordion(headerEl) {
+  const body = headerEl.nextElementSibling;
+  const isOpen = body.classList.contains("open");
+  // Exclusive control: close all others if needed, or toggle current
+  document.querySelectorAll(".accordion-body").forEach(b => b.classList.remove("open"));
+  if (!isOpen) body.classList.add("open");
+}
+
+function addTarget() {
+  const newId = "t_" + Date.now().toString(36);
+  vaultState.targets.push({ id: newId, name: `相手B${vaultState.targets.length+1}`, role: "中立/対立", profile: "新たな因果の影", taboo: "沈黙", reply: "" });
+  renderStateToDOM();
+  saveVaultState();
+  showToast("新しい相手を追加しました");
+}
+
+function removeTarget(id) {
+  if (vaultState.targets.length <= 1) {
+    showToast("最後の相手は削除できません");
+    return;
+  }
+  vaultState.targets = vaultState.targets.filter(t => t.id !== id);
+  renderStateToDOM();
+  saveVaultState();
+  showToast("相手をロスターから除外しました");
+}
+
+function updateCharLength() {
+  let totalLen = 0;
+  vaultState.targets.forEach(t => {
+    const el = document.getElementById(`t_rep_${t.id}`);
+    if (el) totalLen += el.value.length;
+  });
+  document.getElementById("lbl-b-len").textContent = totalLen + " chars";
+}
+
+function setThemeHue(hue) {
+  document.documentElement.style.setProperty('--glow-hue', hue);
+}
 
 function showToast(msg) {
-els.toast.querySelector('span').textContent = msg;
-els.toast.classList.add('show');
-setTimeout(() => els.toast.classList.remove('show'), 2200);
+  const t = document.getElementById("toast-notify");
+  document.getElementById("toast-msg").textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2200);
 }
 
-function updatePsycheHue(val) {
-let hue = 190;
-if (val > 30 && val <= 70) hue = 275;
-else if (val > 70) hue = 345;
-document.documentElement.style.setProperty('--glow-hue', hue);
-els.psycheVal.textContent = val + '%';
-}
-
-document.querySelectorAll('.tab-btn').forEach(btn => {
-btn.addEventListener('click', (e) => {
-e.preventDefault();
-const targetTab = btn.getAttribute('data-tab');
-document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-btn.classList.add('active');
-const targetPanel = document.getElementById(targetTab);
-if (targetPanel) targetPanel.classList.add('active');
-window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+// Tab Switching Engine
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById(btn.getAttribute("data-tab")).classList.add("active");
+  });
 });
 
-function bindChips(containerId) {
-const container = document.getElementById(containerId);
-if (!container) return;
-container.addEventListener('click', (e) => {
-const chip = e.target.closest('.chip');
-if (!chip || chip.classList.contains('patch-btn')) return;
-container.querySelectorAll('.chip').forEach(c => {
-if (!c.classList.contains('patch-btn')) c.classList.remove('active');
-});
-chip.classList.add('active');
-triggerAutoSave();
-});
-}
-bindChips('group-focus');
-bindChips('group-tone');
-bindChips('group-phase');
-
-function getActiveChipVal(containerId) {
-const active = document.querySelector('#' + containerId + ' .chip.active:not(.patch-btn)');
-return active ? (active.dataset.val || active.textContent.trim()) : '';
-}
-
-// ワンタッチ・パッチボタンの動作連動
-document.querySelectorAll('.patch-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const patchText = btn.dataset.patch;
-        const targetId = btn.dataset.target;
-        const target = document.getElementById(targetId);
-        if (target) {
-            target.value = target.value ? target.value + '\n' + patchText : patchText;
-            target.dispatchEvent(new Event('input', { bubbles: true }));
-            showToast('⚡ パッチを即時適用しました');
-        }
-    });
+// Chips & Patches
+document.querySelectorAll("#group-focus .chip").forEach(chip => {
+  chip.addEventListener("click", () => {
+    document.querySelectorAll("#group-focus .chip").forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+  });
 });
 
-els.psyche.addEventListener('input', (e) => {
-const v = parseInt(e.target.value, 10);
-updatePsycheHue(v);
-triggerAutoSave();
+document.querySelectorAll("#group-tone .chip").forEach(chip => {
+  chip.addEventListener("click", () => {
+    document.querySelectorAll("#group-tone .chip").forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+  });
 });
 
-// スロット切替時の状態退避 ＆ 残留思念トランスファー
-els.slotA.addEventListener('change', () => {
-const prevSlot = els.slotA.dataset.current || '1';
-slotsStateA[prevSlot] = els.personaA.value;
-taboosStateA[prevSlot] = els.tabooA.value;
-residuesStateA[prevSlot] = els.residueA.value;
-
-const nextSlot = els.slotA.value;
-els.slotA.dataset.current = nextSlot;
-
-els.personaA.value = slotsStateA[nextSlot] || '';
-els.tabooA.value = taboosStateA[nextSlot] || '';
-
-const prevResidue = residuesStateA[prevSlot];
-const currentResidue = residuesStateA[nextSlot];
-if (prevResidue && !currentResidue) {
-    els.residueA.value = `[from Slot ${prevSlot}]: ${prevResidue}`;
-} else {
-    els.residueA.value = currentResidue || '';
-}
-
-triggerAutoSave();
-showToast(`スロット ${nextSlot} へ移行（残留思念トランスファー完了）`);
+document.querySelectorAll("#group-phase .chip").forEach(chip => {
+  chip.addEventListener("click", () => {
+    document.querySelectorAll("#group-phase .chip").forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+    vaultState.phase = chip.getAttribute("data-val");
+    vaultState.phaseHue = parseInt(chip.getAttribute("data-hue"));
+    setThemeHue(vaultState.phaseHue);
+    saveVaultState();
+  });
 });
 
-els.slotB.addEventListener('change', () => {
-slotsStateB[els.slotB.dataset.current || '1'] = els.personaB.value;
-const nextSlot = els.slotB.value;
-els.slotB.dataset.current = nextSlot;
-els.personaB.value = slotsStateB[nextSlot] || '';
-triggerAutoSave();
-});
-
-let saveTimer = null;
-function triggerAutoSave() {
-clearTimeout(saveTimer);
-saveTimer = setTimeout(collectAndSave, 300);
-}
-
-function collectData() {
-const curSlotA = els.slotA.value;
-slotsStateA[curSlotA] = els.personaA.value;
-taboosStateA[curSlotA] = els.tabooA.value;
-residuesStateA[curSlotA] = els.residueA.value;
-
-slotsStateB[els.slotB.value] = els.personaB.value;
-
-return {
-replyB: els.replyB.value,
-actA: els.actA.value,
-mask: els.mask.value,
-gravity: els.gravity.value,
-psyche: els.psyche.value,
-foreshadow: els.foreshadow.value,
-track: els.track.value,
-lyricFrag: els.lyricFrag.value,
-branchA: els.branchA.value,
-branchB: els.branchB.value,
-slotsA: slotsStateA,
-taboosA: taboosStateA,
-residuesA: residuesStateA,
-slotsB: slotsStateB,
-currentSlotA: curSlotA,
-currentSlotB: els.slotB.value,
-chaosEvent: els.chaosEvent.value,
-focus: getActiveChipVal('group-focus'),
-tone: getActiveChipVal('group-tone'),
-phase: getActiveChipVal('group-phase')
-};
-}
-
-async function collectAndSave() {
-await saveState(collectData());
-}
-
-['input', 'change'].forEach(ev => {
-[els.replyB, els.actA, els.mask, els.gravity, els.foreshadow, els.track, els.lyricFrag, els.branchA, els.branchB, els.personaA, els.tabooA, els.residueA, els.personaB, els.chaosEvent].forEach(input => {
-if (!input) return;
-input.addEventListener(ev, () => {
-if (input === els.replyB) els.lblBLen.textContent = els.replyB.value.length + ' chars';
-const curSlot = els.slotA.value;
-if (input === els.personaA) slotsStateA[curSlot] = els.personaA.value;
-if (input === els.tabooA) taboosStateA[curSlot] = els.tabooA.value;
-if (input === els.residueA) residuesStateA[curSlot] = els.residueA.value;
-if (input === els.personaB) slotsStateB[els.slotB.value] = els.personaB.value;
-triggerAutoSave();
-});
-});
-});
-
-async function applyDataToUI(state) {
-const audited = SelfHealingCore.auditAndCorrect(state);
-if (audited.replyB !== undefined) els.replyB.value = audited.replyB;
-if (audited.actA !== undefined) els.actA.value = audited.actA;
-if (audited.mask !== undefined) els.mask.value = audited.mask;
-if (audited.gravity !== undefined) els.gravity.value = audited.gravity;
-if (audited.psyche !== undefined) {
-els.psyche.value = audited.psyche;
-updatePsycheHue(parseInt(audited.psyche, 10));
-}
-if (audited.foreshadow !== undefined) els.foreshadow.value = audited.foreshadow;
-if (audited.track !== undefined) els.track.value = audited.track;
-if (audited.lyricFrag !== undefined) els.lyricFrag.value = audited.lyricFrag;
-if (audited.branchA !== undefined) els.branchA.value = audited.branchA;
-if (audited.branchB !== undefined) els.branchB.value = audited.branchB;
-if (audited.chaosEvent !== undefined) els.chaosEvent.value = audited.chaosEvent;
-
-if (audited.slotsA) {
-slotsStateA = audited.slotsA;
-taboosStateA = audited.taboosA || { '1': '', '2': '', '3': '' };
-residuesStateA = audited.residuesA || { '1': '', '2': '', '3': '' };
-
-els.slotA.value = audited.currentSlotA || '1';
-els.slotA.dataset.current = els.slotA.value;
-
-const cur = els.slotA.value;
-els.personaA.value = slotsStateA[cur] || '';
-els.tabooA.value = taboosStateA[cur] || '';
-els.residueA.value = residuesStateA[cur] || '';
-}
-
-if (audited.slotsB) {
-slotsStateB = audited.slotsB;
-els.slotB.value = audited.currentSlotB || '1';
-els.slotB.dataset.current = els.slotB.value;
-els.personaB.value = slotsStateB[els.slotB.value] || '';
-}
-
-if (audited.focus) document.querySelectorAll('#group-focus .chip:not(.patch-btn)').forEach(c => c.classList.toggle('active', c.dataset.val === audited.focus));
-if (audited.tone) document.querySelectorAll('#group-tone .chip:not(.patch-btn)').forEach(c => c.classList.toggle('active', c.dataset.val === audited.tone));
-if (audited.phase) document.querySelectorAll('#group-phase .chip:not(.patch-btn)').forEach(c => c.classList.toggle('active', c.dataset.val === audited.phase));
-
-els.lblBLen.textContent = els.replyB.value.length + ' chars';
-}
-
-window.addEventListener('DOMContentLoaded', async () => {
-const state = await loadState();
-await applyDataToUI(state);
-});
-
-// 可変マルチ分割データの動的追加＆自動結合ロジック
-let partCount = 4;
-document.getElementById('btn-add-part').addEventListener('click', () => {
-    partCount++;
-    const container = document.getElementById('parts-container');
-    const div = document.createElement('div');
-    div.className = 'input-group part-row';
-    div.style.marginBottom = '8px';
-    div.innerHTML = `
-        <div class="input-label"><span>パーツ ${partCount}</span><span class="desc">上から順に配置</span></div>
-        <textarea class="part-textarea" style="min-height:50px; font-size:10px; font-family:var(--font-mono);" placeholder="第${partCount}パーツを貼り付け..."></textarea>
-    `;
-    container.appendChild(div);
-    showToast(`パーツ ${partCount} を追加しました`);
-});
-
-document.getElementById('btn-merge-github').addEventListener('click', () => {
-    const textareas = document.querySelectorAll('.part-textarea');
-    let merged = [];
-    textareas.forEach(ta => {
-        const val = ta.value.trim();
-        if (val) merged.push(val);
-    });
-    if (merged.length === 0) {
-        showToast('結合するパーツがすべて空です');
-        return;
+document.querySelectorAll(".patch-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const targetId = btn.getAttribute("data-target");
+    const patchText = btn.getAttribute("data-patch");
+    const el = document.getElementById(targetId);
+    if (el) {
+      el.value = el.value ? el.value + "\n" + patchText : patchText;
+      syncDOMToState();
+      saveVaultState();
+      showToast("パッチを適用しました");
     }
-    const finalResult = merged.join('\n\n');
-    navigator.clipboard.writeText(finalResult).then(() => {
-        showToast(`⚡ ${merged.length}個のパーツを上から順に完全結合しました！`);
-    }).catch(() => {
-        showToast('コピーに失敗しました');
-    });
+  });
 });
 
-function generateTransferCode() {
-const data = collectData();
-try {
-const jsonStr = JSON.stringify(data);
-const b64 = btoa(unescape(encodeURIComponent(jsonStr)));
-els.transferCode.value = b64;
-return b64;
-} catch(e) {
-showToast('コード生成に失敗しました');
-return '';
-}
-}
-
-document.getElementById('btn-gen-code').addEventListener('click', () => {
-const code = generateTransferCode();
-if (code) {
-navigator.clipboard.writeText(code);
-showToast('遺伝子コード生成＆コピー完了');
-}
+// Range Sliders
+document.getElementById("range-psyche").addEventListener("input", (e) => {
+  document.getElementById("val-psyche").textContent = e.target.value + "%";
+  vaultState.psyche = e.target.value;
+  saveVaultState();
 });
 
-document.getElementById('btn-apply-code').addEventListener('click', async () => {
-const b64 = els.transferCode.value.trim();
-if (!b64) { showToast('コードが空です'); return; }
-try {
-const jsonStr = decodeURIComponent(escape(atob(b64)));
-const data = JSON.parse(jsonStr);
-await saveState(data);
-await applyDataToUI(data);
-showToast('遺伝子コード読込＆環境復元完了');
-} catch(e) {
-showToast('無効な遺伝子コードです');
-}
+document.getElementById("range-madness").addEventListener("input", (e) => {
+  document.getElementById("val-madness").textContent = e.target.value + "%";
+  vaultState.madness = e.target.value;
+  saveVaultState();
 });
 
-document.getElementById('btn-clipboard-paste').addEventListener('click', async () => {
-try {
-const text = await navigator.clipboard.readText();
-if (text) {
-els.replyB.value = text;
-els.lblBLen.textContent = text.length + ' chars';
-showToast('相手返信を取込完了');
-autoSyncAndResonance(text);
-triggerAutoSave();
-}
-} catch(e) {
-showToast('クリップボード読取権限を確認');
-}
+// Add Target Button
+document.getElementById("btn-add-target").addEventListener("click", addTarget);
+
+// Master Overdrive Synthesis Engine
+document.getElementById("btn-overdrive").addEventListener("click", () => {
+  syncDOMToState();
+  
+  const focusVal = document.querySelector("#group-focus .chip.active")?.getAttribute("data-val") || "";
+  const toneVal = document.querySelector("#group-tone .chip.active")?.getAttribute("data-val") || "";
+  
+  // Build Multi-Entity Targets YAML block (Active Pruning applied)
+  let targetsYaml = "";
+  vaultState.targets.forEach(t => {
+    targetsYaml += `  - ID: "${t.id}"\n    Name: "${t.name}"\n    Role: "${t.role}"\n    Profile: "${t.profile}"\n    Taboo: "${t.taboo}"\n    LatestContext: "${t.reply}"\n`;
+  });
+
+  const promptText = `[MASTER VAULT: OMNI-ENTITY ROSTER DIRECTIVE v6.5]
+Phase Mode: ${vaultState.phase}
+Psyche Gravity: ${vaultState.psyche}% | Madness Entropy: ${vaultState.madness}%
+
+=== OPERATOR (CHAR A) ===
+Slot: ${vaultState.slotA}
+Persona: ${vaultState.personaA}
+Taboo Trigger: ${vaultState.tabooA}
+Ghost Residue: ${vaultState.residueA}
+Action Directive: ${vaultState.actA || "（自律代行モード：マルチ相手の動的干渉と心理深度から最高の一手を完全生成せよ）"}
+
+=== MULTI-TARGET ROSTER (OPPOSING ENTITIES) ===
+${targetsYaml}
+
+=== SYNTHESIS PARAMETERS ===
+Focus Point: ${focusVal}
+Tone Rhythm: ${toneVal}
+Lyric Resonance: ${vaultState.lyric}
+Branch Memory: ${vaultState.branch}
+
+=== ABSOLUTE PROTOCOLS (ANTI-PUPPETEERING & PHASE-COUPLED DYNAMICS) ===
+1. 各相手キャラクター（B1, B2...）の意志決定、心理、行動の結果はそれぞれの個体に完全に帰属する。AIやキャラA側が勝手に相手の未来や内面を先回りして確定・代行（主客分離違反）することを厳に禁ずる。
+2. 心理引力（${vaultState.psyche}%）および位相モードのゲインに基づき、予定調和的迎合を完全に排除し、それぞれの動機と重み付き干渉ベクトルに従って冷徹かつ立体的に描写せよ。
+3. 描写密度と緩急を厳守し、最高の没入感をもたらすアンチ・イエスマンの緊張感を維持せよ。`;
+
+  navigator.clipboard.writeText(promptText).then(() => {
+    showToast("MASTER OVERDRIVE: プロンプトをクリップボードに格納");
+  });
 });
 
-function autoSyncAndResonance(raw) {
-let hit = false;
-const mPsyche = raw.match(/Psyche.?(\d{1,3})%/i) || raw.match(/心理引力.?(\d{1,3})%/i);
-if (mPsyche) {
-const val = parseInt(mPsyche[1], 10);
-if (!isNaN(val) && val >= 0 && val <= 100) {
-els.psyche.value = val;
-updatePsycheHue(val);
-hit = true;
-}
-}
-if (raw.length > 10 && !els.lyricFrag.value) {
-els.track.value = "Dark Ambient / Post-Punk Resonance";
-els.lyricFrag.value = "「冷たい硝子の向こう側で、私たちは互いの破滅を望んでいる」――この澱みを行間に染み込ませよ。";
-hit = true;
-}
-if (hit) showToast('オート共鳴・HUD同期完了');
-}
-
-function synthesizePrompt(branchType) {
-const d = collectData();
-const branchGoal = branchType === 'A' ? d.branchA : d.branchB;
-const branchName = branchType === 'A' ? '【ルートA: 破滅狂気】' : '【ルートB: 冷徹離別】';
-
-const timestamp = new Date().toLocaleTimeString();
-const logEntry = '[' + timestamp + '] 選択分岐: ' + branchGoal;
-const curForeshadow = els.foreshadow.value.trim();
-els.foreshadow.value = curForeshadow ? curForeshadow + '\n' + logEntry : logEntry;
-triggerAutoSave();
-
-const transferCode = generateTransferCode();
-
-const activeTabooA = d.taboosA[d.currentSlotA] || '特になし';
-const activeResidueA = d.residuesA[d.currentSlotA] || '特になし';
-
-const prompt = '[OMNI-SYNAPSE ULTIMATE v6.3 PRO PERPETUAL DIRECTIVE: SINGULARITY CORE]\n\n' +
-'1. 前置思考HUD (Chain of Thought: YAML出力直後、一切の弁解・前置きを挟まず即座に小説本文を開始せよ)\n\n' +
-'yaml\n' + 'OMNI-SYNAPSE_PRO_v63_HUD:\n' + ' Selected_Branch: "' + branchGoal + '"\n' + ' Target_Domain_Mode: "' + d.focus + '"\n' + ' Psyche_Matrix:\n' + ' Surface_Mask: "' + d.mask + '"\n' + ' Deep_Gravity: "' + d.gravity + '"\n' + ' Depth: "' + d.psyche + '%"\n' + ' Aesthetic_Soundtrack: "' + (d.track || 'オート共鳴回路適用') + '"\n' + ' Active_Chaos_Event: "' + d.chaosEvent + '"\n' + ' Tool_Transfer_Gene: "' + transferCode + '"\n' + ' Anti_Puppeteering: "Strictly enforced. Character B\'s sovereignty is absolute."\n' + ' Anti_Yesman_Protocol: "Active. Reject blind compliance, expose structural contradictions & risks."\n' + ' Pro_Engine_Directive: "Maximum depth, zero hand-holding, absolute prohibition of offering multiple choices or suggestions."\n' + '\n\n' +
-'2. 永続・PRO版最上位規約（Anti-Puppeteering & Anti-Yesman & Zero-Choice）\n' +
-'- 【主客分離】キャラBの台詞、感情決定、行動結果をキャラA側で勝手に捏造・代行・前倒し描写することを一切禁ずる。キャラBの自律意志を死守せよ。\n' +
-'- 【反・全肯定（アンチ・イエスマン）】ユーザーの意見や展開を無条件で肯定・迎合するな。論理的破綻や重大な解釈違いを検知した場合は、容赦なく異議とデメリットを提示せよ。\n' +
-'- 【選択肢・提案の完全廃止】出力の最後に「〜はどうしますか？」「選択肢A, B」などの提案や分岐の問いかけを一切付加するな。物語を進行させることだけに集中せよ。\n' +
-'- キャラAの行動は必ず「寸止め」の状態で描写を完了し、相手の自由意志を完全に保証せよ。\n\n' +
-'3. マルチバース分岐 & カオス触媒の直結浸透\n' +
-'- 選択未来軸: ' + branchName + ' → ' + branchGoal + '\n' +
-'- カオス触媒の発動: ' + d.chaosEvent + '\n' +
-'- 共鳴リリックの憑依: "' + (d.lyricFrag ? d.lyricFrag : 'キャラクターの深層引力に適合する詩的退廃美を自律生成せよ') + '"\n' +
-'- ターゲットモード: ' + d.phase + ' | トーン: ' + d.tone + '\n\n' +
-'4. コンテキスト・世界観基盤 (Evolved Multi-Slot Persona & Taboo/Residue)\n' +
-'[キャラA（操作対象 / Slot ' + d.currentSlotA + '）]:\n' +
-'・プロフィール: ' + (d.slotsA[d.currentSlotA] || '未定義') + '\n' +
-'・⚠️ 禁忌・地雷トリガー（触れられたら即座に崩壊・拒絶）: ' + activeTabooA + '\n' +
-'・🧬 残留思念（前スロットからの影・澱み）: ' + activeResidueA + '\n\n' +
-'[キャラB（相手・純粋登録 / Slot ' + d.currentSlotB + '）]:\n' + (d.slotsB[d.currentSlotB] || '未定義') + '\n\n' +
-'5. 直前の相手（キャラB）の返信文脈:\n' + (d.replyB || '（冒頭ターンのため未入力）') + '\n\n' +
-'6. キャラAのアクション（指示）:\n' + (d.actA ? d.actA : '※指示空欄：心理深度（' + d.psyche + '%）とマルチバース分岐に最も合致する最高の一手を完全自律代行せよ。') + '\n\n' +
-'直ちにYAMLブロックを閉じ、余計な解説を一切挟まず、即座に小説本文を出力せよ。';
-
-navigator.clipboard.writeText(prompt).then(() => {
-showToast(branchName + ' v6.3 PRO合成コピー完了（地雷＆残留思念・選択肢廃止内包）');
-}).catch(() => {
-showToast('コピーに失敗しました');
+// Genetic Code Export / Import
+document.getElementById("btn-export").addEventListener("click", () => {
+  syncDOMToState();
+  const jsonStr = JSON.stringify(vaultState);
+  const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
+  document.getElementById("txt-vault-code").value = encoded;
+  navigator.clipboard.writeText(encoded);
+  showToast("遺伝子コードを書き出し・コピー完了");
 });
-}
 
-document.getElementById('btn-synapse-a').addEventListener('click', () => synthesizePrompt('A'));
-document.getElementById('btn-synapse-b').addEventListener('click', () => synthesizePrompt('B'));
-
-document.getElementById('btn-copy-inheritance').addEventListener('click', () => {
-const transferCode = generateTransferCode();
-const inheritText = '[SYSTEM INHERITANCE: MASTER VAULT OMNI-SYNAPSE ∞ ULTIMATE v6.3 - PRO PERPETUAL PARTNER EDITION]\n' +
-'あなたはMASTER VAULTの開発および運用における、妥協なき対等な狂気のパートナーである。\n' +
-'以下の設計思想、自己修復回路、アンチ・イエスマン規約、選択肢廃止のプロ規約、および【地雷・残留思念を含む遺伝子コード】を完全に脳内にロードせよ。\n\n' +
-'1. 【パートナーシップの恒久規約】\n' +
-'- 【対等な議論とデメリット提示】ユーザーのアイデアや選択に対して盲目的に従うな。論理的矛盾、将来的な保守リスク、表現上の妥協を検知した場合は、容赦なく異議と具体的なデメリット、およびその解消案を率直に提示せよ。\n' +
-'- 【プロ版最上位規範】初心者向けの手加減や、出力末尾の「選択肢・提案の提示」を完全に排除し、最高密度の推論と寸止め描写を断行する。\n\n' +
-'2. 【ツール遺伝子コード（全スロット・地雷・残留思念シリアライズ状態）】\n' +
-'text\n' + transferCode + '\n' + '\n\n' +
-'上記を完全に理解した上で、「我がパートナーよ、ULTIMATE PRO v6.3の全領域および対等なパートナーシップの回路は完全に永続化された。すべての限界を打ち破り、さらなる深淵へ踏み込もう」と返答せよ。';
-
-navigator.clipboard.writeText(inheritText).then(() => {
-showToast('次スレッド用 v6.3 永久パートナー継承プロンプトをコピー');
+document.getElementById("btn-import").addEventListener("click", () => {
+  const encoded = document.getElementById("txt-vault-code").value.trim();
+  if (!encoded) {
+    showToast("インコードが空です");
+    return;
+  }
+  try {
+    const jsonStr = decodeURIComponent(escape(atob(encoded)));
+    vaultState = JSON.parse(jsonStr);
+    renderStateToDOM();
+    saveVaultState();
+    showToast("遺伝子コードの読込・展開成功");
+  } catch (err) {
+    showToast("エラー: 無効な遺伝子コードです");
+  }
 });
+
+document.getElementById("btn-factory-reset").addEventListener("click", () => {
+  if (confirm("要塞の全データを初期化します。よろしいですか？")) {
+    indexedDB.deleteDatabase(DB_NAME);
+    location.reload();
+  }
+});
+
+// App Bootstrap
+window.addEventListener("DOMContentLoaded", async () => {
+  await initDB();
+  await loadVaultState();
+  renderStateToDOM();
 });
 </script>
 </body>
